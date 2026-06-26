@@ -1,0 +1,63 @@
+---
+title: "Get Listing Location Status Report"
+description: "Get a detailed listing status report for a single location across all connected sites."
+---
+
+```
+get_listing_location_status_report
+```
+
+## Description
+
+Returns a breakdown of listing sync status across all connected platforms for a specific location. Shows counts and percentages for each status category, plus per-site status details.
+
+<Warning>
+  This is a **location-level tool**. You must provide a `locationId` from [`get_child_locations`](/tools/business/get-child-locations).
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `locationId` | string | Yes | ID of the child location (from `get_child_locations`) |
+
+## Status Categories
+
+| Status | Description |
+|---|---|
+| `Synced` | Listing is live and up to date on this platform |
+| `Submitted` | Update submitted, awaiting platform confirmation |
+| `Action Required` | Platform requires manual action to resolve |
+| `Opted Out` | Listing management is disabled for this platform |
+| `Not Connected` | Platform not configured for this location |
+
+## Example Usage
+
+```
+What is the listing status for my Downtown location?
+```
+
+```
+Which of my listing sites need attention for location 78901?
+```
+
+## Example Response
+
+```json
+{
+  "locationId": "78901",
+  "summary": {
+    "synced": { "count": 12, "percentage": 75 },
+    "submitted": { "count": 2, "percentage": 12.5 },
+    "actionRequired": { "count": 1, "percentage": 6.25 },
+    "optedOut": { "count": 1, "percentage": 6.25 },
+    "notConnected": { "count": 0, "percentage": 0 }
+  },
+  "sites": [
+    { "name": "Google", "status": "Synced" },
+    { "name": "Bing", "status": "Action Required" },
+    { "name": "Facebook", "status": "Synced" },
+    { "name": "Apple Maps", "status": "Submitted" }
+  ]
+}
+```

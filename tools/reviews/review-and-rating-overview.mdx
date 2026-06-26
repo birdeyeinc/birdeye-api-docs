@@ -1,0 +1,55 @@
+---
+title: "Review and Rating Overview"
+description: "Get a report on review and rating trends over a specified time period."
+---
+
+```
+review_and_rating_overview
+```
+
+## Description
+
+Returns aggregated review volume and rating trend data for the authenticated business over a specified date range. Useful for identifying periods of high review activity or rating changes.
+
+## Parameters
+
+| Parameter | Type | Required | Format | Description |
+|---|---|---|---|---|
+| `startDate` | string | Yes | `MM/DD/YYYY` | Start of the reporting period |
+| `endDate` | string | Yes | `MM/DD/YYYY` | End of the reporting period |
+
+## Example Usage
+
+```
+What are my review trends from 01/01/2026 to 06/26/2026?
+```
+
+```
+Show me a review and rating overview for Q1 2026.
+```
+
+## Example Response
+
+```json
+{
+  "totalReviews": 342,
+  "averageRating": 4.6,
+  "ratingDistribution": {
+    "5": 210,
+    "4": 89,
+    "3": 28,
+    "2": 10,
+    "1": 5
+  },
+  "trend": [
+    { "month": "January 2026", "count": 112, "avgRating": 4.7 },
+    { "month": "February 2026", "count": 98, "avgRating": 4.5 },
+    { "month": "March 2026", "count": 132, "avgRating": 4.6 }
+  ]
+}
+```
+
+## Notes
+
+- This tool operates at the account level — data is aggregated across all locations.
+- For per-location breakdowns, use [`get_review_summary`](/tools/reviews/get-review-summary).

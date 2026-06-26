@@ -1,0 +1,52 @@
+---
+title: "Get Search AI Businesses"
+description: "Get the businesses that AI engines surface when answering your monitored prompts."
+---
+
+```
+get_search_ai_businesses
+```
+
+## Description
+
+Returns the list of businesses that AI engines (ChatGPT, Gemini, Perplexity) surface in their responses to your Search AI prompts. Shows competitor visibility alongside your own business's presence.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `aiModel` | string | Yes | — | AI engine: `"CHATGPT"`, `"GEMINI"`, or `"PERPLEXITY"` |
+| `theme` | string | No | All themes | Filter to a specific theme name |
+| `pageNo` | integer | No | `1` | Page number (1-indexed) |
+| `pageSize` | integer | No | `25` | Results per page |
+| `startDate` | string | No | — | Start date in `mm/dd/yyy` format |
+| `endDate` | string | No | — | End date in `mm/dd/yyy` format |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+| `businessNumbers` | list[integer] | No | All | Scope to specific location IDs |
+
+## Example Usage
+
+```
+Which businesses does ChatGPT recommend when someone searches for dentists in my area?
+```
+
+```
+Am I showing up in Perplexity results for the Cosmetic Dentistry theme?
+```
+
+## Response Fields
+
+Each business entry includes:
+
+| Field | Description |
+|---|---|
+| `name` | Business name as reported by the AI engine |
+| `phone` | Phone number as reported |
+| `address` | Street address as reported |
+| `city` | City as reported |
+| `postalCode` | Postal code as reported |
+| `websiteUrl` | Website URL as reported |
+
+## Notes
+
+- Compare the returned business data with your actual business info to identify accuracy issues — use [`get_search_ai_accuracy_report`](/tools/search-ai/get-search-ai-accuracy-report) for a structured accuracy analysis.

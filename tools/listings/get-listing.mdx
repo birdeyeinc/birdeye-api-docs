@@ -1,0 +1,62 @@
+---
+title: "Get Listing"
+description: "Get the full listing profile for a single location, including hours, categories, photos, and per-site listing data."
+---
+
+```
+get_listing
+```
+
+## Description
+
+Returns the complete listing profile for a specific child location. This includes business information, operating hours, special hours, languages, keywords, products, and the status of the listing on each connected platform (Google, Facebook, Bing, Apple, etc.).
+
+<Warning>
+  This is a **location-level tool**. You must provide a `locationId` from [`get_child_locations`](/tools/business/get-child-locations).
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `locationId` | string | Yes | ID of the child location (from `get_child_locations`) |
+
+## Example Usage
+
+```
+Show me the full listing for location ID 78901.
+```
+
+```
+What are the business hours and categories for my Downtown location?
+```
+
+## Example Response
+
+```json
+{
+  "locationId": "78901",
+  "businessName": "Acme Dental – Downtown",
+  "address": "123 Main St, Austin, TX 78701",
+  "phone": "+15125550100",
+  "timezone": "America/Chicago",
+  "languages": ["English", "Spanish"],
+  "hours": {
+    "monday": "08:00–18:00",
+    "tuesday": "08:00–18:00",
+    "wednesday": "08:00–18:00",
+    "thursday": "08:00–18:00",
+    "friday": "08:00–17:00",
+    "saturday": "Closed",
+    "sunday": "Closed"
+  },
+  "specialHours": [],
+  "categories": ["Dentist", "Cosmetic Dentist"],
+  "keywords": ["teeth whitening", "invisalign", "family dentistry"],
+  "sites": {
+    "Google": { "status": "SYNCED", "lastSynced": "2026-06-20" },
+    "Facebook": { "status": "SYNCED", "lastSynced": "2026-06-20" },
+    "Bing": { "status": "ACTION_REQUIRED" }
+  }
+}
+```

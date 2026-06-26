@@ -1,0 +1,47 @@
+---
+title: "Get All Surveys"
+description: "Get all available surveys for the business."
+---
+
+```
+get_all_surveys
+```
+
+## Description
+
+Returns the full list of surveys configured for the authenticated business. Use this to discover survey IDs before fetching responses with [`get_survey_responses`](/tools/surveys/get-survey-responses).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `page` | integer | No | `0` | Page number (zero-indexed) |
+| `size` | integer | No | `300` | Number of surveys per page |
+
+## Example Usage
+
+```
+What surveys do I have set up?
+```
+
+```
+List all my active surveys.
+```
+
+## Example Response
+
+```json
+{
+  "surveys": [
+    { "id": 501, "name": "Post-Visit Patient Survey", "status": "ACTIVE" },
+    { "id": 502, "name": "NPS Survey – Q2 2026", "status": "ACTIVE" },
+    { "id": 503, "name": "Service Quality – 2025", "status": "ARCHIVED" }
+  ],
+  "hasMore": false
+}
+```
+
+## Notes
+
+- The `hasMore` flag indicates whether additional pages exist beyond the current result set.
+- Use the survey `id` values returned here as the `survey_id` parameter for `get_survey_responses`.

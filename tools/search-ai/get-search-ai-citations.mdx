@@ -1,0 +1,61 @@
+---
+title: "Get Search AI Citations"
+description: "Get the URLs cited by AI engines (ChatGPT, Gemini, Perplexity) when answering your monitored prompts."
+---
+
+```
+get_search_ai_citations
+```
+
+## Description
+
+Returns the source URLs (citations) that AI engines reference when responding to your Search AI prompts. Each citation includes the page title, description, and whether your brand was present in the cited content.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `aiModel` | string | Yes | — | AI engine: `"CHATGPT"`, `"GEMINI"`, or `"PERPLEXITY"` |
+| `theme` | string | No | All themes | Filter to a specific theme name |
+| `pageNo` | integer | No | `1` | Page number (1-indexed) |
+| `pageSize` | integer | No | `25` | Results per page |
+| `startDate` | string | No | — | Start date in `mm/dd/yyy` format |
+| `endDate` | string | No | — | End date in `mm/dd/yyy` format |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+| `businessNumbers` | list[integer] | No | All | Scope to specific location IDs |
+
+## Example Usage
+
+```
+What URLs is ChatGPT citing when answering prompts about my business?
+```
+
+```
+Show me Gemini citations for the General Dentistry theme from the last run.
+```
+
+## Example Response
+
+```json
+{
+  "citations": [
+    {
+      "url": "https://www.healthgrades.com/dentists/acme-dental",
+      "title": "Acme Dental – Healthgrades",
+      "description": "Acme Dental Group in Austin, TX – rated 4.8/5 by 320 patients.",
+      "brandPresent": true
+    },
+    {
+      "url": "https://www.yelp.com/biz/some-other-dentist",
+      "title": "Some Other Dentist – Yelp",
+      "description": "Top dentist in Austin per Yelp reviewers.",
+      "brandPresent": false
+    }
+  ]
+}
+```
+
+## Notes
+
+- `brandPresent: true` means your brand name appears in the cited content — a positive signal.
+- Use dates from [`get_search_ai_available_runs`](/tools/search-ai/get-search-ai-available-runs) to ensure your date range covers a completed run.

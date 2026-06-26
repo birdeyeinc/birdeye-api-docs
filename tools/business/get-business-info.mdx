@@ -1,0 +1,49 @@
+---
+title: "Get Business Info"
+description: "Fetch the business profile of the currently authenticated user."
+---
+
+```
+get_business_info
+```
+
+## Description
+
+Returns the business information associated with the authenticated user's Birdeye account. If the user manages multiple businesses and has recently switched accounts, this returns the most recently active business.
+
+## Parameters
+
+None. Business context is resolved automatically from the authenticated session.
+
+## Example Usage
+
+```
+What is my business name and address?
+```
+
+```
+What business am I currently logged in as?
+```
+
+## Example Response
+
+```json
+{
+  "businessId": 123456,
+  "businessName": "Acme Dental Group",
+  "alias": "acme-dental",
+  "address": "123 Main St",
+  "city": "Austin",
+  "state": "TX",
+  "zip": "78701",
+  "country": "US",
+  "phone": "+15125550100",
+  "website": "https://acmedental.com",
+  "timezone": "America/Chicago"
+}
+```
+
+## Notes
+
+- For enterprise accounts with multiple child locations, this returns the parent account profile.
+- To get all child locations, use [`get_child_locations`](/tools/business/get-child-locations).

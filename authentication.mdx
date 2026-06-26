@@ -1,0 +1,64 @@
+---
+title: "Authentication"
+description: "The Birdeye MCP Server uses OAuth 2.0 to authenticate requests. No API keys or manual token management required."
+---
+
+## Overview
+
+The Birdeye MCP Server uses **OAuth 2.0 with Dynamic Client Registration (DCR)**. When you connect your AI client, it automatically negotiates credentials and walks you through a one-time browser-based login with your Birdeye account.
+
+You never need to copy API keys or manage tokens manually.
+
+## How It Works
+
+<Steps>
+  <Step title="Client discovers the server">
+    Your AI client connects to `https://mcp.birdeye.com/mcp` and discovers the OAuth configuration automatically.
+  </Step>
+  <Step title="Dynamic client registration">
+    The client registers itself with Birdeye's Auth0-backed identity provider. This happens automatically — no manual setup required.
+  </Step>
+  <Step title="Browser authorization">
+    You are redirected to a Birdeye-branded login page to sign in and grant access. This only happens once.
+  </Step>
+  <Step title="Token issued">
+    After approval, an access token is issued to your AI client. All subsequent MCP requests use this token.
+  </Step>
+  <Step title="Business context resolved">
+    Every tool call is scoped to the Birdeye business associated with your account. Enterprise accounts with multiple locations automatically have access to all child location data.
+  </Step>
+</Steps>
+
+## Authorized Redirect URIs
+
+The following AI clients are pre-authorized for OAuth redirects:
+
+| Client | Redirect URI |
+|---|---|
+| ChatGPT | `https://chatgpt.com/*` |
+| Claude (web) | `https://claude.ai/*` |
+| Claude Desktop | `https://claude.com/*` |
+
+Other MCP clients with their own redirect URIs can still connect — they will be dynamically registered on first use.
+
+## Scopes
+
+The Birdeye MCP Server requests the following OAuth scopes:
+
+| Scope | Purpose |
+|---|---|
+| `openid` | Verify your identity |
+| `profile` | Access your name and profile info |
+| `email` | Identify your Birdeye account |
+
+No write access to your Birdeye account is requested or granted. All tools are **read-only**.
+
+## Data Privacy
+
+- All tools are annotated as read-only (`readOnlyHint: true`) — the server never modifies your Birdeye data
+- Sensitive fields such as reviewer email addresses are automatically filtered from responses
+- OAuth state is encrypted at rest using Fernet symmetric encryption
+
+## Revoking Access
+
+To revoke access, disconnect the integration from your AI client's settings. Your Birdeye account data is not affected.
