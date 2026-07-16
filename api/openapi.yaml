@@ -50,7 +50,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -65,7 +64,6 @@ paths:
                     businessId: 653356544
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -77,7 +75,6 @@ paths:
                     message: Invalid Business Type
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -89,7 +86,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -101,7 +97,6 @@ paths:
                     message: No user found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -210,7 +205,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -246,7 +240,6 @@ paths:
                     totalCount: 44
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -258,7 +251,6 @@ paths:
                     message: Page size must not be less than one!
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -270,7 +262,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -356,7 +347,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -617,7 +607,6 @@ paths:
                     baseUrl: https://birdeye.com/diecispa-755009344
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -629,7 +618,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -641,7 +629,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -685,7 +672,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -999,7 +985,6 @@ paths:
                       youTubeUrl: null
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -1011,7 +996,6 @@ paths:
                     message: The 'sub_locality' field cannot exceed 80 characters.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -1023,7 +1007,6 @@ paths:
                     message: Invalid category
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -1035,7 +1018,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -1437,10 +1419,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -1452,7 +1432,6 @@ paths:
                     message: Reseller can't be removed as it has child accounts.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -1464,7 +1443,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -1476,7 +1454,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -1520,10 +1497,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -1535,7 +1510,6 @@ paths:
                     message: Invalid status.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -1547,7 +1521,6 @@ paths:
                     message: API key is missing
         '403':
           description: Forbidden
-          headers: {}
           content:
             application/json:
               schema:
@@ -1559,7 +1532,6 @@ paths:
                     message: Status change is not allowed
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -1571,7 +1543,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -1623,7 +1594,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -1714,10 +1684,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -1729,7 +1697,6 @@ paths:
                     message: Invalid status.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -1741,7 +1708,6 @@ paths:
                     message: API key is missing
         '403':
           description: Forbidden
-          headers: {}
           content:
             application/json:
               schema:
@@ -1753,7 +1719,6 @@ paths:
                     message: Status change is not allowed
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -1765,7 +1730,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -1832,7 +1796,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -2104,7 +2067,6 @@ paths:
                       parents: []
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2116,7 +2078,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2160,10 +2121,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2175,7 +2134,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2234,7 +2192,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -2265,7 +2222,6 @@ paths:
                       linkText: Schedule
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2277,7 +2233,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2320,10 +2275,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2335,7 +2288,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2438,10 +2390,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2453,7 +2403,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2503,7 +2452,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -2526,7 +2474,6 @@ paths:
                       label: (GMT-11:00) Pacific/Niue
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2538,7 +2485,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -2581,10 +2527,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -2594,30 +2538,6 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
-        '2292':
-          headers: {}
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/2292Model'
-              examples:
-                response:
-                  value:
-                    code: 2292
-                    message: sortby can only be 'total' or 'location'
-        '2293':
-          headers: {}
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/2293Model'
-              examples:
-                response:
-                  value:
-                    code: 2293
-                    message: order can only be 'asc' or 'desc'
       summary: Get Birdeye Impressions
       operationId: getBirdeyeImpressions
       description: ''
@@ -2691,10 +2611,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -2782,10 +2700,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -2871,7 +2787,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -2908,7 +2823,6 @@ paths:
                     description: Whether the custom field will be filterable or not.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -2965,7 +2879,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -3007,7 +2920,6 @@ paths:
                       be visible if value is present.
         '406':
           description: Not Acceptable
-          headers: {}
           content:
             application/json:
               schema:
@@ -3088,10 +3000,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3141,7 +3051,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -3180,7 +3089,6 @@ paths:
                     description: Whether the custom field will be filterable or not.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3247,7 +3155,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -3291,7 +3198,6 @@ paths:
                     clickURL: ''
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -3303,7 +3209,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -3384,10 +3289,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3399,7 +3302,6 @@ paths:
                     message: Last name cannot be more than 50 characters
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -3411,7 +3313,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -3423,7 +3324,6 @@ paths:
                     message: No business found with the given id
         '409':
           description: Conflict
-          headers: {}
           content:
             application/json:
               schema:
@@ -3435,7 +3335,6 @@ paths:
                     message: User is already associated with business.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -3515,10 +3414,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3530,7 +3427,6 @@ paths:
                     message: No user found with the given id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -3542,7 +3438,6 @@ paths:
                     message: User is not authorized to perform any action on any business
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -3554,7 +3449,6 @@ paths:
                     message: User with given email id not found.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -3790,10 +3684,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3805,7 +3697,6 @@ paths:
                     message: Last name cannot be more than 50 characters
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -3817,7 +3708,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -3829,7 +3719,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -3880,10 +3769,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -3895,7 +3782,6 @@ paths:
                     message: User email id cannot be blank
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -3907,7 +3793,6 @@ paths:
                     message: User is not authorized to perform any action on any business
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -3919,7 +3804,6 @@ paths:
                     message: User with given email id not found.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -3963,7 +3847,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4011,7 +3894,6 @@ paths:
                 - businessList
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4023,7 +3905,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4035,7 +3916,6 @@ paths:
                     message: No user found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4079,7 +3959,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4147,7 +4026,6 @@ paths:
                       phoneNum: ''
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -4159,7 +4037,6 @@ paths:
                     message: Maximum 5 keywords can be selected for filter.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4171,7 +4048,6 @@ paths:
                     message: Invalid result count value
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4183,7 +4059,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4193,13 +4068,6 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-        '4010':
-          headers: {}
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/1186Model'
       summary: Get Reviews
       operationId: getReviews
       description: ''
@@ -4356,7 +4224,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4392,7 +4259,6 @@ paths:
                       type: IMAGE
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -4404,7 +4270,6 @@ paths:
                     message: Invalid media id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4416,7 +4281,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4552,7 +4416,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4586,7 +4449,6 @@ paths:
                 - ratings
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -4598,7 +4460,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4610,7 +4471,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4622,7 +4482,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4674,7 +4533,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4697,7 +4555,6 @@ paths:
                     responseDate: 1604926421189
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -4709,7 +4566,6 @@ paths:
                     message: Error while posting a reply to Rent
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4721,7 +4577,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4788,10 +4643,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4803,7 +4656,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4815,7 +4667,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4873,10 +4724,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4888,7 +4737,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4900,7 +4748,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -4951,7 +4798,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -4972,7 +4818,6 @@ paths:
                   - ortho
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -4984,7 +4829,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -4996,7 +4840,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5040,10 +4883,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5055,7 +4896,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5067,7 +4907,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5150,10 +4989,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5165,7 +5002,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5177,7 +5013,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5259,10 +5094,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5274,7 +5107,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5286,7 +5118,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5345,7 +5176,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -5360,7 +5190,6 @@ paths:
                     id: 115339282
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -5372,7 +5201,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5384,7 +5212,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5396,7 +5223,6 @@ paths:
                     message: Business id is missing or invalid.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5518,7 +5344,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -5608,7 +5433,6 @@ paths:
                     experienceScoreSource: review
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -5620,7 +5444,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5632,7 +5455,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5644,7 +5466,6 @@ paths:
                     message: Business id is missing or invalid.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5720,10 +5541,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -5735,7 +5554,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5747,7 +5565,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5813,7 +5630,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -5824,7 +5640,6 @@ paths:
                     description: Id of enterprise customer.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -5836,7 +5651,6 @@ paths:
                     message: SMS Alert flag is invalid. Valid values are 0 or 1.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5848,7 +5662,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -5936,7 +5749,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -5963,7 +5775,6 @@ paths:
                     activityTimestamp: 1435290234000
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -5975,7 +5786,6 @@ paths:
                     message: Date entered is invalid.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -5987,7 +5797,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -5999,7 +5808,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6066,7 +5874,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6089,7 +5896,6 @@ paths:
                     number: '411504416'
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6101,7 +5907,6 @@ paths:
                     message: Customer id is invalid.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6113,7 +5918,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6125,7 +5929,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6169,10 +5972,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6184,7 +5985,6 @@ paths:
                     message: Customer id is invalid.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6196,7 +5996,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6208,7 +6007,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6276,7 +6074,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6318,7 +6115,6 @@ paths:
                       lastActivityWithTime: 12 Aug 2019 02:05 PM PDT
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6330,7 +6126,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6342,7 +6137,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6422,7 +6216,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6473,7 +6266,6 @@ paths:
                         customerId: 2343
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6485,7 +6277,6 @@ paths:
                     message: Max window size allowed is 60000 for a filter selection
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6497,7 +6288,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6509,7 +6299,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6618,7 +6407,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6633,7 +6421,6 @@ paths:
                     customerId: 1234567
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6645,7 +6432,6 @@ paths:
                     message: The customer is blocked
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6657,7 +6443,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6669,7 +6454,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6755,7 +6539,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6814,7 +6597,6 @@ paths:
                       phone: (212) 231-1242
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6826,7 +6608,6 @@ paths:
                     message: End date can't be before start date
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6838,7 +6619,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -6884,7 +6664,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -6899,7 +6678,6 @@ paths:
                     id: 115339282
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -6911,7 +6689,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -6923,7 +6700,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -6935,7 +6711,6 @@ paths:
                     message: Business id is missing or invalid.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7088,7 +6863,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -7201,7 +6975,6 @@ paths:
                       serviceOptin: true
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -7213,7 +6986,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7225,7 +6997,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -7237,7 +7008,6 @@ paths:
                     message: Business id is missing or invalid.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7308,7 +7078,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -7319,7 +7088,6 @@ paths:
                     description: Id of enterprise customer.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -7331,7 +7099,6 @@ paths:
                     message: SMS Alert flag is invalid. Valid values are 0 or 1.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7343,7 +7110,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7465,10 +7231,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -7480,7 +7244,6 @@ paths:
                     message: Customer id is invalid.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7492,7 +7255,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -7504,7 +7266,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7596,7 +7357,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -7673,7 +7433,6 @@ paths:
                       - feedback
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -7685,7 +7444,6 @@ paths:
                     message: End date can't be before start date
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7697,7 +7455,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7743,7 +7500,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -7762,7 +7518,6 @@ paths:
                     url: https://birdeye.cx/a1swor
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -7774,7 +7529,6 @@ paths:
                     message: Invalid survey.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7786,7 +7540,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7853,10 +7606,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7868,7 +7619,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7921,7 +7671,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -7929,7 +7678,6 @@ paths:
                 items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -7941,7 +7689,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -7953,7 +7700,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -7997,7 +7743,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -8026,7 +7771,6 @@ paths:
                     - Rehabs.com
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -8038,7 +7782,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -8050,7 +7793,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -8094,7 +7836,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -8128,7 +7869,6 @@ paths:
                     Body: ''
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -8140,7 +7880,6 @@ paths:
                     message: Invalid source id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -8152,7 +7891,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -8164,7 +7902,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -8210,10 +7947,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -8225,7 +7960,6 @@ paths:
                     message: Invalid business aggregation id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -8237,7 +7971,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -8249,7 +7982,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -8300,7 +8032,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -8899,7 +8630,6 @@ paths:
                         url: https://www.facebook.com/mariadavittorio
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -8911,7 +8641,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -8923,7 +8652,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -8967,7 +8695,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9101,7 +8828,6 @@ paths:
                         otherSites: 0
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -9113,7 +8839,6 @@ paths:
                     message: Invalid business aggregation id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9125,7 +8850,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9137,7 +8861,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9209,7 +8932,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9217,7 +8939,6 @@ paths:
                 items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9229,7 +8950,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9241,7 +8961,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9324,7 +9043,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9360,7 +9078,6 @@ paths:
                     state: CA
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9372,7 +9089,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9384,7 +9100,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9444,7 +9159,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9478,7 +9192,6 @@ paths:
                       count: 44
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -9490,7 +9203,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9502,7 +9214,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9514,7 +9225,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9586,7 +9296,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9619,7 +9328,6 @@ paths:
                         count: 1
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -9631,7 +9339,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9643,7 +9350,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9655,7 +9361,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9735,7 +9440,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9766,7 +9470,6 @@ paths:
                         count: 0
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9778,7 +9481,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9790,7 +9492,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -9876,7 +9577,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -9946,7 +9646,6 @@ paths:
                       rating: 4.126577756608716
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -9958,7 +9657,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -9970,7 +9668,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -10016,7 +9713,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -10094,7 +9790,6 @@ paths:
                     dateDiff: 100
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -10106,7 +9801,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -10118,7 +9812,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -10164,7 +9857,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -10235,7 +9927,6 @@ paths:
                     size: 1
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -10247,7 +9938,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -10259,7 +9949,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -10332,7 +10021,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -10355,7 +10043,6 @@ paths:
                       count: 67
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -10367,7 +10054,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -10379,7 +10065,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -10425,7 +10110,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -10452,7 +10136,6 @@ paths:
                       count: 315
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -10464,7 +10147,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -10476,7 +10158,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -10522,7 +10203,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -10934,7 +10614,6 @@ paths:
                     totalReviewsCount: 2684
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -10946,7 +10625,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -10958,7 +10636,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11052,7 +10729,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -11180,7 +10856,6 @@ paths:
                     dataPresent: true
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11192,7 +10867,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11204,7 +10878,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11250,7 +10923,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -11357,7 +11029,6 @@ paths:
                     dataPresent: false
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11369,7 +11040,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11381,7 +11051,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11455,7 +11124,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -11571,7 +11239,6 @@ paths:
                     dataPresent: true
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11583,7 +11250,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11595,7 +11261,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11669,7 +11334,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -11793,7 +11457,6 @@ paths:
                     dataPresent: true
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11805,7 +11468,6 @@ paths:
                     message: API key is missing
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11817,7 +11479,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11863,10 +11524,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11878,7 +11537,6 @@ paths:
                     message: Invalid API key
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11890,7 +11548,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -11902,7 +11559,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -11960,10 +11616,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -11975,7 +11629,6 @@ paths:
                     message: Invalid survey.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -11987,7 +11640,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -11999,7 +11651,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12050,10 +11701,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12065,7 +11714,6 @@ paths:
                     message: Invalid survey.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12077,7 +11725,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -12089,7 +11736,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12190,7 +11836,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -12198,7 +11843,6 @@ paths:
                 items: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12210,7 +11854,6 @@ paths:
                     message: Invalid API key
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12222,7 +11865,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -12234,7 +11876,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12300,10 +11941,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12315,7 +11954,6 @@ paths:
                     message: ownerEmailId cannot be null
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12327,7 +11965,6 @@ paths:
                     message: Api key or session token missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -12339,7 +11976,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12576,10 +12212,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12591,7 +12225,6 @@ paths:
                     message: Detected conflicting user-access request!
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12603,7 +12236,6 @@ paths:
                     message: Rate limit exceeded
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -12740,7 +12372,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -12754,7 +12385,6 @@ paths:
                     description: List of media items.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12766,7 +12396,6 @@ paths:
                     message: Provided media category is not supported
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12778,7 +12407,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12844,7 +12472,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -12856,7 +12483,6 @@ paths:
                     description: List of media items of the business.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12868,7 +12494,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -12912,10 +12537,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -12927,7 +12550,6 @@ paths:
                     message: Invalid media id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -12939,7 +12561,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13007,10 +12628,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13022,7 +12641,6 @@ paths:
                     message: Invalid media id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13034,7 +12652,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13094,7 +12711,6 @@ paths:
       responses:
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13106,7 +12722,6 @@ paths:
                     message: Requested Business Ids are empty.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13118,7 +12733,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -13130,7 +12744,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13248,7 +12861,6 @@ paths:
       responses:
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13260,7 +12872,6 @@ paths:
                     message: Requested Business Ids are empty.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13272,7 +12883,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -13284,7 +12894,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13408,7 +13017,6 @@ paths:
       responses:
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13420,7 +13028,6 @@ paths:
                     message: Requested Business Ids are empty.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13432,7 +13039,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -13444,7 +13050,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13528,7 +13133,6 @@ paths:
       responses:
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13540,7 +13144,6 @@ paths:
                     message: Requested Business Ids are empty.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13552,7 +13155,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -13564,7 +13166,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13632,7 +13233,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -13662,7 +13262,6 @@ paths:
                     items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13674,7 +13273,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -13686,7 +13284,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -13740,7 +13337,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -13912,7 +13508,6 @@ paths:
                       compare: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -13924,7 +13519,6 @@ paths:
                     message: Invalid media id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -13936,7 +13530,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14032,7 +13625,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14058,7 +13650,6 @@ paths:
                     imageUrl: http://d2xt3xymj142xp.cloudfront.net/169830616/573db5844e0e66.08202399.png
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14070,7 +13661,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14082,7 +13672,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14126,7 +13715,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14192,7 +13780,6 @@ paths:
                     hasMore: false
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -14204,7 +13791,6 @@ paths:
                     message: Customer email or phone number is required.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14216,7 +13802,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14228,7 +13813,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14303,7 +13887,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14323,7 +13906,6 @@ paths:
                     message: 'You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65'
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14335,7 +13917,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14347,7 +13928,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14429,7 +14009,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14445,7 +14024,6 @@ paths:
                     message: This Subscription has been Unsubscribed
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14457,7 +14035,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14469,7 +14046,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14481,7 +14057,6 @@ paths:
                     message: Rate limit exceeded
         '500':
           description: Internal Server Error
-          headers: {}
           content:
             application/json:
               schema:
@@ -14540,7 +14115,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14575,7 +14149,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14606,7 +14179,6 @@ paths:
                     - conversation.closed
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14618,7 +14190,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14630,7 +14201,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14701,7 +14271,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14724,7 +14293,6 @@ paths:
                     alias: Holiday Inn
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14736,7 +14304,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14788,7 +14355,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14845,7 +14411,6 @@ paths:
                     childCount: 2
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14857,7 +14422,6 @@ paths:
                     message: API key is missing
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -14902,7 +14466,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -14943,7 +14506,6 @@ paths:
                         lng: null
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -14955,7 +14517,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -14967,7 +14528,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15011,7 +14571,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15041,7 +14600,6 @@ paths:
                     description: Is Business Already Present.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15053,7 +14611,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15065,7 +14622,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15144,7 +14700,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15174,7 +14729,6 @@ paths:
                     description: Is Business Already Present.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15186,7 +14740,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15198,7 +14751,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15242,7 +14794,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15290,7 +14841,6 @@ paths:
                     Body: ''
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15302,7 +14852,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15314,7 +14863,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15367,7 +14915,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15430,7 +14977,6 @@ paths:
                     businessType: Location
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -15442,7 +14988,6 @@ paths:
                     message: Invalid updated to date. Allowed format is MM/dd/yyyy
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15454,7 +14999,6 @@ paths:
                     message: Invalid result count value
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15466,7 +15010,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15476,13 +15019,6 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-        '4010':
-          headers: {}
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/1186Model'
       summary: Get Competitor Reviews
       operationId: getCompetitorReviews
       description: ''
@@ -15594,10 +15130,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15609,7 +15143,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15621,7 +15154,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15694,7 +15226,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15753,7 +15284,6 @@ paths:
                     description: Competitor details.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15765,7 +15295,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15777,7 +15306,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -15877,7 +15405,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -15916,7 +15443,6 @@ paths:
                     description: Competitor details
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -15928,7 +15454,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -15940,7 +15465,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16044,7 +15568,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16052,7 +15575,6 @@ paths:
                 properties: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16064,7 +15586,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16076,7 +15597,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16179,7 +15699,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16187,7 +15706,6 @@ paths:
                 properties: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16199,7 +15717,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16211,7 +15728,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16315,7 +15831,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16380,7 +15895,6 @@ paths:
                       listingScore: 36.5
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -16392,7 +15906,6 @@ paths:
                     message: businessNumbers are mandatory
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16404,7 +15917,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16416,7 +15928,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16462,7 +15973,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16510,7 +16020,6 @@ paths:
                       sentimentDelta: 0.2
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -16522,7 +16031,6 @@ paths:
                     message: businessNumbers are mandatory
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16534,7 +16042,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16546,7 +16053,6 @@ paths:
                     message: Not a valid reseller/enterprise id.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16592,7 +16098,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16607,7 +16112,6 @@ paths:
                     question_id: 2892
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16619,7 +16123,6 @@ paths:
                     message: Question should have minimum 3 words
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16631,7 +16134,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16694,7 +16196,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -16709,7 +16210,6 @@ paths:
                     answer_id: 2893
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16721,7 +16221,6 @@ paths:
                     message: Owner answer already added please edit answer
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16733,7 +16232,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16795,10 +16293,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16810,7 +16306,6 @@ paths:
                     message: Question Id is Invalid
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16822,7 +16317,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16884,10 +16378,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16899,7 +16391,6 @@ paths:
                     message: Question Id is Invalid
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -16911,7 +16402,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -16978,10 +16468,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -16993,7 +16481,6 @@ paths:
                     message: Question Id is Invalid
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17005,7 +16492,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17061,10 +16547,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17076,7 +16560,6 @@ paths:
                     message: Question Id is Invalid
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17088,7 +16571,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17133,10 +16615,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17148,7 +16628,6 @@ paths:
                     message: Question Id is Invalid
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17160,7 +16639,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17205,7 +16683,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -17245,7 +16722,6 @@ paths:
                         userProfileLogoUrl: https://logo.png
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17257,7 +16733,6 @@ paths:
                     message: Invalid input request
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17269,7 +16744,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17314,7 +16788,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -17354,7 +16827,6 @@ paths:
                         userProfileLogoUrl: https://logo.png
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17366,7 +16838,6 @@ paths:
                     message: Invalid input request
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17378,7 +16849,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17423,7 +16893,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -17438,7 +16907,6 @@ paths:
                     serviceId: SERV10021056
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -17450,7 +16918,6 @@ paths:
                     message: Duplicate Google Service is not allowed
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17462,7 +16929,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17474,7 +16940,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17558,7 +17023,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -17581,7 +17045,6 @@ paths:
                       duration: 90
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -17593,7 +17056,6 @@ paths:
                     message: Business Id missing or invalid
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17605,7 +17067,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17617,7 +17078,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17701,10 +17161,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -17716,7 +17174,6 @@ paths:
                     message: Invalid GBP Service Id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17728,7 +17185,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17740,7 +17196,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17839,10 +17294,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -17854,7 +17307,6 @@ paths:
                     message: Invalid GBP Service Id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17866,7 +17318,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -17878,7 +17329,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -17938,7 +17388,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -17975,7 +17424,6 @@ paths:
                       duration: 90
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -17987,7 +17435,6 @@ paths:
                     message: Business Id missing or invalid
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -17999,7 +17446,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18011,7 +17457,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18055,10 +17500,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -18070,7 +17513,6 @@ paths:
                     message: Invalid GBP Service Id
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18082,7 +17524,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18094,7 +17535,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18160,7 +17600,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18172,7 +17611,6 @@ paths:
                     description: List of QnA objects.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -18184,7 +17622,6 @@ paths:
                     message: Contact not found for the given request
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18196,7 +17633,6 @@ paths:
                     message: Invalid API key
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18208,7 +17644,6 @@ paths:
                     message: Business id is missing or invalid.
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18295,10 +17730,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18310,7 +17743,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18322,7 +17754,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18368,7 +17799,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18446,7 +17876,6 @@ paths:
                     description: List of location status.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -18458,7 +17887,6 @@ paths:
                     message: Business should be either SMB or Enterprise sub account
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18470,7 +17898,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18482,7 +17909,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18526,7 +17952,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18594,7 +18019,6 @@ paths:
                     description: Total businesses count.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18606,7 +18030,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18618,7 +18041,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18693,7 +18115,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18701,7 +18122,6 @@ paths:
                 items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18713,7 +18133,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -18725,7 +18144,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18816,7 +18234,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18828,7 +18245,6 @@ paths:
                     description: This is dynamic field. Depends upon request inputs.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -18840,7 +18256,6 @@ paths:
                     message: Invalid whatsapp business link
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18852,7 +18267,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18910,7 +18324,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -18922,7 +18335,6 @@ paths:
                     description: This is dynamic field. Depends upon request inputs.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -18934,7 +18346,6 @@ paths:
                     message: Invalid country code
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -18946,7 +18357,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -18990,7 +18400,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -19002,7 +18411,6 @@ paths:
                     description: This is dynamic field. Depends upon request inputs.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -19014,7 +18422,6 @@ paths:
                     message: Invalid country code
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -19026,7 +18433,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -19070,7 +18476,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -19078,7 +18483,6 @@ paths:
                 items: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -19090,7 +18494,6 @@ paths:
                     message: Invalid Source Name
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -19102,7 +18505,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -19161,10 +18563,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -19176,7 +18576,6 @@ paths:
                     message: The 'sub_locality' field cannot exceed 80 characters.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -19188,7 +18587,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -20150,10 +19548,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -20165,7 +19561,6 @@ paths:
                     message: The 'sub_locality' field cannot exceed 80 characters.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -20177,7 +19572,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -21137,7 +20531,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22064,7 +21457,6 @@ paths:
                       insurancesAccepted: Sample text
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22076,7 +21468,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22120,7 +21511,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22128,7 +21518,6 @@ paths:
                 items: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -22140,7 +21529,6 @@ paths:
                     message: Invalid Source Name
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22152,7 +21540,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22204,7 +21591,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22217,7 +21603,6 @@ paths:
                       count.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -22229,7 +21614,6 @@ paths:
                     message: Invalid order value. Allowed values are 'asc' or 'desc'.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22241,7 +21625,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -22253,7 +21636,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22349,10 +21731,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22364,7 +21744,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22408,7 +21787,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22482,7 +21860,6 @@ paths:
                     crmName: BirdeyeCRM
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -22494,7 +21871,6 @@ paths:
                     message: Invalid order value. Allowed values are 'asc' or 'desc'.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22506,7 +21882,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -22518,7 +21893,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22581,7 +21955,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22620,7 +21993,6 @@ paths:
                       supported for the selected business.
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
@@ -22632,7 +22004,6 @@ paths:
                     message: Invalid whatsapp business link
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22644,7 +22015,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22690,7 +22060,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22707,7 +22076,6 @@ paths:
                     message: String
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22719,7 +22087,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -22731,7 +22098,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22784,7 +22150,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22807,7 +22172,6 @@ paths:
                         items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -22819,7 +22183,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -22831,7 +22194,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -22971,7 +22333,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -22994,7 +22355,6 @@ paths:
                         items: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23006,7 +22366,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23018,7 +22377,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23160,7 +22518,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23223,7 +22580,6 @@ paths:
                     description: Error message. Present on validation failure.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23235,7 +22591,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23247,7 +22602,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23298,7 +22652,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23312,7 +22665,6 @@ paths:
                     description: Error message. Present on validation failure.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23324,7 +22676,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23336,7 +22687,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23396,7 +22746,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23439,7 +22788,6 @@ paths:
                     totalCount: 100
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23451,7 +22799,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23463,7 +22810,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23545,7 +22891,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23562,7 +22907,6 @@ paths:
                     message: Product not or Partial found with given productId List
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23574,7 +22918,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23586,7 +22929,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23632,7 +22974,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23649,7 +22990,6 @@ paths:
                     message: Product not or Partial found with given productId List
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23661,7 +23001,6 @@ paths:
                     message: API key is missing
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -23673,7 +23012,6 @@ paths:
                     message: Business id is invalid
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23719,7 +23057,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -23840,7 +23177,6 @@ paths:
                         services in my area.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -23852,7 +23188,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -23896,7 +23231,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -24014,7 +23348,6 @@ paths:
                       - tooth extractions
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -24026,7 +23359,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -24070,7 +23402,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -24214,7 +23545,6 @@ paths:
                     total: 3
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -24226,7 +23556,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -24272,7 +23601,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -24432,7 +23760,6 @@ paths:
                     total: 3
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -24444,7 +23771,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -24490,7 +23816,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -24674,7 +23999,6 @@ paths:
                             website: https://www.phdental.com/locations/prohealth-dental/astoria-ny/
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -24686,7 +24010,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -24760,7 +24083,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -25073,7 +24395,6 @@ paths:
                                 practices could impact operations and compliance.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25085,7 +24406,6 @@ paths:
                     message: Invalid API key
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -25164,7 +24484,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -25176,7 +24495,6 @@ paths:
                     description: Id of the new ticket created.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25188,7 +24506,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -25200,7 +24517,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -25332,7 +24648,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -25344,7 +24659,6 @@ paths:
                     description: Id of the new ticket created.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25356,7 +24670,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -25368,7 +24681,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -25435,10 +24747,8 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25450,7 +24760,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -25462,7 +24771,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -25522,7 +24830,6 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
           content:
             application/json:
               schema:
@@ -25534,7 +24841,6 @@ paths:
                     description: Ticket Details.
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25546,7 +24852,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -25558,7 +24863,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
@@ -25712,17 +25016,14 @@ paths:
       responses:
         '200':
           description: OK
-          headers: {}
         '400':
           description: Bad Request
-          headers: {}
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/1422Model'
         '401':
           description: Unauthorized
-          headers: {}
           content:
             application/json:
               schema:
@@ -25734,7 +25035,6 @@ paths:
                     message: You are not authorized to perform this action
         '404':
           description: Not Found
-          headers: {}
           content:
             application/json:
               schema:
@@ -25746,7 +25046,6 @@ paths:
                     message: No business found with the given id
         '429':
           description: Too Many Requests
-          headers: {}
           content:
             application/json:
               schema:
