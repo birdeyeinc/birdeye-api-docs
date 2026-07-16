@@ -12,6 +12,7 @@
     "tabs": [
       {
         "tab": "API Docs",
+        "openapi": "api/openapi.yaml",
         "groups": [
           {
             "group": "Introduction",
@@ -401,6 +402,5 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/birdeye"
     }
-  },
-  "openapi": "api/openapi.yaml"
+  }
 }
