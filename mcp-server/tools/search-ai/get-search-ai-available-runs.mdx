@@ -1,0 +1,51 @@
+---
+title: "Get Search AI Available Runs"
+description: "Get the list of available Search AI run dates for your account."
+---
+
+```
+get_search_ai_available_runs
+```
+
+## Description
+
+Returns the dates when Search AI analyses were run and which themes were included in each run. Use this to identify valid date ranges before querying other Search AI report tools.
+
+## Parameters
+
+None.
+
+## Example Usage
+
+```
+When was the last Search AI run?
+```
+
+```
+Show me all available Search AI run dates.
+```
+
+## Example Response
+
+```json
+{
+  "runs": [
+    {
+      "runDate": "2026-06-20",
+      "themes": ["General Dentistry", "Cosmetic Dentistry"]
+    },
+    {
+      "runDate": "2026-06-13",
+      "themes": ["General Dentistry", "Cosmetic Dentistry"]
+    },
+    {
+      "runDate": "2026-06-06",
+      "themes": ["General Dentistry"]
+    }
+  ]
+}
+```
+
+## Notes
+
+- Use run dates from this tool as `startDate`/`endDate` values when calling [`get_search_ai_citations`](/mcp-server/tools/search-ai/get-search-ai-citations), [`get_search_ai_accuracy_report`](/mcp-server/tools/search-ai/get-search-ai-accuracy-report), and other Search AI report tools.

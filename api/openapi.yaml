@@ -142,6 +142,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -298,6 +305,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -1056,6 +1070,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -1768,6 +1789,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2172,6 +2200,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2330,6 +2365,13 @@ paths:
         description: e.g. [Required] Long Business Number.
         required: false
         example: '[Required] Long Business Number.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -2566,6 +2608,13 @@ paths:
         example: '- Partner specific API key provided by Birdeye for data exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -2648,6 +2697,13 @@ paths:
         description: e.g. - Long Business Number
         required: false
         example: '- Long Business Number'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -2744,6 +2800,13 @@ paths:
         description: e.g. - Long Business Number
         required: false
         example: '- Long Business Number'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -2964,6 +3027,13 @@ paths:
         example: '- Long Business Number'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -3126,6 +3196,13 @@ paths:
         example: '- Long Business Number.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -3245,6 +3322,13 @@ paths:
         description: e.g. [Required] Long Business Number.
         required: false
         example: '[Required] Long Business Number.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -3371,6 +3455,13 @@ paths:
         description: e.g. [Required] User associated businessNumber
         required: false
         example: '[Required] User associated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -3502,6 +3593,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -4120,6 +4218,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -4352,6 +4457,13 @@ paths:
         description: e.g. [Required] User-associated business number.
         required: false
         example: '[Required] User-associated business number.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -4622,6 +4734,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -4703,6 +4822,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -4952,6 +5078,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -5058,6 +5191,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -5154,6 +5294,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -5259,6 +5406,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -5504,6 +5658,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -5603,6 +5764,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -5698,6 +5866,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -6038,6 +6213,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -6196,6 +6378,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -6344,6 +6533,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -6490,6 +6686,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -6747,6 +6950,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -7046,6 +7256,13 @@ paths:
         example: '[Required] User assosiated businessNumber'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -7146,6 +7363,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -7302,6 +7526,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -7571,6 +7802,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -7648,6 +7886,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -9013,6 +9258,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -9263,6 +9515,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -9399,6 +9658,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -9528,6 +9794,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -9985,6 +10258,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -10693,6 +10973,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -11816,6 +12103,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -12012,6 +12306,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -12281,6 +12582,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -12445,6 +12753,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -12606,6 +12921,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -12688,6 +13010,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -12780,6 +13109,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -12930,6 +13266,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -13088,6 +13431,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -13202,6 +13552,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -13568,6 +13925,13 @@ paths:
         example: '[Required] Business number of the location.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -13882,6 +14246,21 @@ paths:
                   phone: (650)492-3456
                   email: abc@test.com
                 excludeCampaignMessages: 1
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
   /v1/subscriptions/subscribe:
     post:
       responses:
@@ -13964,6 +14343,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -14217,6 +14603,13 @@ paths:
       - Webhook
       parameters:
       - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+      - name: Content-Type
         in: header
         description: e.g. application/json
         required: false
@@ -14660,6 +15053,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -15062,6 +15462,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -15190,6 +15597,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -15342,6 +15756,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -15503,6 +15924,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -15658,6 +16086,13 @@ paths:
         example: '[Required] User assosiated businessNumber'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -15787,6 +16222,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -16171,6 +16613,13 @@ paths:
         example: '- Partner specific API key provided by Birdeye for data exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -16269,6 +16718,13 @@ paths:
         example: '- Partner specific API key provided by Birdeye for data exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -16354,6 +16810,13 @@ paths:
         example: '- Partner specific API key provided by Birdeye for data exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -16437,6 +16900,13 @@ paths:
           exchange.
         required: false
         example: '- Partner specific API key provided by Birdeye for data exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -16527,6 +16997,13 @@ paths:
           exchange.
         required: false
         example: '- Partner specific API key provided by Birdeye for data exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -16978,6 +17455,13 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -17144,6 +17628,13 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -17232,6 +17723,13 @@ paths:
         required: false
         example: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific
           API key provided by Birdeye for data exchange.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -17365,6 +17863,13 @@ paths:
         required: false
         example: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific
           API key provided by Birdeye for data exchange.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -17575,6 +18080,13 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -17703,6 +18215,13 @@ paths:
         description: e.g. [Required] User associated businessNumber
         required: false
         example: '[Required] User associated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -18079,6 +18598,13 @@ paths:
           exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -18188,6 +18714,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -18623,6 +19156,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -19608,6 +20148,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -21673,6 +22220,13 @@ paths:
         example: '- Partner specific API key provided by Birdeye for data exchange.'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -21929,6 +22483,13 @@ paths:
         description: e.g. [Required] User associated businessNumber
         required: false
         example: '[Required] User associated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -22232,6 +22793,13 @@ paths:
         example: '[Required] User assosiated businessNumber'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -22420,6 +22988,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -22725,6 +23300,13 @@ paths:
         example: '[Required] User assosiated businessNumber'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -22860,6 +23442,13 @@ paths:
         description: e.g. [Required] User assosiated businessNumber
         required: false
         example: '[Required] User assosiated businessNumber'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -24048,6 +24637,13 @@ paths:
         example: '- Long Business Number'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -24444,6 +25040,13 @@ paths:
         example: '[Required] User associated businessNumber'
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -24554,6 +25157,13 @@ paths:
         required: false
         example: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific
           API key provided by Birdeye for data exchange.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -24719,6 +25329,13 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -24807,6 +25424,13 @@ paths:
         required: false
         example: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific
           API key provided by Birdeye for data exchange.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:
@@ -24948,6 +25572,13 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
@@ -25075,6 +25706,13 @@ paths:
         required: false
         example: '[Required] Partner specific API key provided by Birdeye for data
           exchange.'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
         schema:
           type: string
       requestBody:

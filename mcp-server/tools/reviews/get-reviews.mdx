@@ -1,0 +1,73 @@
+---
+title: "Get Reviews"
+description: "Fetch individual reviews with full details including rating, comment, reviewer info, source, and status."
+---
+
+```
+get_reviews
+```
+
+## Description
+
+Returns paginated individual reviews with complete detail. Supports filtering by source, rating, date range, status, and search string. Reviewer email addresses are automatically redacted from responses.
+
+## Parameters
+
+### Pagination
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `sindex` | integer | No | `0` | Start index for pagination |
+| `count` | integer | No | — | Number of reviews to return |
+
+### Date Filters
+
+| Parameter | Type | Format | Description |
+|---|---|---|---|
+| `fromDate` | string | `MM/DD/YYYY` | Reviews on or after this date |
+| `toDate` | string | `MM/DD/YYYY` | Reviews on or before this date |
+| `fromTimestamp` | string | — | Reviews on or after this timestamp |
+| `toTimestamp` | string | — | Reviews on or before this timestamp |
+| `updateFromDate` | string | `MM/DD/YYYY` | Reviews updated on or after this date |
+| `updateToDate` | string | `MM/DD/YYYY` | Reviews updated on or before this date |
+
+### Content Filters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `sources` | list[string] | Filter by review source (e.g., `"Google"`, `"Facebook"`) |
+| `ratings` | list[integer] | Filter by star rating (e.g., `[1, 2]` for negative reviews) |
+| `searchStr` | string | Full-text search within review content |
+| `subBusinessIds` | list | Filter to specific child location IDs |
+| `statuses` | list[string] | Filter by review status |
+
+### Flags
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `includeNonAggregatedReviews` | boolean | — | Include reviews from non-aggregated sources |
+| `updateRequired` | boolean | — | Only return reviews that need a response update |
+| `allChild` | boolean | — | Include reviews from all child locations |
+| `fetchExtraParams` | boolean | — | Return additional metadata fields |
+| `needCustomerInfo` | boolean | — | Include customer profile information |
+| `fetchAssitedByDetails` | boolean | — | Include details of the team member who assisted |
+
+## Example Usage
+
+```
+Show me all 1-star and 2-star Google reviews from the last 90 days.
+```
+
+```
+Fetch the 10 most recent reviews that need a response.
+```
+
+```
+Show me reviews mentioning "wait time" from January 2026.
+```
+
+## Notes
+
+- Reviewer `emailId` is automatically stripped from all responses for privacy.
+- Use `subBusinessIds` (from [`get_child_locations`](/mcp-server/tools/business/get-child-locations)) to scope results to specific locations.
+- Combine `ratings: [1, 2]` with `updateRequired: true` to find unanswered negative reviews.

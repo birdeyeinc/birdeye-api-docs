@@ -1,0 +1,48 @@
+---
+title: "Get Listing Insights"
+description: "Get analytics for your Google and other listings — map views, searches, calls, direction requests, and website visits."
+---
+
+```
+get_listing_insights
+```
+
+## Description
+
+Returns aggregated listing performance analytics across all connected platforms. Defaults to the last 12 months if no date range is specified.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 12 months ago | Start date in `yyyy-MM-dd` format |
+| `endDate` | string | No | Today | End date in `yyyy-MM-dd` format |
+| `viewMode` | list[string] | No | All | Filter by device: `"Desktop"`, `"Mobile"` |
+| `businessNumbers` | list[integer] | No | All locations | Scope to specific location IDs |
+
+## Example Usage
+
+```
+How many times did customers search for my business on Google last month?
+```
+
+```
+Show me listing insights for Desktop users in Q1 2026.
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `mapViewTotalCount` | Times your listing appeared in Google Maps results |
+| `searchViewTotalCount` | Times your listing appeared in Google Search results |
+| `websiteVisitsTotalCount` | Website visits driven from your listing |
+| `getDirectionsTotalCount` | Direction requests from your listing |
+| `callsTotalCount` | Phone calls initiated from your listing |
+| `liveCount` | Number of currently live listings |
+| `entityCount` | Total number of tracked listing entities |
+
+## Notes
+
+- Omitting `startDate` and `endDate` defaults to the last 12 months.
+- `businessNumbers` accepts location IDs from [`get_child_locations`](/mcp-server/tools/business/get-child-locations).

@@ -11,7 +11,7 @@
   "redirects": [
     {
       "source": "/mcp",
-      "destination": "/mcp/introduction"
+      "destination": "/mcp-server/introduction"
     }
   ],
   "navigation": {
@@ -366,10 +366,10 @@
           {
             "group": "Get Started",
             "pages": [
-              "mcp/introduction",
-              "mcp/quickstart",
-              "mcp/authentication",
-              "mcp/tools/overview"
+              "mcp-server/introduction",
+              "mcp-server/quickstart",
+              "mcp-server/authentication",
+              "mcp-server/tools/overview"
             ]
           }
         ]
@@ -399,7 +399,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/mcp/quickstart"
+      "href": "/mcp-server/quickstart"
     }
   },
   "footer": {

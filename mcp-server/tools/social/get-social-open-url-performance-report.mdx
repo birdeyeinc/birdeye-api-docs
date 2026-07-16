@@ -1,0 +1,60 @@
+---
+title: "Get Social Performance Report"
+description: "Get channel-level social media performance metrics with optional period-over-period comparison."
+---
+
+```
+get_social_open_url_performance_report
+```
+
+## Description
+
+Returns social media performance metrics aggregated by channel and location. Supports optional comparison to a prior period to show growth trends.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | Yes | — | Start date in `MM/dd/YYYY` format |
+| `endDate` | string | Yes | — | End date in `MM/dd/YYYY` format |
+| `sourceNames` | list[string] | No | All | Channels to include. See supported values below. |
+| `businessNumbers` | list[integer] | No | All | Scope to specific location IDs |
+| `comparisonStartDate` | string | No | — | Comparison period start (`MM/dd/YYYY`) |
+| `comparisonEndDate` | string | No | — | Comparison period end (`MM/dd/YYYY`) |
+| `page` | integer | No | `1` | Page number (1-indexed) |
+| `size` | integer | No | `50` | Results per page |
+
+### Supported `sourceNames` Values
+
+| Value | Platform |
+|---|---|
+| `Instagram` | Instagram |
+| `Facebook` | Facebook |
+| `Linkedin` | LinkedIn |
+| `Tiktok` | TikTok |
+
+## Example Usage
+
+```
+How did my Instagram and Facebook posts perform in June 2026?
+```
+
+```
+Compare my social performance in Q1 2026 vs Q1 2025.
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `impressions` | Total impressions across all posts |
+| `engagements` | Total engagements (likes, comments, shares) |
+| `engagementRate` | Engagements as a percentage of impressions |
+| `postCount` | Number of posts published in the period |
+| `channelWiseData` | Per-channel breakdown of the above metrics |
+| `growth` | Percentage change vs comparison period (if provided) |
+
+## Notes
+
+- Omitting `comparisonStartDate` and `comparisonEndDate` returns metrics for the primary period only — no growth percentages.
+- `businessNumbers` accepts location IDs from [`get_child_locations`](/mcp-server/tools/business/get-child-locations).

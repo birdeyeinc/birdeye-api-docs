@@ -1,0 +1,40 @@
+---
+title: "Get Survey Responses"
+description: "Fetch paginated responses for a specific survey."
+---
+
+```
+get_survey_responses
+```
+
+## Description
+
+Returns paginated responses for a given survey. Responses include individual answers, submission timestamps, and any associated customer data.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `survey_id` | integer | Yes | — | ID of the survey (from [`get_all_surveys`](/mcp-server/tools/surveys/get-all-surveys)) |
+| `page` | integer | No | `0` | Page number (zero-indexed) |
+| `size` | integer | No | 30 | Number of responses per page |
+| `sortby` | string | No | `"date"` | Field to sort by |
+| `sorder` | string | No | `"asc"` | Sort direction: `"asc"` or `"desc"` |
+| `start_date` | string | No | — | Filter responses after this date/time (`MM/dd/yyyy HH:mm:ss`) |
+| `end_date` | string | No | — | Filter responses before this date/time (`MM/dd/yyyy HH:mm:ss`) |
+
+## Example Usage
+
+```
+Show me the latest 25 responses for survey ID 501.
+```
+
+```
+Get survey responses for the NPS survey from June 2026.
+```
+
+## Notes
+
+- Get the `survey_id` first by calling [`get_all_surveys`](/mcp-server/tools/surveys/get-all-surveys).
+- Use `start_date` and `end_date` together for date-bounded analysis.
+- Date format for this tool is `MM/dd/yyyy HH:mm:ss` (note lowercase `dd` and 24-hour time).
