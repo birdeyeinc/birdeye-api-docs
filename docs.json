@@ -215,6 +215,7 @@
               "api-reference/competitor/get-competitor-child-business",
               "api-reference/competitor/get-business-competitors",
               "api-reference/competitor/create-competitor-enterprise",
+              "api-reference/competitor/create-child-competitor-enterprise",
               "api-reference/competitor/add-competitor-aggregation-link",
               "api-reference/competitor/get-competitor-reviews"
             ]
@@ -454,10 +455,6 @@
     }
   },
   "openapi": [
-    "api-reference/openapi-1.json",
-    "api-reference/openapi-2.json",
-    "api-reference/openapi-3.json",
-    "api-reference/openapi-4.json",
-    "api-reference/openapi-5.json"
+    "api-reference/openapi.yaml"
   ]
 }
