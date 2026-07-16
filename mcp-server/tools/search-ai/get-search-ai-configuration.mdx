@@ -1,0 +1,66 @@
+---
+title: "Get Search AI Configuration"
+description: "Get the Search AI configuration — themes and the exact prompts being monitored for your business."
+---
+
+```
+get_search_ai_configuration
+```
+
+## Description
+
+Returns the Search AI configuration for the authenticated business, including all monitored themes and the exact prompt text used for each AI engine query.
+
+<Note>
+  Always display the complete list of prompts verbatim. Do not summarize or truncate prompts in your response — the exact wording matters.
+</Note>
+
+## Parameters
+
+None.
+
+## Example Usage
+
+```
+What prompts is Birdeye monitoring for my Search AI?
+```
+
+```
+Show me all Search AI themes and their prompts.
+```
+
+## Example Response
+
+```json
+{
+  "frequency": "WEEKLY",
+  "quota": 6,
+  "billingType": "ENTERPRISE",
+  "themes": [
+    {
+      "name": "General Dentistry",
+      "prompts": [
+        "Best dentist near me in Austin TX",
+        "Top-rated family dentist in Austin",
+        "Who is the most recommended dentist in Austin Texas?"
+      ]
+    },
+    {
+      "name": "Cosmetic Dentistry",
+      "prompts": [
+        "Best cosmetic dentist in Austin TX",
+        "Where can I get teeth whitening in Austin?"
+      ]
+    }
+  ]
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `frequency` | How often Search AI runs (`WEEKLY`, `MONTHLY`, etc.) |
+| `quota` | Number of AI runs included in the current plan |
+| `billingType` | Billing tier |
+| `themes` | List of themes, each with a name and array of prompt strings |

@@ -1,0 +1,69 @@
+---
+title: "Get Search AI Sentiment Report"
+description: "Get a SWOT analysis — Strengths, Weaknesses, Opportunities, and Threats as perceived by AI engines about your business."
+---
+
+```
+get_search_ai_sentiment_report
+```
+
+## Description
+
+Returns a structured SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis derived from how AI engines characterize your business in their responses. Results are broken down by location, run date, and AI model.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | Yes | — | Start date in `yyyy-MM-dd` format |
+| `endDate` | string | Yes | — | End date in `yyyy-MM-dd` format |
+| `aiModels` | list[string] | Yes | All three | AI engines: `"CHATGPT"`, `"GEMINI"`, `"PERPLEXITY"` |
+| `businessNumbers` | list[integer] | Yes | — | Location IDs (from [`get_child_locations`](/mcp-server/tools/business/get-child-locations)) |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+| `pageSize` | integer | No | `25` | Results per page |
+| `startIndex` | integer | No | `0` | Start index for pagination |
+
+## Example Usage
+
+```
+What are my business's strengths and weaknesses according to ChatGPT?
+```
+
+```
+Show me the SWOT report from the latest Search AI run for all locations.
+```
+
+## Example Response
+
+```json
+{
+  "results": [
+    {
+      "locationId": "78901",
+      "locationName": "Acme Dental – Downtown",
+      "runDate": "2026-06-20",
+      "aiModel": "CHATGPT",
+      "swot": {
+        "strengths": [
+          { "title": "High Patient Ratings", "description": "Consistently rated 4.8+ across review platforms." },
+          { "title": "Convenient Location", "description": "Central downtown Austin location with easy parking." }
+        ],
+        "weaknesses": [
+          { "title": "Limited Weekend Hours", "description": "Closed on Sundays; limited Saturday availability." }
+        ],
+        "opportunities": [
+          { "title": "Growing Cosmetic Demand", "description": "Increasing search volume for cosmetic dental services in Austin." }
+        ],
+        "threats": [
+          { "title": "Competitor Expansion", "description": "New dental group opening 3 locations in Austin in Q3 2026." }
+        ]
+      }
+    }
+  ]
+}
+```
+
+## Notes
+
+- `businessNumbers` is required — pass location IDs from [`get_child_locations`](/mcp-server/tools/business/get-child-locations).
+- Use this alongside [`get_search_ai_citations`](/mcp-server/tools/search-ai/get-search-ai-citations) to understand both what AI engines say and where they got that information.

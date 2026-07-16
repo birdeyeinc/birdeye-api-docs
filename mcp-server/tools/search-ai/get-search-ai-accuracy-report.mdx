@@ -1,0 +1,59 @@
+---
+title: "Get Search AI Accuracy Report"
+description: "Get a NAP accuracy report — how correctly AI engines report your business name, address, phone, hours, and website."
+---
+
+```
+get_search_ai_accuracy_report
+```
+
+## Description
+
+Returns a structured accuracy report showing what each AI engine reports for your business's Name, Address, Phone (NAP), hours, and website — and how it compares to your actual data. Results are broken down by location and run date.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | Yes | — | Start date in `yyyy-MM-dd` format |
+| `endDate` | string | Yes | — | End date in `yyyy-MM-dd` format |
+| `aiModels` | list[string] | Yes | All three | AI engines to include: `"CHATGPT"`, `"GEMINI"`, `"PERPLEXITY"` |
+| `businessNumbers` | list[integer] | Yes | — | Location IDs to include (from [`get_child_locations`](/mcp-server/tools/business/get-child-locations)) |
+| `pageSize` | integer | No | `100` | Results per page |
+| `startIndex` | integer | No | `0` | Start index for pagination |
+
+## Example Usage
+
+```
+How accurately does ChatGPT report my business information for all locations?
+```
+
+```
+Show me the NAP accuracy report for my Downtown location from the last Search AI run.
+```
+
+## Example Response
+
+```json
+{
+  "results": [
+    {
+      "locationId": "78901",
+      "locationName": "Acme Dental – Downtown",
+      "runDate": "2026-06-20",
+      "aiModel": "CHATGPT",
+      "reportedName": "Acme Dental",
+      "reportedAddress": "123 Main St, Austin, TX 78701",
+      "reportedPhone": "+15125550100",
+      "reportedHours": "Mon–Fri 8am–6pm",
+      "reportedWebsite": "https://acmedental.com"
+    }
+  ]
+}
+```
+
+## Notes
+
+- `businessNumbers` is required — pass location IDs from [`get_child_locations`](/mcp-server/tools/business/get-child-locations).
+- Compare reported values against your actual data to identify what AI engines are getting wrong.
+- Use [`get_search_ai_available_runs`](/mcp-server/tools/search-ai/get-search-ai-available-runs) to find valid `startDate`/`endDate` values.
