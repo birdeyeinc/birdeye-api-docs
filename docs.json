@@ -8,6 +8,16 @@
     "dark": "#0055CC"
   },
   "favicon": "/images/favicon.svg",
+  "api": {
+    "baseUrl": "https://api.birdeye.com/resources",
+    "playground": {
+      "mode": "simple"
+    },
+    "auth": {
+      "method": "key",
+      "name": "x-api-key"
+    }
+  },
   "navigation": {
     "tabs": [
       {
