@@ -1,0 +1,38 @@
+---
+title: "Listings Overview"
+description: "Tools for managing and analyzing your business listings across Google, Facebook, Bing, Apple, and other platforms."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_listing" icon="address-card" href="/mcp/tools/listings/get-listing">
+    Full listing profile for a single location — hours, categories, photos, per-site status
+  </Card>
+  <Card title="get_listing_location_status_report" icon="circle-check" href="/mcp/tools/listings/get-listing-location-status-report">
+    Synced/Submitted/Action Required counts for all listing sites at a location
+  </Card>
+  <Card title="get_listing_insights" icon="chart-line" href="/mcp/tools/listings/get-listing-insights">
+    Aggregated Google (and other) listing analytics — map views, calls, directions, website visits
+  </Card>
+  <Card title="get_listing_category_list" icon="tags" href="/mcp/tools/listings/get-listing-category-list">
+    Available listing categories for a given site (Google, Bing, Facebook, etc.) and country
+  </Card>
+  <Card title="get_product_listing_list" icon="box" href="/mcp/tools/listings/get-product-listing-list">
+    Google Merchant product listings linked to your account
+  </Card>
+</CardGroup>
+
+## Location-Level Tools
+
+<Warning>
+  `get_listing` and `get_listing_location_status_report` are **location-level tools** — they require a `locationId` parameter.
+
+  Call [`get_child_locations`](/tools/business/get-child-locations) first to get the list of valid location IDs.
+</Warning>
+
+## Tips
+
+- `get_listing_insights` defaults to the last 12 months if no date range is provided.
+- `get_listing_category_list` is useful before updating a listing — use it to find the correct category ID for a given platform.
+- `get_product_listing_list` only returns data if your Google Merchant account is connected in Birdeye.
