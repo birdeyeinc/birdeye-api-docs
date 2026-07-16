@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Birdeye MCP",
+  "name": "Birdeye Developer Portal",
   "colors": {
     "primary": "#007AFF",
     "light": "#3395FF",
@@ -11,90 +11,360 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Documentation",
+        "tab": "API Docs",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Introduction",
             "pages": [
-              "introduction",
-              "quickstart",
-              "authentication",
-              "tools/overview"
+              "api/introduction",
+              "api/authentication",
+              "api/pagination",
+              "api/http-status-codes",
+              "api/error-response"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              {
+                "group": "Business",
+                "collapsed": true,
+                "pages": [
+                  "api/business/create-a-business",
+                  "api/business/search-business",
+                  "api/business/get-business",
+                  "api/business/update-business",
+                  "api/business/delete-business",
+                  "api/business/update-the-status",
+                  "api/business/get-child-businesses",
+                  "api/business/update-public-profile-of-businesses",
+                  "api/business/get-hierarchy-for-an-enterprise",
+                  "api/business/update-hierarchy",
+                  "api/business/get-custom-card-details",
+                  "api/business/update-custom-card",
+                  "api/business/delete-custom-card",
+                  "api/business/get-timezone-list",
+                  "api/business/get-birdeye-impressions"
+                ]
+              },
+              {
+                "group": "Custom Fields",
+                "collapsed": true,
+                "pages": [
+                  "api/custom-fields/create",
+                  "api/custom-fields/update",
+                  "api/custom-fields/get",
+                  "api/custom-fields/post",
+                  "api/custom-fields/delete",
+                  "api/custom-fields/associate",
+                  "api/custom-fields/create-custom-card"
+                ]
+              },
+              {
+                "group": "User",
+                "collapsed": true,
+                "pages": [
+                  "api/user/create-user",
+                  "api/user/update-user",
+                  "api/user/delete-a-user",
+                  "api/user/forgot-password",
+                  "api/user/get-details-of-a-user"
+                ]
+              },
+              {
+                "group": "Reviews",
+                "collapsed": true,
+                "pages": [
+                  "api/reviews/get-reviews",
+                  "api/reviews/archived-get-reviews",
+                  "api/reviews/get-reviews-summary",
+                  "api/reviews/post-review-reply",
+                  "api/reviews/create-tags",
+                  "api/reviews/delete-a-tag",
+                  "api/reviews/get-all-tags",
+                  "api/reviews/assign-tags-to-filtered-reviews",
+                  "api/reviews/remove-tags-from-filtered-reviews",
+                  "api/reviews/remove-particular-tags-from-all-reviews"
+                ]
+              },
+              {
+                "group": "Contact",
+                "collapsed": true,
+                "pages": [
+                  "api/contact/create-or-update-contact",
+                  "api/contact/get-contact",
+                  "api/contact/delete-contact",
+                  "api/contact/customer-checkin",
+                  "api/contact/customer-activity-log",
+                  "api/contact/customer-delete",
+                  "api/contact/subscribe-unsubscribe-customer",
+                  "api/contact/contact",
+                  "api/contact/customer-or-lead-list",
+                  "api/contact/contact-us-request",
+                  "api/contact/get-opt-out-contact-data"
+                ]
+              },
+              {
+                "group": "Contact V2",
+                "collapsed": true,
+                "pages": [
+                  "api/contact-v2/upsert-contact",
+                  "api/contact-v2/retrieve-contact",
+                  "api/contact-v2/customer-checkin",
+                  "api/contact-v2/update-communication-preferences",
+                  "api/contact-v2/retrieve-opted-out-contacts"
+                ]
+              },
+              {
+                "group": "Campaign",
+                "collapsed": true,
+                "pages": [
+                  "api/campaign/fetch-request-url",
+                  "api/campaign/set-defaullt-review-sources"
+                ]
+              },
+              {
+                "group": "Aggregation",
+                "collapsed": true,
+                "pages": [
+                  "api/aggregation/get-all-aggregation-source",
+                  "api/aggregation/get-all-aggregation-source",
+                  "api/aggregation/add-aggregation-url",
+                  "api/aggregation/delete-aggregation-url"
+                ]
+              },
+              {
+                "group": "Report",
+                "collapsed": true,
+                "pages": [
+                  "api/report/get-dashboard-data",
+                  "api/report/get-review-conversion-report",
+                  "api/report/review-and-rating-over-time-report",
+                  "api/report/reviews-rating-by-location-report",
+                  "api/report/review-count-rating",
+                  "api/report/review-count-rating-by-employee",
+                  "api/report/insights-category-report-by-location-report",
+                  "api/report/competitive-ranking-report",
+                  "api/report/nps-over-time-report",
+                  "api/report/nps-by-location-report",
+                  "api/report/review-by-source-report",
+                  "api/report/visitor-report",
+                  "api/report/usage-report",
+                  "api/report/review-response-rate-over-time",
+                  "api/report/review-response-rate-by-location-overview",
+                  "api/report/average-response-time-by-location",
+                  "api/report/average-response-time-over-time"
+                ]
+              },
+              {
+                "group": "Survey",
+                "collapsed": true,
+                "pages": [
+                  "api/survey/get-survey",
+                  "api/survey/post-a-survey-response",
+                  "api/survey/list-responses-for-a-survey",
+                  "api/survey/get-all-surveys",
+                  "api/survey/create-survey",
+                  "api/survey/update-survey-settings"
+                ]
+              },
+              {
+                "group": "Business Media",
+                "collapsed": true,
+                "pages": [
+                  "api/business-media/add-media",
+                  "api/business-media/get-media",
+                  "api/business-media/update-media",
+                  "api/business-media/delete-media"
+                ]
+              },
+              {
+                "group": "Social",
+                "collapsed": true,
+                "pages": [
+                  "api/social/schedule-social-post",
+                  "api/social/edit-scheduled-social-post",
+                  "api/social/edit-published-social-post",
+                  "api/social/delete-public-social-post",
+                  "api/social/track-social-post",
+                  "api/social/social-open-url-performance-report"
+                ]
+              },
+              {
+                "group": "Employee",
+                "collapsed": true,
+                "pages": [
+                  "api/employee/get-details-of-employees"
+                ]
+              },
+              {
+                "group": "Conversation",
+                "collapsed": true,
+                "pages": [
+                  "api/conversation/list-conversations"
+                ]
+              },
+              {
+                "group": "Subscription",
+                "collapsed": true,
+                "pages": [
+                  "api/subscription/create-subscription",
+                  "api/subscription/unsubscribe-subscription"
+                ]
+              },
+              {
+                "group": "Webhook",
+                "collapsed": true,
+                "pages": [
+                  "api/webhook/get-events",
+                  "api/webhook/create-webhook-subscription"
+                ]
+              },
+              {
+                "group": "Competitor",
+                "collapsed": true,
+                "pages": [
+                  "api/competitor/get-competitor-business",
+                  "api/competitor/get-competitor-child-business",
+                  "api/competitor/get-business-competitors",
+                  "api/competitor/create-new-competitor-enterprise",
+                  "api/competitor/create-new-child-business-in-competitor-enterprise",
+                  "api/competitor/add-new-competitor-aggregation-url",
+                  "api/competitor/get-competitor-reviews",
+                  "api/competitor/get-score",
+                  "api/competitor/get-theme-statistics",
+                  "api/competitor/get-keyword-statistics"
+                ]
+              },
+              {
+                "group": "Competitor AI",
+                "collapsed": true,
+                "pages": [
+                  "api/competitor-ai/retrieve-competitor-reviews",
+                  "api/competitor-ai/retrieve-competitor-review-metrics"
+                ]
+              },
+              {
+                "group": "Insight AI",
+                "collapsed": true,
+                "pages": [
+                  "api/insight-ai/get-insight-experience-score-benchmark",
+                  "api/insight-ai/get-insight-experience-location-info"
+                ]
+              },
+              {
+                "group": "Google Q&A",
+                "collapsed": true,
+                "pages": [
+                  "api/google-q-a/create-question",
+                  "api/google-q-a/create-answer",
+                  "api/google-q-a/update-question",
+                  "api/google-q-a/update-answer",
+                  "api/google-q-a/delete-question",
+                  "api/google-q-a/delete-answer",
+                  "api/google-q-a/delete-all-questions-and-answers",
+                  "api/google-q-a/get-all-questions-and-answers",
+                  "api/google-q-a/get-all-unanswered-questions-and-answers"
+                ]
+              },
+              {
+                "group": "Google Services",
+                "collapsed": true,
+                "pages": [
+                  "api/google-services/create-service",
+                  "api/google-services/get-all-services",
+                  "api/google-services/update-service",
+                  "api/google-services/delete-services",
+                  "api/google-services/get-location-mapping",
+                  "api/google-services/update-location-mapping"
+                ]
+              },
+              {
+                "group": "FAQ",
+                "collapsed": true,
+                "pages": [
+                  "api/faq/get-all-qna"
+                ]
+              },
+              {
+                "group": "Listing",
+                "collapsed": true,
+                "pages": [
+                  "api/listing/fix-listing",
+                  "api/listing/get-location-status-report",
+                  "api/listing/listings-insights",
+                  "api/listing/listings-insights-datapoints",
+                  "api/listing/get-gmb-attributes",
+                  "api/listing/get-apple-attributes",
+                  "api/listing/get-apple-action-links",
+                  "api/listing/get-category-list",
+                  "api/listing/create-listing",
+                  "api/listing/update-listing",
+                  "api/listing/get-listing",
+                  "api/listing/get-more-hours-type",
+                  "api/listing/get-google-keywords-count",
+                  "api/listing/deactivate-listing",
+                  "api/listing/retrieve-menu-details",
+                  "api/listing/get-hotel-attributes"
+                ]
+              },
+              {
+                "group": "GMB Products",
+                "collapsed": true,
+                "pages": [
+                  "api/gmb-products/onboard-google-merchant-account",
+                  "api/gmb-products/create-product-listing",
+                  "api/gmb-products/update-product-listing",
+                  "api/gmb-products/get-product-listing",
+                  "api/gmb-products/delete-product-listings",
+                  "api/gmb-products/get-list-product-listing",
+                  "api/gmb-products/add-products-on-a-location",
+                  "api/gmb-products/remove-products-on-a-location"
+                ]
+              },
+              {
+                "group": "Search AI",
+                "collapsed": true,
+                "pages": [
+                  "api/search-ai/get-search-ai-configuration",
+                  "api/search-ai/get-search-ai-available-runs",
+                  "api/search-ai/get-search-ai-citations",
+                  "api/search-ai/get-search-ai-businesses",
+                  "api/search-ai/get-accuracy-report",
+                  "api/search-ai/get-sentiment-report"
+                ]
+              },
+              {
+                "group": "Ticketing",
+                "collapsed": true,
+                "pages": [
+                  "api/ticketing/create-ticket",
+                  "api/ticketing/add-ticket-comments",
+                  "api/ticketing/update-ticket",
+                  "api/ticketing/get-all-ticket-data"
+                ]
+              },
+              {
+                "group": "Integration",
+                "collapsed": true,
+                "pages": [
+                  "api/integration/add-locations"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Tools Reference",
+        "tab": "MCP",
         "groups": [
           {
-            "group": "Tools Reference",
+            "group": "Get Started",
             "pages": [
-              "tools/overview",
-              {
-                "group": "Reviews",
-                "pages": [
-                  "tools/reviews/overview",
-                  "tools/reviews/review-and-rating-overview",
-                  "tools/reviews/get-reviews",
-                  "tools/reviews/get-review-summary"
-                ]
-              },
-              {
-                "group": "Business",
-                "pages": [
-                  "tools/business/get-business-info",
-                  "tools/business/get-child-locations"
-                ]
-              },
-              {
-                "group": "Surveys",
-                "pages": [
-                  "tools/surveys/get-all-surveys",
-                  "tools/surveys/get-survey-responses"
-                ]
-              },
-              {
-                "group": "Listings",
-                "pages": [
-                  "tools/listings/overview",
-                  "tools/listings/get-listing",
-                  "tools/listings/get-listing-location-status-report",
-                  "tools/listings/get-listing-insights",
-                  "tools/listings/get-listing-category-list",
-                  "tools/listings/get-product-listing-list"
-                ]
-              },
-              {
-                "group": "Search AI",
-                "pages": [
-                  "tools/search-ai/overview",
-                  "tools/search-ai/get-search-ai-configuration",
-                  "tools/search-ai/get-search-ai-available-runs",
-                  "tools/search-ai/get-search-ai-citations",
-                  "tools/search-ai/get-search-ai-businesses",
-                  "tools/search-ai/get-search-ai-accuracy-report",
-                  "tools/search-ai/get-search-ai-sentiment-report"
-                ]
-              },
-              {
-                "group": "Social",
-                "pages": [
-                  "tools/social/track-social-post",
-                  "tools/social/get-social-open-url-performance-report"
-                ]
-              },
-              {
-                "group": "Ticketing",
-                "pages": ["tools/ticketing/get-all-ticket-data"]
-              },
-              {
-                "group": "Aggregation",
-                "pages": [
-                  "tools/aggregation/get-all-aggregation-sources",
-                  "tools/aggregation/get-review-site-aliases"
-                ]
-              }
+              "mcp/introduction",
+              "mcp/quickstart",
+              "mcp/authentication",
+              "mcp/tools/overview"
             ]
           }
         ]
@@ -131,5 +401,6 @@
     "socials": {
       "linkedin": "https://www.linkedin.com/company/birdeye"
     }
-  }
+  },
+  "openapi": "api-reference/openapi.yaml"
 }

@@ -1,0 +1,26 @@
+---
+title: "Authentication and Rate Limiting"
+description: "How to authenticate with the Birdeye API and understand rate limits"
+---
+
+<Warning>
+  All API requests targeting business accounts must include the `x-api-key` header. This header is required and mandatory for successful authentication and access to the API endpoints.
+
+  To protect your API key and prevent unauthorized access, please ensure all API requests are made from your backend server. Do not call the APIs directly from the browser or expose your API key in any client-side code.
+</Warning>
+
+## Authentication
+
+To call a Birdeye API, you need a valid API key. It can be fetched via the Birdeye dashboard and is a confidential key.
+
+Include it in every request as a header:
+
+```
+x-api-key: YOUR_API_KEY
+```
+
+## Rate Limiting
+
+There is a limit to calling APIs with each API key. If too many requests are made within the threshold timeframe, a `429` error will be returned in the response.
+
+Contact the support team to get the current rate limit for your account.
