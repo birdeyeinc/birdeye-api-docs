@@ -1,0 +1,118 @@
+---
+title: "Introduction"
+description: "Birdeye helps businesses grow through happy customers. Over 80,000 businesses use Birdeye every day to attract new leads with Listings, Reviews and Referrals, convert them into customers with Webchat, Appointments, and Payments, and delight those customers with Surveys, Ticketing, and Insights — all in one place."
+---
+
+## Base URL
+
+```
+https://api.birdeye.com/resources
+```
+
+The Birdeye APIs are built on HTTP and are RESTful APIs.
+
+- Uses resource-oriented URLs.
+- Uses built-in HTTP capabilities for passing parameters and authentication.
+- Responds with standard HTTP response codes to indicate errors.
+- Requests and responses payload attached with all the mentioned APIs — you may choose your preferred language per the integration requirement.
+
+## Authentication and Rate Limiting
+
+<Warning>
+  **All API requests targeting business accounts must include the `x-api-key` header. This header is required and mandatory for successful authentication and access to the API endpoints.**
+
+  **To protect your API key and prevent unauthorized access, please ensure all API requests are made from your backend server. Do not call the APIs directly from the browser or expose your API key in any client-side code.**
+</Warning>
+
+To call a Birdeye API, you need a valid API key. It can be fetched via the Birdeye dashboard and is a confidential key.
+
+There is a limit to calling APIs with each API key — connect with the support team to get the current limit. If too many requests are made within the threshold timeframe, an error will be returned in the response.
+
+Every request must include the header:
+
+```http
+x-api-key: YOUR_API_KEY
+```
+
+## Pagination
+
+Multiple APIs support pagination via two parameters: `sindex` and `count`.
+
+| Parameter | Description |
+|-----------|-------------|
+| `sindex`  | Start index (0-based) |
+| `count`   | Number of records to fetch |
+
+<Warning>
+  Deep pagination with a record window greater than 100,000 is not supported. Either reduce `sindex + count` to be less than or equal to 100,000, or use appropriate filters to narrow down your result set.
+</Warning>
+
+**Example — fetch 20 records in two pages:**
+
+```
+API call 1 → sindex=0,  count=10
+API call 2 → sindex=10, count=10
+```
+
+**Example — fetch the 100,000th record:**
+
+```
+sindex=99000, count=1000   ✓  (sindex + count = 100,000)
+sindex=99000, count=1001   ✗  (sindex + count = 100,001 — error)
+```
+
+## HTTP Status Codes
+
+Every API response will have an HTTP status code.
+
+| Code | Meaning |
+|------|--------|
+| **200 OK** | API request is successful |
+| **202 Accepted** | The API request has been accepted for processing |
+| **400 Bad Request** | The API request was unacceptable, often due to a missing or invalid parameter |
+| **404 Not Found** | The requested resource does not exist |
+| **429 Rate Limited** | You have made too many requests within the threshold timeframe |
+| **500 Internal Server Error** | Something went wrong on our end. Please get in touch with support |
+
+## Error Response
+
+Birdeye API will return a validation error in case of missing/invalid input in the request. The response will return the `errorCode` and `errorMessage`.
+
+```json
+{
+  "code": 1161,
+  "message": "Invalid API key"
+}
+```
+
+## API Groups
+
+| Group | Description |
+|-------|-------------|
+| Business | Create, update, and manage business locations |
+| Custom Fields | Manage custom data fields for businesses |
+| User | User account management |
+| Reviews | Fetch and respond to reviews, manage tags |
+| Contact | Customer/contact management |
+| Contact V2 | Enhanced contact management with communication preferences |
+| Campaign | Campaign URL and review source management |
+| Aggregation | Manage review aggregation sources |
+| Report | Analytics and reporting endpoints |
+| Survey | Create and manage surveys |
+| Business Media | Upload and manage business media |
+| Social | Schedule and manage social media posts |
+| Employee | Employee data retrieval |
+| Conversation | Export conversation/messenger data |
+| Subscription | Webhook subscriptions |
+| Webhook | Webhook event management |
+| Competitor | Competitor business management |
+| Competitor AI | AI-powered competitor review insights |
+| Insight AI | AI experience scoring and location insights |
+| Google Q&A | Google Q&A management |
+| Google Services | Google service management |
+| FAQ | FAQ / Q&A retrieval |
+| Listing | Business listing management |
+| GMB Products | Google My Business product listings |
+| Search AI | AI search configuration and analytics |
+| Ticketing | Ticket management |
+| Integration | Business integration mapping |

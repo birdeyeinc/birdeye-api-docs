@@ -1,0 +1,43 @@
+---
+title: "Change Logs"
+description: "History of updates and additions to the Birdeye Public API."
+---
+
+| Date | Change |
+|------|--------|
+| **07/03/2026** | Updated `mainBusinessDescription` and microsite `internalListing.description` fields in Create, Update and Get Listing APIs to be optional instead of required, with support for clearing the existing value by sending an empty string (V2BIRD-1690). |
+| **06/10/2026** | Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: `false`). When set to `true`, the response includes the customer's experience score and source. |
+| **05/25/2026** | Added Update Custom Card (PUT) and Delete Custom Card (DELETE) API documentation under the Business profile custom card section. |
+| **05/11/2026** | Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp. |
+| **04/22/2026** | Added `subLocality` field support in Get, Create and Update Listings APIs for NZ locations. |
+| **04/16/2026** | Added Archived Get Reviews API under the Reviews group. |
+| **04/06/2026** | Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types. |
+| **03/24/2026** | Added Social Open URL Performance Report API and Insight AI APIs to retrieve location-wise metrics and benchmark score. |
+| **03/18/2026** | Added Create Custom Card API under the Custom Fields section. |
+| **03/03/2026** | Added Response Time (over time & by location) and Response Rate (over time & by location) APIs under the Reports section, and created the Competitor AI group. |
+| **03/02/2026** | Added `sendInvite` (boolean, default `true`) field in Create User Signup v2 API request body and attributes. |
+| **02/11/2026** | Updated the API key identifier for applicable APIs by moving it from a query parameter to the `x-api-key` request header. |
+| **02/03/2026** | Added the "Get All QnA" API under the FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation. |
+| **01/19/2026** | Added a note under Authentication and Rate Limiting specifying that the `x-api-key` header is mandatory for all API requests targeting EU region business accounts. |
+| **01/13/2026** | Added Create User (Signup) API under the User module to create and invite users for a business. |
+| **09/22/2025** | Added GMB Products APIs to onboard/connect Google Merchant accounts and manage product listing actions. |
+| **08/21/2025** | Added single main business description support. |
+| **08/19/2025** | Added Competitor / Raptor public APIs for reviews aggregates. |
+| **06/26/2025** | Added Contact V2 APIs with communication preference flag support. |
+| **12/13/2024** | Added inline reply support for Get Reviews APIs. |
+| **10/04/2024** | Added support to fetch `ticketId` associated with survey responses in List Response API. |
+| **09/27/2024** | Added update for Google Opening Soon (BIRD-56987). |
+| **06/25/2024** | Updated Listings Insights API (BIRDEYE-137367). |
+| **05/29/2024** | Added Google Q&A Developers API section. |
+| **05/13/2024** | Added epoch date support for Get Reviews APIs. |
+| **03/22/2024** | Added Update Hierarchy API (BIRD-32609). |
+| **03/19/2024** | Added Ticket APIs — Create, Get, Update APIs under the Ticketing module. |
+| **02/26/2024** | Updated `logoUrl` description in Get/Update APIs under the Business module and Create/Get/Update APIs under the Listing module (BIRD-29386). |
+| **12/21/2023** | Added Listing phase 2 API changes (BIRD-16589). |
+| **11/08/2023** | Added survey changes (BIRD-11944), listing changes (BIRD-14345), and CRUD APIs for Apple Chat. |
+| **10/15/2023** | Added CRUD APIs for Business Media. |
+| **10/11/2023** | Added new APIs under the Listing module — Create, Update, Get, Deactivate Listings. |
+| **09/18/2023** | Added new API under the Contact module — Get Opt-Out Contact Data. |
+| **08/25/2023** | Added new APIs under Business and Listing modules: Get Category List, Get GMB Attributes, and Get Timezone List. |
+| **07/21/2023** | Added new API under the Business module — Business Search API. |
+| **06/30/2023** | Added support for service area based information in Get Business API and Update Business API. |
