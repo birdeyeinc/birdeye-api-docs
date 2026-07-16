@@ -402,5 +402,5 @@
       "linkedin": "https://www.linkedin.com/company/birdeye"
     }
   },
-  "openapi": "api-reference/openapi.yaml"
+  "openapi": "api/openapi.yaml"
 }
