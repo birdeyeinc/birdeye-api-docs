@@ -8,6 +8,12 @@
     "dark": "#0055CC"
   },
   "favicon": "/images/favicon.svg",
+  "redirects": [
+    {
+      "source": "/mcp",
+      "destination": "/mcp/introduction"
+    }
+  ],
   "navigation": {
     "tabs": [
       {
@@ -127,7 +133,6 @@
                 "group": "Aggregation",
                 "collapsed": true,
                 "pages": [
-                  "api/aggregation/get-all-aggregation-source",
                   "api/aggregation/get-all-aggregation-source",
                   "api/aggregation/add-aggregation-url",
                   "api/aggregation/delete-aggregation-url"
@@ -394,7 +399,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/quickstart"
+      "href": "/mcp/quickstart"
     }
   },
   "footer": {
