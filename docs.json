@@ -12,7 +12,6 @@
     "tabs": [
       {
         "tab": "API Docs",
-        "openapi": "api/openapi.yaml",
         "groups": [
           {
             "group": "Introduction",
