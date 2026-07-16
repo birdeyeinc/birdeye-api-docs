@@ -8,12 +8,6 @@
     "dark": "#0055CC"
   },
   "favicon": "/images/favicon.svg",
-  "redirects": [
-    {
-      "source": "/mcp",
-      "destination": "/mcp/introduction"
-    }
-  ],
   "navigation": {
     "tabs": [
       {
@@ -362,6 +356,7 @@
       },
       {
         "tab": "MCP",
+        "url": "mcp/introduction",
         "groups": [
           {
             "group": "Get Started",
