@@ -14,7 +14,7 @@
         "tab": "API Docs",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Get Started",
             "pages": [
               "api/introduction",
               "api/authentication",
@@ -369,16 +369,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "MCP Server",
-          "href": "https://mcp.birdeye.com/mcp",
-          "icon": "server"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/images/logo-light.png",
@@ -390,12 +381,7 @@
         "label": "Birdeye",
         "href": "https://birdeye.com"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Get Started",
-      "href": "/mcp/quickstart"
-    }
+    ]
   },
   "footer": {
     "socials": {
