@@ -20,7 +20,8 @@
               "api/authentication",
               "api/pagination",
               "api/http-status-codes",
-              "api/error-response"
+              "api/error-response",
+              "api/changelog"
             ]
           },
           {
