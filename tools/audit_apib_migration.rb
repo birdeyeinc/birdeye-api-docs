@@ -295,6 +295,57 @@ def parse_apib(file)
   operations
 end
 
+def normalized_content(value)
+  value.to_s.lines.map(&:rstrip).reject { |line| line.empty? }.join("\n").strip
+end
+
+def parse_apib_document(file)
+  lines = File.readlines(file, encoding: 'UTF-8')
+  title_index = lines.index { |line| line.match?(/^# Birdeye\s*$/) }
+  first_model_index = lines.index { |line| line.match?(/^## \d+ \[\/\d+\]\s*$/) }
+  overview = if title_index && first_model_index
+               lines[(title_index + 1)...first_model_index].join.strip
+             else
+               ''
+             end
+
+  groups = {}
+  lines.each_with_index do |line, index|
+    match = line.match(/^# Group (.+)/)
+    next unless match
+
+    cursor = index + 1
+    body = []
+    while cursor < lines.length && !lines[cursor].match?(/^#+ /)
+      body << lines[cursor]
+      cursor += 1
+    end
+    groups[match[1].strip] = body.join.strip
+  end
+
+  models = []
+  lines.each do |line|
+    match = line.match(/^## (\d+) \[\/\d+\]\s*$/)
+    models << "#{match[1]}Model" if match
+  end
+
+  host = lines.find { |line| line.start_with?('HOST:') }.to_s.sub(/^HOST:\s*/, '').strip
+  { overview: overview, groups: groups, models: models.uniq, host: host }
+end
+
+def nested_strings(value)
+  case value
+  when Hash
+    value.values.flat_map { |child| nested_strings(child) }
+  when Array
+    value.flat_map { |child| nested_strings(child) }
+  when String
+    [value]
+  else
+    []
+  end
+end
+
 def resolve_schema(schema, document)
   return {} unless schema.is_a?(Hash)
   return schema unless schema['$ref']
@@ -589,6 +640,34 @@ if sync_examples
   exit
 end
 
+apib_document = parse_apib_document(ARGV[0])
+overview_mismatch = normalized_content(apib_document[:overview]) != normalized_content(openapi.dig('info', 'description'))
+server_mismatch = openapi.fetch('servers', []).none? { |server| server['url'] == apib_document[:host] }
+target_tags = openapi.fetch('tags', []).to_h { |tag| [tag['name'], tag['description'].to_s] }
+group_description_mismatches = apib_document[:groups].keys.select do |name|
+  normalized_content(apib_document[:groups][name]) != normalized_content(target_tags[name])
+end
+target_schemas = openapi.fetch('components', {}).fetch('schemas', {})
+missing_error_models = apib_document[:models] - target_schemas.keys
+
+repository_root = File.expand_path('..', File.dirname(File.expand_path(ARGV[1])))
+static_pages = %w[introduction authentication pagination http-status-codes error-response].map do |name|
+  File.join(repository_root, 'api', "#{name}.mdx")
+end
+missing_static_pages = static_pages.reject { |path| File.file?(path) }
+
+changelog_source = apib_document[:groups].fetch('Change Logs', '')
+changelog_page = File.join(repository_root, 'api', 'changelog.mdx')
+changelog_page_missing = !File.file?(changelog_page)
+changelog_content_mismatch = false
+unless changelog_page_missing
+  changelog_body = File.read(changelog_page).sub(/\A---\s*\n.*?\n---\s*\n/m, '').strip
+  changelog_content_mismatch = normalized_content(changelog_source) != normalized_content(changelog_body)
+end
+docs_config = File.join(repository_root, 'docs.json')
+changelog_navigation_missing = !File.file?(docs_config) || !nested_strings(JSON.parse(File.read(docs_config))).include?('api/changelog')
+changelog_entries = changelog_source.lines.count { |line| line.start_with?('* <b>') }
+
 empty_descriptions = matched.select { |source, target| !source[:description].empty? && target[:description].empty? }
 summary_mismatches = matched.select { |source, target| source[:summary] != target[:summary] }
 description_mismatches = matched.select do |source, target|
@@ -738,6 +817,16 @@ end
 
 puts "APIB operations: #{apib_operations.length}"
 puts "OpenAPI operations: #{oas_operations.length}"
+puts "APIB group sections: #{apib_document[:groups].length}"
+puts "APIB changelog entries: #{changelog_entries}"
+puts "Different API overview: #{overview_mismatch ? 1 : 0}"
+puts "Different server URL: #{server_mismatch ? 1 : 0}"
+puts "Group descriptions that differ: #{group_description_mismatches.length}"
+puts "Missing APIB error models: #{missing_error_models.length}"
+puts "Missing standalone API pages: #{missing_static_pages.length}"
+puts "Missing changelog page: #{changelog_page_missing ? 1 : 0}"
+puts "Different changelog page content: #{changelog_content_mismatch ? 1 : 0}"
+puts "Missing changelog navigation: #{changelog_navigation_missing ? 1 : 0}"
 puts "Matched operations: #{matched.length}"
 puts "Missing operations: #{missing_operations.length}"
 puts "Extra operations: #{extra_operations.length}"
@@ -763,6 +852,35 @@ puts "Response field descriptions that differ: #{different_response_field_descri
 puts "Response fields with different type/required metadata: #{different_response_field_metadata.length}"
 puts "Responses missing examples: #{missing_response_examples.length}"
 puts "Responses with different examples: #{different_response_examples.length}"
+
+if overview_mismatch
+  puts "\nDIFFERENT API OVERVIEW"
+  puts '- OpenAPI info.description does not match the APIB overview.'
+end
+
+if server_mismatch
+  puts "\nDIFFERENT SERVER URL"
+  puts "- Expected #{apib_document[:host]}"
+end
+
+unless group_description_mismatches.empty?
+  puts "\nDIFFERENT GROUP DESCRIPTIONS"
+  group_description_mismatches.each { |name| puts "- #{name}" }
+end
+
+unless missing_error_models.empty?
+  puts "\nMISSING APIB ERROR MODELS"
+  missing_error_models.each { |name| puts "- #{name}" }
+end
+
+unless missing_static_pages.empty?
+  puts "\nMISSING STANDALONE API PAGES"
+  missing_static_pages.each { |path| puts "- #{path}" }
+end
+
+puts "\nMISSING CHANGELOG PAGE\n- #{changelog_page}" if changelog_page_missing
+puts "\nDIFFERENT CHANGELOG PAGE CONTENT\n- #{changelog_page}" if changelog_content_mismatch
+puts "\nMISSING CHANGELOG NAVIGATION\n- api/changelog" if changelog_navigation_missing
 
 unless missing_operations.empty?
   puts "\nMISSING OPERATIONS"
@@ -914,7 +1032,10 @@ unless different_response_examples.empty?
   different_response_examples.each { |source, status| puts "- #{source[:method].upcase} #{source[:path]} [#{status}]" }
 end
 
-exit 1 unless missing_operations.empty? && extra_operations.empty? && summary_mismatches.empty? && empty_descriptions.empty? &&
+exit 1 unless !overview_mismatch && !server_mismatch && group_description_mismatches.empty? &&
+              missing_error_models.empty? && missing_static_pages.empty? && !changelog_page_missing &&
+              !changelog_content_mismatch && !changelog_navigation_missing &&
+              missing_operations.empty? && extra_operations.empty? && summary_mismatches.empty? && empty_descriptions.empty? &&
               description_mismatches.empty? && missing_parameters.empty? && different_parameter_descriptions.empty? &&
               different_parameter_metadata.empty? &&
               missing_headers.empty? && different_header_examples.empty? && missing_header_defaults.empty? &&
