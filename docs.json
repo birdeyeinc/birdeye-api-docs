@@ -127,6 +127,7 @@
                 "group": "Aggregation",
                 "collapsed": true,
                 "pages": [
+                  "api/aggregation/get-business-aggregation-sources",
                   "api/aggregation/get-all-aggregation-source",
                   "api/aggregation/add-aggregation-url",
                   "api/aggregation/delete-aggregation-url"

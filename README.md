@@ -61,9 +61,35 @@ The docs will be available at `http://localhost:3000`.
 
 ## Contributing
 
-1. Edit or add `.mdx` files in the relevant folder
-2. Update `docs.json` if adding new pages to the navigation
-3. Preview locally with `mintlify dev` before pushing
+### Onboarding a REST API
+
+Use `api/openapi.yaml` as the source of truth for API reference content. For each new operation:
+
+1. Add the path and HTTP method with a unique `operationId`, `summary`, and the complete description, including every note, warning, default behavior, and field interaction.
+2. Document every path/query/header parameter with its type, required state, description, and example. Give `Accept` an `example` and matching `schema.default`. Add the same editable default for JSON `Content-Type` only when the operation has an actual JSON request body; do not add it to bodyless GET operations.
+3. Add the complete `requestBody` schema: media type, required fields, nested fields, descriptions, formats/enums, and a realistic example.
+4. Add every documented response status with its complete schema and example. Do not leave array `items` or object `properties` empty when the source documents their fields.
+5. Create a small endpoint page in the relevant API folder:
+
+   ```mdx
+   ---
+   title: "Endpoint title"
+   openapi: "api/openapi.yaml GET /v1/resource/{resourceId}"
+   ---
+   ```
+
+6. Add that page to the appropriate API group in `docs.json`.
+7. Run the migration audit when API Blueprint is the source, then validate and preview the site:
+
+   ```bash
+   ruby tools/audit_apib_migration.rb --sync-examples /path/to/apiary.apib api/openapi.yaml
+   ruby tools/audit_apib_migration.rb /path/to/apiary.apib api/openapi.yaml
+   mintlify validate
+   mintlify broken-links
+   mintlify dev
+   ```
+
+8. In the preview, check the description/notes, parameter tables, request and response field trees, examples, generated code, and editable prefilled headers in “Try it”.
 
 ## Security
 
