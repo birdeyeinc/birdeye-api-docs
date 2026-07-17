@@ -129,11 +129,6 @@ paths:
               - "$ref": "#/components/schemas/2157Model"
               - "$ref": "#/components/schemas/2286Model"
               - "$ref": "#/components/schemas/2166Model"
-              examples:
-                response:
-                  value:
-                    code: 1176
-                    message: Business info cannot be blank
               x-apiary-response-examples:
                 error_1076:
                   value:
@@ -223,6 +218,11 @@ paths:
                   value:
                     code: 2166
                     message: Invalid Business Type
+              examples:
+                response:
+                  value:
+                    code: 1176
+                    message: Business info cannot be blank
         '401':
           description: Unauthorized
           content:
@@ -233,11 +233,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -251,6 +246,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -260,11 +260,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1175Model"
               - "$ref": "#/components/schemas/1010Model"
-              examples:
-                response:
-                  value:
-                    code: 1175
-                    message: No business found with the given id
               x-apiary-response-examples:
                 error_1175:
                   value:
@@ -274,6 +269,11 @@ paths:
                   value:
                     code: 1010
                     message: No user found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1175
+                    message: No business found with the given id
         '429':
           description: Too Many Requests
           content:
@@ -576,11 +576,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -590,6 +585,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -643,14 +643,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/{businessId}":
     put:
       responses:
@@ -993,11 +985,6 @@ paths:
               - "$ref": "#/components/schemas/2520Model"
               - "$ref": "#/components/schemas/6000Model"
               - "$ref": "#/components/schemas/6001Model"
-              examples:
-                response:
-                  value:
-                    code: 1045
-                    message: Business name cannot be blank
               x-apiary-response-examples:
                 error_1045:
                   value:
@@ -1091,6 +1078,11 @@ paths:
                   value:
                     code: 6001
                     message: The 'sub_locality' field cannot exceed 80 characters.
+              examples:
+                response:
+                  value:
+                    code: 1045
+                    message: Business name cannot be blank
         '401':
           description: Unauthorized
           content:
@@ -1107,11 +1099,6 @@ paths:
               - "$ref": "#/components/schemas/1069Model"
               - "$ref": "#/components/schemas/1070Model"
               - "$ref": "#/components/schemas/1190Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -1149,6 +1136,11 @@ paths:
                   value:
                     code: 1190
                     message: Invalid category
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -1239,11 +1231,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -1253,6 +1240,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -1339,11 +1331,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -1353,6 +1340,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '403':
           description: Forbidden
           content:
@@ -1521,14 +1513,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/tabs":
     post:
       responses:
@@ -1554,11 +1538,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -1568,6 +1547,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '403':
           description: Forbidden
           content:
@@ -1941,11 +1925,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -1955,6 +1934,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -1998,14 +1982,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/business-hierarchy/location/update-mapping/{businessId}":
     post:
       responses:
@@ -2021,11 +1997,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2039,6 +2010,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -2144,11 +2120,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2162,6 +2133,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -2203,14 +2179,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/public/card/{cardId}":
     put:
       responses:
@@ -2226,11 +2194,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2244,6 +2207,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -2330,11 +2298,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2348,6 +2311,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -2424,11 +2392,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2438,6 +2401,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -2478,14 +2446,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/{businessNumber}/birdeye/impressions":
     post:
       responses:
@@ -2515,11 +2475,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -2529,6 +2484,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '400':
           description: Bad Request
           content:
@@ -2538,11 +2498,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2292Model"
               - "$ref": "#/components/schemas/2293Model"
-              examples:
-                response:
-                  value:
-                    code: 2292
-                    message: sortby can only be 'total' or 'location'
               x-apiary-response-examples:
                 error_2292:
                   value:
@@ -2552,6 +2507,11 @@ paths:
                   value:
                     code: 2293
                     message: order can only be 'asc' or 'desc'
+              examples:
+                response:
+                  value:
+                    code: 2292
+                    message: sortby can only be 'total' or 'location'
       summary: Get Birdeye Impressions
       operationId: getBirdeyeImpressions
       description: 'Returns only birdeye (source: website) impressions by location
@@ -2630,11 +2590,6 @@ paths:
               - "$ref": "#/components/schemas/5031Model"
               - "$ref": "#/components/schemas/5039Model"
               - "$ref": "#/components/schemas/5040Model"
-              examples:
-                response:
-                  value:
-                    code: 5022
-                    message: Another custom field with same name already present.
               x-apiary-response-examples:
                 error_5022:
                   value:
@@ -2660,6 +2615,11 @@ paths:
                   value:
                     code: 5040
                     message: Max limit reached for custom fields.
+              examples:
+                response:
+                  value:
+                    code: 5022
+                    message: Another custom field with same name already present.
       summary: Create
       operationId: create
       description: Create custom Fields
@@ -2726,11 +2686,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5025Model"
               - "$ref": "#/components/schemas/5026Model"
-              examples:
-                response:
-                  value:
-                    code: 5025
-                    message: Custom field not found.
               x-apiary-response-examples:
                 error_5025:
                   value:
@@ -2740,6 +2695,11 @@ paths:
                   value:
                     code: 5026
                     message: Custom field updation failed.
+              examples:
+                response:
+                  value:
+                    code: 5025
+                    message: Custom field not found.
       summary: Update
       operationId: update
       description: Update custom Fields
@@ -2899,14 +2859,6 @@ paths:
         example: "- Long Business Number"
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/public/custom-fields/getList?locationBizNumber={locationBizNumber}":
     post:
       responses:
@@ -3069,11 +3021,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5025Model"
               - "$ref": "#/components/schemas/5028Model"
-              examples:
-                response:
-                  value:
-                    code: 5025
-                    message: Custom field not found.
               x-apiary-response-examples:
                 error_5025:
                   value:
@@ -3083,6 +3030,11 @@ paths:
                   value:
                     code: 5028
                     message: Custom field delete failed.
+              examples:
+                response:
+                  value:
+                    code: 5025
+                    message: Custom field not found.
       summary: Delete
       operationId: delete
       description: Delete custom Fields
@@ -3177,11 +3129,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5025Model"
               - "$ref": "#/components/schemas/5028Model"
-              examples:
-                response:
-                  value:
-                    code: 5025
-                    message: Custom field not found.
               x-apiary-response-examples:
                 error_5025:
                   value:
@@ -3191,6 +3138,11 @@ paths:
                   value:
                     code: 5028
                     message: Custom field delete failed.
+              examples:
+                response:
+                  value:
+                    code: 5025
+                    message: Custom field not found.
       summary: Associate
       operationId: associate
       description: Associate custom Fields
@@ -3310,11 +3262,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -3328,6 +3275,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -3441,11 +3393,6 @@ paths:
               - "$ref": "#/components/schemas/1013Model"
               - "$ref": "#/components/schemas/1057Model"
               - "$ref": "#/components/schemas/1059Model"
-              examples:
-                response:
-                  value:
-                    code: 1052
-                    message: User email id cannot be blank
               x-apiary-response-examples:
                 error_1052:
                   value:
@@ -3475,6 +3422,11 @@ paths:
                   value:
                     code: 1059
                     message: Last name cannot be more than 50 characters
+              examples:
+                response:
+                  value:
+                    code: 1052
+                    message: User email id cannot be blank
         '401':
           description: Unauthorized
           content:
@@ -3485,11 +3437,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -3503,6 +3450,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -3614,11 +3566,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1177Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -3632,6 +3579,11 @@ paths:
                   value:
                     code: 1177
                     message: User is not authorized to perform any action on any business
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -3738,11 +3690,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -3752,6 +3699,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -3762,11 +3714,6 @@ paths:
               - "$ref": "#/components/schemas/1188Model"
               - "$ref": "#/components/schemas/1189Model"
               - "$ref": "#/components/schemas/1175Model"
-              examples:
-                response:
-                  value:
-                    code: 1188
-                    message: User is not associated with the business.
               x-apiary-response-examples:
                 error_1188:
                   value:
@@ -3780,6 +3727,11 @@ paths:
                   value:
                     code: 1175
                     message: No business found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1188
+                    message: User is not associated with the business.
         '429':
           description: Too Many Requests
           content:
@@ -3862,11 +3814,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1177Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -3880,6 +3827,11 @@ paths:
                   value:
                     code: 1177
                     message: User is not authorized to perform any action on any business
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -4012,11 +3964,6 @@ paths:
               - "$ref": "#/components/schemas/1188Model"
               - "$ref": "#/components/schemas/1189Model"
               - "$ref": "#/components/schemas/1010Model"
-              examples:
-                response:
-                  value:
-                    code: 1188
-                    message: User is not associated with the business.
               x-apiary-response-examples:
                 error_1188:
                   value:
@@ -4030,6 +3977,11 @@ paths:
                   value:
                     code: 1010
                     message: No user found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1188
+                    message: User is not associated with the business.
         '429':
           description: Too Many Requests
           content:
@@ -4071,14 +4023,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/review/businessId/{businessId}":
     post:
       responses:
@@ -4160,11 +4104,6 @@ paths:
               - "$ref": "#/components/schemas/1227Model"
               - "$ref": "#/components/schemas/1228Model"
               - "$ref": "#/components/schemas/1244Model"
-              examples:
-                response:
-                  value:
-                    code: 1163
-                    message: Invalid start index value
               x-apiary-response-examples:
                 error_1163:
                   value:
@@ -4194,6 +4133,11 @@ paths:
                   value:
                     code: 1244
                     message: Maximum 5 keywords can be selected for filter.
+              examples:
+                response:
+                  value:
+                    code: 1163
+                    message: Invalid start index value
         '401':
           description: Unauthorized
           content:
@@ -4203,11 +4147,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1164Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -4217,6 +4156,11 @@ paths:
                   value:
                     code: 1164
                     message: Invalid result count value
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -4493,11 +4437,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -4507,6 +4446,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -4709,14 +4653,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/review/reply/business/{businessNumber}/review/{reviewId}":
     put:
       responses:
@@ -4762,11 +4698,6 @@ paths:
               - "$ref": "#/components/schemas/2075Model"
               - "$ref": "#/components/schemas/20706Model"
               - "$ref": "#/components/schemas/2078Model"
-              examples:
-                response:
-                  value:
-                    code: 1011
-                    message: Business id is invalid
               x-apiary-response-examples:
                 error_1011:
                   value:
@@ -4837,6 +4768,11 @@ paths:
                   value:
                     code: 2078
                     message: Error while posting a reply to Rent
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
         '401':
           description: Unauthorized
           content:
@@ -4846,11 +4782,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -4860,6 +4791,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -4950,11 +4886,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -4964,6 +4895,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5056,11 +4992,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -5070,6 +5001,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5167,11 +5103,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -5181,6 +5112,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5233,14 +5169,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/tag/add/review":
     post:
       responses:
@@ -5255,11 +5183,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -5269,6 +5192,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5381,11 +5309,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -5395,6 +5318,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5507,11 +5435,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -5521,6 +5444,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -5627,11 +5555,6 @@ paths:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/5008Model"
               - "$ref": "#/components/schemas/5043Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -5645,6 +5568,11 @@ paths:
                   value:
                     code: 5043
                     message: Contact not found for the given request
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '401':
           description: Unauthorized
           content:
@@ -5798,11 +5726,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/5043Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -5812,6 +5735,11 @@ paths:
                   value:
                     code: 5043
                     message: Contact not found for the given request
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '401':
           description: Unauthorized
           content:
@@ -6050,11 +5978,6 @@ paths:
               - "$ref": "#/components/schemas/1088Model"
               - "$ref": "#/components/schemas/1055Model"
               - "$ref": "#/components/schemas/1170Model"
-              examples:
-                response:
-                  value:
-                    code: 1142
-                    message: Customer name cannot be blank
               x-apiary-response-examples:
                 error_1142:
                   value:
@@ -6080,6 +6003,11 @@ paths:
                   value:
                     code: 1170
                     message: SMS Alert flag is invalid. Valid values are 0 or 1.
+              examples:
+                response:
+                  value:
+                    code: 1142
+                    message: Customer name cannot be blank
         '401':
           description: Unauthorized
           content:
@@ -6091,11 +6019,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1175Model"
-              examples:
-                response:
-                  value:
-                    code: 1033
-                    message: You are not authorized to perform this action
               x-apiary-response-examples:
                 error_1033:
                   value:
@@ -6113,6 +6036,11 @@ paths:
                   value:
                     code: 1175
                     message: No business found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1033
+                    message: You are not authorized to perform this action
         '429':
           description: Too Many Requests
           content:
@@ -6216,11 +6144,6 @@ paths:
               - "$ref": "#/components/schemas/1091Model"
               - "$ref": "#/components/schemas/1523Model"
               - "$ref": "#/components/schemas/1524Model"
-              examples:
-                response:
-                  value:
-                    code: 1089
-                    message: Customer id is invalid.
               x-apiary-response-examples:
                 error_1089:
                   value:
@@ -6238,6 +6161,11 @@ paths:
                   value:
                     code: 1524
                     message: Date entered is invalid.
+              examples:
+                response:
+                  value:
+                    code: 1089
+                    message: Customer id is invalid.
         '401':
           description: Unauthorized
           content:
@@ -6247,11 +6175,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -6261,6 +6184,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -6337,14 +6265,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/customer/id/{customerId}":
     delete:
       responses:
@@ -6388,11 +6308,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -6402,6 +6317,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -6487,11 +6407,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -6501,6 +6416,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -6601,11 +6521,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -6615,6 +6530,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -6763,11 +6683,6 @@ paths:
               - "$ref": "#/components/schemas/21122Model"
               - "$ref": "#/components/schemas/2347Model"
               - "$ref": "#/components/schemas/2348Model"
-              examples:
-                response:
-                  value:
-                    code: 21121
-                    message: Invalid contact source provided in the request.
               x-apiary-response-examples:
                 error_21121:
                   value:
@@ -6790,6 +6705,11 @@ paths:
                   value:
                     code: 2348
                     message: Max window size allowed is 60000 for a filter selection
+              examples:
+                response:
+                  value:
+                    code: 21121
+                    message: Invalid contact source provided in the request.
         '401':
           description: Unauthorized
           content:
@@ -6799,11 +6719,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -6813,6 +6728,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -6991,11 +6911,6 @@ paths:
               - "$ref": "#/components/schemas/1089Model"
               - "$ref": "#/components/schemas/1142Model"
               - "$ref": "#/components/schemas/5046Model"
-              examples:
-                response:
-                  value:
-                    code: 1001
-                    message: Name of the contact is too long.
               x-apiary-response-examples:
                 error_1001:
                   value:
@@ -7025,6 +6940,11 @@ paths:
                   value:
                     code: 5046
                     message: The customer is blocked
+              examples:
+                response:
+                  value:
+                    code: 1001
+                    message: Name of the contact is too long.
         '401':
           description: Unauthorized
           content:
@@ -7034,11 +6954,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -7048,6 +6963,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -7223,11 +7143,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -7237,6 +7152,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -7321,12 +7241,6 @@ paths:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/5008Model"
               - "$ref": "#/components/schemas/5043Model"
-              examples:
-                response:
-                  value:
-                    code: 20099
-                    message: Text Communication categorisation is not enabled please
-                      use smsOptin flag
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -7340,6 +7254,12 @@ paths:
                   value:
                     code: 5043
                     message: Contact not found for the given request
+              examples:
+                response:
+                  value:
+                    code: 20099
+                    message: Text Communication categorisation is not enabled please
+                      use smsOptin flag
         '401':
           description: Unauthorized
           content:
@@ -7504,11 +7424,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/5043Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -7518,6 +7433,11 @@ paths:
                   value:
                     code: 5043
                     message: Contact not found for the given request
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '401':
           description: Unauthorized
           content:
@@ -7647,12 +7567,6 @@ paths:
               - "$ref": "#/components/schemas/1088Model"
               - "$ref": "#/components/schemas/1055Model"
               - "$ref": "#/components/schemas/1170Model"
-              examples:
-                response:
-                  value:
-                    code: 20099
-                    message: Text Communication categorisation is not enabled please
-                      use smsOptin flag
               x-apiary-response-examples:
                 error_1142:
                   value:
@@ -7678,6 +7592,12 @@ paths:
                   value:
                     code: 1170
                     message: SMS Alert flag is invalid. Valid values are 0 or 1.
+              examples:
+                response:
+                  value:
+                    code: 20099
+                    message: Text Communication categorisation is not enabled please
+                      use smsOptin flag
         '401':
           description: Unauthorized
           content:
@@ -7689,11 +7609,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1175Model"
-              examples:
-                response:
-                  value:
-                    code: 1033
-                    message: You are not authorized to perform this action
               x-apiary-response-examples:
                 error_1033:
                   value:
@@ -7711,6 +7626,11 @@ paths:
                   value:
                     code: 1175
                     message: No business found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1033
+                    message: You are not authorized to perform this action
         '429':
           description: Too Many Requests
           content:
@@ -7810,11 +7730,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -7824,6 +7739,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -8014,11 +7934,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -8028,6 +7943,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -8116,11 +8036,6 @@ paths:
               - "$ref": "#/components/schemas/1089Model"
               - "$ref": "#/components/schemas/1040Model"
               - "$ref": "#/components/schemas/1315Model"
-              examples:
-                response:
-                  value:
-                    code: 1089
-                    message: Customer id is invalid.
               x-apiary-response-examples:
                 error_1089:
                   value:
@@ -8134,6 +8049,11 @@ paths:
                   value:
                     code: 1315
                     message: Invalid survey.
+              examples:
+                response:
+                  value:
+                    code: 1089
+                    message: Customer id is invalid.
         '401':
           description: Unauthorized
           content:
@@ -8143,11 +8063,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -8157,6 +8072,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -8250,11 +8170,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1011Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -8264,6 +8179,11 @@ paths:
                   value:
                     code: 1011
                     message: Business id is invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -8342,11 +8262,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -8360,6 +8275,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -8413,14 +8333,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/survey/reviewsites-alias":
     get:
       responses:
@@ -8460,11 +8372,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -8478,6 +8385,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -8531,14 +8443,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/aggregation/business/{business_id}":
     post:
       responses:
@@ -8566,11 +8470,6 @@ paths:
               - "$ref": "#/components/schemas/1030Model"
               - "$ref": "#/components/schemas/1031Model"
               - "$ref": "#/components/schemas/1032Model"
-              examples:
-                response:
-                  value:
-                    code: 1030
-                    message: URL cannot be blank
               x-apiary-response-examples:
                 error_1030:
                   value:
@@ -8584,6 +8483,11 @@ paths:
                   value:
                     code: 1032
                     message: Invalid source id
+              examples:
+                response:
+                  value:
+                    code: 1030
+                    message: URL cannot be blank
         '401':
           description: Unauthorized
           content:
@@ -8593,11 +8497,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -8607,6 +8506,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -8699,11 +8603,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -8713,6 +8612,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -9376,11 +9280,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -9390,6 +9289,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -9444,14 +9348,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/reports/business/analytics/email":
     get:
       responses:
@@ -9537,11 +9433,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -9551,6 +9442,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -9632,14 +9528,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/reports/review/analytic/time":
     post:
       responses:
@@ -9658,11 +9546,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -9672,6 +9555,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -9825,11 +9713,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -9839,6 +9722,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10238,11 +10126,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10252,6 +10135,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10424,11 +10312,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10438,6 +10321,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10570,11 +10458,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10584,6 +10467,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10701,11 +10589,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10715,6 +10598,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10845,11 +10733,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10859,6 +10742,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -10967,11 +10855,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -10981,6 +10864,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -11474,11 +11362,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -11488,6 +11371,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '404':
           description: Not Found
           content:
@@ -12429,11 +12317,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1315Model"
               - "$ref": "#/components/schemas/1161Model"
-              examples:
-                response:
-                  value:
-                    code: 1315
-                    message: Invalid survey.
               x-apiary-response-examples:
                 error_1315:
                   value:
@@ -12443,6 +12326,11 @@ paths:
                   value:
                     code: 1161
                     message: Invalid API key
+              examples:
+                response:
+                  value:
+                    code: 1315
+                    message: Invalid survey.
         '401':
           description: Unauthorized
           content:
@@ -12522,14 +12410,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/survey/{survey_id}/submit":
     post:
       responses:
@@ -12555,11 +12435,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -12569,6 +12444,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -12996,11 +12876,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -13010,6 +12885,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -13252,14 +13132,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/survey/external/create/{businessId}":
     post:
       responses:
@@ -13324,11 +13196,6 @@ paths:
               - "$ref": "#/components/schemas/2088Model"
               - "$ref": "#/components/schemas/2094Model"
               - "$ref": "#/components/schemas/2095Model"
-              examples:
-                response:
-                  value:
-                    code: 2044
-                    message: Survey already completed
               x-apiary-response-examples:
                 error_2044:
                   value:
@@ -13531,6 +13398,11 @@ paths:
                   value:
                     code: 2095
                     message: ownerEmailId cannot be null
+              examples:
+                response:
+                  value:
+                    code: 2044
+                    message: Survey already completed
         '401':
           description: Unauthorized
           content:
@@ -13540,11 +13412,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1380Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -13554,6 +13421,11 @@ paths:
                   value:
                     code: 1380
                     message: Api key or session token missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -13942,11 +13814,6 @@ paths:
               - "$ref": "#/components/schemas/2038Model"
               - "$ref": "#/components/schemas/2041Model"
               - "$ref": "#/components/schemas/2096Model"
-              examples:
-                response:
-                  value:
-                    code: 1011
-                    message: Business id is invalid
               x-apiary-response-examples:
                 error_1011:
                   value:
@@ -13994,6 +13861,11 @@ paths:
                   value:
                     code: 2096
                     message: Detected conflicting user-access request!
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
         '401':
           description: Unauthorized
           content:
@@ -14003,11 +13875,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1380Model"
               - "$ref": "#/components/schemas/89Model"
-              examples:
-                response:
-                  value:
-                    code: 1380
-                    message: Api key or session token missing
               x-apiary-response-examples:
                 error_1380:
                   value:
@@ -14017,6 +13884,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
+              examples:
+                response:
+                  value:
+                    code: 1380
+                    message: Api key or session token missing
         '404':
           description: Not Found
           content:
@@ -14026,11 +13898,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1175Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -14040,6 +13907,11 @@ paths:
                   value:
                     code: 1175
                     message: No business found with the given id
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
       summary: Update Survey Settings
       operationId: updateSurveySettings
       description: |-
@@ -14152,11 +14024,6 @@ paths:
               - "$ref": "#/components/schemas/2181Model"
               - "$ref": "#/components/schemas/2171Model"
               - "$ref": "#/components/schemas/2175Model"
-              examples:
-                response:
-                  value:
-                    code: 2174
-                    message: Unsupported media format
               x-apiary-response-examples:
                 error_2174:
                   value:
@@ -14179,6 +14046,11 @@ paths:
                   value:
                     code: 2175
                     message: Provided media category is not supported
+              examples:
+                response:
+                  value:
+                    code: 2174
+                    message: Unsupported media format
         '401':
           description: Unauthorized
           content:
@@ -14189,11 +14061,6 @@ paths:
               - "$ref": "#/components/schemas/1011Model"
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1011
-                    message: Business id is invalid
               x-apiary-response-examples:
                 error_1011:
                   value:
@@ -14207,6 +14074,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
         '429':
           description: Too Many Requests
           content:
@@ -14302,11 +14174,6 @@ paths:
               - "$ref": "#/components/schemas/1011Model"
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1011
-                    message: Business id is invalid
               x-apiary-response-examples:
                 error_1011:
                   value:
@@ -14320,6 +14187,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
         '429':
           description: Too Many Requests
           content:
@@ -14361,14 +14233,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/{businessNumber}/update/media/{mediaId}":
     put:
       responses:
@@ -14385,11 +14249,6 @@ paths:
               - "$ref": "#/components/schemas/2270Model"
               - "$ref": "#/components/schemas/2176Model"
               - "$ref": "#/components/schemas/2177Model"
-              examples:
-                response:
-                  value:
-                    code: 2174
-                    message: Unsupported media format
               x-apiary-response-examples:
                 error_2174:
                   value:
@@ -14407,6 +14266,11 @@ paths:
                   value:
                     code: 400
                     message: Invalid media id
+              examples:
+                response:
+                  value:
+                    code: 2174
+                    message: Unsupported media format
         '401':
           description: Unauthorized
           content:
@@ -14416,11 +14280,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -14430,6 +14289,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -14519,11 +14383,6 @@ paths:
               - "$ref": "#/components/schemas/1011Model"
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1011
-                    message: Business id is invalid
               x-apiary-response-examples:
                 error_1011:
                   value:
@@ -14537,6 +14396,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
         '429':
           description: Too Many Requests
           content:
@@ -14618,11 +14482,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5556Model"
               - "$ref": "#/components/schemas/5557Model"
-              examples:
-                response:
-                  value:
-                    code: 5556
-                    message: One or few BusinessIds are Invalid
               x-apiary-response-examples:
                 error_5556:
                   value:
@@ -14632,6 +14491,11 @@ paths:
                   value:
                     code: 5557
                     message: Requested Business Ids are empty.
+              examples:
+                response:
+                  value:
+                    code: 5556
+                    message: One or few BusinessIds are Invalid
         '401':
           description: Unauthorized
           content:
@@ -14641,11 +14505,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -14655,6 +14514,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -14750,11 +14614,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5556Model"
               - "$ref": "#/components/schemas/5557Model"
-              examples:
-                response:
-                  value:
-                    code: 5556
-                    message: One or few BusinessIds are Invalid
               x-apiary-response-examples:
                 error_5556:
                   value:
@@ -14764,6 +14623,11 @@ paths:
                   value:
                     code: 5557
                     message: Requested Business Ids are empty.
+              examples:
+                response:
+                  value:
+                    code: 5556
+                    message: One or few BusinessIds are Invalid
         '401':
           description: Unauthorized
           content:
@@ -14773,11 +14637,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -14787,6 +14646,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -14882,11 +14746,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5556Model"
               - "$ref": "#/components/schemas/5557Model"
-              examples:
-                response:
-                  value:
-                    code: 5556
-                    message: One or few BusinessIds are Invalid
               x-apiary-response-examples:
                 error_5556:
                   value:
@@ -14896,6 +14755,11 @@ paths:
                   value:
                     code: 5557
                     message: Requested Business Ids are empty.
+              examples:
+                response:
+                  value:
+                    code: 5556
+                    message: One or few BusinessIds are Invalid
         '401':
           description: Unauthorized
           content:
@@ -14905,11 +14769,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -14919,6 +14778,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15005,11 +14869,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/5556Model"
               - "$ref": "#/components/schemas/5557Model"
-              examples:
-                response:
-                  value:
-                    code: 5556
-                    message: One or few BusinessIds are Invalid
               x-apiary-response-examples:
                 error_5556:
                   value:
@@ -15019,6 +14878,11 @@ paths:
                   value:
                     code: 5557
                     message: Requested Business Ids are empty.
+              examples:
+                response:
+                  value:
+                    code: 5556
+                    message: One or few BusinessIds are Invalid
         '401':
           description: Unauthorized
           content:
@@ -15028,11 +14892,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15042,6 +14901,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15151,11 +15015,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15165,6 +15024,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15230,14 +15094,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/social/open-url/performance/report":
     post:
       responses:
@@ -15362,11 +15218,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15376,6 +15227,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -15479,11 +15335,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15493,6 +15344,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15546,14 +15402,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/messenger/export":
     post:
       responses:
@@ -15624,11 +15472,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15638,6 +15481,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15779,11 +15627,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15793,6 +15636,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15894,11 +15742,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -15908,6 +15751,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -15987,14 +15835,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/messenger/webhook/event":
     get:
       responses:
@@ -16024,14 +15864,6 @@ paths:
       - name: Accept
         in: header
         description: e.g. application/json
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
         required: false
         example: application/json
         schema:
@@ -16077,11 +15909,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16091,6 +15918,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -16181,11 +16013,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16195,6 +16022,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -16245,14 +16077,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/{EnterpriseCompetitorBusinessId}/child":
     get:
       responses:
@@ -16318,11 +16142,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16332,6 +16151,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '429':
           description: Too Many Requests
           content:
@@ -16374,14 +16198,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/business/{businessId}/competitors":
     get:
       responses:
@@ -16431,11 +16247,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16445,6 +16256,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -16498,14 +16314,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/signup/competitor/{businessNumber}":
     post:
       responses:
@@ -16531,11 +16339,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16545,6 +16348,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -16645,11 +16453,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16659,6 +16462,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -16748,11 +16556,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16762,6 +16565,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -16911,11 +16719,6 @@ paths:
               - "$ref": "#/components/schemas/1187Model"
               - "$ref": "#/components/schemas/1227Model"
               - "$ref": "#/components/schemas/1228Model"
-              examples:
-                response:
-                  value:
-                    code: 1163
-                    message: Invalid start index value
               x-apiary-response-examples:
                 error_1163:
                   value:
@@ -16941,6 +16744,11 @@ paths:
                   value:
                     code: 1228
                     message: Invalid updated to date. Allowed format is MM/dd/yyyy
+              examples:
+                response:
+                  value:
+                    code: 1163
+                    message: Invalid start index value
         '401':
           description: Unauthorized
           content:
@@ -16950,11 +16758,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1164Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -16964,6 +16767,11 @@ paths:
                   value:
                     code: 1164
                     message: Invalid result count value
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -17174,11 +16982,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -17188,6 +16991,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -17323,11 +17131,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -17337,6 +17140,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -17476,11 +17284,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -17490,6 +17293,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -17622,11 +17430,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -17636,6 +17439,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -17816,11 +17624,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -17830,6 +17633,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18043,11 +17851,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18057,6 +17860,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18188,11 +17996,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2150Model"
               - "$ref": "#/components/schemas/2003Model"
-              examples:
-                response:
-                  value:
-                    code: 2150
-                    message: Not a valid reseller/enterprise id.
               x-apiary-response-examples:
                 error_2150:
                   value:
@@ -18202,6 +18005,11 @@ paths:
                   value:
                     code: 2003
                     message: businessNumbers are mandatory
+              examples:
+                response:
+                  value:
+                    code: 2150
+                    message: Not a valid reseller/enterprise id.
         '401':
           description: Unauthorized
           content:
@@ -18324,11 +18132,6 @@ paths:
               - "$ref": "#/components/schemas/2481Model"
               - "$ref": "#/components/schemas/2485Model"
               - "$ref": "#/components/schemas/2483Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18358,6 +18161,11 @@ paths:
                   value:
                     code: 2483
                     message: Question should have minimum 3 words
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18475,11 +18283,6 @@ paths:
               - "$ref": "#/components/schemas/2483Model"
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2462Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18517,6 +18320,11 @@ paths:
                   value:
                     code: 2462
                     message: Owner answer already added please edit answer
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18622,11 +18430,6 @@ paths:
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2480Model"
               - "$ref": "#/components/schemas/2482Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18668,6 +18471,11 @@ paths:
                   value:
                     code: 2482
                     message: Question Id is Invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18773,11 +18581,6 @@ paths:
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2480Model"
               - "$ref": "#/components/schemas/2482Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18819,6 +18622,11 @@ paths:
                   value:
                     code: 2482
                     message: Question Id is Invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -18930,11 +18738,6 @@ paths:
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2480Model"
               - "$ref": "#/components/schemas/2482Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -18976,6 +18779,11 @@ paths:
                   value:
                     code: 2482
                     message: Question Id is Invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19076,11 +18884,6 @@ paths:
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2480Model"
               - "$ref": "#/components/schemas/2482Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19122,6 +18925,11 @@ paths:
                   value:
                     code: 2482
                     message: Question Id is Invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19211,11 +19019,6 @@ paths:
               - "$ref": "#/components/schemas/2461Model"
               - "$ref": "#/components/schemas/2480Model"
               - "$ref": "#/components/schemas/2482Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19257,6 +19060,11 @@ paths:
                   value:
                     code: 2482
                     message: Question Id is Invalid
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19365,11 +19173,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/2466Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19383,6 +19186,11 @@ paths:
                   value:
                     code: 2466
                     message: Invalid input request
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19491,11 +19299,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/2466Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19509,6 +19312,11 @@ paths:
                   value:
                     code: 2466
                     message: Invalid input request
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19605,11 +19413,6 @@ paths:
               - "$ref": "#/components/schemas/2491Model"
               - "$ref": "#/components/schemas/2492Model"
               - "$ref": "#/components/schemas/2493Model"
-              examples:
-                response:
-                  value:
-                    code: 2486
-                    message: Business Id missing or invalid
               x-apiary-response-examples:
                 error_2486:
                   value:
@@ -19643,6 +19446,11 @@ paths:
                   value:
                     code: 2493
                     message: Duplicate Google Service is not allowed
+              examples:
+                response:
+                  value:
+                    code: 2486
+                    message: Business Id missing or invalid
         '401':
           description: Unauthorized
           content:
@@ -19652,11 +19460,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19666,6 +19469,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19815,11 +19623,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -19829,6 +19632,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -19952,11 +19760,6 @@ paths:
               - "$ref": "#/components/schemas/2492Model"
               - "$ref": "#/components/schemas/2493Model"
               - "$ref": "#/components/schemas/2494Model"
-              examples:
-                response:
-                  value:
-                    code: 2486
-                    message: Business Id missing or invalid
               x-apiary-response-examples:
                 error_2486:
                   value:
@@ -19994,6 +19797,11 @@ paths:
                   value:
                     code: 2494
                     message: Invalid GBP Service Id
+              examples:
+                response:
+                  value:
+                    code: 2486
+                    message: Business Id missing or invalid
         '401':
           description: Unauthorized
           content:
@@ -20003,11 +19811,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20017,6 +19820,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20158,11 +19966,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2486Model"
               - "$ref": "#/components/schemas/2495Model"
-              examples:
-                response:
-                  value:
-                    code: 2486
-                    message: Business Id missing or invalid
               x-apiary-response-examples:
                 error_2486:
                   value:
@@ -20172,6 +19975,11 @@ paths:
                   value:
                     code: 2495
                     message: Invalid GBP Service Id
+              examples:
+                response:
+                  value:
+                    code: 2486
+                    message: Business Id missing or invalid
         '401':
           description: Unauthorized
           content:
@@ -20181,11 +19989,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20195,6 +19998,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20328,11 +20136,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20342,6 +20145,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20394,14 +20202,6 @@ paths:
           API key provided by Birdeye for data exchange.
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/google-services/services/location-mapping":
     post:
       responses:
@@ -20419,11 +20219,6 @@ paths:
               - "$ref": "#/components/schemas/2496Model"
               - "$ref": "#/components/schemas/2493Model"
               - "$ref": "#/components/schemas/2494Model"
-              examples:
-                response:
-                  value:
-                    code: 2486
-                    message: Business Id missing or invalid
               x-apiary-response-examples:
                 error_2486:
                   value:
@@ -20445,6 +20240,11 @@ paths:
                   value:
                     code: 2494
                     message: Invalid GBP Service Id
+              examples:
+                response:
+                  value:
+                    code: 2486
+                    message: Business Id missing or invalid
         '401':
           description: Unauthorized
           content:
@@ -20454,11 +20254,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20468,6 +20263,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20590,11 +20390,6 @@ paths:
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/5008Model"
               - "$ref": "#/components/schemas/5043Model"
-              examples:
-                response:
-                  value:
-                    code: 1167
-                    message: API key is missing
               x-apiary-response-examples:
                 error_1167:
                   value:
@@ -20608,6 +20403,11 @@ paths:
                   value:
                     code: 5043
                     message: Contact not found for the given request
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
         '401':
           description: Unauthorized
           content:
@@ -20745,11 +20545,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20759,6 +20554,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20908,11 +20708,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -20922,6 +20717,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -20974,14 +20774,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/insights":
     post:
       responses:
@@ -21075,11 +20867,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -21089,6 +20876,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -21193,11 +20985,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -21207,6 +20994,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -21354,11 +21146,6 @@ paths:
               - "$ref": "#/components/schemas/4013Model"
               - "$ref": "#/components/schemas/2521Model"
               - "$ref": "#/components/schemas/2522Model"
-              examples:
-                response:
-                  value:
-                    code: 400
-                    message: Category Id not found
               x-apiary-response-examples:
                 error_4011:
                   value:
@@ -21380,6 +21167,11 @@ paths:
                   value:
                     code: 2286
                     message: Invalid whatsapp business link
+              examples:
+                response:
+                  value:
+                    code: 400
+                    message: Category Id not found
         '401':
           description: Unauthorized
           content:
@@ -21447,14 +21239,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/apple-location-attributes-list":
     get:
       responses:
@@ -21500,11 +21284,6 @@ paths:
               - "$ref": "#/components/schemas/4011Model"
               - "$ref": "#/components/schemas/4012Model"
               - "$ref": "#/components/schemas/4013Model"
-              examples:
-                response:
-                  value:
-                    code: 400
-                    message: Category Id not found
               x-apiary-response-examples:
                 error_4011:
                   value:
@@ -21518,6 +21297,11 @@ paths:
                   value:
                     code: 400
                     message: Invalid country code
+              examples:
+                response:
+                  value:
+                    code: 400
+                    message: Category Id not found
         '401':
           description: Unauthorized
           content:
@@ -21573,14 +21357,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/apple-action-links":
     get:
       responses:
@@ -21618,11 +21394,6 @@ paths:
               - "$ref": "#/components/schemas/4011Model"
               - "$ref": "#/components/schemas/4012Model"
               - "$ref": "#/components/schemas/4013Model"
-              examples:
-                response:
-                  value:
-                    code: 400
-                    message: Category Id not found
               x-apiary-response-examples:
                 error_4011:
                   value:
@@ -21636,6 +21407,11 @@ paths:
                   value:
                     code: 400
                     message: Invalid country code
+              examples:
+                response:
+                  value:
+                    code: 400
+                    message: Category Id not found
         '401':
           description: Unauthorized
           content:
@@ -21691,14 +21467,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/category-list":
     get:
       responses:
@@ -21719,11 +21487,6 @@ paths:
               - "$ref": "#/components/schemas/4012Model"
               - "$ref": "#/components/schemas/4013Model"
               - "$ref": "#/components/schemas/4015Model"
-              examples:
-                response:
-                  value:
-                    code: 400
-                    message: Source name not found
               x-apiary-response-examples:
                 error_4014:
                   value:
@@ -21741,6 +21504,11 @@ paths:
                   value:
                     code: 400
                     message: Invalid Source Name
+              examples:
+                response:
+                  value:
+                    code: 400
+                    message: Source name not found
         '401':
           description: Unauthorized
           content:
@@ -21809,14 +21577,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/create":
     post:
       responses:
@@ -21851,11 +21611,6 @@ paths:
               - "$ref": "#/components/schemas/2522Model"
               - "$ref": "#/components/schemas/6000Model"
               - "$ref": "#/components/schemas/6001Model"
-              examples:
-                response:
-                  value:
-                    code: 2296
-                    message: Invalid Food Delivery link
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -21953,6 +21708,11 @@ paths:
                   value:
                     code: 6001
                     message: The 'sub_locality' field cannot exceed 80 characters.
+              examples:
+                response:
+                  value:
+                    code: 2296
+                    message: Invalid Food Delivery link
         '401':
           description: Unauthorized
           content:
@@ -22055,11 +21815,6 @@ paths:
               - "$ref": "#/components/schemas/2522Model"
               - "$ref": "#/components/schemas/6000Model"
               - "$ref": "#/components/schemas/6001Model"
-              examples:
-                response:
-                  value:
-                    code: 2296
-                    message: Invalid Food Delivery link
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -22157,6 +21912,11 @@ paths:
                   value:
                     code: 6001
                     message: The 'sub_locality' field cannot exceed 80 characters.
+              examples:
+                response:
+                  value:
+                    code: 2296
+                    message: Invalid Food Delivery link
         '401':
           description: Unauthorized
           content:
@@ -22645,14 +22405,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/more-hours-type":
     get:
       responses:
@@ -22674,11 +22426,6 @@ paths:
               - "$ref": "#/components/schemas/4012Model"
               - "$ref": "#/components/schemas/4013Model"
               - "$ref": "#/components/schemas/4015Model"
-              examples:
-                response:
-                  value:
-                    code: 400
-                    message: Source name not found
               x-apiary-response-examples:
                 error_4014:
                   value:
@@ -22696,6 +22443,11 @@ paths:
                   value:
                     code: 400
                     message: Invalid Source Name
+              examples:
+                response:
+                  value:
+                    code: 400
+                    message: Source name not found
         '401':
           description: Unauthorized
           content:
@@ -22757,14 +22509,6 @@ paths:
           exchange."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/{businessNumber}/gmb/keywords":
     post:
       responses:
@@ -22798,12 +22542,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2457Model"
               - "$ref": "#/components/schemas/2458Model"
-              examples:
-                response:
-                  value:
-                    code: 2457
-                    message: Invalid sortby value. Allowed values are 'frequency'
-                      or 'keyword'
               x-apiary-response-examples:
                 error_2457:
                   value:
@@ -22814,6 +22552,12 @@ paths:
                   value:
                     code: 2458
                     message: Invalid order value. Allowed values are 'asc' or 'desc'.
+              examples:
+                response:
+                  value:
+                    code: 2457
+                    message: Invalid sortby value. Allowed values are 'frequency'
+                      or 'keyword'
         '401':
           description: Unauthorized
           content:
@@ -22823,11 +22567,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -22837,6 +22576,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23117,12 +22861,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2457Model"
               - "$ref": "#/components/schemas/2458Model"
-              examples:
-                response:
-                  value:
-                    code: 2457
-                    message: Invalid sortby value. Allowed values are 'frequency'
-                      or 'keyword'
               x-apiary-response-examples:
                 error_2457:
                   value:
@@ -23133,6 +22871,12 @@ paths:
                   value:
                     code: 2458
                     message: Invalid order value. Allowed values are 'asc' or 'desc'.
+              examples:
+                response:
+                  value:
+                    code: 2457
+                    message: Invalid sortby value. Allowed values are 'frequency'
+                      or 'keyword'
         '401':
           description: Unauthorized
           content:
@@ -23142,11 +22886,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -23156,6 +22895,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23306,11 +23050,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/2521Model"
               - "$ref": "#/components/schemas/2522Model"
-              examples:
-                response:
-                  value:
-                    code: 2285
-                    message: Invalid text message number
               x-apiary-response-examples:
                 error_2521:
                   value:
@@ -23320,6 +23059,11 @@ paths:
                   value:
                     code: 2286
                     message: Invalid whatsapp business link
+              examples:
+                response:
+                  value:
+                    code: 2285
+                    message: Invalid text message number
         '401':
           description: Unauthorized
           content:
@@ -23375,14 +23119,6 @@ paths:
           fetched."
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/public/product/setup/googleMerchant":
     post:
       responses:
@@ -23409,11 +23145,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -23423,6 +23154,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23513,11 +23249,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -23527,6 +23258,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23644,11 +23380,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -23658,6 +23389,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23915,11 +23651,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -23929,6 +23660,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -23988,14 +23724,6 @@ paths:
         example: "[Required] User assosiated businessNumber"
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/public/product/deleteProduct":
     post:
       responses:
@@ -24024,11 +23752,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -24038,6 +23761,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -24164,11 +23892,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -24178,6 +23901,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -24309,11 +24037,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -24323,6 +24046,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -24418,11 +24146,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -24432,6 +24155,11 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -24676,14 +24404,6 @@ paths:
         example: "- Long Business Number"
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/searchAi/public/available-runs":
     get:
       responses:
@@ -24856,14 +24576,6 @@ paths:
         example: "[Required] User associated businessNumber"
         schema:
           type: string
-      - name: Content-Type
-        in: header
-        description: Media type of the JSON request body.
-        required: false
-        example: application/json
-        schema:
-          type: string
-          default: application/json
   "/v1/listing/searchAi/public/citations":
     post:
       responses:
@@ -25927,11 +25639,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -25945,6 +25652,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -26051,11 +25763,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -26069,6 +25776,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -26171,11 +25883,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -26189,6 +25896,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -26376,11 +26088,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -26394,6 +26101,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:
@@ -26555,11 +26267,6 @@ paths:
               - "$ref": "#/components/schemas/1161Model"
               - "$ref": "#/components/schemas/1167Model"
               - "$ref": "#/components/schemas/1033Model"
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
               x-apiary-response-examples:
                 error_1161:
                   value:
@@ -26573,6 +26280,11 @@ paths:
                   value:
                     code: 1033
                     message: You are not authorized to perform this action
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
         '404':
           description: Not Found
           content:

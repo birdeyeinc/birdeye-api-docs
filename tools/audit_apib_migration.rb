@@ -493,6 +493,7 @@ end
 if sync_examples
   changed_examples = 0
   added_content_type_headers = 0
+  removed_get_content_type_headers = 0
   synchronized_response_models = 0
 
   matched.each do |source, target|
@@ -507,8 +508,12 @@ if sync_examples
       media_type['example'] = source[:request_example]
     end
 
-    if source[:request_media_type] == 'application/json'
-      parameters = operation['parameters'] ||= []
+    parameters = operation['parameters'] ||= []
+    if source[:method] == 'get'
+      original_length = parameters.length
+      parameters.reject! { |parameter| parameter['in'] == 'header' && parameter['name'] == 'Content-Type' }
+      removed_get_content_type_headers += original_length - parameters.length
+    elsif source[:request_media_type] == 'application/json'
       unless parameters.any? { |parameter| parameter['in'] == 'header' && parameter['name'] == 'Content-Type' }
         parameters << {
           'name' => 'Content-Type',
@@ -579,6 +584,7 @@ if sync_examples
   File.write(ARGV[1], serialized)
   puts "Synchronized examples: #{changed_examples}"
   puts "Added Content-Type headers: #{added_content_type_headers}"
+  puts "Removed GET Content-Type headers: #{removed_get_content_type_headers}"
   puts "Synchronized response model groups: #{synchronized_response_models}"
   exit
 end
@@ -595,6 +601,7 @@ different_parameter_metadata = []
 missing_headers = []
 different_header_examples = []
 missing_header_defaults = []
+get_content_type_headers = []
 missing_request_fields = []
 different_request_field_descriptions = []
 different_request_field_metadata = []
@@ -650,6 +657,10 @@ matched.each do |source, target|
     fields << name
   end
   missing_header_defaults << [source, default_gap] unless default_gap.empty?
+
+  if source[:method] == 'get' && target[:headers].key?('Content-Type')
+    get_content_type_headers << source
+  end
 
   request_gap = source[:request_paths] - target[:request_paths]
   missing_request_fields << [source, request_gap] unless request_gap.empty?
@@ -739,6 +750,7 @@ puts "Parameters with different type/required/example metadata: #{different_para
 puts "Operations missing headers: #{missing_headers.length}"
 puts "Header examples that differ: #{different_header_examples.length}"
 puts "Operations missing editable header defaults: #{missing_header_defaults.length}"
+puts "GET operations with Content-Type headers: #{get_content_type_headers.length}"
 puts "Operations missing request fields: #{missing_request_fields.length}"
 puts "Request field descriptions that differ: #{different_request_field_descriptions.length}"
 puts "Request fields with different type/required metadata: #{different_request_field_metadata.length}"
@@ -821,6 +833,11 @@ unless missing_header_defaults.empty?
   missing_header_defaults.each { |source, fields| puts "- #{source[:method].upcase} #{source[:path]}: #{fields.join(', ')}" }
 end
 
+unless get_content_type_headers.empty?
+  puts "\nGET OPERATIONS WITH CONTENT-TYPE"
+  get_content_type_headers.each { |source| puts "- GET #{source[:path]}" }
+end
+
 unless missing_request_fields.empty?
   puts "\nMISSING REQUEST FIELDS"
   missing_request_fields.each { |source, fields| puts "- #{source[:method].upcase} #{source[:path]}: #{fields.join(', ')}" }
@@ -901,6 +918,7 @@ exit 1 unless missing_operations.empty? && extra_operations.empty? && summary_mi
               description_mismatches.empty? && missing_parameters.empty? && different_parameter_descriptions.empty? &&
               different_parameter_metadata.empty? &&
               missing_headers.empty? && different_header_examples.empty? && missing_header_defaults.empty? &&
+              get_content_type_headers.empty? &&
               missing_request_fields.empty? && different_request_field_descriptions.empty? &&
               different_request_field_metadata.empty? &&
               missing_request_examples.empty? && different_request_examples.empty? &&

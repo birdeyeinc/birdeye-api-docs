@@ -66,7 +66,7 @@ The docs will be available at `http://localhost:3000`.
 Use `api/openapi.yaml` as the source of truth for API reference content. For each new operation:
 
 1. Add the path and HTTP method with a unique `operationId`, `summary`, and the complete description, including every note, warning, default behavior, and field interaction.
-2. Document every path/query/header parameter with its type, required state, description, and example. Give `Accept` and JSON `Content-Type` headers both an `example` and a matching `schema.default`; Mintlify then prefills the editable “Try it” inputs.
+2. Document every path/query/header parameter with its type, required state, description, and example. Give `Accept` an `example` and matching `schema.default`. Add the same editable default for JSON `Content-Type` only when the operation has an actual JSON request body; do not add it to bodyless GET operations.
 3. Add the complete `requestBody` schema: media type, required fields, nested fields, descriptions, formats/enums, and a realistic example.
 4. Add every documented response status with its complete schema and example. Do not leave array `items` or object `properties` empty when the source documents their fields.
 5. Create a small endpoint page in the relevant API folder:
