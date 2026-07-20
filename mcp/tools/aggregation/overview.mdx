@@ -1,0 +1,20 @@
+---
+title: "Aggregation Overview"
+description: "Tools for accessing review source configuration and site aliases."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_all_aggregation_sources" icon="rss" href="/mcp/tools/aggregation/get-all-aggregation-sources">
+    List all review aggregation sources (monitoring URLs) configured for the business
+  </Card>
+  <Card title="get_review_site_aliases" icon="tags" href="/mcp/tools/aggregation/get-review-site-aliases">
+    Retrieve the list of review-site aliases used as filter values in other tools
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Call `get_review_site_aliases` to get valid `sources` filter values before querying reviews.
+- `get_all_aggregation_sources` returns full source details (URL, status, ID) while `get_review_site_aliases` returns just the alias strings.

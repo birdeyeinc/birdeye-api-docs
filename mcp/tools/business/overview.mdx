@@ -1,0 +1,20 @@
+---
+title: "Business Overview"
+description: "Tools for fetching business profile and location data."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_business_info" icon="building" href="/mcp/tools/business/get-business-info">
+    Fetch the business profile of the currently authenticated user
+  </Card>
+  <Card title="get_child_locations" icon="location-dot" href="/mcp/tools/business/get-child-locations">
+    Fetch all child locations of the current enterprise account
+  </Card>
+</CardGroup>
+
+## Tips
+
+- `get_child_locations` is a prerequisite for any location-level tool — call it first to get valid location IDs.
+- `get_business_info` returns the top-level account profile (name, address, phone, website).
