@@ -1,7 +1,16 @@
-/* Bold tab labels */
-nav [role="tablist"] button,
-nav [role="tablist"] a,
-[data-testid="tab"],
-.nav-tab {
+/* Tab labels — semi-bold by default, full bold when active */
+.nav-tabs-item {
+  font-weight: 600 !important;
+}
+
+.nav-tabs-item[data-active="true"],
+.nav-tabs-item[aria-current="location"] {
   font-weight: 700 !important;
+}
+
+/* Hide "Powered by Mintlify" footer branding */
+a[href*="mintlify.com"],
+[class*="powered"],
+[class*="branding"] {
+  display: none !important;
 }
