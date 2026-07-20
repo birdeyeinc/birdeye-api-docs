@@ -1,18 +1,13 @@
 ---
 title: "Error Response"
-description: "Structure of error responses returned by the Birdeye API"
 ---
 
-Birdeye API returns a validation error in case of missing or invalid input. The response includes an error `code` and a human-readable `message`.
+Birdeye API will return a validation error in case of missing/invalid input in the request. The response will return the errorCode and errorMessage.
 
-```json
+For example :
+```
 {
-  "code": 1161,
-  "message": "Invalid API key"
+    "code": 1161,
+    "message": "Invalid API key"
 }
 ```
-
-| Field | Type | Description |
-|---|---|---|
-| `code` | integer | Birdeye internal error code |
-| `message` | string | Human-readable description of the error |

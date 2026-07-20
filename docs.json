@@ -117,6 +117,7 @@
                 "group": "Business",
                 "collapsed": true,
                 "pages": [
+                  "api/business/overview",
                   "api/business/create-a-business",
                   "api/business/search-business",
                   "api/business/get-business",
@@ -138,6 +139,7 @@
                 "group": "Custom Fields",
                 "collapsed": true,
                 "pages": [
+                  "api/custom-fields/overview",
                   "api/custom-fields/create",
                   "api/custom-fields/update",
                   "api/custom-fields/get",
@@ -151,6 +153,7 @@
                 "group": "User",
                 "collapsed": true,
                 "pages": [
+                  "api/user/overview",
                   "api/user/create-user",
                   "api/user/update-user",
                   "api/user/delete-a-user",
@@ -162,6 +165,7 @@
                 "group": "Reviews",
                 "collapsed": true,
                 "pages": [
+                  "api/reviews/overview",
                   "api/reviews/get-reviews",
                   "api/reviews/archived-get-reviews",
                   "api/reviews/get-reviews-summary",
@@ -178,6 +182,7 @@
                 "group": "Contact",
                 "collapsed": true,
                 "pages": [
+                  "api/contact/overview",
                   "api/contact/create-or-update-contact",
                   "api/contact/get-contact",
                   "api/contact/delete-contact",
@@ -195,6 +200,7 @@
                 "group": "Contact V2",
                 "collapsed": true,
                 "pages": [
+                  "api/contact-v2/overview",
                   "api/contact-v2/upsert-contact",
                   "api/contact-v2/retrieve-contact",
                   "api/contact-v2/customer-checkin",
@@ -206,6 +212,7 @@
                 "group": "Campaign",
                 "collapsed": true,
                 "pages": [
+                  "api/campaign/overview",
                   "api/campaign/fetch-request-url",
                   "api/campaign/set-defaullt-review-sources"
                 ]
@@ -214,6 +221,7 @@
                 "group": "Aggregation",
                 "collapsed": true,
                 "pages": [
+                  "api/aggregation/overview",
                   "api/aggregation/get-business-aggregation-sources",
                   "api/aggregation/get-all-aggregation-source",
                   "api/aggregation/add-aggregation-url",
@@ -224,6 +232,7 @@
                 "group": "Report",
                 "collapsed": true,
                 "pages": [
+                  "api/report/overview",
                   "api/report/get-dashboard-data",
                   "api/report/get-review-conversion-report",
                   "api/report/review-and-rating-over-time-report",
@@ -247,6 +256,7 @@
                 "group": "Survey",
                 "collapsed": true,
                 "pages": [
+                  "api/survey/overview",
                   "api/survey/get-survey",
                   "api/survey/post-a-survey-response",
                   "api/survey/list-responses-for-a-survey",
@@ -259,6 +269,7 @@
                 "group": "Business Media",
                 "collapsed": true,
                 "pages": [
+                  "api/business-media/overview",
                   "api/business-media/add-media",
                   "api/business-media/get-media",
                   "api/business-media/update-media",
@@ -269,6 +280,7 @@
                 "group": "Social",
                 "collapsed": true,
                 "pages": [
+                  "api/social/overview",
                   "api/social/schedule-social-post",
                   "api/social/edit-scheduled-social-post",
                   "api/social/edit-published-social-post",
@@ -288,6 +300,7 @@
                 "group": "Conversation",
                 "collapsed": true,
                 "pages": [
+                  "api/conversation/overview",
                   "api/conversation/list-conversations"
                 ]
               },
@@ -295,6 +308,7 @@
                 "group": "Subscription",
                 "collapsed": true,
                 "pages": [
+                  "api/subscription/overview",
                   "api/subscription/create-subscription",
                   "api/subscription/unsubscribe-subscription"
                 ]
@@ -303,6 +317,7 @@
                 "group": "Webhook",
                 "collapsed": true,
                 "pages": [
+                  "api/webhook/overview",
                   "api/webhook/get-events",
                   "api/webhook/create-webhook-subscription"
                 ]
@@ -311,6 +326,7 @@
                 "group": "Competitor",
                 "collapsed": true,
                 "pages": [
+                  "api/competitor/overview",
                   "api/competitor/get-competitor-business",
                   "api/competitor/get-competitor-child-business",
                   "api/competitor/get-business-competitors",
@@ -327,6 +343,7 @@
                 "group": "Competitor AI",
                 "collapsed": true,
                 "pages": [
+                  "api/competitor-ai/overview",
                   "api/competitor-ai/retrieve-competitor-reviews",
                   "api/competitor-ai/retrieve-competitor-review-metrics"
                 ]
@@ -335,6 +352,7 @@
                 "group": "Insight AI",
                 "collapsed": true,
                 "pages": [
+                  "api/insight-ai/overview",
                   "api/insight-ai/get-insight-experience-score-benchmark",
                   "api/insight-ai/get-insight-experience-location-info"
                 ]
@@ -343,6 +361,7 @@
                 "group": "Google Q&A",
                 "collapsed": true,
                 "pages": [
+                  "api/google-q-a/overview",
                   "api/google-q-a/create-question",
                   "api/google-q-a/create-answer",
                   "api/google-q-a/update-question",
@@ -358,6 +377,7 @@
                 "group": "Google Services",
                 "collapsed": true,
                 "pages": [
+                  "api/google-services/overview",
                   "api/google-services/create-service",
                   "api/google-services/get-all-services",
                   "api/google-services/update-service",
@@ -370,6 +390,7 @@
                 "group": "FAQ",
                 "collapsed": true,
                 "pages": [
+                  "api/faq/overview",
                   "api/faq/get-all-qna"
                 ]
               },
@@ -377,6 +398,7 @@
                 "group": "Listing",
                 "collapsed": true,
                 "pages": [
+                  "api/listing/overview",
                   "api/listing/fix-listing",
                   "api/listing/get-location-status-report",
                   "api/listing/listings-insights",
@@ -399,6 +421,7 @@
                 "group": "GMB Products",
                 "collapsed": true,
                 "pages": [
+                  "api/gmb-products/overview",
                   "api/gmb-products/onboard-google-merchant-account",
                   "api/gmb-products/create-product-listing",
                   "api/gmb-products/update-product-listing",
@@ -413,6 +436,7 @@
                 "group": "Search AI",
                 "collapsed": true,
                 "pages": [
+                  "api/search-ai/overview",
                   "api/search-ai/get-search-ai-configuration",
                   "api/search-ai/get-search-ai-available-runs",
                   "api/search-ai/get-search-ai-citations",
@@ -425,6 +449,7 @@
                 "group": "Ticketing",
                 "collapsed": true,
                 "pages": [
+                  "api/ticketing/overview",
                   "api/ticketing/create-ticket",
                   "api/ticketing/add-ticket-comments",
                   "api/ticketing/update-ticket",
@@ -435,6 +460,7 @@
                 "group": "Integration",
                 "collapsed": true,
                 "pages": [
+                  "api/integration/overview",
                   "api/integration/add-locations"
                 ]
               }

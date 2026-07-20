@@ -1,36 +1,35 @@
 ---
 title: "Pagination"
-description: "How pagination works across Birdeye APIs"
 ---
 
-Multiple APIs support pagination using two parameters: `sindex` and `count`.
+Multiple API supporting pagination. These APIs have two parameters sindex and count.
 
-| Parameter | Description |
-|---|---|
-| `sindex` | Start index — the record to begin from |
-| `count` | Number of records to fetch |
 
-<Warning>
-  Deep pagination with a record window greater than 100,000 is not supported. Ensure `sindex + count ≤ 100,000`. Use appropriate filters to narrow down your result set if needed.
-</Warning>
+* <b>sindex:</b> is the start index
+* <b>count:</b> No. of records, you want to fetch.
 
-## Examples
 
-Fetch 20 records in two calls:
+> __Note__
+> - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
 
+
+
+<b>For example :</b>
+
+* Suppose you have to fetch 20 records:
 ```
-API call 1 → sindex=0,  count=10
-API call 2 → sindex=10, count=10
-```
-
-Fetch up to the 100,000th record:
-
-```
-sindex=99000, count=1000   ✓  (99000 + 1000 = 100000)
+API call 1 -> sindex=0, count 10
+API call 2 -> sindex -> 10, count 10.
 ```
 
-Exceeding the limit returns an error:
-
+* To fetch 100kth record:
 ```
-sindex=99000, count=1001   ✗  (99000 + 1001 = 100001 — exceeds limit)
+sindex = 99000 and count = 1000
+will just work fine as sindex + count = 100000 which is less than 100,000.
+```
+
+* If you fetch more than 100kth records:
+```
+sindex = 99000 and count = 1001, sindex + count = 100001
+which is greater than 100,000. Thus, you'll receive an error in response.
 ```
