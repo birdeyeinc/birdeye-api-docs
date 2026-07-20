@@ -7,7 +7,7 @@
     "light": "#3395FF",
     "dark": "#0055CC"
   },
-  "favicon": "/images/favicon.svg",
+  "favicon": "/images/logo-dark.png",
   "navigation": {
     "tabs": [
       {
@@ -26,7 +26,7 @@
         ]
       },
       {
-        "tab": "API Docs",
+        "tab": "API Reference",
         "groups": [
           {
             "group": "Get Started",
@@ -374,9 +374,10 @@
     ]
   },
   "logo": {
-    "light": "/images/logo-light.png",
-    "dark": "/images/logo-dark.png"
+    "light": "/images/birdeye-vector-logo.svg",
+    "dark": "/images/birdeye-vector-logo.svg"
   },
+  "css": "/custom.css",
   "navbar": {
     "links": [
       {
