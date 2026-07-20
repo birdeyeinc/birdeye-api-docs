@@ -11,6 +11,41 @@ require 'yaml'
 
 HTTP_METHODS = %w[get post put delete patch].freeze
 APIB_TYPE_PATTERN = /\((?:[^)]*,\s*)?(?:object|array(?:\[[^\]]+\])?|number|string(?:\[\])?|boolean|integer)(?:\s*,[^)]*)?\)/i
+STATIC_PAGE_TITLES = {
+  'introduction' => 'Birdeye',
+  'authentication' => 'Authentication and Rate limiting',
+  'pagination' => 'Pagination',
+  'http-status-codes' => 'HTTP Status Codes',
+  'error-response' => 'Error Response'
+}.freeze
+GROUP_PAGE_PATHS = {
+  'Business' => 'api/business/overview',
+  'Custom Fields' => 'api/custom-fields/overview',
+  'User' => 'api/user/overview',
+  'Reviews' => 'api/reviews/overview',
+  'Contact' => 'api/contact/overview',
+  'Contact V2' => 'api/contact-v2/overview',
+  'Campaign' => 'api/campaign/overview',
+  'Aggregation' => 'api/aggregation/overview',
+  'Report' => 'api/report/overview',
+  'Survey' => 'api/survey/overview',
+  'Business Media' => 'api/business-media/overview',
+  'Social' => 'api/social/overview',
+  'Conversation' => 'api/conversation/overview',
+  'Subscription' => 'api/subscription/overview',
+  'Webhook' => 'api/webhook/overview',
+  'Competitor' => 'api/competitor/overview',
+  'Competitor AI' => 'api/competitor-ai/overview',
+  'Insight AI' => 'api/insight-ai/overview',
+  'Google Q&A' => 'api/google-q-a/overview',
+  'Google Services' => 'api/google-services/overview',
+  'FAQ' => 'api/faq/overview',
+  'Listing' => 'api/listing/overview',
+  'GMB Products' => 'api/gmb-products/overview',
+  'Search AI' => 'api/search-ai/overview',
+  'Ticketing' => 'api/ticketing/overview',
+  'Integration' => 'api/integration/overview'
+}.freeze
 
 def usage!
   warn 'Usage: ruby tools/audit_apib_migration.rb [--sync-examples] path/to/apiary.apib api/openapi.yaml'
@@ -299,6 +334,26 @@ def normalized_content(value)
   value.to_s.lines.map(&:rstrip).reject { |line| line.empty? }.join("\n").strip
 end
 
+def normalized_visible_content(value)
+  value.to_s.lines.map(&:rstrip).reject do |line|
+    line.empty? || line.match?(/\A(?:<pre><code>|<\/pre><\/code>|```\w*)\z/)
+  end.join("\n").strip
+end
+
+def mdx_frontmatter(content)
+  content[/\A---\s*\n(.*?)\n---\s*\n/m, 1].to_s
+end
+
+def mdx_body(path)
+  File.read(path).sub(/\A---\s*\n.*?\n---\s*\n/m, '').strip
+end
+
+def mdx_title(path)
+  frontmatter = mdx_frontmatter(File.read(path))
+  match = frontmatter.match(/^title:\s*["']?(.+?)["']?\s*$/)
+  match && match[1]
+end
+
 def parse_apib_document(file)
   lines = File.readlines(file, encoding: 'UTF-8')
   title_index = lines.index { |line| line.match?(/^# Birdeye\s*$/) }
@@ -308,6 +363,31 @@ def parse_apib_document(file)
              else
                ''
              end
+
+  section_headings = [
+    ['authentication', /^### Authentication and Rate limiting\s*$/],
+    ['pagination', /^### Pagination\s*$/],
+    ['http-status-codes', /^### HTTP Status Codes\s*$/],
+    ['error-response', /^### Error Response\s*$/]
+  ]
+  heading_indices = section_headings.map do |name, pattern|
+    [name, lines.index { |line| line.match?(pattern) }]
+  end
+  sections = {}
+  authentication_index = heading_indices.assoc('authentication')[1]
+  if title_index && authentication_index
+    sections['introduction'] = lines[(title_index + 1)...authentication_index].join.strip
+  end
+  heading_indices.each_with_index do |(name, heading_index), position|
+    next unless heading_index
+
+    next_index = if position + 1 < heading_indices.length
+                   heading_indices[position + 1][1]
+                 else
+                   first_model_index
+                 end
+    sections[name] = lines[(heading_index + 1)...next_index].join.strip if next_index
+  end
 
   groups = {}
   lines.each_with_index do |line, index|
@@ -324,13 +404,38 @@ def parse_apib_document(file)
   end
 
   models = []
-  lines.each do |line|
+  model_examples = {}
+  invalid_model_examples = []
+  lines.each_with_index do |line, index|
     match = line.match(/^## (\d+) \[\/\d+\]\s*$/)
-    models << "#{match[1]}Model" if match
+    next unless match
+
+    name = "#{match[1]}Model"
+    models << name
+    cursor = index + 1
+    body = []
+    while cursor < lines.length && !lines[cursor].match?(/^## /)
+      body << lines[cursor]
+      cursor += 1
+    end
+    json = body.join[/\{.*\}/m]
+    begin
+      model_examples[name] = JSON.parse(json) if json
+    rescue JSON::ParserError
+      invalid_model_examples << name
+    end
   end
 
   host = lines.find { |line| line.start_with?('HOST:') }.to_s.sub(/^HOST:\s*/, '').strip
-  { overview: overview, groups: groups, models: models.uniq, host: host }
+  {
+    overview: overview,
+    sections: sections,
+    groups: groups,
+    models: models.uniq,
+    model_examples: model_examples,
+    invalid_model_examples: invalid_model_examples,
+    host: host
+  }
 end
 
 def nested_strings(value)
@@ -649,24 +754,55 @@ group_description_mismatches = apib_document[:groups].keys.select do |name|
 end
 target_schemas = openapi.fetch('components', {}).fetch('schemas', {})
 missing_error_models = apib_document[:models] - target_schemas.keys
+different_error_model_examples = apib_document[:model_examples].keys.select do |name|
+  target_schemas.dig(name, 'example') != apib_document[:model_examples][name]
+end
 
 repository_root = File.expand_path('..', File.dirname(File.expand_path(ARGV[1])))
-static_pages = %w[introduction authentication pagination http-status-codes error-response].map do |name|
-  File.join(repository_root, 'api', "#{name}.mdx")
+static_pages = STATIC_PAGE_TITLES.each_with_object({}) do |(name, title), pages|
+  pages[name] = { path: File.join(repository_root, 'api', "#{name}.mdx"), title: title }
 end
-missing_static_pages = static_pages.reject { |path| File.file?(path) }
+missing_static_pages = static_pages.values.map { |page| page[:path] }.reject { |path| File.file?(path) }
+static_page_content_mismatches = static_pages.keys.select do |name|
+  path = static_pages[name][:path]
+  File.file?(path) && normalized_visible_content(apib_document[:sections][name]) != normalized_visible_content(mdx_body(path))
+end
 
 changelog_source = apib_document[:groups].fetch('Change Logs', '')
 changelog_page = File.join(repository_root, 'api', 'changelog.mdx')
 changelog_page_missing = !File.file?(changelog_page)
 changelog_content_mismatch = false
 unless changelog_page_missing
-  changelog_body = File.read(changelog_page).sub(/\A---\s*\n.*?\n---\s*\n/m, '').strip
-  changelog_content_mismatch = normalized_content(changelog_source) != normalized_content(changelog_body)
+  changelog_content_mismatch = normalized_content(changelog_source) != normalized_content(mdx_body(changelog_page))
 end
 docs_config = File.join(repository_root, 'docs.json')
-changelog_navigation_missing = !File.file?(docs_config) || !nested_strings(JSON.parse(File.read(docs_config))).include?('api/changelog')
+navigation_entries = File.file?(docs_config) ? nested_strings(JSON.parse(File.read(docs_config))) : []
+changelog_navigation_missing = !navigation_entries.include?('api/changelog')
 changelog_entries = changelog_source.lines.count { |line| line.start_with?('* <b>') }
+
+group_pages = GROUP_PAGE_PATHS.each_with_object({}) do |(name, relative_path), pages|
+  pages[name] = File.join(repository_root, "#{relative_path}.mdx")
+end
+missing_group_pages = group_pages.keys.select { |name| !File.file?(group_pages[name]) }
+group_page_content_mismatches = group_pages.keys.select do |name|
+  path = group_pages[name]
+  File.file?(path) && normalized_visible_content(apib_document[:groups][name]) != normalized_visible_content(mdx_body(path))
+end
+group_navigation_missing = GROUP_PAGE_PATHS.keys.select do |name|
+  !navigation_entries.include?(GROUP_PAGE_PATHS[name])
+end
+
+expected_page_titles = static_pages.values.each_with_object({}) do |page, titles|
+  titles[page[:path]] = page[:title]
+end
+group_pages.each { |name, path| expected_page_titles[path] = name }
+expected_page_titles[changelog_page] = 'Change Logs'
+page_title_mismatches = expected_page_titles.keys.select do |path|
+  File.file?(path) && mdx_title(path) != expected_page_titles[path]
+end
+unexpected_page_descriptions = expected_page_titles.keys.select do |path|
+  File.file?(path) && mdx_frontmatter(File.read(path)).match?(/^description:/)
+end
 
 empty_descriptions = matched.select { |source, target| !source[:description].empty? && target[:description].empty? }
 summary_mismatches = matched.select { |source, target| source[:summary] != target[:summary] }
@@ -823,7 +959,16 @@ puts "Different API overview: #{overview_mismatch ? 1 : 0}"
 puts "Different server URL: #{server_mismatch ? 1 : 0}"
 puts "Group descriptions that differ: #{group_description_mismatches.length}"
 puts "Missing APIB error models: #{missing_error_models.length}"
+puts "APIB error model examples compared exactly: #{apib_document[:model_examples].length}"
+puts "APIB error models with invalid source JSON: #{apib_document[:invalid_model_examples].length}"
+puts "APIB error model examples that differ: #{different_error_model_examples.length}"
 puts "Missing standalone API pages: #{missing_static_pages.length}"
+puts "Standalone API pages with different content: #{static_page_content_mismatches.length}"
+puts "Missing API group overview pages: #{missing_group_pages.length}"
+puts "API group overview pages with different content: #{group_page_content_mismatches.length}"
+puts "Missing API group overview navigation: #{group_navigation_missing.length}"
+puts "Source-derived pages with different titles: #{page_title_mismatches.length}"
+puts "Source-derived pages with extra descriptions: #{unexpected_page_descriptions.length}"
 puts "Missing changelog page: #{changelog_page_missing ? 1 : 0}"
 puts "Different changelog page content: #{changelog_content_mismatch ? 1 : 0}"
 puts "Missing changelog navigation: #{changelog_navigation_missing ? 1 : 0}"
@@ -873,9 +1018,51 @@ unless missing_error_models.empty?
   missing_error_models.each { |name| puts "- #{name}" }
 end
 
+unless apib_document[:invalid_model_examples].empty?
+  puts "\nINVALID JSON IN APIB ERROR MODELS (INFORMATIONAL)"
+  apib_document[:invalid_model_examples].each { |name| puts "- #{name}" }
+end
+
+unless different_error_model_examples.empty?
+  puts "\nDIFFERENT APIB ERROR MODEL EXAMPLES"
+  different_error_model_examples.each { |name| puts "- #{name}" }
+end
+
 unless missing_static_pages.empty?
   puts "\nMISSING STANDALONE API PAGES"
   missing_static_pages.each { |path| puts "- #{path}" }
+end
+
+unless static_page_content_mismatches.empty?
+  puts "\nDIFFERENT STANDALONE API PAGE CONTENT"
+  static_page_content_mismatches.each { |name| puts "- #{static_pages[name][:path]}" }
+end
+
+unless missing_group_pages.empty?
+  puts "\nMISSING API GROUP OVERVIEW PAGES"
+  missing_group_pages.each { |name| puts "- #{name}: #{group_pages[name]}" }
+end
+
+unless group_page_content_mismatches.empty?
+  puts "\nDIFFERENT API GROUP OVERVIEW PAGE CONTENT"
+  group_page_content_mismatches.each { |name| puts "- #{name}: #{group_pages[name]}" }
+end
+
+unless group_navigation_missing.empty?
+  puts "\nMISSING API GROUP OVERVIEW NAVIGATION"
+  group_navigation_missing.each { |name| puts "- #{name}: #{GROUP_PAGE_PATHS[name]}" }
+end
+
+unless page_title_mismatches.empty?
+  puts "\nDIFFERENT SOURCE-DERIVED PAGE TITLES"
+  page_title_mismatches.each do |path|
+    puts "- #{path}: #{mdx_title(path).inspect} (expected #{expected_page_titles[path].inspect})"
+  end
+end
+
+unless unexpected_page_descriptions.empty?
+  puts "\nEXTRA SOURCE-DERIVED PAGE DESCRIPTIONS"
+  unexpected_page_descriptions.each { |path| puts "- #{path}" }
 end
 
 puts "\nMISSING CHANGELOG PAGE\n- #{changelog_page}" if changelog_page_missing
@@ -1033,7 +1220,11 @@ unless different_response_examples.empty?
 end
 
 exit 1 unless !overview_mismatch && !server_mismatch && group_description_mismatches.empty? &&
-              missing_error_models.empty? && missing_static_pages.empty? && !changelog_page_missing &&
+              missing_error_models.empty? && different_error_model_examples.empty? &&
+              missing_static_pages.empty? && !changelog_page_missing &&
+              static_page_content_mismatches.empty? && missing_group_pages.empty? &&
+              group_page_content_mismatches.empty? && group_navigation_missing.empty? &&
+              page_title_mismatches.empty? && unexpected_page_descriptions.empty? &&
               !changelog_content_mismatch && !changelog_navigation_missing &&
               missing_operations.empty? && extra_operations.empty? && summary_mismatches.empty? && empty_descriptions.empty? &&
               description_mismatches.empty? && missing_parameters.empty? && different_parameter_descriptions.empty? &&
