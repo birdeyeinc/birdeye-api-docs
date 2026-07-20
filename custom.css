@@ -1,0 +1,7 @@
+/* Bold tab labels */
+nav [role="tablist"] button,
+nav [role="tablist"] a,
+[data-testid="tab"],
+.nav-tab {
+  font-weight: 700 !important;
+}
