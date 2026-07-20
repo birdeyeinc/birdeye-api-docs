@@ -378,9 +378,6 @@
     "dark": "/images/birdeye-vector-logo.svg"
   },
   "css": "/custom.css",
-  "styling": {
-    "eyebrows": "none"
-  },
   "navbar": {
     "links": [
       {
