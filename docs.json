@@ -22,6 +22,77 @@
               "mcp/authentication",
               "mcp/tools/overview"
             ]
+          },
+          {
+            "group": "Reviews",
+            "pages": [
+              "mcp/tools/reviews/overview",
+              "mcp/tools/reviews/review-and-rating-overview",
+              "mcp/tools/reviews/get-reviews",
+              "mcp/tools/reviews/get-review-summary"
+            ]
+          },
+          {
+            "group": "Business",
+            "pages": [
+              "mcp/tools/business/overview",
+              "mcp/tools/business/get-business-info",
+              "mcp/tools/business/get-child-locations"
+            ]
+          },
+          {
+            "group": "Surveys",
+            "pages": [
+              "mcp/tools/surveys/overview",
+              "mcp/tools/surveys/get-all-surveys",
+              "mcp/tools/surveys/get-survey-responses"
+            ]
+          },
+          {
+            "group": "Listings",
+            "pages": [
+              "mcp/tools/listings/overview",
+              "mcp/tools/listings/get-listing",
+              "mcp/tools/listings/get-listing-location-status-report",
+              "mcp/tools/listings/get-listing-insights",
+              "mcp/tools/listings/get-listing-category-list",
+              "mcp/tools/listings/get-product-listing-list"
+            ]
+          },
+          {
+            "group": "Search AI",
+            "pages": [
+              "mcp/tools/search-ai/overview",
+              "mcp/tools/search-ai/get-search-ai-configuration",
+              "mcp/tools/search-ai/get-search-ai-available-runs",
+              "mcp/tools/search-ai/get-search-ai-citations",
+              "mcp/tools/search-ai/get-search-ai-businesses",
+              "mcp/tools/search-ai/get-search-ai-accuracy-report",
+              "mcp/tools/search-ai/get-search-ai-sentiment-report"
+            ]
+          },
+          {
+            "group": "Social",
+            "pages": [
+              "mcp/tools/social/overview",
+              "mcp/tools/social/track-social-post",
+              "mcp/tools/social/get-social-open-url-performance-report"
+            ]
+          },
+          {
+            "group": "Ticketing",
+            "pages": [
+              "mcp/tools/ticketing/overview",
+              "mcp/tools/ticketing/get-all-ticket-data"
+            ]
+          },
+          {
+            "group": "Aggregation",
+            "pages": [
+              "mcp/tools/aggregation/overview",
+              "mcp/tools/aggregation/get-all-aggregation-sources",
+              "mcp/tools/aggregation/get-review-site-aliases"
+            ]
           }
         ]
       },

@@ -1,0 +1,20 @@
+---
+title: "Surveys Overview"
+description: "Tools for accessing survey definitions and responses."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_all_surveys" icon="clipboard-list" href="/mcp/tools/surveys/get-all-surveys">
+    Get all available surveys for the business
+  </Card>
+  <Card title="get_survey_responses" icon="comment-dots" href="/mcp/tools/surveys/get-survey-responses">
+    Fetch paginated responses for a specific survey
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Always call `get_all_surveys` first to get the `survey_id` required by `get_survey_responses`.
+- Use `start_date` and `end_date` in `get_survey_responses` to narrow results to a specific time window.
