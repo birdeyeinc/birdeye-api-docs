@@ -21,7 +21,8 @@
               "mcp/quickstart",
               "mcp/authentication",
               "mcp/tools/overview"
-            ]
+            ],
+            "icon": "rocket"
           },
           {
             "group": "Reviews",
@@ -30,7 +31,8 @@
               "mcp/tools/reviews/review-and-rating-overview",
               "mcp/tools/reviews/get-reviews",
               "mcp/tools/reviews/get-review-summary"
-            ]
+            ],
+            "icon": "star"
           },
           {
             "group": "Business",
@@ -38,7 +40,8 @@
               "mcp/tools/business/overview",
               "mcp/tools/business/get-business-info",
               "mcp/tools/business/get-child-locations"
-            ]
+            ],
+            "icon": "building"
           },
           {
             "group": "Surveys",
@@ -46,7 +49,8 @@
               "mcp/tools/surveys/overview",
               "mcp/tools/surveys/get-all-surveys",
               "mcp/tools/surveys/get-survey-responses"
-            ]
+            ],
+            "icon": "clipboard-list"
           },
           {
             "group": "Listings",
@@ -57,7 +61,8 @@
               "mcp/tools/listings/get-listing-insights",
               "mcp/tools/listings/get-listing-category-list",
               "mcp/tools/listings/get-product-listing-list"
-            ]
+            ],
+            "icon": "map-pin"
           },
           {
             "group": "Search AI",
@@ -69,7 +74,8 @@
               "mcp/tools/search-ai/get-search-ai-businesses",
               "mcp/tools/search-ai/get-search-ai-accuracy-report",
               "mcp/tools/search-ai/get-search-ai-sentiment-report"
-            ]
+            ],
+            "icon": "brain"
           },
           {
             "group": "Social",
@@ -77,14 +83,16 @@
               "mcp/tools/social/overview",
               "mcp/tools/social/track-social-post",
               "mcp/tools/social/get-social-open-url-performance-report"
-            ]
+            ],
+            "icon": "share-nodes"
           },
           {
             "group": "Ticketing",
             "pages": [
               "mcp/tools/ticketing/overview",
               "mcp/tools/ticketing/get-all-ticket-data"
-            ]
+            ],
+            "icon": "ticket"
           },
           {
             "group": "Aggregation",
@@ -92,9 +100,11 @@
               "mcp/tools/aggregation/overview",
               "mcp/tools/aggregation/get-all-aggregation-sources",
               "mcp/tools/aggregation/get-review-site-aliases"
-            ]
+            ],
+            "icon": "layer-group"
           }
-        ]
+        ],
+        "icon": "plug"
       },
       {
         "tab": "API Reference",
@@ -108,7 +118,8 @@
               "api/http-status-codes",
               "api/error-response",
               "api/changelog"
-            ]
+            ],
+            "icon": "rocket"
           },
           {
             "group": "Reference",
@@ -133,7 +144,8 @@
                   "api/business/delete-custom-card",
                   "api/business/get-timezone-list",
                   "api/business/get-birdeye-impressions"
-                ]
+                ],
+                "icon": "building"
               },
               {
                 "group": "Custom Fields",
@@ -147,7 +159,8 @@
                   "api/custom-fields/delete",
                   "api/custom-fields/associate",
                   "api/custom-fields/create-custom-card"
-                ]
+                ],
+                "icon": "sliders"
               },
               {
                 "group": "User",
@@ -159,7 +172,8 @@
                   "api/user/delete-a-user",
                   "api/user/forgot-password",
                   "api/user/get-details-of-a-user"
-                ]
+                ],
+                "icon": "user"
               },
               {
                 "group": "Reviews",
@@ -176,7 +190,8 @@
                   "api/reviews/assign-tags-to-filtered-reviews",
                   "api/reviews/remove-tags-from-filtered-reviews",
                   "api/reviews/remove-particular-tags-from-all-reviews"
-                ]
+                ],
+                "icon": "star"
               },
               {
                 "group": "Contact",
@@ -194,7 +209,8 @@
                   "api/contact/customer-or-lead-list",
                   "api/contact/contact-us-request",
                   "api/contact/get-opt-out-contact-data"
-                ]
+                ],
+                "icon": "address-book"
               },
               {
                 "group": "Contact V2",
@@ -206,7 +222,8 @@
                   "api/contact-v2/customer-checkin",
                   "api/contact-v2/update-communication-preferences",
                   "api/contact-v2/retrieve-opted-out-contacts"
-                ]
+                ],
+                "icon": "address-card"
               },
               {
                 "group": "Campaign",
@@ -215,7 +232,8 @@
                   "api/campaign/overview",
                   "api/campaign/fetch-request-url",
                   "api/campaign/set-defaullt-review-sources"
-                ]
+                ],
+                "icon": "bullhorn"
               },
               {
                 "group": "Aggregation",
@@ -226,7 +244,8 @@
                   "api/aggregation/get-all-aggregation-source",
                   "api/aggregation/add-aggregation-url",
                   "api/aggregation/delete-aggregation-url"
-                ]
+                ],
+                "icon": "layer-group"
               },
               {
                 "group": "Report",
@@ -250,7 +269,8 @@
                   "api/report/review-response-rate-by-location-overview",
                   "api/report/average-response-time-by-location",
                   "api/report/average-response-time-over-time"
-                ]
+                ],
+                "icon": "chart-bar"
               },
               {
                 "group": "Survey",
@@ -263,7 +283,8 @@
                   "api/survey/get-all-surveys",
                   "api/survey/create-survey",
                   "api/survey/update-survey-settings"
-                ]
+                ],
+                "icon": "clipboard-list"
               },
               {
                 "group": "Business Media",
@@ -274,7 +295,8 @@
                   "api/business-media/get-media",
                   "api/business-media/update-media",
                   "api/business-media/delete-media"
-                ]
+                ],
+                "icon": "photo-film"
               },
               {
                 "group": "Social",
@@ -287,14 +309,16 @@
                   "api/social/delete-public-social-post",
                   "api/social/track-social-post",
                   "api/social/social-open-url-performance-report"
-                ]
+                ],
+                "icon": "share-nodes"
               },
               {
                 "group": "Employee",
                 "collapsed": true,
                 "pages": [
                   "api/employee/get-details-of-employees"
-                ]
+                ],
+                "icon": "user-tie"
               },
               {
                 "group": "Conversation",
@@ -302,7 +326,8 @@
                 "pages": [
                   "api/conversation/overview",
                   "api/conversation/list-conversations"
-                ]
+                ],
+                "icon": "comments"
               },
               {
                 "group": "Subscription",
@@ -311,7 +336,8 @@
                   "api/subscription/overview",
                   "api/subscription/create-subscription",
                   "api/subscription/unsubscribe-subscription"
-                ]
+                ],
+                "icon": "bell"
               },
               {
                 "group": "Webhook",
@@ -320,7 +346,8 @@
                   "api/webhook/overview",
                   "api/webhook/get-events",
                   "api/webhook/create-webhook-subscription"
-                ]
+                ],
+                "icon": "webhook"
               },
               {
                 "group": "Competitor",
@@ -337,7 +364,8 @@
                   "api/competitor/get-score",
                   "api/competitor/get-theme-statistics",
                   "api/competitor/get-keyword-statistics"
-                ]
+                ],
+                "icon": "trophy"
               },
               {
                 "group": "Competitor AI",
@@ -346,7 +374,8 @@
                   "api/competitor-ai/overview",
                   "api/competitor-ai/retrieve-competitor-reviews",
                   "api/competitor-ai/retrieve-competitor-review-metrics"
-                ]
+                ],
+                "icon": "robot"
               },
               {
                 "group": "Insight AI",
@@ -355,7 +384,8 @@
                   "api/insight-ai/overview",
                   "api/insight-ai/get-insight-experience-score-benchmark",
                   "api/insight-ai/get-insight-experience-location-info"
-                ]
+                ],
+                "icon": "lightbulb"
               },
               {
                 "group": "Google Q&A",
@@ -371,7 +401,8 @@
                   "api/google-q-a/delete-all-questions-and-answers",
                   "api/google-q-a/get-all-questions-and-answers",
                   "api/google-q-a/get-all-unanswered-questions-and-answers"
-                ]
+                ],
+                "icon": "circle-question"
               },
               {
                 "group": "Google Services",
@@ -384,7 +415,8 @@
                   "api/google-services/delete-services",
                   "api/google-services/get-location-mapping",
                   "api/google-services/update-location-mapping"
-                ]
+                ],
+                "icon": "globe"
               },
               {
                 "group": "FAQ",
@@ -392,7 +424,8 @@
                 "pages": [
                   "api/faq/overview",
                   "api/faq/get-all-qna"
-                ]
+                ],
+                "icon": "circle-question"
               },
               {
                 "group": "Listing",
@@ -415,7 +448,8 @@
                   "api/listing/deactivate-listing",
                   "api/listing/retrieve-menu-details",
                   "api/listing/get-hotel-attributes"
-                ]
+                ],
+                "icon": "map-pin"
               },
               {
                 "group": "GMB Products",
@@ -430,7 +464,8 @@
                   "api/gmb-products/get-list-product-listing",
                   "api/gmb-products/add-products-on-a-location",
                   "api/gmb-products/remove-products-on-a-location"
-                ]
+                ],
+                "icon": "bag-shopping"
               },
               {
                 "group": "Search AI",
@@ -443,7 +478,8 @@
                   "api/search-ai/get-search-ai-businesses",
                   "api/search-ai/get-accuracy-report",
                   "api/search-ai/get-sentiment-report"
-                ]
+                ],
+                "icon": "brain"
               },
               {
                 "group": "Ticketing",
@@ -454,7 +490,8 @@
                   "api/ticketing/add-ticket-comments",
                   "api/ticketing/update-ticket",
                   "api/ticketing/get-all-ticket-data"
-                ]
+                ],
+                "icon": "ticket"
               },
               {
                 "group": "Integration",
@@ -462,11 +499,13 @@
                 "pages": [
                   "api/integration/overview",
                   "api/integration/add-locations"
-                ]
+                ],
+                "icon": "plug"
               }
             ]
           }
-        ]
+        ],
+        "icon": "code"
       }
     ]
   },
