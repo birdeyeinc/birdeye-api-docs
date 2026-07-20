@@ -7,7 +7,7 @@
     "light": "#3395FF",
     "dark": "#0055CC"
   },
-  "favicon": "/images/logo-dark.png",
+  "favicon": "/images/birdeye-favicon.svg",
   "navigation": {
     "tabs": [
       {
