@@ -11,6 +11,21 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "MCP",
+        "url": "mcp/introduction",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "mcp/introduction",
+              "mcp/quickstart",
+              "mcp/authentication",
+              "mcp/tools/overview"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "API Docs",
         "groups": [
           {
@@ -352,21 +367,6 @@
                   "api/integration/add-locations"
                 ]
               }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "MCP",
-        "url": "mcp/introduction",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "mcp/introduction",
-              "mcp/quickstart",
-              "mcp/authentication",
-              "mcp/tools/overview"
             ]
           }
         ]
