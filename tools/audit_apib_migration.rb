@@ -12,7 +12,7 @@ require 'yaml'
 HTTP_METHODS = %w[get post put delete patch].freeze
 APIB_TYPE_PATTERN = /\((?:[^)]*,\s*)?(?:object|array(?:\[[^\]]+\])?|number|string(?:\[\])?|boolean|integer)(?:\s*,[^)]*)?\)/i
 STATIC_PAGE_TITLES = {
-  'introduction' => 'Birdeye',
+  'introduction' => 'Introduction',
   'authentication' => 'Authentication and Rate limiting',
   'pagination' => 'Pagination',
   'http-status-codes' => 'HTTP Status Codes',
