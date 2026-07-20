@@ -75,7 +75,7 @@
               "mcp/tools/search-ai/get-search-ai-accuracy-report",
               "mcp/tools/search-ai/get-search-ai-sentiment-report"
             ],
-            "icon": "magnifying-glass-sparkles"
+            "icon": "magnifying-glass"
           },
           {
             "group": "Social",
@@ -104,7 +104,7 @@
             "icon": "layer-group"
           }
         ],
-        "icon": "plug"
+        "icon": "/images/mcp-color.svg"
       },
       {
         "tab": "API Reference",
@@ -479,7 +479,7 @@
                   "api/search-ai/get-accuracy-report",
                   "api/search-ai/get-sentiment-report"
                 ],
-                "icon": "magnifying-glass-sparkles"
+                "icon": "magnifying-glass"
               },
               {
                 "group": "Ticketing",
