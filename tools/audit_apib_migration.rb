@@ -48,7 +48,7 @@ GROUP_PAGE_PATHS = {
 }.freeze
 
 def usage!
-  warn 'Usage: ruby tools/audit_apib_migration.rb [--sync-examples] path/to/apiary.apib api/openapi.yaml'
+  warn 'Usage: ruby tools/audit_apib_migration.rb [--sync-examples] [--sync-page-titles] path/to/apiary.apib api/openapi.yaml'
   exit 2
 end
 
@@ -354,6 +354,35 @@ def mdx_title(path)
   match && match[1]
 end
 
+def endpoint_pages(repository_root)
+  pages = []
+  Dir[File.join(repository_root, 'api', '**', '*.mdx')].sort.each do |path|
+    content = File.read(path)
+    reference = mdx_frontmatter(content).match(
+      /^openapi:\s*["']api\/openapi\.yaml\s+(GET|POST|PUT|DELETE|PATCH)\s+(.+?)["']\s*$/
+    )
+    next unless reference
+
+    pages << {
+      path: path,
+      method: reference[1].downcase,
+      endpoint: normalize_path(reference[2]),
+      title: mdx_title(path)
+    }
+  end
+  pages
+end
+
+def matching_apib_operation(page, operations)
+  operation = operations.find do |candidate|
+    candidate[:method] == page[:method] && candidate[:path] == page[:endpoint]
+  end
+  operation ||= operations.find do |candidate|
+    candidate[:method] == page[:method] && canonical_path(candidate[:path]) == canonical_path(page[:endpoint])
+  end
+  operation
+end
+
 def parse_apib_document(file)
   lines = File.readlines(file, encoding: 'UTF-8')
   title_index = lines.index { |line| line.match?(/^# Birdeye\s*$/) }
@@ -626,11 +655,34 @@ def canonical_path(path)
 end
 
 sync_examples = ARGV.delete('--sync-examples')
+sync_page_titles = ARGV.delete('--sync-page-titles')
 usage! unless ARGV.length == 2
 
 apib_operations = parse_apib(ARGV[0])
 openapi = YAML.safe_load(File.read(ARGV[1]), [Date, Time], [], true)
 oas_operations = openapi_operations(openapi)
+repository_root = File.expand_path('..', File.dirname(File.expand_path(ARGV[1])))
+
+if sync_page_titles
+  changed_titles = 0
+  unmatched_pages_for_sync = []
+  endpoint_pages(repository_root).each do |page|
+    source = matching_apib_operation(page, apib_operations)
+    unless source
+      unmatched_pages_for_sync << page
+      next
+    end
+    next if page[:title] == source[:resource]
+
+    content = File.read(page[:path])
+    updated = content.sub(/^title:.*$/, "title: #{JSON.generate(source[:resource])}")
+    File.write(page[:path], updated)
+    changed_titles += 1
+  end
+  puts "Synchronized endpoint page titles: #{changed_titles}"
+  puts "Endpoint pages without an APIB operation: #{unmatched_pages_for_sync.length}"
+  exit(unmatched_pages_for_sync.empty? ? 0 : 1) unless sync_examples
+end
 
 matched = []
 missing_operations = []
@@ -758,7 +810,6 @@ different_error_model_examples = apib_document[:model_examples].keys.select do |
   target_schemas.dig(name, 'example') != apib_document[:model_examples][name]
 end
 
-repository_root = File.expand_path('..', File.dirname(File.expand_path(ARGV[1])))
 static_pages = STATIC_PAGE_TITLES.each_with_object({}) do |(name, title), pages|
   pages[name] = { path: File.join(repository_root, 'api', "#{name}.mdx"), title: title }
 end
@@ -802,6 +853,23 @@ page_title_mismatches = expected_page_titles.keys.select do |path|
 end
 unexpected_page_descriptions = expected_page_titles.keys.select do |path|
   File.file?(path) && mdx_frontmatter(File.read(path)).match?(/^description:/)
+end
+
+documented_endpoint_pages = endpoint_pages(repository_root)
+unmatched_endpoint_pages = documented_endpoint_pages.select do |page|
+  matching_apib_operation(page, apib_operations).nil?
+end
+missing_endpoint_pages = apib_operations.select do |source|
+  documented_endpoint_pages.none? do |page|
+    page[:method] == source[:method] && page[:endpoint] == source[:path]
+  end
+end
+endpoint_page_title_mismatches = documented_endpoint_pages.each_with_object([]) do |page, mismatches|
+  source = matching_apib_operation(page, apib_operations)
+  next unless source
+  next if page[:title] == source[:resource]
+
+  mismatches << [page, source]
 end
 
 empty_descriptions = matched.select { |source, target| !source[:description].empty? && target[:description].empty? }
@@ -969,6 +1037,10 @@ puts "API group overview pages with different content: #{group_page_content_mism
 puts "Missing API group overview navigation: #{group_navigation_missing.length}"
 puts "Source-derived pages with different titles: #{page_title_mismatches.length}"
 puts "Source-derived pages with extra descriptions: #{unexpected_page_descriptions.length}"
+puts "Endpoint pages checked for APIB titles: #{documented_endpoint_pages.length}"
+puts "APIB operations missing endpoint pages: #{missing_endpoint_pages.length}"
+puts "Endpoint pages without APIB operations: #{unmatched_endpoint_pages.length}"
+puts "Endpoint page titles that differ: #{endpoint_page_title_mismatches.length}"
 puts "Missing changelog page: #{changelog_page_missing ? 1 : 0}"
 puts "Different changelog page content: #{changelog_content_mismatch ? 1 : 0}"
 puts "Missing changelog navigation: #{changelog_navigation_missing ? 1 : 0}"
@@ -1063,6 +1135,27 @@ end
 unless unexpected_page_descriptions.empty?
   puts "\nEXTRA SOURCE-DERIVED PAGE DESCRIPTIONS"
   unexpected_page_descriptions.each { |path| puts "- #{path}" }
+end
+
+unless missing_endpoint_pages.empty?
+  puts "\nAPIB OPERATIONS MISSING ENDPOINT PAGES"
+  missing_endpoint_pages.each do |source|
+    puts "- #{source[:method].upcase} #{source[:path]}: #{source[:resource]}"
+  end
+end
+
+unless unmatched_endpoint_pages.empty?
+  puts "\nENDPOINT PAGES WITHOUT APIB OPERATIONS"
+  unmatched_endpoint_pages.each do |page|
+    puts "- #{page[:path]}: #{page[:method].upcase} #{page[:endpoint]}"
+  end
+end
+
+unless endpoint_page_title_mismatches.empty?
+  puts "\nDIFFERENT ENDPOINT PAGE TITLES"
+  endpoint_page_title_mismatches.each do |page, source|
+    puts "- #{page[:path]}: #{page[:title].inspect} (expected #{source[:resource].inspect})"
+  end
 end
 
 puts "\nMISSING CHANGELOG PAGE\n- #{changelog_page}" if changelog_page_missing
@@ -1225,6 +1318,8 @@ exit 1 unless !overview_mismatch && !server_mismatch && group_description_mismat
               static_page_content_mismatches.empty? && missing_group_pages.empty? &&
               group_page_content_mismatches.empty? && group_navigation_missing.empty? &&
               page_title_mismatches.empty? && unexpected_page_descriptions.empty? &&
+              missing_endpoint_pages.empty? && unmatched_endpoint_pages.empty? &&
+              endpoint_page_title_mismatches.empty? &&
               !changelog_content_mismatch && !changelog_navigation_missing &&
               missing_operations.empty? && extra_operations.empty? && summary_mismatches.empty? && empty_descriptions.empty? &&
               description_mismatches.empty? && missing_parameters.empty? && different_parameter_descriptions.empty? &&
