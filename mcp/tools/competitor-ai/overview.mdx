@@ -1,0 +1,22 @@
+---
+title: "Competitor AI Overview"
+description: "Tools for retrieving individual competitor reviews and aggregated review metrics."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="retrieve_competitor_reviews" icon="star" href="/mcp/tools/competitor-ai/retrieve-competitor-reviews">
+    Retrieve paginated individual reviews left for competitor locations
+  </Card>
+  <Card title="retrieve_competitor_review_metrics" icon="chart-bar" href="/mcp/tools/competitor-ai/retrieve-competitor-review-metrics">
+    Retrieve aggregated average rating and review count per competitor location and source
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Use `retrieve_competitor_reviews` to read the actual review text competitors are receiving and identify patterns in customer feedback.
+- Use `retrieve_competitor_review_metrics` for a quick rating and volume snapshot without fetching full review content.
+- Filter by `sources` (e.g. `["google"]`) to compare on a specific platform.
+- Use `businessNumbers` (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) to scope results to specific locations in your enterprise.

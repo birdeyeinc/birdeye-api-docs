@@ -1,0 +1,21 @@
+---
+title: "Insight AI Overview"
+description: "Tools for experience score benchmarks and location-level performance metrics."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_insight_experience_score_benchmark" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-experience-score-benchmark">
+    Compare your experience, sentiment, reputation, and listing scores against industry benchmarks
+  </Card>
+  <Card title="get_insight_experience_location_info" icon="map-pin" href="/mcp/tools/insight-ai/get-insight-experience-location-info">
+    Get location-level experience metrics with delta comparisons vs a prior period
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Both tools require `businessNumbers` — always call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid values.
+- If the user doesn't specify which locations to include, present the available locations and ask them to choose before calling these tools.
+- Use `get_insight_experience_score_benchmark` to answer "how do we compare to the industry?" and `get_insight_experience_location_info` to answer "which of our locations are improving or declining?"

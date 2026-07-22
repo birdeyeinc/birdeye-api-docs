@@ -1,0 +1,56 @@
+---
+title: "Get Insight Experience Location Info"
+description: "Get location-level experience metrics with delta comparisons vs a prior period."
+---
+
+```
+get_insight_experience_location_info
+```
+
+## Description
+
+Returns experience, reputation, sentiment, and listing scores broken down by location, along with delta values showing how each score changed versus the prior period. Use this to identify which locations are improving, declining, or need attention.
+
+The response contains:
+- `totalCount` — total number of locations in the result
+- `dataPoints` (array) — one entry per location, each with:
+  - `id` — location business number
+  - `name` — location name
+  - `experienceScore`, `reputationScore`, `sentimentScore`, `listingScore` — current period scores
+  - `experienceDeltaScore`, `reputationDeltaScore`, `sentimentDeltaScore`, `listingDeltaScore` — prior period scores
+  - `experienceDelta`, `reputationDelta`, `sentimentDelta`, `listingDelta` — point change vs prior period (positive = improvement)
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+Which locations have the best experience score?
+```
+
+```
+Show me location-level sentiment and reputation scores for last quarter.
+```
+
+```
+Which locations improved or declined vs the previous period?
+```

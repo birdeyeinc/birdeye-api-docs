@@ -1,0 +1,39 @@
+---
+title: "Get Competitor Businesses"
+description: "List all competitor enterprises mapped to your account."
+---
+
+```
+get_competitor_businesses
+```
+
+## Description
+
+Returns all competitor enterprise records configured for the authenticated account. This is the starting point for any competitive intelligence workflow — the `competitorId` values returned here are required by all other competitive insight tools.
+
+Each record includes:
+- `id` — competitor enterprise business number
+- `name` — competitor enterprise display name
+- `competitorId` — internal competitor ID (pass this to insight tools)
+- `alias` — competitor enterprise alias
+
+This tool takes no input parameters. The enterprise is resolved from the authenticated session.
+
+## Parameters
+
+This tool requires no parameters.
+
+## Example Usage
+
+```
+Who are my competitors?
+```
+
+```
+List all competitor businesses configured in my account.
+```
+
+## Notes
+
+- Use the returned `competitorId` and `id` values when calling `get_competitive_insight_scores`, `get_competitive_insight_themes`, or `get_competitive_insight_keywords`.
+- To get the individual locations under a competitor enterprise, pass the `id` to [`get_competitor_child_businesses`](/mcp/tools/competitors/get-competitor-child-businesses).

@@ -1,0 +1,64 @@
+---
+title: "Get Competitive Insight Scores"
+description: "Compare category scores and letter grades between your business and competitors."
+---
+
+```
+get_competitive_insight_scores
+```
+
+## Description
+
+Returns category-level ratings comparing your business against configured competitors. Each category gets a letter grade (A–F) and an average score, broken down by both your business and each competitor. Sub-categories are included for deeper drill-down.
+
+The response contains:
+- `cats` (array) — each category has:
+  - `catId`, `catName` — category identifier and name
+  - `catStats` (array) — one entry per business/competitor with `entId`, `entName`, `competitor` (bool), `grade`, `avgScr`, `ct` (review count)
+  - `subCats` — same structure for sub-categories
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `competitors` | list[dict] | Competitor objects with `competitorId` and `compAccountIds` (use the same value for both) |
+
+### Optional
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `sourceType` | string | `"review"` | `"review"` or `"social"` |
+| `sources` | list[string] | — | Filter by source aliases (e.g. `["google"]`) |
+| `timePeriodSelected` | string | — | Pass `"all"` to include all-time data |
+
+## Typical Workflow
+
+```
+1. get_competitor_businesses              → get competitorId values
+2. get_competitive_insight_scores(        → compare category grades
+     competitors=[{competitorId: X, compAccountIds: [X]}]
+   )
+```
+
+## Example Usage
+
+```
+How do my category scores compare to competitors for the last quarter?
+```
+
+```
+Which categories am I beating my competitors in?
+```
+
+```
+Show competitive insight scores for reviews on Google this year.
+```
+
+## Notes
+
+- Pass `competitorId` as both `competitorId` and `compAccountIds` in each competitor object.
+- Grades range from A (best) to F (worst) based on average score and review volume.
