@@ -28,7 +28,16 @@ description: "Birdeye MCP provides a variety of read-only tools across different
     Ticket retrieval with filtering and pagination
   </Card>
   <Card title="Aggregation" icon="layer-group" href="/mcp/tools/aggregation/overview">
-    Review source monitoring and site alias lookup
+    Review source monitoring
+  </Card>
+  <Card title="Competitors" icon="trophy" href="/mcp/tools/competitors/overview">
+    Competitor discovery and category score, theme, and keyword comparisons
+  </Card>
+  <Card title="Competitor AI" icon="robot" href="/mcp/tools/competitor-ai/overview">
+    Individual competitor reviews and aggregated rating metrics
+  </Card>
+  <Card title="Insight AI" icon="lightbulb" href="/mcp/tools/insight-ai/overview">
+    Experience score benchmarks and location-level performance with period-over-period deltas
   </Card>
 </CardGroup>
 
@@ -54,11 +63,19 @@ description: "Birdeye MCP provides a variety of read-only tools across different
 | `get_search_ai_businesses` | Search AI | Businesses surfaced by AI engines for your prompts |
 | `get_search_ai_accuracy_report` | Search AI | NAP accuracy as reported by AI engines |
 | `get_search_ai_sentiment_report` | Search AI | SWOT analysis from AI engine sentiment |
-| `track_social_post` | Social | Status and metrics for a published social post |
 | `get_social_open_url_performance_report` | Social | Channel-level social performance with comparison |
 | `get_all_ticket_data` | Ticketing | Tickets with full filtering and pagination |
 | `get_all_aggregation_sources` | Aggregation | Review monitoring URLs configured for the business |
-| `get_review_site_aliases` | Aggregation | Review site aliases configured for the business |
+| `get_competitor_businesses` | Competitors | All competitor enterprises mapped to the account |
+| `get_competitor_child_businesses` | Competitors | Child locations of a specific competitor enterprise |
+| `get_business_competitors` | Competitors | Competitors mapped to the current business |
+| `get_competitive_insight_scores` | Competitors | Category scores and grades vs competitors |
+| `get_competitive_insight_themes` | Competitors | Top review themes vs competitors |
+| `get_competitive_insight_keywords` | Competitors | Top keywords and adjectives vs competitors |
+| `retrieve_competitor_reviews` | Competitor AI | Paginated individual reviews for competitor locations |
+| `retrieve_competitor_review_metrics` | Competitor AI | Aggregated average rating and review count per competitor |
+| `get_insight_experience_score_benchmark` | Insight AI | Experience scores vs industry benchmarks |
+| `get_insight_experience_location_info` | Insight AI | Location-level scores with period-over-period deltas |
 
 ## Common Patterns
 

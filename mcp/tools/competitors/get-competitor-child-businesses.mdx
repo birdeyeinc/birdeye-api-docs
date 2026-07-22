@@ -1,0 +1,41 @@
+---
+title: "Get Competitor Child Businesses"
+description: "List all child locations of a specific competitor enterprise."
+---
+
+```
+get_competitor_child_businesses
+```
+
+## Description
+
+Returns the individual location-level businesses under a competitor enterprise. Use this when you need granular location data for a specific competitor rather than the enterprise-level record.
+
+Each child location includes:
+- `id` — business ID of the competitor location
+- `name` — business name
+- `alias` — location alias
+- `competitorId` — internal competitor ID
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `competitorEnterpriseBusinessId` | integer | Yes | The `id` of the competitor enterprise from [`get_competitor_businesses`](/mcp/tools/competitors/get-competitor-businesses) |
+
+## Typical Workflow
+
+```
+1. get_competitor_businesses                     → get competitor enterprise id values
+2. get_competitor_child_businesses(id=12345)     → get locations under that enterprise
+```
+
+## Example Usage
+
+```
+Show me all locations of my top competitor.
+```
+
+```
+List all branches of competitor enterprise 12345.
+```

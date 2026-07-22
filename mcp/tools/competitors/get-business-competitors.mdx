@@ -1,0 +1,37 @@
+---
+title: "Get Business Competitors"
+description: "Retrieve the competitors mapped to the current business."
+---
+
+```
+get_business_competitors
+```
+
+## Description
+
+Returns the competitor mapping for the current business. Unlike `get_competitor_businesses` (which lists competitor enterprises), this tool returns the competitors associated directly with your business account.
+
+The response contains:
+- `entCompetitors` (array) — list of configured competitors, each with:
+  - `competitorId` — internal competitor ID (use in competitive insight tools)
+  - `competitorName` — display name of the competitor
+
+This tool takes no input parameters. The business is resolved from the authenticated session.
+
+## Parameters
+
+This tool requires no parameters.
+
+## Example Usage
+
+```
+Which businesses are competing with mine?
+```
+
+```
+Show me the competitor mapping for my account.
+```
+
+## Notes
+
+- The `competitorId` values returned here can be used in `get_competitive_insight_scores`, `get_competitive_insight_themes`, and `get_competitive_insight_keywords`.

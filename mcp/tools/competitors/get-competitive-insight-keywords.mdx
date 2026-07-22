@@ -1,0 +1,60 @@
+---
+title: "Get Competitive Insight Keywords"
+description: "Compare top keywords and adjectives from reviews against competitors."
+---
+
+```
+get_competitive_insight_keywords
+```
+
+## Description
+
+Returns the top keywords and adjectives extracted from reviews, compared across your business and each configured competitor. Use this to understand the exact language customers use and how it differs between you and competitors.
+
+The response contains per-business/competitor:
+- `id`, `name` — business or competitor identifier
+- `keywords` — list of top keyword strings
+- `keywordStats` — per-keyword detail including `keyword`, `occurences`, and `score`
+- `negKWAdjectives` / `posKWAdjectives` — negative and positive adjectives with occurrence counts
+- `competitors` — same structure repeated for each competitor
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `competitors` | list[dict] | Competitor objects with `competitorId` and `compAccountIds` |
+
+### Optional
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `sourceType` | string | `"review"` | `"review"` or `"social"` |
+| `sources` | list[string] | — | Filter by source aliases |
+| `timePeriodSelected` | string | — | Pass `"all"` for all-time data |
+| `topKW` | integer | `25` | Number of top keywords to return |
+| `topAd` | integer | `25` | Number of top adjectives to return |
+| `orderBy` | string | `"occurrence"` | `"occurrence"`, `"atoz"`, or `"ztoa"` |
+| `sentiment` | integer | `0` | `-1` = negative only, `1` = positive only, `0` = all |
+
+## Example Usage
+
+```
+What keywords are most mentioned in competitor reviews?
+```
+
+```
+Show negative keywords for my competitors vs my business for last quarter.
+```
+
+```
+Compare keyword trends with competitors for the last 6 months.
+```
+
+## Notes
+
+- Get `competitorId` values first from [`get_competitor_businesses`](/mcp/tools/competitors/get-competitor-businesses).
+- `negKWAdjectives` and `posKWAdjectives` are useful for sentiment-driven messaging analysis.

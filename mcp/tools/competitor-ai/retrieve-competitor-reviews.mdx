@@ -1,0 +1,67 @@
+---
+title: "Retrieve Competitor Reviews"
+description: "Retrieve paginated individual reviews left for competitor locations."
+---
+
+```
+retrieve_competitor_reviews
+```
+
+## Description
+
+Returns a paginated list of individual reviews left for your configured competitors. Use this to read what customers are actually saying about the competition, spot trends, and identify areas where competitors are winning or losing.
+
+Each review record includes:
+- `businessLocations` — your business locations associated with this competitor review (businessId, name, alias, businessNumber, phone, address)
+- `competitorLocation` — the competitor location where the review was left
+- `competitorBrand` — the competitor brand name
+- `source` — review platform (e.g. `"Google"`, `"Yelp"`)
+- `rating` — star rating (1–5)
+- `reviewComment` — full review text
+- `reviewDate` — date the review was published (YYYY-MM-DD)
+- `reply` — business owner's response, if any
+
+<Note>Reviewer names are automatically stripped from all responses for privacy.</Note>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+
+### Optional
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `startIndex` | integer | `0` | 0-based start index for pagination |
+| `pageSize` | integer | `25` | Records per page (max 100) |
+| `sortOrder` | integer | `1` | `0` = oldest first, `1` = newest first |
+| `businessNumbers` | list[integer] | — | Scope to specific enterprise location numbers (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) |
+| `sources` | list[string] | — | Filter by review source (e.g. `["google"]`) |
+| `brandIds` | list[integer] | — | Filter by specific competitor brand IDs |
+| `competitorLocationIds` | list[integer] | — | Filter by specific competitor location IDs |
+
+## Example Usage
+
+```
+Show me recent competitor reviews.
+```
+
+```
+What are competitors being reviewed for on Google this quarter?
+```
+
+```
+Show competitor reviews with low ratings from the last 6 months.
+```
+
+```
+Show competitor reviews for my Chicago location.
+```
+
+## Notes
+
+- To scope by location name, call [`get_child_locations`](/mcp/tools/business/get-child-locations) first, match the location by `name`/`alias`, then pass its `businessNumber` in `businessNumbers`.

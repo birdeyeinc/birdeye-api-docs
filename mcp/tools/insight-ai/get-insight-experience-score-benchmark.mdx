@@ -1,0 +1,60 @@
+---
+title: "Get Insight Experience Score Benchmark"
+description: "Compare your experience, sentiment, reputation, and listing scores against industry benchmarks."
+---
+
+```
+get_insight_experience_score_benchmark
+```
+
+## Description
+
+Returns experience score data comparing your business performance against industry benchmarks for the same period, plus scores from a prior comparison period so you can track trends.
+
+The response contains two top-level objects:
+
+**`actual`** — current period scores:
+- `sentimentScore` — business sentiment score
+- `reputationScore` — business reputation score
+- `experienceScore` — business experience score
+- `listingScore` — business listing score
+- `industrySentimentScore` — industry benchmark sentiment score
+- `industryReputationScore` — industry benchmark reputation score
+- `industryExperienceScore` — industry benchmark experience score
+
+**`compare`** — prior comparison period scores (sentimentScore, reputationScore, experienceScore, listingScore)
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+How does my experience score compare to the industry benchmark this year?
+```
+
+```
+Show my sentiment score vs the industry standard for Q1 2026 for the NYC location.
+```
+
+```
+What is my experience score benchmark for the last 90 days?
+```

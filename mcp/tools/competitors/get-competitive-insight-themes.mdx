@@ -1,0 +1,58 @@
+---
+title: "Get Competitive Insight Themes"
+description: "Compare top review themes between your business and competitors."
+---
+
+```
+get_competitive_insight_themes
+```
+
+## Description
+
+Returns the top themes and topics mentioned in reviews, compared across your business and each configured competitor. Use this to identify what customers talk about most and how your themes differ from the competition.
+
+The response contains per-business/competitor:
+- `id`, `name` — business or competitor identifier
+- `themes` — list of top theme strings
+- `themeStats` — per-theme detail including keyword, adjective, positive count (`pCt`), negative count (`nCt`), total count (`ct`), and score
+- `competitors` — same structure repeated for each competitor
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `competitors` | list[dict] | Competitor objects with `competitorId` and `compAccountIds` |
+
+### Optional
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `sourceType` | string | `"review"` | `"review"` or `"social"` |
+| `sources` | list[string] | — | Filter by source aliases |
+| `timePeriodSelected` | string | — | Pass `"all"` for all-time data |
+| `topThm` | integer | `25` | Number of top themes to return |
+| `orderBy` | string | `"occurrence"` | `"occurrence"`, `"atoz"`, or `"ztoa"` |
+| `sentiment` | integer | `0` | `-1` = negative only, `1` = positive only, `0` = all |
+
+## Example Usage
+
+```
+What themes are competitors most often reviewed on?
+```
+
+```
+Compare negative themes between my business and competitors for last 6 months.
+```
+
+```
+Show top 10 positive themes vs competitors this year.
+```
+
+## Notes
+
+- Use `sentiment: -1` to focus on pain points and `sentiment: 1` for strengths.
+- Get `competitorId` values first from [`get_competitor_businesses`](/mcp/tools/competitors/get-competitor-businesses).

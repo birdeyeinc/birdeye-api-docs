@@ -81,7 +81,6 @@
             "group": "Social",
             "pages": [
               "mcp/tools/social/overview",
-              "mcp/tools/social/track-social-post",
               "mcp/tools/social/get-social-open-url-performance-report"
             ],
             "icon": "share-nodes"
@@ -98,10 +97,40 @@
             "group": "Aggregation",
             "pages": [
               "mcp/tools/aggregation/overview",
-              "mcp/tools/aggregation/get-all-aggregation-sources",
-              "mcp/tools/aggregation/get-review-site-aliases"
+              "mcp/tools/aggregation/get-all-aggregation-sources"
             ],
             "icon": "layer-group"
+          },
+          {
+            "group": "Competitors",
+            "pages": [
+              "mcp/tools/competitors/overview",
+              "mcp/tools/competitors/get-competitor-businesses",
+              "mcp/tools/competitors/get-competitor-child-businesses",
+              "mcp/tools/competitors/get-business-competitors",
+              "mcp/tools/competitors/get-competitive-insight-scores",
+              "mcp/tools/competitors/get-competitive-insight-themes",
+              "mcp/tools/competitors/get-competitive-insight-keywords"
+            ],
+            "icon": "trophy"
+          },
+          {
+            "group": "Competitor AI",
+            "pages": [
+              "mcp/tools/competitor-ai/overview",
+              "mcp/tools/competitor-ai/retrieve-competitor-reviews",
+              "mcp/tools/competitor-ai/retrieve-competitor-review-metrics"
+            ],
+            "icon": "robot"
+          },
+          {
+            "group": "Insight AI",
+            "pages": [
+              "mcp/tools/insight-ai/overview",
+              "mcp/tools/insight-ai/get-insight-experience-score-benchmark",
+              "mcp/tools/insight-ai/get-insight-experience-location-info"
+            ],
+            "icon": "lightbulb"
           }
         ],
         "icon": "/images/mcp.svg"

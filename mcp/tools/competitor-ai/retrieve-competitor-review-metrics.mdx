@@ -1,0 +1,64 @@
+---
+title: "Retrieve Competitor Review Metrics"
+description: "Retrieve aggregated average rating and review count per competitor location and source."
+---
+
+```
+retrieve_competitor_review_metrics
+```
+
+## Description
+
+Returns aggregated review metrics for competitor locations — average rating and total review count grouped by competitor location and review source. Use this for a quick competitive benchmark without fetching full review content.
+
+Each metric record includes:
+- `businessLocations` — your business locations associated with this competitor (businessId, name, alias, businessNumber, phone, address)
+- `competitorLocation` — the competitor location name
+- `competitorBrand` — the competitor brand name
+- `source` — review platform (e.g. `"Google"`, `"Yelp"`)
+- `overallRating` — average star rating for this competitor location on this source
+- `reviewCount` — total number of reviews for this competitor location on this source
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+
+### Optional
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `startIndex` | integer | `0` | 0-based start index for pagination |
+| `pageSize` | integer | `25` | Records per page (max 100) |
+| `sortOrder` | integer | `0` | `0` = ascending (default), `1` = descending |
+| `businessNumbers` | list[integer] | — | Scope to specific enterprise location numbers (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) |
+| `sources` | list[string] | — | Filter by review source (e.g. `["google"]`) |
+| `brandIds` | list[integer] | — | Filter by specific competitor brand IDs (max 5) |
+| `competitorLocationIds` | list[integer] | — | Filter by specific competitor location IDs |
+
+## Example Usage
+
+```
+How does my average rating compare to competitors?
+```
+
+```
+Which competitor has the most Google reviews?
+```
+
+```
+Show competitor review counts by source for last quarter.
+```
+
+```
+Show competitor review metrics for my Austin location.
+```
+
+## Notes
+
+- To scope by location name, call [`get_child_locations`](/mcp/tools/business/get-child-locations) first, match the location by `name`/`alias`, then pass its `businessNumber` in `businessNumbers`.
+- Maximum 5 `brandIds` per request.

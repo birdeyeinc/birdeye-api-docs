@@ -1,0 +1,45 @@
+---
+title: "Competitors Overview"
+description: "Tools for discovering competitor businesses and comparing category scores, themes, and keywords."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_competitor_businesses" icon="building" href="/mcp/tools/competitors/get-competitor-businesses">
+    List all competitor enterprises mapped to your account
+  </Card>
+  <Card title="get_competitor_child_businesses" icon="sitemap" href="/mcp/tools/competitors/get-competitor-child-businesses">
+    List all child locations of a specific competitor enterprise
+  </Card>
+  <Card title="get_business_competitors" icon="users" href="/mcp/tools/competitors/get-business-competitors">
+    Retrieve the competitors mapped to the current business
+  </Card>
+  <Card title="get_competitive_insight_scores" icon="chart-bar" href="/mcp/tools/competitors/get-competitive-insight-scores">
+    Compare category scores and grades between your business and competitors
+  </Card>
+  <Card title="get_competitive_insight_themes" icon="tags" href="/mcp/tools/competitors/get-competitive-insight-themes">
+    Compare top review themes between your business and competitors
+  </Card>
+  <Card title="get_competitive_insight_keywords" icon="magnifying-glass" href="/mcp/tools/competitors/get-competitive-insight-keywords">
+    Compare top keywords and adjectives from reviews against competitors
+  </Card>
+</CardGroup>
+
+## Typical Workflow
+
+Most competitive insight tools require `competitorId` values, which you get from `get_competitor_businesses` first:
+
+```
+1. get_competitor_businesses          → get competitorId values
+2. get_competitive_insight_scores     → compare category grades
+3. get_competitive_insight_themes     → compare top review themes
+4. get_competitive_insight_keywords   → compare top keywords
+```
+
+## Tips
+
+- Always call `get_competitor_businesses` first — its `competitorId` values are required by all insight tools.
+- Pass `competitorId` as both `competitorId` and `compAccountIds` in the `competitors` list parameter.
+- Use `sourceType: "review"` (default) for review-based comparisons or `"social"` for social content.
+- Pass `timePeriodSelected: "all"` to include all-time data regardless of date range.
