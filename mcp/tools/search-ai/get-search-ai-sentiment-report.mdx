@@ -18,7 +18,7 @@ Returns a structured SWOT (Strengths, Weaknesses, Opportunities, Threats) analys
 | `startDate` | string | Yes | — | Start date in `yyyy-MM-dd` format |
 | `endDate` | string | Yes | — | End date in `yyyy-MM-dd` format |
 | `aiModels` | list[string] | Yes | All three | AI engines: `"CHATGPT"`, `"GEMINI"`, `"PERPLEXITY"` |
-| `businessNumbers` | list[integer] | Yes | — | Location IDs (from [`get_child_locations`](/tools/business/get-child-locations)) |
+| `businessNumbers` | list[integer] | Yes | — | Location IDs (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) |
 | `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
 | `pageSize` | integer | No | `25` | Results per page |
 | `startIndex` | integer | No | `0` | Start index for pagination |
@@ -65,5 +65,5 @@ Show me the SWOT report from the latest Search AI run for all locations.
 
 ## Notes
 
-- `businessNumbers` is required — pass location IDs from [`get_child_locations`](/tools/business/get-child-locations).
-- Use this alongside [`get_search_ai_citations`](/tools/search-ai/get-search-ai-citations) to understand both what AI engines say and where they got that information.
+- `businessNumbers` is required — pass location IDs from [`get_child_locations`](/mcp/tools/business/get-child-locations).
+- Use this alongside [`get_search_ai_citations`](/mcp/tools/search-ai/get-search-ai-citations) to understand both what AI engines say and where they got that information.
