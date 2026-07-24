@@ -1,0 +1,69 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to resolve them when using the Birdeye MCP Server."
+---
+
+## Connection Issues
+
+### "Failed to connect to MCP server"
+
+The AI client cannot reach `https://mcp.birdeye.com/mcp`.
+
+- Verify the URL is entered exactly as: `https://mcp.birdeye.com/mcp`
+- Check that your network allows outbound HTTPS connections
+- Try disconnecting and re-adding the connector in your AI client
+
+### "MCP server not responding"
+
+The server may be temporarily unavailable.
+
+- Wait a few minutes and retry
+- Check [status.birdeye.com](https://status.birdeye.com) for any active incidents
+
+---
+
+## Authentication Issues
+
+### "Authorization failed" or OAuth redirect not completing
+
+- Ensure you are signing in with the correct Birdeye account credentials
+- Check that your browser allows pop-ups from `mcp.birdeye.com`
+- Try the connection flow in an incognito/private browser window
+
+### "Token expired" or tools stop working after some time
+
+OAuth access tokens have a limited lifetime. Most AI clients automatically refresh tokens in the background. If your client does not:
+
+1. Disconnect the Birdeye connector from your AI client settings
+2. Reconnect and complete the OAuth flow again to issue a new token
+
+### Using an MCP client other than Claude or ChatGPT
+
+Non-standard clients require a pre-registered redirect URI. Contact Birdeye Support with your client's redirect URI to get it authorized.
+
+---
+
+## Tool Errors
+
+### "Tool returned no data" or empty response
+
+- The date range or filters may be too restrictive — try widening the date range or removing filters
+- Your account may not have data for the requested category (e.g., no surveys created yet)
+- Some tools require `businessNumbers` from `get_child_locations` — confirm that step completed first
+
+### "Missing required parameter"
+
+Check the tool's parameter table in this documentation. Required parameters must be provided before the tool can execute.
+
+### Tools work but return stale data
+
+The Birdeye MCP Server returns live data on every call — there is no caching layer. If data appears stale, the underlying Birdeye account data may not have updated yet. Review ingestion times in your Birdeye dashboard.
+
+---
+
+## Getting Help
+
+If you continue to experience issues:
+
+- Email **support@birdeye.com** with the tool name, error message, and approximate time of the request
+- Visit the [Birdeye Help Center](https://help.birdeye.com) for additional guidance

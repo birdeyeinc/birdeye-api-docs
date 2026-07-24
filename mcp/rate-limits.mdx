@@ -1,0 +1,41 @@
+---
+title: "Rate Limits & Timeouts"
+description: "Understand the rate limits and timeout behavior of the Birdeye MCP Server."
+---
+
+## Rate Limits
+
+The Birdeye MCP Server enforces rate limits to ensure fair usage and system stability. Limits are applied per authenticated user session.
+
+| Limit | Value |
+|---|---|
+| Requests per minute | 60 |
+| Requests per hour | 500 |
+| Max concurrent tool calls | 5 |
+
+When a rate limit is exceeded, the server returns an error indicating the limit type and when you can retry.
+
+## Timeouts
+
+Each tool call has a maximum execution time. If the upstream Birdeye API does not respond within the timeout window, the MCP Server cancels the request and returns a timeout error.
+
+| Timeout | Value |
+|---|---|
+| Tool execution timeout | 30 seconds |
+| OAuth token exchange | 10 seconds |
+
+## Pagination and Large Responses
+
+Tools that return large datasets (reviews, tickets, surveys) are paginated. Requesting very large page sizes can increase response time significantly. Recommended defaults:
+
+- Keep `pageSize` at 25–50 for most tools
+- Use `startIndex` to paginate through results across multiple calls
+
+## What to Do When You Hit a Limit
+
+If your AI assistant reports a rate limit or timeout error:
+
+1. **Wait and retry** — rate limit windows reset per minute/hour
+2. **Reduce page size** — lower `pageSize` or `count` parameters to return fewer records per call
+3. **Narrow date ranges** — shorter date windows return data faster
+4. **Contact support** — if you consistently hit limits for legitimate use cases, contact Birdeye Support to discuss increased limits

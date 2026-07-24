@@ -20,6 +20,8 @@
               "mcp/introduction",
               "mcp/quickstart",
               "mcp/authentication",
+              "mcp/rate-limits",
+              "mcp/troubleshooting",
               "mcp/tools/overview"
             ],
             "icon": "rocket"
@@ -540,7 +542,7 @@
   },
   "logo": {
     "light": "/images/birdeye-vector-logo.svg",
-    "dark": "/images/birdeye-vector-logo.svg"
+    "dark": "/images/birdeye-vector-logo-dark.svg"
   },
   "css": "/custom.css",
   "navbar": {
