@@ -20,7 +20,6 @@
               "mcp/introduction",
               "mcp/quickstart",
               "mcp/authentication",
-              "mcp/rate-limits",
               "mcp/troubleshooting",
               "mcp/tools/overview"
             ],
