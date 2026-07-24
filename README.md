@@ -111,3 +111,4 @@ For questions about the MCP server or this documentation, reach out to:
 - [Birdeye Platform](https://birdeye.com)
 - [MCP Server](https://mcp.birdeye.com/mcp)
 - [Mintlify Docs](https://mintlify.com/docs)
+
