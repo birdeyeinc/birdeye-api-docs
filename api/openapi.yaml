@@ -26917,9 +26917,6 @@ components:
                       description: List of level names to filter.
                       items:
                         type: string
-              groupByLevel:
-                type: string
-                description: The level to group results by (e.g. Region).
               userEmail:
                 type: string
                 description: Email of the user performing the request.
@@ -26949,7 +26946,6 @@ components:
                 levelNames:
                 - Region1
                 - Region2
-              groupByLevel: Region
               userEmail: example@birdeye.com
     Add_aggregation_URLBody:
       content:
