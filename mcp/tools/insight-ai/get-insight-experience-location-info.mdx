@@ -33,6 +33,7 @@ The response contains:
 | `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
 | `endDate` | string (`MM/DD/YYYY`) | End of the date range |
 | `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+| `userEmail` | string | Email of the user performing the request |
 
 ### Optional
 
@@ -40,6 +41,8 @@ The response contains:
 |---|---|---|
 | `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
 | `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+| `hierarchyNodeData` | list[object] | Filter by hierarchy levels — each object has `levelId` (string) and `levelNames` (list[string]) |
+| `groupByLevel` | string | The hierarchy level to group results by (e.g. `Region`) |
 
 ## Example Usage
 

@@ -1,0 +1,62 @@
+---
+title: "Get Insight Experience Over Time"
+description: "Get account-level experience scores over time at day, week, month, quarter, or year intervals."
+---
+
+```
+get_insight_experience_over_time
+```
+
+## Description
+
+Returns a time-series view of experience scores at the account level, aggregating sentiment, reputation, listing, and call scores across configurable time intervals. Use this to identify trends, seasonal patterns, and performance changes over a custom date range.
+
+The response contains:
+- `groupByType` — the interval used to group data (e.g. `month`, `week`, `day`, `quarter`, `year`)
+- `dataPoints` (array) — one entry per time interval, each with:
+  - `startDate`, `endDate` — date range for that interval
+  - `label` — human-readable label (e.g. `May 2026`)
+  - `shortLabel` — abbreviated label (e.g. `May '26`)
+  - `experienceScore` — overall experience score for the interval
+  - `sentiment.score` — sentiment score (nullable)
+  - `reputation.score` — reputation score (nullable)
+  - `listing.score` — listing score (nullable)
+  - `call.score` — call score (nullable)
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `groupBy` | string | Time interval to group results by — `day`, `week`, `month`, `quarter`, or `year` (default: `month`) |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+| `hierarchyNodeData` | list[object] | Filter by hierarchy levels — each object has `levelId` (string) and `levelNames` (list[string]) |
+| `userEmail` | string | Email of the user performing the request |
+
+## Example Usage
+
+```
+Show me our experience score trend over the last 6 months.
+```
+
+```
+How has our reputation score changed week by week this quarter?
+```
+
+```
+Compare our listing and sentiment scores month over month for 2026.
+```

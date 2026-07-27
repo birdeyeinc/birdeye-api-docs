@@ -18340,6 +18340,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
+              userEmail: example@birdeye.com
   "/v1/qna/question/create":
     post:
       responses:
@@ -26919,10 +26920,14 @@ components:
               groupByLevel:
                 type: string
                 description: The level to group results by (e.g. Region).
+              userEmail:
+                type: string
+                description: Email of the user performing the request.
             required:
             - businessNumbers
             - startDate
             - endDate
+            - userEmail
             example:
               reviewSources:
               - Google
@@ -26945,6 +26950,7 @@ components:
                 - Region1
                 - Region2
               groupByLevel: Region
+              userEmail: example@birdeye.com
     Add_aggregation_URLBody:
       content:
         application/json:

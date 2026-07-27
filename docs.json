@@ -129,7 +129,8 @@
             "pages": [
               "mcp/tools/insight-ai/overview",
               "mcp/tools/insight-ai/get-insight-experience-score-benchmark",
-              "mcp/tools/insight-ai/get-insight-experience-location-info"
+              "mcp/tools/insight-ai/get-insight-experience-location-info",
+              "mcp/tools/insight-ai/get-insight-experience-over-time"
             ],
             "icon": "lightbulb"
           }
