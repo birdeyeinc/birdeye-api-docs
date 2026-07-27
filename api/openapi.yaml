@@ -17928,9 +17928,36 @@ paths:
           type: string
           default: application/json
       requestBody:
-        "$ref": "#/components/requestBodies/Get_Insight_Experience_Score_BenchmarkBody"
         content:
           application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
             example:
               reviewSources:
               - Google
@@ -18315,9 +18342,36 @@ paths:
           type: string
           default: application/json
       requestBody:
-        "$ref": "#/components/requestBodies/Get_Insight_Experience_Score_BenchmarkBody"
         content:
           application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
             example:
               reviewSources:
               - Google
