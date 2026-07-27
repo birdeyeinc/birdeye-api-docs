@@ -26890,7 +26890,7 @@ tags:
 
     * <b>10/04/2024</b> - Added support to fetch ticketId associated with the survey responses in List Response API.
 servers:
-- url: http://preprod59600-armor.birdeye.internal:8080/resources
+- url: https://api.birdeye.com/resources
 components:
   requestBodies:
     Competitive_Ranking_ReportBody:
