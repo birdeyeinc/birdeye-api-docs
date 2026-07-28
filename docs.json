@@ -103,19 +103,6 @@
             "icon": "layer-group"
           },
           {
-            "group": "Competitors",
-            "pages": [
-              "mcp/tools/competitors/overview",
-              "mcp/tools/competitors/get-competitor-businesses",
-              "mcp/tools/competitors/get-competitor-child-businesses",
-              "mcp/tools/competitors/get-business-competitors",
-              "mcp/tools/competitors/get-competitive-insight-scores",
-              "mcp/tools/competitors/get-competitive-insight-themes",
-              "mcp/tools/competitors/get-competitive-insight-keywords"
-            ],
-            "icon": "trophy"
-          },
-          {
             "group": "Competitor AI",
             "pages": [
               "mcp/tools/competitor-ai/overview",
