@@ -15310,28 +15310,17 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Apiary_uploadSocialMedia_Response200"
-              examples:
-                single_url:
-                  summary: Single URL success
-                  value:
-                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
-                    accepted_count: 1
-                multiple_urls:
-                  summary: Multiple URLs success
-                  value:
-                    batch_id: 6c32243f-ce5f-4400-9988-06bd6f4c4080
-                    accepted_count: 2
-                with_folder_id:
-                  summary: With optional folder_id
-                  value:
-                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
-                    accepted_count: 1
+              example:
+                batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                accepted_count: 1
         '400':
           description: Bad Request
           content:
             application/json:
               schema:
                 "$ref": "#/components/schemas/1011Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1011Model"
               x-apiary-response-examples:
                 empty_urls:
                   value:
@@ -15346,21 +15335,10 @@ paths:
                     code: 1011
                     message: "Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported."
               examples:
-                empty_urls:
-                  summary: Empty media_urls array
+                response:
                   value:
                     code: 1011
                     message: media_urls cannot be empty
-                too_many_urls:
-                  summary: More than 50 URLs
-                  value:
-                    code: 1011
-                    message: media_urls cannot exceed 50 items
-                unsupported_type:
-                  summary: Unsupported or unrecognised file extension
-                  value:
-                    code: 1011
-                    message: "Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported."
         '401':
           description: Unauthorized
           content:
@@ -15461,9 +15439,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/Apiary_trackSocialMediaUpload_Response200"
-              examples:
+              x-apiary-response-examples:
                 completed:
-                  summary: All items succeeded (COMPLETED)
                   value:
                     batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
                     status: COMPLETED
@@ -15477,7 +15454,6 @@ paths:
                       asset_id: 3457963
                       cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
                 failed:
-                  summary: All items failed (FAILED)
                   value:
                     batch_id: 030ec908-2c2d-4e2c-a9d6-654b27f63cca
                     status: FAILED
@@ -15490,7 +15466,6 @@ paths:
                       status: FAILED
                       failure_reason: Source URL is not accessible or could not be downloaded
                 partially_completed:
-                  summary: Mixed results (PARTIALLY_COMPLETED)
                   value:
                     batch_id: 6c32243f-ce5f-4400-9988-06bd6f4c4080
                     status: PARTIALLY_COMPLETED
@@ -15507,7 +15482,6 @@ paths:
                       asset_id: 3457963
                       cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
                 eu_completed:
-                  summary: EU region, completed successfully
                   value:
                     batch_id: 1e2e088b-7b9d-4d9d-833b-ad506d5a7323
                     status: COMPLETED
@@ -15520,6 +15494,18 @@ paths:
                       status: SUCCESS
                       asset_id: 2144734
                       cdn_url: https://d25nuexi6ta4v6.cloudfront.net/.../video.mp4
+              example:
+                batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                status: COMPLETED
+                accepted_count: 1
+                success_count: 1
+                failed_count: 0
+                pending_count: 0
+                items:
+                - source_url: https://example.com/video.mp4
+                  status: SUCCESS
+                  asset_id: 3457963
+                  cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
         '401':
           description: Unauthorized
           content:
