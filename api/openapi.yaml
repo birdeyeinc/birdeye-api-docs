@@ -15346,10 +15346,21 @@ paths:
                     code: 1011
                     message: "Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported."
               examples:
-                response:
+                empty_urls:
+                  summary: Empty media_urls array
                   value:
                     code: 1011
                     message: media_urls cannot be empty
+                too_many_urls:
+                  summary: More than 50 URLs
+                  value:
+                    code: 1011
+                    message: media_urls cannot exceed 50 items
+                unsupported_type:
+                  summary: Unsupported or unrecognised file extension
+                  value:
+                    code: 1011
+                    message: "Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported."
         '401':
           description: Unauthorized
           content:
@@ -15386,11 +15397,12 @@ paths:
                     message: Rate limit exceeded
       summary: Upload Social Media
       operationId: uploadSocialMedia
-      description: Submits a batch of publicly accessible image or video URLs for
-        asynchronous upload to the Birdeye media library. Returns a batch_id immediately;
-        use the Track Upload Status endpoint to poll for per-item results. Maximum
-        50 URLs per request. Supported types — images (.jpg, .jpeg, .png, .gif, .webp)
-        and videos (.mp4, .mov, .avi, .mkv, .webm, .wmv).
+      description: Accepts a batch of publicly accessible image or video URLs and
+        queues them for asynchronous upload to the Birdeye media library. Returns
+        a batch_id immediately; poll the Track Upload Status endpoint to retrieve
+        per-item results. Accepts 1–50 URLs per request. Supported image formats —
+        .jpg, .jpeg, .png, .gif, .webp. Supported video formats — .mp4, .mov, .avi,
+        .mkv, .webm, .wmv.
       tags:
       - Social
       parameters:
@@ -15555,10 +15567,10 @@ paths:
                     message: Rate limit exceeded
       summary: Track Social Media Upload
       operationId: trackSocialMediaUpload
-      description: Returns the processing status of a media upload batch submitted
-        via the Upload Social Media endpoint. Poll this endpoint until pending_count
-        is 0 or status is no longer PENDING. The asset_id from successful items is
-        the value to reference when attaching media to a Social Post.
+      description: Returns the current processing status for a media upload batch
+        submitted via the Upload Social Media endpoint. Poll until pending_count reaches
+        0 or the batch status is no longer PENDING. The asset_id returned for successfully
+        uploaded items should be used when attaching media to a Social Post.
       tags:
       - Social
       parameters:
