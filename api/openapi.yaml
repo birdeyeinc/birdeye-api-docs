@@ -15301,6 +15301,289 @@ paths:
                 endDate: 01/10/2020
               page: 1
               size: 50
+  "/v1/social/post/public/media/upload":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Apiary_uploadSocialMedia_Response200"
+              examples:
+                single_url:
+                  summary: Single URL success
+                  value:
+                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                    accepted_count: 1
+                multiple_urls:
+                  summary: Multiple URLs success
+                  value:
+                    batch_id: 6c32243f-ce5f-4400-9988-06bd6f4c4080
+                    accepted_count: 2
+                with_folder_id:
+                  summary: With optional folder_id
+                  value:
+                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                    accepted_count: 1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1011Model"
+              x-apiary-response-examples:
+                empty_urls:
+                  value:
+                    code: 1011
+                    message: media_urls cannot be empty
+                too_many_urls:
+                  value:
+                    code: 1011
+                    message: media_urls cannot exceed 50 items
+                unsupported_type:
+                  value:
+                    code: 1011
+                    message: "Unsupported media type for URL: https://example.com/video.mp4.. Only image and video URLs are supported."
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: media_urls cannot be empty
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1161Model"
+              - "$ref": "#/components/schemas/1167Model"
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Upload Social Media
+      operationId: uploadSocialMedia
+      description: Submits a batch of publicly accessible image or video URLs for
+        asynchronous upload to the Birdeye media library. Returns a batch_id immediately;
+        use the Track Upload Status endpoint to poll for per-item results. Maximum
+        50 URLs per request. Supported types — images (.jpg, .jpeg, .png, .gif, .webp)
+        and videos (.mp4, .mov, .avi, .mkv, .webm, .wmv).
+      tags:
+      - Social
+      parameters:
+      - name: x-api-key
+        in: header
+        description: Business API key.
+        required: true
+        example: your-api-key-here
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: Business identifier.
+        required: true
+        example: '151378841664132'
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: true
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Apiary_uploadSocialMedia_Request"
+            examples:
+              single_url:
+                summary: Single URL
+                value:
+                  media_urls:
+                  - https://example.com/video.mp4
+              multiple_urls:
+                summary: Multiple URLs (image + video)
+                value:
+                  media_urls:
+                  - https://example.com/image.jpg
+                  - https://example.com/video.mp4
+              with_folder_id:
+                summary: With optional folder_id
+                value:
+                  media_urls:
+                  - https://example.com/video.mp4
+                  folder_id: 1527
+  "/v1/social/post/public/media/track/{batch_id}":
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Apiary_trackSocialMediaUpload_Response200"
+              examples:
+                completed:
+                  summary: All items succeeded (COMPLETED)
+                  value:
+                    batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+                    status: COMPLETED
+                    accepted_count: 1
+                    success_count: 1
+                    failed_count: 0
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/video.mp4
+                      status: SUCCESS
+                      asset_id: 3457963
+                      cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+                failed:
+                  summary: All items failed (FAILED)
+                  value:
+                    batch_id: 030ec908-2c2d-4e2c-a9d6-654b27f63cca
+                    status: FAILED
+                    accepted_count: 1
+                    success_count: 0
+                    failed_count: 1
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/image.jpg
+                      status: FAILED
+                      failure_reason: Source URL is not accessible or could not be downloaded
+                partially_completed:
+                  summary: Mixed results (PARTIALLY_COMPLETED)
+                  value:
+                    batch_id: 6c32243f-ce5f-4400-9988-06bd6f4c4080
+                    status: PARTIALLY_COMPLETED
+                    accepted_count: 2
+                    success_count: 1
+                    failed_count: 1
+                    pending_count: 0
+                    items:
+                    - source_url: https://example.com/image.jpg
+                      status: FAILED
+                      failure_reason: Source URL is not accessible or could not be downloaded
+                    - source_url: https://example.com/video.mp4
+                      status: SUCCESS
+                      asset_id: 3457963
+                      cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
+                eu_completed:
+                  summary: EU region, completed successfully
+                  value:
+                    batch_id: 1e2e088b-7b9d-4d9d-833b-ad506d5a7323
+                    status: COMPLETED
+                    accepted_count: 1
+                    success_count: 1
+                    failed_count: 0
+                    pending_count: 0
+                    items:
+                    - source_url: https://drive.google.com/file/d/...
+                      status: SUCCESS
+                      asset_id: 2144734
+                      cdn_url: https://d25nuexi6ta4v6.cloudfront.net/.../video.mp4
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1161Model"
+              - "$ref": "#/components/schemas/1167Model"
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1011Model"
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Track Social Media Upload
+      operationId: trackSocialMediaUpload
+      description: Returns the processing status of a media upload batch submitted
+        via the Upload Social Media endpoint. Poll this endpoint until pending_count
+        is 0 or status is no longer PENDING. The asset_id from successful items is
+        the value to reference when attaching media to a Social Post.
+      tags:
+      - Social
+      parameters:
+      - name: batch_id
+        in: path
+        description: The batch ID returned from the Upload Social Media endpoint.
+        required: true
+        example: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        schema:
+          type: string
+          format: uuid
+      - name: x-api-key
+        in: header
+        description: Business API key.
+        required: true
+        example: your-api-key-here
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: Business identifier.
+        required: true
+        example: '151378841664132'
+        schema:
+          type: string
   "/v1/employee/{businessId}":
     get:
       responses:
@@ -38704,3 +38987,106 @@ components:
                     description: Last Name of the reporter
                 description: Ticket reporter details.
           description: Ticket Details.
+    Apiary_uploadSocialMedia_Request:
+      type: object
+      properties:
+        media_urls:
+          type: array
+          description: List of publicly accessible image or video URLs. Maximum 50
+            items. Supported image extensions — .jpg, .jpeg, .png, .gif, .webp. Supported
+            video extensions — .mp4, .mov, .avi, .mkv, .webm, .wmv.
+          maxItems: 50
+          items:
+            type: string
+        folder_id:
+          type: integer
+          description: Optional media library folder ID to organize uploaded assets.
+            If omitted, assets are placed in the default media library location.
+      required:
+      - media_urls
+      example:
+        media_urls:
+        - https://example.com/video.mp4
+    Apiary_uploadSocialMedia_Response200:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          format: uuid
+          description: Use this to poll the Track Upload Status endpoint for processing
+            results.
+        accepted_count:
+          type: integer
+          description: Number of URLs accepted into the batch.
+      example:
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        accepted_count: 1
+    Apiary_trackSocialMediaUpload_Response200:
+      type: object
+      properties:
+        batch_id:
+          type: string
+          format: uuid
+          description: Identifier for the batch.
+        status:
+          type: string
+          description: "Overall batch status. Possible values: COMPLETED (all items\
+            \ processed successfully), PARTIALLY_COMPLETED (some succeeded, some failed),\
+            \ FAILED (all items failed), PENDING (processing still in progress —\
+            \ poll again)."
+          enum:
+          - COMPLETED
+          - PARTIALLY_COMPLETED
+          - FAILED
+          - PENDING
+        accepted_count:
+          type: integer
+          description: Total number of URLs submitted in the batch.
+        success_count:
+          type: integer
+          description: Number of successfully uploaded items.
+        failed_count:
+          type: integer
+          description: Number of failed items.
+        pending_count:
+          type: integer
+          description: Number of items still processing. Poll again if greater than
+            0.
+        items:
+          type: array
+          description: Per-item processing results.
+          items:
+            type: object
+            properties:
+              source_url:
+                type: string
+                description: The original URL submitted.
+              status:
+                type: string
+                description: Item-level status. Possible values — SUCCESS or FAILED.
+                enum:
+                - SUCCESS
+                - FAILED
+              asset_id:
+                type: integer
+                description: Internal asset ID for use in post creation API. Present
+                  only on SUCCESS.
+              cdn_url:
+                type: string
+                description: CDN-hosted URL of the uploaded media. Present only on
+                  SUCCESS.
+              failure_reason:
+                type: string
+                description: Human-readable reason for failure. Present only on FAILED.
+      example:
+        batch_id: e0de3eeb-1f52-45bd-9110-fb6b5cb966ad
+        status: COMPLETED
+        accepted_count: 1
+        success_count: 1
+        failed_count: 0
+        pending_count: 0
+        items:
+        - source_url: https://example.com/video.mp4
+          status: SUCCESS
+          asset_id: 3457963
+          cdn_url: https://ddjkm7nmu27lx.cloudfront.net/.../video.mp4
