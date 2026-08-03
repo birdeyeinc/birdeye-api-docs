@@ -36312,11 +36312,11 @@ components:
                 attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                Property. Each attribute carries an attributeValueType that defines
-                the expected value format: BOOLEAN (true/false), INTEGER (positive
-                number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one
-                value from possibleValues), or MULTI_SELECT (comma-separated values
-                from possibleValues).
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -37268,11 +37268,11 @@ components:
                 attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                Property. Each attribute carries an attributeValueType that defines
-                the expected value format: BOOLEAN (true/false), INTEGER (positive
-                number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one
-                value from possibleValues), or MULTI_SELECT (comma-separated values
-                from possibleValues).
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -38225,11 +38225,11 @@ components:
                 attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                Property. Each attribute carries an attributeValueType that defines
-                the expected value format: BOOLEAN (true/false), INTEGER (positive
-                number), YEAR (year string), TIME (HH:mm string), SINGLE_SELECT (one
-                value from possibleValues), or MULTI_SELECT (comma-separated values
-                from possibleValues).
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
