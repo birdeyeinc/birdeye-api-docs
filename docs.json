@@ -400,7 +400,8 @@
                 "pages": [
                   "api/insight-ai/overview",
                   "api/insight-ai/get-insight-experience-score-benchmark",
-                  "api/insight-ai/get-insight-experience-location-info"
+                  "api/insight-ai/get-insight-experience-location-info",
+                  "api/insight-ai/get-insight-experience-over-time"
                 ],
                 "icon": "lightbulb"
               },
