@@ -3915,6 +3915,9 @@ paths:
                   phone:
                     type: string
                     description: User's phone number.
+                  userRole:
+                    type: string
+                    description: Role on the account.
                   businessList:
                     type: array
                     items:
