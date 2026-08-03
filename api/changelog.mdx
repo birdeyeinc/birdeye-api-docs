@@ -2,6 +2,9 @@
 title: "Change Logs"
 ---
 
+* <b>08/03/2026</b> - Added new Insight Experience Over Time API (`POST /v1/insight/experience/over-time`) to retrieve time-series insight scores with support for hierarchy-level filtering and grouping.
+* <b>08/03/2026</b> - Updated the existing Get Insight Experience Location Info API to include the `userEmail` field in the request body.
+* <b>08/03/2026</b> - Added `userRole` field to the Get User Details API (`GET /v1/user/details`) response to return the user's role on the account.
 * <b>07/03/2026</b> - Updated `mainBusinessDescription` and microsite `internalListing.description` fields in Create, Update and Get Listing APIs to be optional instead of required, with support for clearing the existing value by sending an empty string (V2BIRD-1690).
 * <b>06/10/2026</b> - Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: false). When set to true, the response includes the customer's experience score and source.
 * <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
