@@ -22650,18 +22650,42 @@ paths:
                           attributeName: Family-friendly
                           value: true
                       hotelAttributes:
-                        sustainability:
-                          energyEfficiency:
-                            energyConservationProgram:
-                              attributeId: energyConservationProgram
-                              attributeName: Energy conservation program
+                        business:
+                          business:
+                            meetingRoomsCount:
+                              attributeId: meetingRoomsCount
+                              attributeName: Number of meeting rooms
+                              value: 20
+                        policies:
+                          policies:
+                            checkinTime:
+                              attributeId: checkinTime
+                              attributeName: Check-In Time
+                              value: "14:00"
+                            checkoutTime:
+                              attributeId: checkoutTime
+                              attributeName: Check-Out Time
+                              value: "11:00"
+                        property:
+                          property:
+                            builtYear:
+                              attributeId: builtYear
+                              attributeName: Built Year
+                              value: 2010
+                        services:
+                          services:
+                            frontDesk:
+                              attributeId: frontDesk
+                              attributeName: Front desk
                               value: true
-                        parking:
-                          parking:
-                            parkingAvailable:
-                              attributeId: parkingAvailable
-                              attributeName: Parking available
-                              value: true
+                            giftShop:
+                              attributeId: giftShop
+                              attributeName: Gift shop
+                              value: false
+                            languagesSpoken:
+                              attributeId: languagesSpoken
+                              attributeName: Languages Spoken
+                              value: English,Spanish,French
                       foodDelivery: https://www.ubereats.com
                       foodTakeout: https://www.ubereats.com
                       whatsappBusinessLink: https://wa.me/9737160007
@@ -23370,6 +23394,7 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20001
+                        attributeValueType: BOOLEAN
                       twentyFourHourFrontDesk:
                         attributeId: twentyFourHourFrontDesk
                         attributeName: Twenty four hour front desk
@@ -23379,6 +23404,45 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20002
+                        attributeValueType: BOOLEAN
+                      giftShop:
+                        attributeId: giftShop
+                        attributeName: Gift shop
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20011
+                        attributeValueType: BOOLEAN
+                      languagesSpoken:
+                        attributeId: languagesSpoken
+                        attributeName: Languages Spoken
+                        possibleValues:
+                        - value: Arabic
+                          name: Arabic
+                        - value: English
+                          name: English
+                        - value: French
+                          name: French
+                        - value: Spanish
+                          name: Spanish
+                        columnId: 20170
+                        attributeValueType: MULTI_SELECT
+                  policies:
+                    policies:
+                      checkinTime:
+                        attributeId: checkinTime
+                        attributeName: Check-In Time
+                        possibleValues: []
+                        columnId: 20173
+                        attributeValueType: TIME
+                      checkoutTime:
+                        attributeId: checkoutTime
+                        attributeName: Check-Out Time
+                        possibleValues: []
+                        columnId: 20174
+                        attributeValueType: TIME
                   parking:
                     parking:
                       parkingAvailable:
@@ -23390,6 +23454,35 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20097
+                        attributeValueType: BOOLEAN
+                      freeParking:
+                        attributeId: freeParking
+                        attributeName: Free parking
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20098
+                        attributeValueType: BOOLEAN
+                  business:
+                    business:
+                      meetingRooms:
+                        attributeId: meetingRooms
+                        attributeName: Meeting rooms
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20088
+                        attributeValueType: BOOLEAN
+                      meetingRoomsCount:
+                        attributeId: meetingRoomsCount
+                        attributeName: Number of meeting rooms
+                        possibleValues: []
+                        columnId: 20172
+                        attributeValueType: INTEGER
                   sustainability:
                     energyEfficiency:
                       energyConservationProgram:
@@ -23401,6 +23494,33 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20134
+                        attributeValueType: BOOLEAN
+                  property:
+                    property:
+                      builtYear:
+                        attributeId: builtYear
+                        attributeName: Built Year
+                        possibleValues: []
+                        columnId: 20177
+                        attributeValueType: YEAR
+                      lastRenovatedYear:
+                        attributeId: lastRenovatedYear
+                        attributeName: Last Renovated Year
+                        possibleValues: []
+                        columnId: 20178
+                        attributeValueType: YEAR
+                      roomsCount:
+                        attributeId: roomsCount
+                        attributeName: Rooms Count
+                        possibleValues: []
+                        columnId: 20179
+                        attributeValueType: INTEGER
+                      floorsCount:
+                        attributeId: floorsCount
+                        attributeName: Floors Count
+                        possibleValues: []
+                        columnId: 20180
+                        attributeValueType: INTEGER
         '400':
           description: Bad Request
           content:
@@ -36189,10 +36309,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -36647,18 +36771,42 @@ components:
               attributeName: Family-friendly
               value: true
           hotelAttributes:
-            sustainability:
-              energyEfficiency:
-                energyConservationProgram:
-                  attributeId: energyConservationProgram
-                  attributeName: Energy conservation program
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: "14:00"
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: "11:00"
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
                   value: true
-            parking:
-              parking:
-                parkingAvailable:
-                  attributeId: parkingAvailable
-                  attributeName: Parking available
-                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
           foodDelivery: https://www.ubereats.com
           foodTakeout: https://www.ubereats.com
           whatsappBusinessLink: https://wa.me/9737160007
@@ -37117,10 +37265,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -37575,18 +37727,42 @@ components:
               attributeName: Family-friendly
               value: true
           hotelAttributes:
-            sustainability:
-              energyEfficiency:
-                energyConservationProgram:
-                  attributeId: energyConservationProgram
-                  attributeName: Energy conservation program
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: "14:00"
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: "11:00"
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
                   value: true
-            parking:
-              parking:
-                parkingAvailable:
-                  attributeId: parkingAvailable
-                  attributeName: Parking available
-                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
           foodDelivery: https://www.ubereats.com
           foodTakeout: https://www.ubereats.com
           whatsappBusinessLink: https://wa.me/9737160007
@@ -38046,10 +38222,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -38434,6 +38614,17 @@ components:
                                 description: Attribute value display name.
                           description: Contains the list of possible values for the
                             attribute.
+                        attributeValueType:
+                          type: string
+                          example: BOOLEAN
+                          description: Defines the expected value format for the attribute.
+                          enum:
+                          - BOOLEAN
+                          - INTEGER
+                          - YEAR
+                          - TIME
+                          - SINGLE_SELECT
+                          - MULTI_SELECT
           description: This is a dynamic field. Depends upon the hotel attributes
             supported for the selected business.
     Apiary_createProductListing_Request:
