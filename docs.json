@@ -325,7 +325,9 @@
                   "api/social/edit-published-social-post",
                   "api/social/delete-public-social-post",
                   "api/social/track-social-post",
-                  "api/social/social-open-url-performance-report"
+                  "api/social/social-open-url-performance-report",
+                  "api/social/upload-social-media",
+                  "api/social/track-social-media-upload"
                 ],
                 "icon": "share-nodes"
               },
