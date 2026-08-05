@@ -3915,6 +3915,9 @@ paths:
                   phone:
                     type: string
                     description: User's phone number.
+                  userRole:
+                    type: string
+                    description: Role on the account.
                   businessList:
                     type: array
                     items:
@@ -18255,6 +18258,281 @@ paths:
               - 174436684666401
               startDate: 02/25/2025
               endDate: 02/01/2026
+  "/v1/insight/experience/over-time":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groupByType:
+                    type: string
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startDate:
+                          type: string
+                        endDate:
+                          type: string
+                        label:
+                          type: string
+                        shortLabel:
+                          type: string
+                        experienceScore:
+                          type: number
+                        sentiment:
+                          type: object
+                          properties:
+                            score:
+                              type: number
+                              nullable: true
+                        reputation:
+                          type: object
+                          properties:
+                            score:
+                              type: number
+                              nullable: true
+                        listing:
+                          type: object
+                          properties:
+                            score:
+                              type: number
+                              nullable: true
+                        call:
+                          type: object
+                          properties:
+                            score:
+                              type: number
+                              nullable: true
+              example:
+                groupByType: month
+                dataPoints:
+                - startDate: 04/30/2026
+                  endDate: 04/30/2026
+                  label: Apr 2026
+                  shortLabel: Apr '26
+                  experienceScore: 0.0
+                  sentiment:
+                    score: null
+                  reputation:
+                    score: 0.0
+                  listing:
+                    score: 0.0
+                  call:
+                    score: null
+                - startDate: 05/01/2026
+                  endDate: 05/31/2026
+                  label: May 2026
+                  shortLabel: May '26
+                  experienceScore: 87.3
+                  sentiment:
+                    score: null
+                  reputation:
+                    score: 90.0
+                  listing:
+                    score: 84.5
+                  call:
+                    score: null
+                - startDate: 06/01/2026
+                  endDate: 06/30/2026
+                  label: Jun 2026
+                  shortLabel: Jun '26
+                  experienceScore: 86.7
+                  sentiment:
+                    score: null
+                  reputation:
+                    score: 92.5
+                  listing:
+                    score: 80.9
+                  call:
+                    score: null
+                - startDate: 07/01/2026
+                  endDate: 07/31/2026
+                  label: Jul 2026
+                  shortLabel: Jul '26
+                  experienceScore: 84.8
+                  sentiment:
+                    score: null
+                  reputation:
+                    score: 88.8
+                  listing:
+                    score: 80.9
+                  call:
+                    score: null
+                - startDate: 08/01/2026
+                  endDate: 08/01/2026
+                  label: Aug 2026
+                  shortLabel: Aug '26
+                  experienceScore: 0.0
+                  sentiment:
+                    score: null
+                  reputation:
+                    score: 0.0
+                  listing:
+                    score: 0.0
+                  call:
+                    score: null
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2150Model"
+              examples:
+                response:
+                  value:
+                    code: 2150
+                    message: Not a valid reseller/enterprise id.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Experience Over Time
+      operationId: getInsightExperienceOverTime
+      description: The Insight Experience Over Time API provides a time-series view
+        of experience scores at the account level. It aggregates sentiment, reputation,
+        listing, and call scores across configurable time intervals — day, week, month,
+        quarter, or year — enabling trend analysis and performance tracking over custom
+        date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupBy:
+                  type: string
+                  description: Time interval to group results by (e.g. day, week, month, quarter, year).
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupBy: month
   "/v1/insight/experience/locationInfo":
     post:
       responses:
@@ -18418,10 +18696,31 @@ paths:
                   description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
                   items:
                     type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
               required:
                 - businessNumbers
                 - startDate
                 - endDate
+                - userEmail
             example:
               reviewSources:
               - Google
@@ -18438,6 +18737,13 @@ paths:
               - 174436684666401
               startDate: 02/25/2025
               endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
   "/v1/qna/question/create":
     post:
       responses:
@@ -22625,18 +22931,42 @@ paths:
                           attributeName: Family-friendly
                           value: true
                       hotelAttributes:
-                        sustainability:
-                          energyEfficiency:
-                            energyConservationProgram:
-                              attributeId: energyConservationProgram
-                              attributeName: Energy conservation program
+                        business:
+                          business:
+                            meetingRoomsCount:
+                              attributeId: meetingRoomsCount
+                              attributeName: Number of meeting rooms
+                              value: 20
+                        policies:
+                          policies:
+                            checkinTime:
+                              attributeId: checkinTime
+                              attributeName: Check-In Time
+                              value: "14:00"
+                            checkoutTime:
+                              attributeId: checkoutTime
+                              attributeName: Check-Out Time
+                              value: "11:00"
+                        property:
+                          property:
+                            builtYear:
+                              attributeId: builtYear
+                              attributeName: Built Year
+                              value: 2010
+                        services:
+                          services:
+                            frontDesk:
+                              attributeId: frontDesk
+                              attributeName: Front desk
                               value: true
-                        parking:
-                          parking:
-                            parkingAvailable:
-                              attributeId: parkingAvailable
-                              attributeName: Parking available
-                              value: true
+                            giftShop:
+                              attributeId: giftShop
+                              attributeName: Gift shop
+                              value: false
+                            languagesSpoken:
+                              attributeId: languagesSpoken
+                              attributeName: Languages Spoken
+                              value: English,Spanish,French
                       foodDelivery: https://www.ubereats.com
                       foodTakeout: https://www.ubereats.com
                       whatsappBusinessLink: https://wa.me/9737160007
@@ -23345,6 +23675,7 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20001
+                        attributeValueType: BOOLEAN
                       twentyFourHourFrontDesk:
                         attributeId: twentyFourHourFrontDesk
                         attributeName: Twenty four hour front desk
@@ -23354,6 +23685,45 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20002
+                        attributeValueType: BOOLEAN
+                      giftShop:
+                        attributeId: giftShop
+                        attributeName: Gift shop
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20011
+                        attributeValueType: BOOLEAN
+                      languagesSpoken:
+                        attributeId: languagesSpoken
+                        attributeName: Languages Spoken
+                        possibleValues:
+                        - value: Arabic
+                          name: Arabic
+                        - value: English
+                          name: English
+                        - value: French
+                          name: French
+                        - value: Spanish
+                          name: Spanish
+                        columnId: 20170
+                        attributeValueType: MULTI_SELECT
+                  policies:
+                    policies:
+                      checkinTime:
+                        attributeId: checkinTime
+                        attributeName: Check-In Time
+                        possibleValues: []
+                        columnId: 20173
+                        attributeValueType: TIME
+                      checkoutTime:
+                        attributeId: checkoutTime
+                        attributeName: Check-Out Time
+                        possibleValues: []
+                        columnId: 20174
+                        attributeValueType: TIME
                   parking:
                     parking:
                       parkingAvailable:
@@ -23365,6 +23735,35 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20097
+                        attributeValueType: BOOLEAN
+                      freeParking:
+                        attributeId: freeParking
+                        attributeName: Free parking
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20098
+                        attributeValueType: BOOLEAN
+                  business:
+                    business:
+                      meetingRooms:
+                        attributeId: meetingRooms
+                        attributeName: Meeting rooms
+                        possibleValues:
+                        - value: true
+                          name: Available
+                        - value: false
+                          name: Not Available
+                        columnId: 20088
+                        attributeValueType: BOOLEAN
+                      meetingRoomsCount:
+                        attributeId: meetingRoomsCount
+                        attributeName: Number of meeting rooms
+                        possibleValues: []
+                        columnId: 20172
+                        attributeValueType: INTEGER
                   sustainability:
                     energyEfficiency:
                       energyConservationProgram:
@@ -23376,6 +23775,33 @@ paths:
                         - value: false
                           name: Not Available
                         columnId: 20134
+                        attributeValueType: BOOLEAN
+                  property:
+                    property:
+                      builtYear:
+                        attributeId: builtYear
+                        attributeName: Built Year
+                        possibleValues: []
+                        columnId: 20177
+                        attributeValueType: YEAR
+                      lastRenovatedYear:
+                        attributeId: lastRenovatedYear
+                        attributeName: Last Renovated Year
+                        possibleValues: []
+                        columnId: 20178
+                        attributeValueType: YEAR
+                      roomsCount:
+                        attributeId: roomsCount
+                        attributeName: Rooms Count
+                        possibleValues: []
+                        columnId: 20179
+                        attributeValueType: INTEGER
+                      floorsCount:
+                        attributeId: floorsCount
+                        attributeName: Floors Count
+                        possibleValues: []
+                        columnId: 20180
+                        attributeValueType: INTEGER
         '400':
           description: Bad Request
           content:
@@ -27000,10 +27426,28 @@ components:
               endDate:
                 type: string
                 description: End date in MM/DD/YYYY format.
+              hierarchyNodeData:
+                type: array
+                description: List of hierarchy nodes to filter by level.
+                items:
+                  type: object
+                  properties:
+                    levelId:
+                      type: string
+                      description: The hierarchy level identifier (e.g. Region).
+                    levelNames:
+                      type: array
+                      description: List of level names to filter.
+                      items:
+                        type: string
+              userEmail:
+                type: string
+                description: Email of the user performing the request.
             required:
             - businessNumbers
             - startDate
             - endDate
+            - userEmail
             example:
               reviewSources:
               - Google
@@ -27020,6 +27464,12 @@ components:
               - 174436684666401
               startDate: 02/25/2025
               endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              userEmail: example@birdeye.com
     Add_aggregation_URLBody:
       content:
         application/json:
@@ -36140,10 +36590,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -36598,18 +37052,42 @@ components:
               attributeName: Family-friendly
               value: true
           hotelAttributes:
-            sustainability:
-              energyEfficiency:
-                energyConservationProgram:
-                  attributeId: energyConservationProgram
-                  attributeName: Energy conservation program
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: "14:00"
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: "11:00"
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
                   value: true
-            parking:
-              parking:
-                parkingAvailable:
-                  attributeId: parkingAvailable
-                  attributeName: Parking available
-                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
           foodDelivery: https://www.ubereats.com
           foodTakeout: https://www.ubereats.com
           whatsappBusinessLink: https://wa.me/9737160007
@@ -37068,10 +37546,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -37526,18 +38008,42 @@ components:
               attributeName: Family-friendly
               value: true
           hotelAttributes:
-            sustainability:
-              energyEfficiency:
-                energyConservationProgram:
-                  attributeId: energyConservationProgram
-                  attributeName: Energy conservation program
+            business:
+              business:
+                meetingRoomsCount:
+                  attributeId: meetingRoomsCount
+                  attributeName: Number of meeting rooms
+                  value: 20
+            policies:
+              policies:
+                checkinTime:
+                  attributeId: checkinTime
+                  attributeName: Check-In Time
+                  value: "14:00"
+                checkoutTime:
+                  attributeId: checkoutTime
+                  attributeName: Check-Out Time
+                  value: "11:00"
+            property:
+              property:
+                builtYear:
+                  attributeId: builtYear
+                  attributeName: Built Year
+                  value: 2010
+            services:
+              services:
+                frontDesk:
+                  attributeId: frontDesk
+                  attributeName: Front desk
                   value: true
-            parking:
-              parking:
-                parkingAvailable:
-                  attributeId: parkingAvailable
-                  attributeName: Parking available
-                  value: true
+                giftShop:
+                  attributeId: giftShop
+                  attributeName: Gift shop
+                  value: false
+                languagesSpoken:
+                  attributeId: languagesSpoken
+                  attributeName: Languages Spoken
+                  value: English,Spanish,French
           foodDelivery: https://www.ubereats.com
           foodTakeout: https://www.ubereats.com
           whatsappBusinessLink: https://wa.me/9737160007
@@ -37997,10 +38503,14 @@ components:
                 of your property that help guests discover and understand what your
                 hotel offers. These attributes enhance your hotel's visibility and
                 searchability across booking platforms and travel sites. Supported
-                attributes are Services, Policies and payments, FoodAndDrink, Pools,
+                attribute categories are Services, Policies, FoodAndDrink, Pools,
                 Wellness, Activities, Transportation, Families, Connectivity, Business,
                 Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability,
-                ViewsFromUnit.
+                Property. Each attribute carries an attributeValueType field indicating
+                the expected value format. Supported formats are BOOLEAN (true/false),
+                INTEGER (positive number), YEAR (year string), TIME (HH:mm string),
+                SINGLE_SELECT (one value from possibleValues), or MULTI_SELECT
+                (comma-separated values from possibleValues).
             foodDelivery:
               type: string
               description: Enter the redirect URL where customers can place delivery
@@ -38385,6 +38895,17 @@ components:
                                 description: Attribute value display name.
                           description: Contains the list of possible values for the
                             attribute.
+                        attributeValueType:
+                          type: string
+                          example: BOOLEAN
+                          description: Defines the expected value format for the attribute.
+                          enum:
+                          - BOOLEAN
+                          - INTEGER
+                          - YEAR
+                          - TIME
+                          - SINGLE_SELECT
+                          - MULTI_SELECT
           description: This is a dynamic field. Depends upon the hotel attributes
             supported for the selected business.
     Apiary_createProductListing_Request:
