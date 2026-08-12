@@ -13096,7 +13096,7 @@ paths:
         in: header
         description: e.g. [Required] Partner specific API key provided by Birdeye
           for data exchange.
-        required: false
+        required: true
         example: "[Required] Partner specific API key provided by Birdeye for data
           exchange."
         schema:
@@ -13129,12 +13129,6 @@ paths:
                 endDate:
                   type: string
                   description: End date for filtering in ISO 8601 format.
-                businessIds:
-                  type: array
-                  items:
-                    type: integer
-                  description: Optional list of business IDs to filter locations.
-                    If omitted, all locations are included.
               example:
                 startDate: '2024-08-12 8:43:07'
                 endDate: '2026-08-12 8:43:07'
