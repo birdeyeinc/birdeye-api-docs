@@ -297,6 +297,7 @@
                   "api/survey/get-survey",
                   "api/survey/post-a-survey-response",
                   "api/survey/list-responses-for-a-survey",
+                  "api/survey/get-survey-usage-by-location",
                   "api/survey/get-all-surveys",
                   "api/survey/create-survey",
                   "api/survey/update-survey-settings"
