@@ -13077,7 +13077,7 @@ paths:
           enum:
           - asc
           - desc
-      - name: businessNumber
+      - name: x-business-number
         in: header
         description: The Business Number of the Enterprise.
         required: true
