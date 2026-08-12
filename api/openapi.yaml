@@ -12650,6 +12650,7 @@ paths:
                   customerId: 123456
                   customerName: Anonymous
                   ticketed: false
+                  source: Email
                   ticketIds:
                   - 100770
                   - 100751
@@ -12747,6 +12748,7 @@ paths:
                     showDate: true
                     childAnswers:
                     - questionTitle: Click to write statement 1
+                      questionId: 201
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12758,6 +12760,7 @@ paths:
                       showDate: true
                       answer: Choice 1
                     - questionTitle: Click to write statement 2
+                      questionId: 202
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12769,6 +12772,7 @@ paths:
                       showDate: true
                       answer: Choice 1
                     - questionTitle: Click to write statement 3
+                      questionId: 203
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12780,6 +12784,7 @@ paths:
                       showDate: true
                       answer: Choice 1
                     - questionTitle: Click to write statement 4
+                      questionId: 204
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12791,6 +12796,7 @@ paths:
                       showDate: true
                       answer: Choice 2
                     - questionTitle: Click to write statement 5
+                      questionId: 205
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12802,6 +12808,7 @@ paths:
                       showDate: true
                       answer: Choice 2
                     - questionTitle: Click to write statement
+                      questionId: 206
                       questionType: dropdown
                       visible: true
                       conditional: false
@@ -12836,6 +12843,7 @@ paths:
                     showDate: true
                     childAnswers:
                     - questionTitle: Click to write statement A
+                      questionId: 301
                       questionType: radio
                       visible: true
                       conditional: false
@@ -13014,6 +13022,194 @@ paths:
             example:
               startDate: 07/03/2018 06:30:00
               endDate: 07/23/2018 06:45:00
+  "/v1/survey/{surveyId}/usage/by-location":
+    post:
+      summary: Get Survey Usage by Location
+      operationId: getSurveyUsageByLocation
+      description: Get Survey Usage by Location API provides usage data per location
+        for a given survey, including sent count and response rate by location. Results
+        are paginated and sorted by response count in descending order by default.
+      tags:
+      - Survey
+      parameters:
+      - name: surveyId
+        in: path
+        description: Id of the Survey.
+        required: true
+        example: '8013'
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: The page number, starts with 0.
+        required: false
+        example: '0'
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        description: The number of records per page.
+        required: false
+        example: '500'
+        schema:
+          type: integer
+          default: 500
+      - name: sortOrder
+        in: query
+        description: Sort order for results. Results are always sorted by response
+          count.
+        required: false
+        example: desc
+        schema:
+          type: string
+          default: desc
+          enum:
+          - asc
+          - desc
+      - name: businessNumber
+        in: header
+        description: The Business Number of the Enterprise.
+        required: true
+        example: '166255873971050'
+        schema:
+          type: string
+      - name: time-zone-id
+        in: header
+        description: Timezone ID for date filtering. Defaults to UTC.
+        required: false
+        example: UTC
+        schema:
+          type: string
+          default: UTC
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                  description: Start date for filtering in ISO 8601 format.
+                endDate:
+                  type: string
+                  description: End date for filtering in ISO 8601 format.
+                businessIds:
+                  type: array
+                  items:
+                    type: integer
+                  description: Optional list of business IDs to filter locations.
+                    If omitted, all locations are included.
+              example:
+                startDate: '2024-08-12 8:43:07'
+                endDate: '2026-08-12 8:43:07'
+            example:
+              startDate: '2024-08-12 8:43:07'
+              endDate: '2026-08-12 8:43:07'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+                surveyName: ARA| healthcare survey
+                dataPoints:
+                - count: 120
+                  partial: 30
+                  complete: 90
+                  audience: 200
+                  opened: 150
+                  clicked: 130
+                  responseRate: 60.0
+                  businessId: 100077184
+                  locationName: Electric Heroes
+                - count: 85
+                  partial: 20
+                  complete: 65
+                  audience: 150
+                  opened: 110
+                  clicked: 95
+                  responseRate: 56.67
+                  businessId: 100139870
+                  locationName: US location 1
+                totalCount: 205
+                partial: 50
+                complete: 155
+                page: 0
+                size: 500
+                totalPages: 1
+                partialPercent: 24.39
+                completePercent: 75.61
+                surveyId: 8013
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1315Model"
+              examples:
+                response:
+                  value:
+                    code: 1315
+                    message: Invalid survey.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1011Model"
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
   "/v1/survey/business/{business_id}/all":
     get:
       responses:
