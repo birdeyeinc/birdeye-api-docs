@@ -1,0 +1,35 @@
+---
+title: "Get Review Count By Rating"
+description: "View the distribution of reviews across star ratings."
+---
+
+```
+get_review_count_by_rating
+```
+
+## Description
+
+Returns the total review count and a breakdown for ratings from 0 through 5. Use it to understand the overall rating distribution or focus on negative and positive review volume.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fromDate` | string | No | — | Start date in `MM/DD/YYYY` format |
+| `toDate` | string | No | — | End date in `MM/DD/YYYY` format |
+| `sourceAlias` | list[string] | No | All sources | Sources such as `"google"`, `"yelp"`, `"facebook"`, or `"birdeye"` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+How many 1-star, 2-star, and 5-star Google reviews did we receive this year?
+```
+
+## Response Fields
+
+The response contains `reviewCount` and `countByRating` entries with `rating` and `count`.
+
+## Notes
+
+Rating `0` represents Facebook recommended and non-recommended reviews without a star value. It does not mean zero stars.

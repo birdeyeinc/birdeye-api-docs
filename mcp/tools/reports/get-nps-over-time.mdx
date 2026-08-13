@@ -1,0 +1,44 @@
+---
+title: "Get NPS Over Time"
+description: "Track Net Promoter Score and promoter, passive, and detractor share over time."
+---
+
+```
+get_nps_over_time
+```
+
+## Description
+
+Returns the account Net Promoter Score as a time series, including the promoter, passive, and detractor split for each period.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 12 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs, such as `2` for Google, `1` for Yelp, `110` for Facebook, or `100` for Birdeye |
+
+## Example Usage
+
+```
+Is our Net Promoter Score improving, and how has the detractor share changed?
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `totalCount` | Total responses counted |
+| `avgNpsScore` | Account NPS |
+| `promoters` | Promoter percentage |
+| `passives` | Passive percentage |
+| `detractors` | Detractor percentage |
+| `dataPoints` | Period-level NPS, counts, percentages, labels, and dates |
+| `groupByType` | Time bucket selected by the service |
+
+## Notes
+
+- NPS ranges from `-100` to `100`; a negative score is valid.
+- `promoters`, `passives`, and `detractors` are percentages, not raw counts.
+- Use [`get_nps_by_location`](/mcp/tools/reports/get-nps-by-location) for location comparisons.

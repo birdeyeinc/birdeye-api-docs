@@ -1,0 +1,38 @@
+---
+title: "Get Review Response Rate Over Time"
+description: "Track review response rate, answered reviews, and unanswered reviews over time."
+---
+
+```
+get_review_response_rate_over_time
+```
+
+## Description
+
+Returns response-rate trends with an optional previous-period comparison. Use it to measure how consistently the business responds and whether performance is improving.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 3 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs to include |
+| `ratings` | list[integer] | No | All ratings | Star ratings from `0` to `5` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `compareStartDate` | string | No | — | Comparison-period start in `MM/DD/YYYY` format |
+| `compareEndDate` | string | No | — | Comparison-period end in `MM/DD/YYYY` format |
+
+## Example Usage
+
+```
+Has our review response rate improved this quarter compared with last quarter?
+```
+
+## Response Fields
+
+`summary.actual` and `summary.compare` include total, responded, and unanswered counts and rates. `dataPoints` contains the same metrics for each time bucket. `groupByType` identifies the bucket size, and `dataPresent` indicates whether the period contains data.
+
+## Notes
+
+Both comparison dates must be provided for comparison data to be applied.

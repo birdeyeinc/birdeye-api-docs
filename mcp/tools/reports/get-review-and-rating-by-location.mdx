@@ -1,0 +1,46 @@
+---
+title: "Get Review and Rating By Location"
+description: "Compare review volume and average rating across business locations."
+---
+
+```
+get_review_and_rating_by_location
+```
+
+## Description
+
+Returns review count and average rating for each location. Use it to find the highest-rated, lowest-rated, most-reviewed, or least-reviewed branches.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | — | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | — | End date in `MM/DD/YYYY` format |
+| `days` | integer | No | — | Relative window in days |
+| `months` | integer | No | 12 months when no period is requested | Relative window in months |
+| `sourceAliases` | list[string] | No | All sources | Review sources to include |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `sortBy` | string | No | `"avg-rating"` | Sort by `"review-count"`, `"avg-rating"`, or `"name"` |
+| `sortOrder` | integer | No | `1` | `0` for ascending or `1` for descending |
+
+## Example Usage
+
+```
+Which location had the lowest average rating this year?
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `milestone` | Location name |
+| `businessId` | Location business number |
+| `count` | Review count |
+| `rating` | Average rating |
+| `state` | Location state |
+
+## Notes
+
+- For the highest or lowest result, choose `sortBy` and `sortOrder` in the tool call and use the first returned location.
+- Use [`get_review_and_rating_over_time`](/mcp/tools/reports/get-review-and-rating-over-time) for trends.

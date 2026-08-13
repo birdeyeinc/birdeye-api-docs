@@ -1,0 +1,39 @@
+---
+title: "Get Average Response Time Over Time"
+description: "Track how quickly the business responds to reviews over time."
+---
+
+```
+get_avg_response_time_over_time
+```
+
+## Description
+
+Returns average review response time as a time series with an optional previous-period comparison. This measures response speed, not the percentage of reviews that receive a response.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 3 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs to include |
+| `ratings` | list[integer] | No | All ratings | Star ratings from `0` to `5` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `compareStartDate` | string | No | — | Comparison-period start in `MM/DD/YYYY` format |
+| `compareEndDate` | string | No | — | Comparison-period end in `MM/DD/YYYY` format |
+
+## Example Usage
+
+```
+Did our average review response time improve this quarter?
+```
+
+## Response Fields
+
+`summary.actual` and `summary.compare` include `avgResponseTime` and `respondedCount`. `dataPoints` provides those fields for each time bucket. `groupByType` identifies the bucket size, and `dataPresent` indicates whether data exists.
+
+## Notes
+
+- `avgResponseTime.days`, `hours`, and `minutes` are three representations of one duration; do not add them together.
+- Both comparison dates must be provided together.

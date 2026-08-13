@@ -1,0 +1,46 @@
+---
+title: "Get Review Conversion Report"
+description: "Analyze how review request emails and SMS messages convert into clicks and reviews."
+---
+
+```
+get_review_conversion_report
+```
+
+## Description
+
+Returns an account-level review request funnel covering email and SMS delivery, opens, clicks, destination sites, and reviews generated. If no period is provided, use the last 30 days.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `fromDate` | string | No | Start date in `MM/DD/YYYY` format |
+| `toDate` | string | No | Inclusive end date in `MM/DD/YYYY` format |
+| `days` | integer | No | Relative window ending today; `0` is today and `-1` is yesterday |
+| `months` | integer | No | Relative month window; `-1` is month to date and `-12` is year to date |
+
+## Example Usage
+
+```
+How many review requests did we send last month, and how many converted into reviews?
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `emailSentInfo` | Initial, reminder, and shared review request email counts |
+| `emailOpenInfo` | Email opens and open rate, with device data when available |
+| `emailClickInfo` | Email clicks and click rate, with device and destination data when available |
+| `smsDetail` | SMS sent, clicked, click rate, and destination counts |
+| `reviews` | Reviews generated, grouped by source |
+| `organicReviewCount` | Reviews collected on Birdeye |
+| `aggReviewCount` | Reviews collected on third-party sites |
+
+## Notes
+
+- Pass only one date-filter style. `months` takes precedence over `days`, and both take precedence over `fromDate`.
+- This is an account-level rollup and does not accept a location filter.
+- Click percentages are based on messages sent, not messages opened.
+- Device and destination details may be zero when attribution data is unavailable; use the total and percentage fields as the authoritative funnel metrics.

@@ -1,0 +1,41 @@
+---
+title: "Get NPS By Location"
+description: "Compare Net Promoter Score and customer loyalty across locations."
+---
+
+```
+get_nps_by_location
+```
+
+## Description
+
+Returns NPS and promoter, passive, and detractor data for each business location.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 12 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs to include |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `sortBy` | string | No | `"review-count"` | Sort by `"nps"`, `"review-count"`, `"positive-review-count"`, `"negative-review-count"`, `"neutral-review-count"`, or `"name"` |
+| `order` | string | No | `"desc"` | `"asc"` for lowest first or `"desc"` for highest first |
+| `size` | integer | No | `25` | Locations per page |
+| `page` | integer | No | `0` | Zero-based page number |
+
+## Example Usage
+
+```
+Which location has the worst NPS this year?
+```
+
+## Response Fields
+
+The response includes account-level `totalCount`, `avgNpsScore`, promoter, passive, and detractor percentages. Each `dataPoints` entry contains the location `label`, `businessNumber`, `npsScore`, response counts, and segment percentages. Pagination is described by `totalPages`, `page`, and `size`.
+
+## Notes
+
+- `order` uses the strings `"asc"` and `"desc"`, unlike report tools that use `0` and `1`.
+- NPS ranges from `-100` to `100`.
+- Choose the intended server-side sort and use the first result for best, worst, or highest-count questions.
