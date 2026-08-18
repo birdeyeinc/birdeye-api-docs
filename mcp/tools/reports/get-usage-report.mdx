@@ -39,7 +39,7 @@ Show review request performance location by location for the last 30 days.
   {
     "name": "Total",
     "alias1": "Total",
-    "emailSentInfo": { "total": 1200, "percent": 0, "reqCount": 1050, "reqReminderCount": 150 },
+    "emailSentInfo": { "total": 1200, "percent": 100, "reqCount": 1050, "reqReminderCount": 150 },
     "emailOpenInfo": { "total": 720, "percent": 60.0 },
     "emailClickInfo": {
       "total": 240,
@@ -58,7 +58,7 @@ Show review request performance location by location for the last 30 days.
     "nonRcmdReviewsCount": [
       { "sourceId": 100, "sourceName": "Birdeye", "sourceAlias": "birdeye", "reviewCount": 24 }
     ],
-    "smsSentInfo": { "total": 800, "percent": 0, "reqCount": 800 },
+    "smsSentInfo": { "total": 800, "percent": 100, "reqCount": 800 },
     "smsOpenInfo": { "total": 260, "percent": 32.5 },
     "smsClickInfo": {
       "total": 200,
@@ -78,4 +78,5 @@ Each row includes email and SMS sent, open, and click information; recommended a
 
 ## Notes
 
-All click percentages are based on the sent total for that channel, not the open total.
+- All click percentages are based on the sent total for that channel, not the open total. `emailSentInfo.percent`/`smsSentInfo.percent` are self-referential and equal `100` — confirmed in testing.
+- With no `reportType`, the response is a single-element array containing the `"Total"` account rollup, matching the schema's "graph view." Pass `reportType: "Tabular"` for one row per location.

@@ -87,4 +87,5 @@ Which location has the lowest response rate and how many unanswered reviews does
 
 - For an overall unanswered-review backlog, omit the dates unless the user asks for a specific period.
 - The service does not sort by unanswered or responded count. For the worst response performance, use `sortBy: "rate"` with `order: 0` and read `unrespondedCount` from the returned locations.
-- Both comparison dates must be provided together.
+- Both comparison dates must be provided together. When neither is supplied, each `dataPoints` entry (and `summary`) contains only `actual` — no `compare` key at all.
+- On accounts with many small locations, a large share of locations can show `responseRate: 100` simply because they've received very few reviews and answered all of them. Consider a minimum `totalCount` threshold before surfacing "best/worst responder" results operationally.

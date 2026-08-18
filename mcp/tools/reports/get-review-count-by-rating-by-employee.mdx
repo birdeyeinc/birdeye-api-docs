@@ -67,3 +67,5 @@ Each `employees` entry contains an `employee` object with the staff member name 
 - Employee phone numbers are removed from responses. Refer to employees by name only.
 - Only provide a phone number as an input when the user explicitly supplied it to distinguish employees with the same name.
 - Rating `0` represents Facebook recommendations without a star value, not zero-star reviews.
+- `employee` can be `null` (reviews with no identifiable assisted staff member), and even when present, `employee.lastName` can independently be `null` while `firstName` is set. Handle both fields defensively rather than assuming they're always populated.
+- The `employees` array is not sorted by review count or rating in testing — sort client-side if a "top employee" view is needed.

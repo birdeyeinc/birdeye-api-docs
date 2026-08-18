@@ -90,4 +90,5 @@ Has our review response rate improved this quarter compared with last quarter?
 
 ## Notes
 
-Both comparison dates must be provided for comparison data to be applied.
+- Both comparison dates must be provided for comparison data to be applied. When neither is supplied, `summary` and each `dataPoints` entry contain only `actual` — no `compare` key at all.
+- When `startDate`/`endDate` are both omitted, the live API does **not** default to 3 months back — it returned full account history (`dateDiff` of 13,000+ days) grouped by year in testing. Pass explicit dates for a bounded window.

@@ -80,3 +80,5 @@ The response includes account-level `totalCount`, `avgNpsScore`, promoter, passi
 - `order` uses the strings `"asc"` and `"desc"`, unlike report tools that use `0` and `1`.
 - NPS ranges from `-100` to `100`.
 - Choose the intended server-side sort and use the first result for best, worst, or highest-count questions.
+- **`size` was not honored in testing.** Passing `size: 5` still returned every location (900+ entries) with `totalPages: 1` and an echoed `size` far larger than requested. Do not rely on `size`/`page` to bound the response on large accounts — scope with `businessNumbers` instead.
+- When `startDate`/`endDate` are both omitted, the live API does **not** default to 12 months back — it returned full account history (`dateDiff` of ~19,900 days) in testing. Pass explicit dates for a bounded window.

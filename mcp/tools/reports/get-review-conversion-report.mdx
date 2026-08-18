@@ -30,8 +30,14 @@ How many review requests did we send last month, and how many converted into rev
 
 ```json
 {
+  "businessNumber": 0,
+  "id": 0,
+  "name": null,
+  "isModifiable": 0,
+  "alias1": "Total",
   "emailSentInfo": {
     "total": 1200,
+    "emailDetails": [],
     "reqCount": 1050,
     "reqReminderCount": 150,
     "shareReqCount": 0,
@@ -67,7 +73,7 @@ How many review requests did we send last month, and how many converted into rev
   ],
   "organicReviewCount": 24,
   "aggReviewCount": 103,
-  "alias1": "Total"
+  "heirarchyGroups": null
 }
 ```
 
@@ -75,7 +81,7 @@ How many review requests did we send last month, and how many converted into rev
 
 | Field | Description |
 |---|---|
-| `emailSentInfo` | Initial, reminder, and shared review request email counts |
+| `emailSentInfo` | Initial, reminder, and shared review request email counts, plus a `emailDetails` array (empty unless per-message detail is populated) |
 | `emailOpenInfo` | Email opens and open rate, with device data when available |
 | `emailClickInfo` | Email clicks and click rate, with device and destination data when available |
 | `smsDetail` | SMS sent, clicked, click rate, and destination counts |
@@ -83,6 +89,8 @@ How many review requests did we send last month, and how many converted into rev
 | `organicReviewCount` | Reviews collected on Birdeye |
 | `aggReviewCount` | Reviews collected on third-party sites |
 | `alias1` | Account rollup label, normally `"Total"` |
+| `businessNumber` / `id` / `name` / `isModifiable` | Present at the top level but observed as `0`/`0`/`null`/`0` on this account-level rollup — not populated with a real location identity |
+| `heirarchyGroups` | Present at the top level (note the API's own spelling); observed as `null` — reserved for enterprise hierarchy grouping, not populated in testing |
 
 ## Notes
 
@@ -90,3 +98,4 @@ How many review requests did we send last month, and how many converted into rev
 - This is an account-level rollup and does not accept a location filter.
 - Click percentages are based on messages sent, not messages opened.
 - Device and destination details may be zero when attribution data is unavailable; use the total and percentage fields as the authoritative funnel metrics.
+- `pc` means two different things depending on where it appears: a plain number inside `emailOpenInfo` (PC opens) but an object broken down by destination site inside `emailClickInfo` (PC clicks per site). Confirmed in testing — don't assume a consistent shape for `pc` across sub-objects.

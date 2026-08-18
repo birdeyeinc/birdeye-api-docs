@@ -34,17 +34,18 @@ Which month had the most reviews during the last year?
 
 ```json
 [
-  { "rating": 4.6, "count": 132, "milestone": "01/2026" },
-  { "rating": 4.5, "count": 118, "milestone": "02/2026" },
-  { "rating": 4.7, "count": 145, "milestone": "03/2026" }
+  { "rating": 4.6, "count": 132, "milestone": "Jan 2026" },
+  { "rating": 4.5, "count": 118, "milestone": "Feb 2026" },
+  { "rating": 4.7, "count": 145, "milestone": "Mar 2026" }
 ]
 ```
 
 ## Response Fields
 
-Each time bucket contains `milestone` for the bucket date, `count` for review volume, and `rating` for average rating.
+Each time bucket contains `milestone` for the bucket date (formatted like `"Feb 2026"`, not `MM/YYYY`), `count` for review volume, and `rating` for average rating.
 
 ## Notes
 
 - A `rating` of `0.0` with `count: 0` means the bucket has no reviews; it is not a zero-star average.
+- The array is not guaranteed to be in chronological order — sort `dataPoints` by `milestone` client-side if a strict timeline is needed, rather than assuming array order.
 - Use [`get_review_and_rating_by_location`](/mcp/tools/reports/get-review-and-rating-by-location) for location comparisons.

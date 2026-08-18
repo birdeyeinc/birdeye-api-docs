@@ -53,4 +53,6 @@ Each location contains `milestone` for the location name, `businessId`, total vi
 
 ## Notes
 
-The `Total` visitor entry is already a rollup. Do not add it to the individual source rows.
+- The `Total` visitor entry is already a rollup. Do not add it to the individual source rows.
+- `businessId` can be `null` even when `milestone` (the location name) is present — confirmed in testing on locations with zero visitor activity in the window. Don't assume `businessId` is always populated.
+- On accounts with many locations, an unscoped call can return a very large array (one entry per location, including locations with zero visitors). Pass `businessNumbers` to keep the response manageable.

@@ -36,15 +36,15 @@ How is my business doing, and how do we compare with the industry benchmark?
     "custCommn": { "reviewRequest": 3200, "reviewRequestSms": 1800, "shareReview": 45 },
     "reviewCount": { "count": 742, "percentChange": 12.1 },
     "sentiments": { "negative": 64, "neutral": 81, "positive": 597 },
-    "visitors": { "count": 8420 }
+    "visitors": { "reviewSite": 402, "website": 1210, "total": 1612 }
   },
   "last30Days": {
     "avgRating": { "rating": 4.7 },
     "benchmark": { "industryRating": 4.2, "industryReviewCount": 24, "percentChange": 11.9, "rating": 4.7 },
-    "custCommn": { "reviewRequest": 185, "reviewRequestSms": 96, "shareReview": 4 },
+    "custCommn": { "reviewRequest": 185, "reviewRequestSms": 96 },
     "reviewCount": { "count": 68, "percentChange": 8.0 },
     "sentiments": { "negative": 4, "neutral": 7, "positive": 57 },
-    "visitors": { "count": 690 }
+    "visitors": { "reviewSite": 3, "website": 140, "total": 143 }
   },
   "negativeReviews": [
     {
@@ -93,4 +93,7 @@ How is my business doing, and how do we compare with the industry benchmark?
 
 ## Notes
 
-Reviewer identity is removed from sampled reviews. Use review content for analysis without attempting to identify or profile reviewers.
+- Reviewer identity is removed from sampled reviews. Use review content for analysis without attempting to identify or profile reviewers.
+- `visitors` is `{ reviewSite, website, total }`, not a flat `count` — confirmed live in both `allTime` and `last30Days`.
+- `last30Days.avgRating.rating` and `last30Days.reviewCount.count` can both be `0` even when `last30Days.visitors.total` is non-zero — this is a genuine "no reviews this period" result, not a broken metric. Don't read `rating: 0` as a zero-star average.
+- `positiveReviews`/`negativeReviews` entries can include additional source-dependent fields not shown above (for example `status`, `sentimentType`, `title`, `businessName`) and `sourceType` values beyond the major platforms (for example `Doordash`, `Wordofmouth`).

@@ -33,35 +33,64 @@ Which location had the lowest average rating this year?
 ## Example Response
 
 ```json
-[
-  {
-    "rating": 4.8,
-    "count": 186,
-    "milestone": "Acme Dental - Downtown",
-    "businessId": 78901,
-    "state": "TX"
-  },
-  {
-    "rating": 4.4,
+{
+  "page": 0,
+  "size": 2147483647,
+  "totalPages": 1,
+  "totalCount": 307,
+  "averageRating": 4.7,
+  "selectedRangeLabel": "01/01/2026 to 08/18/2026",
+  "dateDiff": 230,
+  "dataPoints": [
+    {
+      "label": "Total",
+      "totalCount": 307,
+      "count": 307,
+      "averageRating": 4.7,
+      "nonZeroCount": 298,
+      "reviewGrowthPercent": 100,
+      "avgRatingGrowthPercent": 100,
+      "prevCount": 0,
+      "prevAverageRating": 0
+    },
+    {
+      "nodeId": 78902,
+      "label": "Acme Dental - Westlake",
+      "count": 121,
+      "averageRating": 4.4,
+      "nonZeroCount": 118,
+      "businessNumber": 78902
+    }
+  ],
+  "lowestRated": {
+    "label": "Acme Dental - Westlake",
     "count": 121,
-    "milestone": "Acme Dental - Westlake",
-    "businessId": 78902,
-    "state": "TX"
+    "averageRating": 4.4,
+    "businessNumber": 78902
+  },
+  "highestRated": {
+    "label": "Acme Dental - Downtown",
+    "count": 186,
+    "averageRating": 4.8,
+    "businessNumber": 78901
   }
-]
+}
 ```
 
 ## Response Fields
 
 | Field | Description |
 |---|---|
-| `milestone` | Location name |
-| `businessId` | Location business number |
-| `count` | Review count |
-| `rating` | Average rating |
-| `state` | Location state |
+| `dataPoints` | One entry per location (plus a `"Total"` rollup entry), each with `label` (location name), `businessNumber`, `count`, `averageRating`, and growth fields vs. any prior comparison window |
+| `lowestRated` / `highestRated` | Convenience fields with the extreme location for the requested sort — cheaper than re-deriving from `dataPoints` when only the extremes are needed |
+| `averageRating` / `totalCount` | Account-wide average rating and review count across the returned locations |
+| `page` / `size` / `totalPages` | Pagination info. `size` was observed as the maximum 32-bit integer (effectively unpaginated) rather than a real page size |
+| `selectedRangeLabel` / `dateDiff` | The resolved date range actually applied and its length in days |
 
 ## Notes
 
-- For the highest or lowest result, choose `sortBy` and `sortOrder` in the tool call and use the first returned location.
+- For the highest or lowest result, choose `sortBy` and `sortOrder` in the tool call and use the first returned location, or read `lowestRated`/`highestRated` directly.
+- The location name field is `label` (inside `dataPoints`) and the location ID field is `businessNumber` — not `milestone`/`businessId` as used by the sibling by-source and by-time report tools. No `state` field is present.
+- **Calling with a relative window (e.g. `days: 30`) and no `businessNumbers` returned a `500` error** in testing on an account with many locations. The same request scoped with `businessNumbers` succeeded. Prefer passing `businessNumbers` when scoping this report on large accounts.
+- On accounts with many locations, an unscoped call can return a very large `dataPoints` array. Pass `businessNumbers` to keep the response manageable.
 - Use [`get_review_and_rating_over_time`](/mcp/tools/reports/get-review-and-rating-over-time) for trends.
