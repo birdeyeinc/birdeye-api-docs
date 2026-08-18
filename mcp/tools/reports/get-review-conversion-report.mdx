@@ -35,7 +35,13 @@ How many review requests did we send last month, and how many converted into rev
     "reqCount": 1050,
     "reqReminderCount": 150,
     "shareReqCount": 0,
-    "shareReqReminderCount": 0
+    "shareReqReminderCount": 0,
+    "emailDetails": [
+      { "reqType": "review_request", "count": 1050 },
+      { "reqType": "review_request_reminder", "count": 150 },
+      { "reqType": "share_request", "count": 0 },
+      { "reqType": "share_request_reminder", "count": 0 }
+    ]
   },
   "emailOpenInfo": {
     "total": 720,
@@ -75,7 +81,7 @@ How many review requests did we send last month, and how many converted into rev
 
 | Field | Description |
 |---|---|
-| `emailSentInfo` | Initial, reminder, and shared review request email counts |
+| `emailSentInfo` | Initial, reminder, and shared review request email counts, with a per-request-type `emailDetails` breakdown |
 | `emailOpenInfo` | Email opens and open rate, with device data when available |
 | `emailClickInfo` | Email clicks and click rate, with device and destination data when available |
 | `smsDetail` | SMS sent, clicked, click rate, and destination counts |
