@@ -1,0 +1,40 @@
+---
+title: "Get Review and Rating Over Time"
+description: "Track review volume and average rating across time buckets."
+---
+
+```
+get_review_and_rating_over_time
+```
+
+## Description
+
+Returns review count and average rating as a time series. Use it to identify rating trends, review-volume changes, seasonality, and spikes.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | — | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | — | End date in `MM/DD/YYYY` format |
+| `days` | integer | No | — | Relative window in days |
+| `months` | integer | No | 12 months when no period is requested | Relative window in months |
+| `sourceAliases` | list[string] | No | All sources | Sources such as `"google"`, `"yelp"`, `"facebook"`, or `"birdeye"` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `sortBy` | string | No | `"count"` | Sort by `"review-count"`, `"avg-rating"`, or `"time"` |
+| `sortOrder` | integer | No | `1` | `0` for ascending or `1` for descending |
+
+## Example Usage
+
+```
+Which month had the most reviews during the last year?
+```
+
+## Response Fields
+
+Each time bucket contains `milestone` for the bucket date, `count` for review volume, and `rating` for average rating.
+
+## Notes
+
+- A `rating` of `0.0` with `count: 0` means the bucket has no reviews; it is not a zero-star average.
+- Use [`get_review_and_rating_by_location`](/mcp/tools/reports/get-review-and-rating-by-location) for location comparisons.

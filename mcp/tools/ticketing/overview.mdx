@@ -1,6 +1,6 @@
 ---
 title: "Ticketing Overview"
-description: "Tools for retrieving support ticket data from Birdeye."
+description: "Tools for retrieving and managing support tickets in Birdeye."
 ---
 
 ## Tools in this category
@@ -9,9 +9,28 @@ description: "Tools for retrieving support ticket data from Birdeye."
   <Card title="get_all_ticket_data" icon="ticket" href="/mcp/tools/ticketing/get-all-ticket-data">
     Retrieve tickets for the business with comprehensive filtering and pagination
   </Card>
+  <Card title="create_ticket" icon="plus" href="/mcp/tools/ticketing/create-ticket">
+    Create a support ticket — untagged (default), review-linked, or survey-linked
+  </Card>
+  <Card title="add_ticket_comment" icon="comment" href="/mcp/tools/ticketing/add-ticket-comment">
+    Add a comment or internal note to an existing ticket
+  </Card>
+  <Card title="update_ticket" icon="pen" href="/mcp/tools/ticketing/update-ticket">
+    Update the status and/or assignee of one or more tickets in bulk
+  </Card>
 </CardGroup>
+
+## Location-Level Tools
+
+<Warning>
+  `create_ticket`, `add_ticket_comment`, and `update_ticket` are **location-level tools** — they require a `locationId` parameter.
+
+  Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get the list of valid location IDs.
+</Warning>
 
 ## Tips
 
-- Filter by status, priority, or assignee to narrow results.
+- Filter by status, priority, or assignee to narrow results when using `get_all_ticket_data`.
 - Use pagination parameters to page through large ticket volumes.
+- Default ticket type for `create_ticket` is `"untagged"` — customer name and email are required for this type.
+- `update_ticket` supports bulk updates — multiple tickets can be updated in one call.

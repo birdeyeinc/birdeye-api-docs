@@ -1,0 +1,39 @@
+---
+title: "Delete User"
+description: "Remove a user's access from the business account."
+---
+
+```
+delete_user
+```
+
+## Description
+
+Removes a user's access from the Birdeye business account. This revokes the user's ability to log in and access the account, but does not permanently delete their Birdeye account.
+
+<Warning>
+  This removes the user's **access** from the account — it does not permanently delete their Birdeye account. Confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessId` | string | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+| `email` | string | Yes | — | Email address of the user to remove |
+
+## Example Usage
+
+```
+Remove access for the departing employee old.staff@acme.com.
+```
+
+```
+Delete user jane.doe@acme.com from the business account.
+```
+
+## Notes
+
+- Call [`get_business_info`](/mcp/tools/business/get-business-info) to retrieve the `businessId` if not already known.
+- This action removes the user's access to the account — their underlying Birdeye profile is not permanently deleted.
+- Always confirm with the user before proceeding with a deletion.

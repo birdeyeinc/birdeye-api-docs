@@ -1,0 +1,38 @@
+---
+title: "Get Review Count By Rating By Employee"
+description: "Compare review rating distributions for assisted employees."
+---
+
+```
+get_review_count_by_rating_by_employee
+```
+
+## Description
+
+Returns the review count by rating for each assisted employee. Use it for employee-level review volume and rating analysis.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fromDate` | string | No | — | Start date in `MM/DD/YYYY` format |
+| `toDate` | string | No | — | End date in `MM/DD/YYYY` format |
+| `sourceAlias` | list[string] | No | All sources | Review sources to include |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `employees` | list[object] | No | All assisted employees | Employee filters containing `firstName`, `lastName`, and optionally `phone` |
+
+## Example Usage
+
+```
+Compare the review rating distribution by staff member for last quarter.
+```
+
+## Response Fields
+
+Each `employees` entry contains an `employee` object with the staff member name and `countByRating` entries with `rating` and `count`.
+
+## Notes
+
+- Employee phone numbers are removed from responses. Refer to employees by name only.
+- Only provide a phone number as an input when the user explicitly supplied it to distinguish employees with the same name.
+- Rating `0` represents Facebook recommendations without a star value, not zero-star reviews.

@@ -1,0 +1,38 @@
+---
+title: "Fix Listing"
+description: "Publish / sync business information to 50+ online listing directories for a location."
+---
+
+```
+fix_listing
+```
+
+## Description
+
+Triggers a publish/sync of the business's information to over 50 online listing directories (Google, Bing, Apple, Facebook, and others) for a specific location. Use this after updating business information to push changes to directories, or after a listing has been deactivated to resume publishing.
+
+<Warning>
+  `locationId` is the **location** business ID (child location), not the enterprise account ID. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid location IDs.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | integer | Yes | — | Child location business ID (from `get_child_locations`) |
+
+## Example Usage
+
+```
+Sync the listing for location 78901 to all directories.
+```
+
+```
+Re-activate and publish the listing for my downtown branch.
+```
+
+## Notes
+
+- After deactivating a listing with [`deactivate_listing`](/mcp/tools/listings/deactivate-listing), call this tool to resume publishing to directories.
+- Also use after updating business information in Birdeye to push the updated details to all connected directories.
+- Use [`get_listing_location_status_report`](/mcp/tools/listings/get-listing-location-status-report) to check sync status after running this tool.

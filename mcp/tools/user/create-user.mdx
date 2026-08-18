@@ -1,0 +1,39 @@
+---
+title: "Create User"
+description: "Add a new user to the Birdeye business account."
+---
+
+```
+create_user
+```
+
+## Description
+
+Adds a new user to the Birdeye business account. The user is created at the account level, and the business context is resolved automatically from the session. An invitation email can optionally be sent to the new user.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `userEmailId` | string | Yes | — | Email address of the new user |
+| `userRole` | string | Yes | `"owner"` | Role to assign: `"owner"` or `"admin"` |
+| `firstName` | string | No | — | User's first name |
+| `lastName` | string | No | — | User's last name |
+| `phone` | string | No | — | User's phone number |
+| `sendInvite` | boolean | No | `true` | Send an invitation email to the new user |
+
+## Example Usage
+
+```
+Add sarah.jones@acme.com as an admin user and send her an invitation.
+```
+
+```
+Create an owner account for the new regional manager: rm.west@acme.com, first name "Marcus", last name "Lee".
+```
+
+## Notes
+
+- Users are created at the account level — the business context is resolved from the session automatically.
+- The `userRole` defaults to `"owner"`. Use `"admin"` for users who should have limited administrative rights.
+- After creating a user, use [`update_user`](/mcp/tools/user/update-user) to configure location access and notification preferences.

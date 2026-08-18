@@ -1,0 +1,42 @@
+---
+title: "Delete Products"
+description: "Permanently delete one or more Google Merchant products from the business account."
+---
+
+```
+delete_products
+```
+
+## Description
+
+Permanently deletes one or more products from the business's Google Merchant account. Deleted products are removed from all mapped locations and cannot be recovered.
+
+<Warning>
+  This is a **destructive write tool** — deletion is **permanent and cannot be undone**. All specified products are removed from Google Merchant across all mapped locations. Always confirm the exact list of products with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `productIds` | list[string] | Yes | — | List of product identifiers to delete. Example: `["68767cb39ebf51000815ab39"]` |
+
+## Example Usage
+
+```
+Delete product 68767cb39ebf51000815ab39.
+```
+
+```
+Permanently remove the 'Teeth Whitening Kit' and 'Dental Floss Pack' products.
+```
+
+```
+Delete all draft products from my Google Merchant account.
+```
+
+## Notes
+
+- If the user provides product names instead of IDs, call [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) with the title as `search`, present the matching results, and confirm the correct `productId` values before calling.
+- Remove vs Delete: [`remove_products`](/mcp/tools/listings/remove-products) unlists products (reversible). `delete_products` permanently removes them from the account (irreversible).
+- If the user only wants to hide products from Google temporarily, use [`remove_products`](/mcp/tools/listings/remove-products) instead.

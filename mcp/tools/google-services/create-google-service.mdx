@@ -1,0 +1,51 @@
+---
+title: "Create Google Service"
+description: "Add a new service to the business's Google profile."
+---
+
+```
+create_google_service
+```
+
+## Description
+
+Creates a new service on the business's Google profile with pricing, duration, description, and a group label. All parameters are required — collect every field from the user before calling.
+
+<Warning>
+  This is a **write tool** — it adds a new service to the live Google profile. Collect all required fields before calling and confirm the details with the user.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `name` | string | Yes | — | Display name of the service (e.g. `"Deep Cleaning"`) |
+| `currencyCode` | string | Yes | — | ISO currency code. See supported values below |
+| `price` | float | Yes | — | Price of the service. Min: `0.10`, Max: `2147483647` |
+| `description` | string | Yes | — | Service description. Max 300 characters |
+| `group` | string | Yes | — | Category/group label (e.g. `"Hair Care"`, `"Consulting"`). Min 3, Max 64 characters. Stored internally — not synced to Google |
+| `duration` | integer | Yes | — | Duration in minutes. Min: `1`, Max: `9999`. Stored internally — not synced to Google |
+
+### Supported `currencyCode` Values
+
+`USD`, `GBP`, `CAD`, `AUD`, `NZD`, `EUR`, `MXN`, `INR`, `AED`, `CHF`, `CNY`, `CZK`, `EGP`, `HKD`, `HUF`, `IDR`, `ILS`, `JPY`, `KES`, `KRW`, `LKR`, `MAD`, `MOP`, `MYR`, `PHP`, `PLN`, `RON`, `RUB`, `ZAR`, `SEK`, `SGD`, `THB`, `TRY`, `TWD`, `VND`, `SAR`, `KHR`, `MNT`, `NOK`, `DKK`
+
+## Example Usage
+
+```
+Create a new service called 'Deep Cleaning' priced at $75 for 60 minutes.
+```
+
+```
+Add a Hair Care service called 'Color Treatment' at $120 for 90 minutes.
+```
+
+```
+Set up a 'Customer Support' service under the Consulting group for $50, 30 minutes.
+```
+
+## Notes
+
+- All six parameters are required. Ask for any missing field before calling this tool.
+- `group` and `duration` are stored in Birdeye but are **not synced to Google**.
+- After creating, use [`get_google_services`](/mcp/tools/google-services/get-google-services) to confirm the service was added and retrieve its `serviceId`.

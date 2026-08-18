@@ -1,6 +1,6 @@
 ---
 title: "Reviews Overview"
-description: "Tools for accessing review data, rating trends, and per-source summaries."
+description: "Tools for accessing review data, rating trends, per-source summaries, and managing review tags and replies."
 ---
 
 ## Tools in this category
@@ -15,10 +15,29 @@ description: "Tools for accessing review data, rating trends, and per-source sum
   <Card title="get_review_summary" icon="chart-bar" href="/mcp/tools/reviews/get-review-summary">
     Get total review counts and average ratings grouped by review source
   </Card>
+  <Card title="get_review_tags" icon="tag" href="/mcp/tools/reviews/get-review-tags">
+    Fetch all review tags associated with the business account
+  </Card>
+  <Card title="reply_to_review" icon="reply" href="/mcp/tools/reviews/reply-to-review">
+    Post a public or private reply to a customer review
+  </Card>
+  <Card title="create_review_tag" icon="tag" href="/mcp/tools/reviews/create-review-tag">
+    Create one or more new review tags for the account
+  </Card>
+  <Card title="delete_review_tag" icon="trash" href="/mcp/tools/reviews/delete-review-tag">
+    Permanently delete a review tag from the account
+  </Card>
+  <Card title="assign_tags_to_reviews" icon="tags" href="/mcp/tools/reviews/assign-tags-to-reviews">
+    Assign a tag to reviews by explicit IDs or by filter criteria
+  </Card>
+  <Card title="remove_tags_from_reviews" icon="xmark" href="/mcp/tools/reviews/remove-tags-from-reviews">
+    Remove a tag from reviews by explicit IDs or by filter criteria
+  </Card>
 </CardGroup>
 
 ## Tips
 
-- All three tools operate at the account level — no `locationId` needed.
-- Use `review_and_rating_overview` for trend analysis and `get_review_summary` for per-platform breakdowns.
-- Use `get_reviews` when you need the actual review text or want to filter by rating, source, or status.
+- `review_and_rating_overview`, `get_reviews`, `get_review_summary`, and `get_review_tags` operate at the account level — no `locationId` needed.
+- `assign_tags_to_reviews` and `remove_tags_from_reviews` require a child location `bid` — use `get_child_locations` to get valid IDs.
+- Use `get_review_tags` before `create_review_tag` to avoid duplicates, and before `assign_tags_to_reviews` to confirm exact tag names.
+- `reply_to_review` is a write tool — always confirm the reply text with the user before submitting.

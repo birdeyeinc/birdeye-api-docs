@@ -1,0 +1,73 @@
+---
+title: "Reports Overview"
+description: "Tools for review performance, response operations, NPS, visitor, usage, and business dashboard reporting."
+---
+
+## Tools in this category
+
+### Review performance
+
+<CardGroup cols={1}>
+  <Card title="get_review_conversion_report" icon="filter-circle-dollar" href="/mcp/tools/reports/get-review-conversion-report">
+    Analyze the review request funnel across email, SMS, and generated reviews
+  </Card>
+  <Card title="get_review_and_rating_over_time" icon="chart-line" href="/mcp/tools/reports/get-review-and-rating-over-time">
+    Track review volume and average rating over time
+  </Card>
+  <Card title="get_review_and_rating_by_location" icon="location-dot" href="/mcp/tools/reports/get-review-and-rating-by-location">
+    Compare review volume and average rating across locations
+  </Card>
+  <Card title="get_review_count_by_source" icon="chart-pie" href="/mcp/tools/reports/get-review-count-by-source">
+    Break down review counts by source and location
+  </Card>
+  <Card title="get_review_count_by_rating" icon="star-half-stroke" href="/mcp/tools/reports/get-review-count-by-rating">
+    View the distribution of reviews by star rating
+  </Card>
+  <Card title="get_review_count_by_rating_by_employee" icon="user-star" href="/mcp/tools/reports/get-review-count-by-rating-by-employee">
+    Compare rating distributions for assisted employees
+  </Card>
+</CardGroup>
+
+### Response operations
+
+<CardGroup cols={1}>
+  <Card title="get_review_response_rate_over_time" icon="reply-clock" href="/mcp/tools/reports/get-review-response-rate-over-time">
+    Track response rate and unanswered reviews over time
+  </Card>
+  <Card title="get_review_response_rate_by_location" icon="map-location-dot" href="/mcp/tools/reports/get-review-response-rate-by-location">
+    Compare response rate and unanswered reviews by location
+  </Card>
+  <Card title="get_avg_response_time_over_time" icon="stopwatch" href="/mcp/tools/reports/get-avg-response-time-over-time">
+    Track average review response time
+  </Card>
+  <Card title="get_avg_response_time_by_location" icon="business-time" href="/mcp/tools/reports/get-avg-response-time-by-location">
+    Compare average review response time by location
+  </Card>
+</CardGroup>
+
+### Business and customer reporting
+
+<CardGroup cols={1}>
+  <Card title="get_nps_over_time" icon="arrow-trend-up" href="/mcp/tools/reports/get-nps-over-time">
+    Track Net Promoter Score over time
+  </Card>
+  <Card title="get_nps_by_location" icon="ranking-star" href="/mcp/tools/reports/get-nps-by-location">
+    Compare Net Promoter Score across locations
+  </Card>
+  <Card title="get_visitor_count" icon="users-viewfinder" href="/mcp/tools/reports/get-visitor-count">
+    Measure visitors by traffic source and location
+  </Card>
+  <Card title="get_usage_report" icon="chart-mixed" href="/mcp/tools/reports/get-usage-report">
+    Inspect the detailed review request usage funnel
+  </Card>
+  <Card title="get_business_dashboard_report" icon="gauge-high" href="/mcp/tools/reports/get-business-dashboard-report">
+    Get a business snapshot with ratings, sentiment, benchmarks, and reviews
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Dates use `MM/DD/YYYY` unless a tool page says otherwise.
+- Use `businessNumbers` to scope supported reports to location IDs returned by [`get_child_locations`](/mcp/tools/business/get-child-locations).
+- Use over-time tools for trends and by-location tools for branch comparisons.
+- All report tools are read-only and automatically use the authenticated account context.

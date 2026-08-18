@@ -1,0 +1,33 @@
+---
+title: "Get Review Count By Source"
+description: "Break down review volume by source for each location."
+---
+
+```
+get_review_count_by_source
+```
+
+## Description
+
+Returns review counts from Google, Yelp, Facebook, Birdeye, and other sources for each location.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | — | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | — | End date in `MM/DD/YYYY` format |
+| `days` | integer | No | — | Relative window in days |
+| `months` | integer | No | 12 months when no period is requested | Relative window in months |
+| `sourceAliases` | list[string] | No | All sources | Review sources to include |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+How many Google versus Yelp reviews did each location receive this year?
+```
+
+## Response Fields
+
+Each location contains `milestone` for the location name, `businessId`, total `count`, and `reviewSites` entries with `sourceAlias` and `count`.

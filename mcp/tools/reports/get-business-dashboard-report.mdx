@@ -1,0 +1,39 @@
+---
+title: "Get Business Dashboard Report"
+description: "Get an executive snapshot of ratings, reviews, sentiment, benchmarks, presence, and recent reviews."
+---
+
+```
+get_business_dashboard_report
+```
+
+## Description
+
+Returns an account dashboard with all-time and last-30-days performance. Use it for a broad overview of business health or an industry benchmark comparison.
+
+## Parameters
+
+This tool has no parameters. It automatically uses the authenticated business.
+
+## Example Usage
+
+```
+How is my business doing, and how do we compare with the industry benchmark?
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `allTime` | All-time rating, review count, sentiment, benchmark, communication, and visitor metrics |
+| `last30Days` | The same metrics for the last 30 days |
+| `negativeReviews` | Recent standout negative reviews |
+| `positiveReviews` | Recent standout positive reviews |
+| `reviewDistribution` | Review rating distribution |
+| `reviewListings` | Review listing information |
+| `presenceCount` | Listings presence count |
+| `syndication` | Review syndication data |
+
+## Notes
+
+Reviewer identity is removed from sampled reviews. Use review content for analysis without attempting to identify or profile reviewers.
