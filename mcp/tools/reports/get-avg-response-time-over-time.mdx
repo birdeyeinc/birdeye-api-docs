@@ -75,4 +75,5 @@ Did our average review response time improve this quarter?
 ## Notes
 
 - `avgResponseTime.days`, `hours`, and `minutes` are three representations of one duration; do not add them together.
-- Both comparison dates must be provided together.
+- Both comparison dates must be provided together. When neither is supplied, the response contains only `summary.actual` (and each `dataPoints` entry has only `actual`) — no `compare` key at all.
+- When `startDate`/`endDate` are both omitted, the live API does **not** default to 3 months back — it returns full account history (observed `dateDiff` spanning 13,000+ days) grouped by year. Pass explicit dates for a bounded window.

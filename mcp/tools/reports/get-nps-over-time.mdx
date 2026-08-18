@@ -83,5 +83,6 @@ Is our Net Promoter Score improving, and how has the detractor share changed?
 ## Notes
 
 - NPS ranges from `-100` to `100`; a negative score is valid.
-- `promoters`, `passives`, and `detractors` are percentages, not raw counts.
+- `promoters`, `passives`, and `detractors` are percentages, not raw counts — as is the top-level `avgNpsScore`, which is returned as a **string**, not a number. Cast before doing arithmetic.
 - Use [`get_nps_by_location`](/mcp/tools/reports/get-nps-by-location) for location comparisons.
+- When `startDate`/`endDate` are both omitted, the live API does **not** default to 12 months back — it returned the account's full history (back to 1990 in testing, `dateDiff` of 13,000+ days) bucketed by year. Pass explicit dates for a bounded trend.

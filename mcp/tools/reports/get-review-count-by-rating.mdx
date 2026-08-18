@@ -48,4 +48,5 @@ The response contains `reviewCount` and `countByRating` entries with `rating` an
 
 ## Notes
 
-Rating `0` represents Facebook recommended and non-recommended reviews without a star value. It does not mean zero stars.
+- Rating `0` represents Facebook recommended and non-recommended reviews without a star value. It does not mean zero stars.
+- `reviewCount` counts only reviews that carry a rating value. It can be somewhat lower than the review totals reported by other tools (for example the response-rate and NPS reports), which count all reviews including some without a rating — don't expect exact parity across tools when cross-checking totals.

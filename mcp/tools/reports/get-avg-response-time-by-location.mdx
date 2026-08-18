@@ -77,3 +77,6 @@ The response contains account-wide summaries plus a `dataPoints` entry for each 
 - For the slowest location, use `sortBy: "avg-resp-time"` and `order: 1`; for the fastest, use `order: 0`.
 - Response time does not indicate response rate or unanswered count. Use [`get_review_response_rate_by_location`](/mcp/tools/reports/get-review-response-rate-by-location) for those metrics.
 - `avgResponseTime.days`, `hours`, and `minutes` represent one duration.
+- When `startDate`/`endDate` are both omitted, the live API does **not** default to 3 months back — it returns full account history (observed `dateDiff` spanning 13,000+ days) grouped by year. Pass explicit dates for a bounded window.
+- `compare` is only present in the response when both `compareStartDate` and `compareEndDate` are supplied; otherwise each `dataPoints` entry (and `summary`) contains only `actual`.
+- Locations with very few responses (1-2) can show multi-year average response times that skew the default `avg-resp-time` sort — consider filtering by a minimum `respondedCount` before surfacing "slowest location" results operationally.

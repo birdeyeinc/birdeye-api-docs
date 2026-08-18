@@ -37,9 +37,9 @@ How many Google versus Yelp reviews did each location receive this year?
     "milestone": "Acme Dental - Downtown",
     "businessId": 78901,
     "reviewSites": [
-      { "sourceAlias": "Google", "count": 248 },
-      { "sourceAlias": "Yelp", "count": 39 },
-      { "sourceAlias": "Birdeye", "count": 55 }
+      { "sourceAlias": "google", "count": 248 },
+      { "sourceAlias": "yelp", "count": 39 },
+      { "sourceAlias": "birdeye", "count": 55 }
     ]
   }
 ]
@@ -52,5 +52,7 @@ Each location contains `milestone` for the location name, `businessId`, total `c
 ## Notes
 
 - `milestone` contains the location name, not a date or reporting period.
+- `sourceAlias` values are lowercase machine identifiers (`"google"`, `"our_website"`, `"direct_feedback"`, etc.), not display names — confirmed in testing.
 - `count` is the location total across the returned sources; do not add it to the individual `reviewSites` counts.
-- Use `businessNumbers` to restrict the report to location IDs returned by [`get_child_locations`](/mcp/tools/business/get-child-locations).
+- Sources with zero reviews in the window are simply absent from `reviewSites` rather than listed with `count: 0`.
+- Use `businessNumbers` to restrict the report to location IDs returned by [`get_child_locations`](/mcp/tools/business/get-child-locations). On accounts with many locations, an unscoped call over a wide window can return a very large array — a short window (e.g. `days: 7`) or `businessNumbers` keeps the response manageable.
