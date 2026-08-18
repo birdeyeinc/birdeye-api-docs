@@ -1,6 +1,6 @@
 ---
 title: "Aggregation Overview"
-description: "Tools for accessing review source configuration and site aliases."
+description: "Tools for managing review source monitoring URLs and site aliases."
 ---
 
 ## Tools in this category
@@ -9,8 +9,16 @@ description: "Tools for accessing review source configuration and site aliases."
   <Card title="get_all_aggregation_sources" icon="rss" href="/mcp/tools/aggregation/get-all-aggregation-sources">
     List all review aggregation sources (monitoring URLs) configured for the business
   </Card>
+  <Card title="add_aggregation_url" icon="link" href="/mcp/tools/aggregation/add-aggregation-url">
+    Add a review aggregation URL (monitoring source) to a location
+  </Card>
+  <Card title="delete_aggregation_url" icon="link-slash" href="/mcp/tools/aggregation/delete-aggregation-url">
+    Delete a review aggregation URL (monitoring source) from a location
+  </Card>
 </CardGroup>
 
 ## Tips
 
 - `get_all_aggregation_sources` returns full source details including URL, status, and ID for each configured review monitoring source.
+- Resolve an aggregation `id` with `get_all_aggregation_sources` before calling `delete_aggregation_url`.
+- `add_aggregation_url` and `delete_aggregation_url` are **write tools** — confirm the location, source, and URL before calling. `delete_aggregation_url` is irreversible.

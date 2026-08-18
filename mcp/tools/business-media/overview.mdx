@@ -1,0 +1,28 @@
+---
+title: "Business Media Overview"
+description: "Tools for managing the photos and videos on a location's profile."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_media" icon="images" href="/mcp/tools/business-media/get-media">
+    List the photos and videos on a location's profile
+  </Card>
+  <Card title="add_media" icon="image" href="/mcp/tools/business-media/add-media">
+    Upload one or more photos or videos to a location profile
+  </Card>
+  <Card title="update_media_category" icon="tags" href="/mcp/tools/business-media/update-media-category">
+    Re-categorize a single existing media item
+  </Card>
+  <Card title="delete_media" icon="trash" href="/mcp/tools/business-media/delete-media">
+    Delete one or more media items from a location profile
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Media categories: `EXTERIOR`, `INTERIOR`, `TEAMS`, `ADDITIONAL` (plus other Google-supported categories such as `COVER`, `PROFILE`, `PRODUCT`, `MENU`).
+- Media formats: `PHOTO`, `VIDEO`.
+- Media is captured per location — use [`get_child_locations`](/mcp/tools/business/get-child-locations) to resolve the location `businessNumber`.
+- Resolve a `mediaId` with `get_media` before calling `update_media_category` or `delete_media`.

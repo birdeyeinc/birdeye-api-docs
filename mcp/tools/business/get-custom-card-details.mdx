@@ -1,0 +1,81 @@
+---
+title: "Get Custom Card Details"
+description: "List the custom cards on a location's microsite profile."
+---
+
+```
+get_custom_card_details
+```
+
+## Description
+
+Returns the custom cards configured on a location's microsite profile. Use it to review a card's title, link, image, or visibility, or to resolve a `cardId` before calling [`update_custom_card`](/mcp/tools/business/update-custom-card) or [`delete_custom_card`](/mcp/tools/business/delete-custom-card).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | The account or location business number whose custom cards to fetch |
+
+## Example Usage
+
+```
+Show me the custom cards on business 169744180007807.
+```
+
+```
+What custom cards does my Dallas location have?
+```
+
+```
+Find the ID of my "Summer Offer" card.
+```
+
+## Example Response
+
+```json
+{
+  "customCardDetails": [
+    {
+      "cardId": 5531,
+      "title": "Book an Appointment",
+      "description": "Schedule your next visit online.",
+      "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg",
+      "imagePosition": "2",
+      "isVisible": 1,
+      "clickURL": "https://book.acmedental.com",
+      "linkText": "Learn More"
+    },
+    {
+      "cardId": 5533,
+      "title": "Summer Offer",
+      "description": "20% off cleanings through August.",
+      "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/63676550205863_FRetIc.jpeg",
+      "imagePosition": "1",
+      "isVisible": 0,
+      "clickURL": "https://acmedental.com/summer",
+      "linkText": "Schedule"
+    }
+  ]
+}
+```
+
+## Response Fields
+
+Each `customCardDetails` entry contains:
+
+| Field | Description |
+|---|---|
+| `cardId` | Card ID — use it with `update_custom_card` / `delete_custom_card` |
+| `title` | Title shown on the card |
+| `description` | Body content shown on the card |
+| `imageURL` | Image displayed on the card |
+| `imagePosition` | Image placement: `"1"` top, `"2"` left, `"3"` right |
+| `isVisible` | `0` hidden on the microsite, `1` visible |
+| `clickURL` | Redirect URL for the card's click action |
+| `linkText` | Text displayed for the link |
+
+## Notes
+
+- **Clarify the scope first.** Custom cards can be configured at the enterprise/parent account level and separately per child location, and the results differ. Use the account business number (from [`get_business_info`](/mcp/tools/business/get-business-info)) for account cards, or a location number (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) for a specific location.
+- To find a card by name, list the cards and match on `title`, then use its `cardId`.

@@ -1,0 +1,64 @@
+---
+title: "Create Business"
+description: "Create a new business or sub-account under the reseller or account."
+---
+
+```
+create_business
+```
+
+## Description
+
+Creates a new business (sub-account) under the reseller or account. Use it to onboard a new business or location, add a sub-account under a reseller, or create a physical location or individual provider entity. Returns the new `businessId`.
+
+<Warning>
+  This is a **write tool** — it creates a real, live business record and is **not idempotent**: calling it twice creates two businesses. Confirm the details with the user before calling; do not create a business speculatively or to test.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessName` | string | Yes | — | Name of the business to create |
+| `zip` | string | Yes | — | Postal code of the business location |
+| `phone` | string | Yes | — | Business phone number |
+| `businessEmail` | string | No | — | Business email address for the new account |
+| `type` | string | No | `"Business"` | Business type. Valid values: `"Business"`, `"Enterprise-Location"`, `"Enterprise-Product"`, `"Reseller"`, or an existing custom hierarchy type |
+| `entityCategory` | string | No | `"physical_location"` | `"physical_location"` (a physical office, branch, or storefront) or `"provider"` (an individual practitioner) |
+| `countryCode` | string | No\* | — | 2-letter country code (e.g. `"AU"`, `"CA"`, `"UK"`). \*Required for non-US businesses |
+| `aggrOptions` | integer | No | Enabled | `0` to disable Search Business, `1` to enable it |
+| `resellerId` | integer | No | Authenticated account | ID of the reseller to create the business under |
+
+## Example Usage
+
+```
+Create a new business called Acme Dental, zip 94105, phone 4155551234.
+```
+
+```
+Add a sub-account "Bright Smiles", zip 10001, phone 2125550100, email hello@brightsmiles.com.
+```
+
+```
+Create an Australian business "Sydney Clinic", zip 2000, phone 0298765432, country AU.
+```
+
+## Example Response
+
+```json
+{
+  "businessId": 169744180007807
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `businessId` | ID of the newly created business. Use it with location-level tools |
+
+## Notes
+
+- The call is **not idempotent** — each call creates a new business record. Confirm the details before calling.
+- `countryCode` is mandatory for businesses outside the US; creation fails without it.
+- `businessName`, `zip`, and `phone` are supplied directly by the user — do not resolve them from another tool.

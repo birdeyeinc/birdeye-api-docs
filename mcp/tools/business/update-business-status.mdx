@@ -1,0 +1,43 @@
+---
+title: "Update Business Status"
+description: "Activate or deactivate a business or location."
+---
+
+```
+update_business_status
+```
+
+## Description
+
+Activates or deactivates a business. Use it to deactivate a business or location, reactivate a previously deactivated one, or change a location's activation status.
+
+<Warning>
+  This is a **write tool**. Deactivating a business makes the whole account inactive and suspends its live functionality. Confirm the exact target and the intended status with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Business number of the location whose status should change |
+| `status` | string | Yes | — | New status. Valid values: `"active"`, `"inactive"` |
+
+## Example Usage
+
+```
+Deactivate the business 169744180007807.
+```
+
+```
+Reactivate location 169744180007807.
+```
+
+```
+Set my Downtown location to inactive.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the status is updated; there is no response body to inspect.
+- **Clarify the scope first.** `businessNumber` can be the whole enterprise/parent account **or** a single child location — deactivating the parent affects the entire account, not one location. Confirm whether the user means the parent account (from [`get_business_info`](/mcp/tools/business/get-business-info)) or one specific location (from [`get_child_locations`](/mcp/tools/business/get-child-locations)).
+- To permanently remove a business instead of deactivating it, use [`delete_business`](/mcp/tools/business/delete-business).

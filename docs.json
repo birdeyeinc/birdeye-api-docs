@@ -68,9 +68,38 @@
             "pages": [
               "mcp/tools/business/overview",
               "mcp/tools/business/get-business-info",
-              "mcp/tools/business/get-child-locations"
+              "mcp/tools/business/get-child-locations",
+              "mcp/tools/business/create-business",
+              "mcp/tools/business/update-business-status",
+              "mcp/tools/business/delete-business",
+              "mcp/tools/business/get-custom-card-details",
+              "mcp/tools/business/update-custom-card",
+              "mcp/tools/business/delete-custom-card"
             ],
             "icon": "building"
+          },
+          {
+            "group": "Custom Fields",
+            "pages": [
+              "mcp/tools/custom-fields/overview",
+              "mcp/tools/custom-fields/get-custom-fields-list",
+              "mcp/tools/custom-fields/get-custom-field",
+              "mcp/tools/custom-fields/create-custom-field",
+              "mcp/tools/custom-fields/update-custom-field",
+              "mcp/tools/custom-fields/delete-custom-field"
+            ],
+            "icon": "sliders"
+          },
+          {
+            "group": "Business Media",
+            "pages": [
+              "mcp/tools/business-media/overview",
+              "mcp/tools/business-media/get-media",
+              "mcp/tools/business-media/add-media",
+              "mcp/tools/business-media/update-media-category",
+              "mcp/tools/business-media/delete-media"
+            ],
+            "icon": "photo-film"
           },
           {
             "group": "Surveys",
@@ -120,7 +149,10 @@
             "pages": [
               "mcp/tools/social/overview",
               "mcp/tools/social/get-social-open-url-performance-report",
-              "mcp/tools/social/create-social-post"
+              "mcp/tools/social/create-social-post",
+              "mcp/tools/social/get-social-post",
+              "mcp/tools/social/edit-published-social-post",
+              "mcp/tools/social/delete-social-post"
             ],
             "icon": "share-nodes"
           },
@@ -179,7 +211,9 @@
             "group": "Aggregation",
             "pages": [
               "mcp/tools/aggregation/overview",
-              "mcp/tools/aggregation/get-all-aggregation-sources"
+              "mcp/tools/aggregation/get-all-aggregation-sources",
+              "mcp/tools/aggregation/add-aggregation-url",
+              "mcp/tools/aggregation/delete-aggregation-url"
             ],
             "icon": "layer-group"
           },

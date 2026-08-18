@@ -1,23 +1,43 @@
 ---
 title: "Social Overview"
-description: "Tools for measuring social channel performance across platforms."
+description: "Tools for publishing, tracking, and measuring social posts across channels."
 ---
 
 ## Tools in this category
+
+### Performance
 
 <CardGroup cols={1}>
   <Card title="get_social_open_url_performance_report" icon="chart-bar" href="/mcp/tools/social/get-social-open-url-performance-report">
     Get channel-level performance metrics with optional period-over-period comparison
   </Card>
+</CardGroup>
+
+### Posts
+
+<CardGroup cols={1}>
   <Card title="create_social_post" icon="pen-to-square" href="/mcp/tools/social/create-social-post">
     Schedule or immediately publish a social post to a connected channel
+  </Card>
+  <Card title="get_social_post" icon="magnifying-glass-chart" href="/mcp/tools/social/get-social-post">
+    Track the per-location status of a social post created via the API
+  </Card>
+  <Card title="edit_published_social_post" icon="pen" href="/mcp/tools/social/edit-published-social-post">
+    Edit the text of an already-published social post
+  </Card>
+  <Card title="delete_social_post" icon="trash" href="/mcp/tools/social/delete-social-post">
+    Delete a scheduled or published social post
   </Card>
 </CardGroup>
 
 ## Supported Platforms
 
-Instagram, Facebook, LinkedIn, TikTok
+- **Posting** (`create_social_post`): Google Business Profile, Facebook, Instagram, LinkedIn, Twitter
+- **Editing / deleting published posts**: Facebook, Google Business Profile, LinkedIn
+- **Performance report**: Instagram, Facebook, LinkedIn, TikTok
 
 ## Tips
 
 - Use `get_social_open_url_performance_report` with `comparisonStartDate` and `comparisonEndDate` to get growth percentages vs. a prior period.
+- `create_social_post` returns a `trackingId` — use it with `get_social_post` to confirm the post succeeded or failed per location.
+- `edit_published_social_post` and `delete_social_post` are **write tools** on live content — confirm the exact post before calling.

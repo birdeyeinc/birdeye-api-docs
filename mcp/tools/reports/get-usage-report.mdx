@@ -39,8 +39,8 @@ Show review request performance location by location for the last 30 days.
   {
     "name": "Total",
     "alias1": "Total",
-    "emailSentInfo": { "total": 1200, "percent": 0, "reqCount": 1050, "reqReminderCount": 150 },
-    "emailOpenInfo": { "total": 720, "percent": 60.0 },
+    "emailSentInfo": { "total": 1200, "percent": 0, "reqCount": 1050, "reqReminderCount": 150, "shareReqCount": 0, "shareReqReminderCount": 0 },
+    "emailOpenInfo": { "total": 720, "percent": 60.0, "reqCount": 720, "reqReminderCount": 0, "shareReqCount": 0, "shareReqReminderCount": 0 },
     "emailClickInfo": {
       "total": 240,
       "percent": 20.0,
@@ -53,18 +53,21 @@ Show review request performance location by location for the last 30 days.
       ]
     },
     "rcmdReviewsCount": [
-      { "sourceId": 2, "sourceName": "Google", "sourceAlias": "google", "reviewCount": 86 }
+      { "sourceId": 2, "sourceName": "Google", "sourceAlias": "google", "avgRating": null, "reviewCount": 86 }
     ],
     "nonRcmdReviewsCount": [
-      { "sourceId": 100, "sourceName": "Birdeye", "sourceAlias": "birdeye", "reviewCount": 24 }
+      { "sourceId": 100, "sourceName": "Birdeye", "sourceAlias": "birdeye", "avgRating": null, "reviewCount": 24 }
     ],
-    "smsSentInfo": { "total": 800, "percent": 0, "reqCount": 800 },
-    "smsOpenInfo": { "total": 260, "percent": 32.5 },
+    "smsSentInfo": { "total": 800, "percent": 0, "reqCount": 800, "reqReminderCount": 0, "shareReqCount": 0, "shareReqReminderCount": 0 },
+    "smsOpenInfo": { "total": 260, "percent": 32.5, "reqCount": 260, "reqReminderCount": 0, "shareReqCount": 0, "shareReqReminderCount": 0 },
     "smsClickInfo": {
       "total": 200,
       "percent": 25.0,
       "rcmdCount": [
         { "name": "Google", "count": 135, "percent": 67.5, "sourceId": 2 }
+      ],
+      "nonRcmdCount": [
+        { "name": "Birdeye", "count": 65, "percent": 32.5, "sourceId": 100 }
       ]
     },
     "totalReviewsCount": 110
