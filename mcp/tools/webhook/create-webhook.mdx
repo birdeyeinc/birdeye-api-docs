@@ -1,0 +1,46 @@
+---
+title: "Create Webhook"
+description: "Subscribe to real-time Birdeye conversation and message events via webhook."
+---
+
+```
+create_webhook
+```
+
+## Description
+
+Creates a webhook subscription that sends real-time event notifications to a specified HTTPS endpoint whenever conversation or message events occur in Birdeye. Unlike most tools, both `businessNumber` and `apiKey` are passed in the request body and are not resolved from the session.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+| `apiKey` | string | Yes | — | Partner API key issued by Birdeye — always ask the user; this is **not** the session token |
+| `events` | list[string] | Yes | — | List of event types to subscribe to (see below) |
+| `endpoint` | string | No | — | HTTPS URL to receive webhook payloads |
+
+### Supported event types
+
+| Event | Description |
+|---|---|
+| `conversation.created` | A new conversation has been created |
+| `conversation.updated` | An existing conversation has been updated |
+| `conversation.closed` | A conversation has been closed |
+| `message.added` | A new message has been added to a conversation |
+
+## Example Usage
+
+```
+Create a webhook to notify https://myapp.example.com/webhooks/birdeye whenever a new conversation is created or a message is added.
+```
+
+```
+Subscribe to all conversation events for my Birdeye account.
+```
+
+## Notes
+
+- Unlike most Birdeye MCP tools, `businessNumber` and `apiKey` are sent in the request body — they are not automatically resolved from the session.
+- The `apiKey` is a partner key issued by Birdeye, distinct from the session token. Always ask the user to supply it explicitly.
+- The `endpoint` must be a publicly accessible HTTPS URL. Birdeye will POST event payloads to this URL when events occur.

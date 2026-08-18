@@ -1,0 +1,18 @@
+---
+title: "Webhook Overview"
+description: "Tools for creating webhook subscriptions to receive real-time event notifications from Birdeye."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="create_webhook" icon="webhook" href="/mcp/tools/webhook/create-webhook">
+    Subscribe to real-time Birdeye conversation and message events via webhook
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Use `get_business_info` to retrieve the enterprise `businessNumber` required by `create_webhook`.
+- The `apiKey` is a **partner API key** issued by Birdeye — it is distinct from the session token. Always ask the user to provide it explicitly.
+- The webhook `endpoint` must be a publicly accessible HTTPS URL capable of receiving POST payloads.

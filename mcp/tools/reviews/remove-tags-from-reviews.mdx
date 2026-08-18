@@ -1,0 +1,49 @@
+---
+title: "Remove Tags from Reviews"
+description: "Remove a tag from reviews — by explicit review IDs or by filter criteria."
+---
+
+```
+remove_tags_from_reviews
+```
+
+## Description
+
+Removes an existing tag from one or more reviews. You can target reviews explicitly by ID, or remove the tag in bulk using filter criteria such as date range, source, rating, or keyword. This is the inverse of [`assign_tags_to_reviews`](/mcp/tools/reviews/assign-tags-to-reviews).
+
+<Warning>
+  `bid` is the **location** business ID (child location), not the enterprise account ID. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid location IDs.
+
+  Removing tags is immediate and cannot be undone.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `tag` | string | Yes | — | Tag name to remove |
+| `bid` | string | Yes | — | Child location business ID (from `get_child_locations`) |
+| `reviewIds` | list[string] | No | — | Explicit list of review IDs to untag (from `get_reviews`) |
+| `fromDate` | string | No | — | Filter reviews on or after this date (`yyyy-MM-dd`) |
+| `toDate` | string | No | — | Filter reviews on or before this date (`yyyy-MM-dd`) |
+| `sources` | list[string] | No | — | Filter by review source (e.g. `["GOOGLE", "YELP"]`) |
+| `ratings` | list[integer] | No | — | Filter by star rating (e.g. `[1, 2]` for negative reviews) |
+| `keywords` | list[string] | No | — | Filter reviews containing specific keywords |
+| `searchStr` | string | No | — | Full-text search string to filter reviews |
+| `subBusinessIds` | list[integer] | No | — | Filter to specific sub-location IDs |
+
+## Example Usage
+
+```
+Remove the "needs-follow-up" tag from all resolved reviews from the past 60 days.
+```
+
+```
+Untag reviews abc123 and def456 from the "urgent" tag.
+```
+
+## Notes
+
+- Either `reviewIds` OR at least one filter parameter (`fromDate`, `toDate`, `sources`, `ratings`, `keywords`, `searchStr`) must be provided.
+- Use [`get_review_tags`](/mcp/tools/reviews/get-review-tags) to confirm the exact tag name before removing.
+- Use [`get_reviews`](/mcp/tools/reviews/get-reviews) to find `reviewIds` for explicit removal.

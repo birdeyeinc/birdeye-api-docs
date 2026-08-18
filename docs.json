@@ -31,7 +31,13 @@
               "mcp/tools/reviews/overview",
               "mcp/tools/reviews/review-and-rating-overview",
               "mcp/tools/reviews/get-reviews",
-              "mcp/tools/reviews/get-review-summary"
+              "mcp/tools/reviews/get-review-summary",
+              "mcp/tools/reviews/get-review-tags",
+              "mcp/tools/reviews/reply-to-review",
+              "mcp/tools/reviews/create-review-tag",
+              "mcp/tools/reviews/delete-review-tag",
+              "mcp/tools/reviews/assign-tags-to-reviews",
+              "mcp/tools/reviews/remove-tags-from-reviews"
             ],
             "icon": "star"
           },
@@ -49,7 +55,9 @@
             "pages": [
               "mcp/tools/surveys/overview",
               "mcp/tools/surveys/get-all-surveys",
-              "mcp/tools/surveys/get-survey-responses"
+              "mcp/tools/surveys/get-survey-responses",
+              "mcp/tools/surveys/create-survey",
+              "mcp/tools/surveys/update-survey-settings"
             ],
             "icon": "clipboard-list"
           },
@@ -61,7 +69,9 @@
               "mcp/tools/listings/get-listing-location-status-report",
               "mcp/tools/listings/get-listing-insights",
               "mcp/tools/listings/get-listing-category-list",
-              "mcp/tools/listings/get-product-listing-list"
+              "mcp/tools/listings/get-product-listing-list",
+              "mcp/tools/listings/fix-listing",
+              "mcp/tools/listings/deactivate-listing"
             ],
             "icon": "map-pin"
           },
@@ -90,9 +100,41 @@
             "group": "Ticketing",
             "pages": [
               "mcp/tools/ticketing/overview",
-              "mcp/tools/ticketing/get-all-ticket-data"
+              "mcp/tools/ticketing/get-all-ticket-data",
+              "mcp/tools/ticketing/create-ticket",
+              "mcp/tools/ticketing/add-ticket-comment",
+              "mcp/tools/ticketing/update-ticket"
             ],
             "icon": "ticket"
+          },
+          {
+            "group": "Contact",
+            "pages": [
+              "mcp/tools/contact/overview",
+              "mcp/tools/contact/upsert-contact",
+              "mcp/tools/contact/customer-checkin",
+              "mcp/tools/contact/delete-contact",
+              "mcp/tools/contact/update-contact-subscription"
+            ],
+            "icon": "address-book"
+          },
+          {
+            "group": "Webhook",
+            "pages": [
+              "mcp/tools/webhook/overview",
+              "mcp/tools/webhook/create-webhook"
+            ],
+            "icon": "webhook"
+          },
+          {
+            "group": "User",
+            "pages": [
+              "mcp/tools/user/overview",
+              "mcp/tools/user/create-user",
+              "mcp/tools/user/update-user",
+              "mcp/tools/user/delete-user"
+            ],
+            "icon": "user"
           },
           {
             "group": "Aggregation",

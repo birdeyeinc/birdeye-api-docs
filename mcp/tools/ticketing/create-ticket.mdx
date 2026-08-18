@@ -1,0 +1,69 @@
+---
+title: "Create Ticket"
+description: "Create a support ticket — untagged (default), review-linked, or survey-linked."
+---
+
+```
+create_ticket
+```
+
+## Description
+
+Creates a new support ticket in Birdeye's ticketing system. Tickets can be created in three modes: `untagged` (standalone ticket with customer details), `review` (linked to an existing review), or `survey` (linked to a survey response). The default mode is `untagged`.
+
+<Warning>
+  This is a **location-level tool**. `locationId` must be a child location ID from [`get_child_locations`](/mcp/tools/business/get-child-locations) — not the enterprise account ID.
+</Warning>
+
+## Parameters
+
+### Required for all ticket types
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | string | Yes | — | Child location ID (from `get_child_locations`) |
+| `assignedTo` | string | Yes | — | Email address of the user to assign the ticket to |
+| `ticketType` | string | No | `"untagged"` | Ticket type: `"untagged"`, `"review"`, or `"survey"`. Only use `"review"` or `"survey"` if the user explicitly requests it |
+
+### Untagged ticket fields
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `description` | string | Yes | Ticket description or summary |
+| `sourceType` | string | Yes | Source channel: `"phone"`, `"socialmedia"`, `"chat"`, or `"internal"` |
+| `customerFirstName` | string | Yes | Customer's first name |
+| `customerLastName` | string | Yes | Customer's last name |
+| `customerEmailId` | string | Yes | Customer's email address |
+| `customerPhone` | string | No | Customer's phone number |
+| `customerCity` | string | No | Customer's city |
+| `customerState` | string | No | Customer's state |
+
+### Review ticket fields
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `externalId` | integer | Yes | Review ID to link the ticket to |
+
+### Survey ticket fields
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `surveyId` | integer | Yes | ID of the survey (from `get_all_surveys`) |
+| `surveyResponseId` | integer | Yes | ID of the specific survey response |
+| `description` | string | No | Optional description |
+
+## Example Usage
+
+```
+Create a ticket for a customer named Jane Smith (jane@example.com) who called in with a billing question. Assign it to support@acme.com.
+```
+
+```
+Create a review-linked ticket for review ID 9876 and assign it to the manager.
+```
+
+## Notes
+
+- Default ticket type is `"untagged"`. Customer details (`firstName`, `lastName`, `emailId`) are mandatory for untagged tickets.
+- Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid `locationId` values.
+- Call [`get_all_surveys`](/mcp/tools/surveys/get-all-surveys) to get the `surveyId` for survey-linked tickets.

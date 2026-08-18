@@ -1,0 +1,48 @@
+---
+title: "Update Ticket"
+description: "Update the status and/or assignee of one or more tickets in bulk."
+---
+
+```
+update_ticket
+```
+
+## Description
+
+Updates the status and/or assignee of one or more tickets in a single call. Supports bulk updates — multiple tickets can be updated simultaneously by providing a list of update objects.
+
+<Warning>
+  This is a **location-level tool**. `locationId` must match the location the tickets belong to.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | string | Yes | — | Child location ID for the tickets (from `get_child_locations`) |
+| `userEmail` | string | Yes | — | Email of the user performing the update (for audit trail) |
+| `ticketUpdateMessages` | list[object] | Yes | — | List of ticket update objects (see below) |
+
+### Ticket update object fields
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `ticketId` | string | Yes | ID of the ticket to update |
+| `assignedTo` | string | No | Email of the new assignee |
+| `ticketStatus` | string | No | New status: `"open"`, `"assigned"`, `"resolved"`, or `"closed"` |
+
+## Example Usage
+
+```
+Close tickets 1001, 1002, and 1003 at location 78901.
+```
+
+```
+Reassign ticket 5567 to manager@acme.com and mark it as resolved.
+```
+
+## Notes
+
+- At least one of `assignedTo` or `ticketStatus` should be provided in each update object.
+- Call [`get_all_ticket_data`](/mcp/tools/ticketing/get-all-ticket-data) to retrieve ticket IDs if not already known.
+- Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid `locationId` values.

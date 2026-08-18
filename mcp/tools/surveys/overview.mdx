@@ -1,6 +1,6 @@
 ---
 title: "Surveys Overview"
-description: "Tools for accessing survey definitions and responses."
+description: "Tools for accessing, creating, and configuring customer surveys."
 ---
 
 ## Tools in this category
@@ -12,9 +12,16 @@ description: "Tools for accessing survey definitions and responses."
   <Card title="get_survey_responses" icon="comment-dots" href="/mcp/tools/surveys/get-survey-responses">
     Fetch paginated responses for a specific survey
   </Card>
+  <Card title="create_survey" icon="plus" href="/mcp/tools/surveys/create-survey">
+    Create a new customer feedback or NPS survey
+  </Card>
+  <Card title="update_survey_settings" icon="sliders" href="/mcp/tools/surveys/update-survey-settings">
+    Update appearance settings and access control for an existing survey
+  </Card>
 </CardGroup>
 
 ## Tips
 
-- Always call `get_all_surveys` first to get the `survey_id` required by `get_survey_responses`.
+- Always call `get_all_surveys` first to get the `survey_id` required by `get_survey_responses` and `update_survey_settings`.
 - Use `start_date` and `end_date` in `get_survey_responses` to narrow results to a specific time window.
+- After creating a survey with `create_survey`, use `update_survey_settings` to configure branding and access control.

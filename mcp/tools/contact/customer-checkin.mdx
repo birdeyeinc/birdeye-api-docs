@@ -1,0 +1,47 @@
+---
+title: "Customer Check-In"
+description: "Record a customer check-in at a specific location."
+---
+
+```
+customer_checkin
+```
+
+## Description
+
+Records a customer check-in event at a specific business location. This can be used to trigger review request campaigns and log customer visits. Either an email address or phone number must be provided.
+
+<Warning>
+  `businessNumber` in this tool is the **location** business ID (child location), not the enterprise account ID — the opposite of most other tools. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid location IDs.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Child location business ID (from `get_child_locations`) — NOT the enterprise ID |
+| `name` | string | Yes | — | Customer's full name |
+| `emailId` | string | Conditional | — | Customer email address — required if `phone` is not provided |
+| `phone` | string | Conditional | — | Customer phone number — required if `emailId` is not provided |
+| `smsEnabled` | integer | No | — | SMS opt-in: `1` = true, `0` = false |
+| `externalId` | string | No | — | Your CRM or external system ID for this customer |
+| `employees` | list[object] | No | — | List of employee objects associated with the visit: `{ emailId: "employee@acme.com" }` |
+| `additionalParams` | object | No | — | Custom key-value metadata to attach to the check-in |
+| `emailPreferences` | object | No | — | `{ marketingOptin, feedbackOptin, serviceOptin }` |
+| `smsPreferences` | object | No | — | `{ marketingOptin, feedbackOptin, serviceOptin }` |
+
+## Example Usage
+
+```
+Check in customer Alice Johnson (alice@example.com) at location 78901.
+```
+
+```
+Record a check-in for patient Bob Lee (555-0199) at the North Branch location, assigned to Dr. Patel (dr.patel@clinic.com).
+```
+
+## Notes
+
+- `businessNumber` here is the child location ID — different from most tools where `businessNumber` is the enterprise ID.
+- At least one of `emailId` or `phone` must be provided to identify the customer.
+- The `employees` list lets you associate the visit with specific staff members, which can trigger employee-level review requests.

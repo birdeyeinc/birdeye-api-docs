@@ -1,0 +1,59 @@
+---
+title: "Update Survey Settings"
+description: "Update appearance settings and access control for an existing survey."
+---
+
+```
+update_survey_settings
+```
+
+## Description
+
+Updates the visual appearance and access control settings of an existing survey. Use this to customize the survey's branding, email content, and which users can view or edit it.
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `surveyId` | integer | Yes | — | ID of the survey to update (from `get_all_surveys`) |
+| `businessNumber` | integer | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+
+### Survey Appearance (`surveySettings` object)
+
+| Field | Type | Description |
+|---|---|---|
+| `showSurveyTitle` | boolean | Show or hide the survey title |
+| `showProgressBar` | boolean | Show or hide the progress bar |
+| `progressbarPosition` | string | Position of the progress bar: `"Top"` or `"Bottom"` |
+| `showLogo` | string | Show the business logo: `"ON"` or `"OFF"` |
+| `themeColor` | string | Primary theme color (hex, e.g. `"#007AFF"`) |
+| `themeTextColor` | string | Text color for the theme (hex) |
+| `subject` | string | Email subject line for survey invitations |
+| `message` | string | Email body text for survey invitations |
+| `signature` | string | Email signature for survey invitations |
+| `enableThankyouEmail` | boolean | Send a thank-you email after submission |
+
+### Access Control (`accessControl` object)
+
+| Field | Type | Description |
+|---|---|---|
+| `userAccessList` | list[object] | List of user access entries: `{ userEmail, role, delete }`. Role values: `"editor"`, `"viewer"`, `"no-access"`. Set `delete: true` to remove a user's access |
+| `surveyAccess` | object | Default access for all users: `{ role }` |
+
+## Example Usage
+
+```
+Set the theme color for survey 501 to blue (#007AFF) and enable the thank-you email.
+```
+
+```
+Grant editor access to analyst@acme.com on survey 502.
+```
+
+## Notes
+
+- At least one of `surveySettings` or `accessControl` must be provided.
+- Call [`get_all_surveys`](/mcp/tools/surveys/get-all-surveys) to retrieve the `surveyId`.
+- Call [`get_business_info`](/mcp/tools/business/get-business-info) to retrieve `businessNumber`.
