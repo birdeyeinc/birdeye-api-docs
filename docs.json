@@ -71,7 +71,6 @@
               "mcp/tools/business/get-child-locations",
               "mcp/tools/business/create-business",
               "mcp/tools/business/update-business-status",
-              "mcp/tools/business/delete-business",
               "mcp/tools/business/get-custom-card-details",
               "mcp/tools/business/update-custom-card",
               "mcp/tools/business/delete-custom-card"

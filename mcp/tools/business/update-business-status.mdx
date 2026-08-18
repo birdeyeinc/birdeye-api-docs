@@ -40,4 +40,3 @@ Set my Downtown location to inactive.
 
 - Returns an empty success response (HTTP 200) when the status is updated; there is no response body to inspect.
 - **Clarify the scope first.** `businessNumber` can be the whole enterprise/parent account **or** a single child location — deactivating the parent affects the entire account, not one location. Confirm whether the user means the parent account (from [`get_business_info`](/mcp/tools/business/get-business-info)) or one specific location (from [`get_child_locations`](/mcp/tools/business/get-child-locations)).
-- To permanently remove a business instead of deactivating it, use [`delete_business`](/mcp/tools/business/delete-business).
