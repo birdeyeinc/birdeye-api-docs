@@ -42,6 +42,28 @@
             "icon": "star"
           },
           {
+            "group": "Reports",
+            "pages": [
+              "mcp/tools/reports/overview",
+              "mcp/tools/reports/get-review-conversion-report",
+              "mcp/tools/reports/get-review-and-rating-over-time",
+              "mcp/tools/reports/get-review-and-rating-by-location",
+              "mcp/tools/reports/get-review-count-by-source",
+              "mcp/tools/reports/get-visitor-count",
+              "mcp/tools/reports/get-nps-over-time",
+              "mcp/tools/reports/get-nps-by-location",
+              "mcp/tools/reports/get-usage-report",
+              "mcp/tools/reports/get-business-dashboard-report",
+              "mcp/tools/reports/get-review-response-rate-over-time",
+              "mcp/tools/reports/get-review-response-rate-by-location",
+              "mcp/tools/reports/get-avg-response-time-over-time",
+              "mcp/tools/reports/get-avg-response-time-by-location",
+              "mcp/tools/reports/get-review-count-by-rating",
+              "mcp/tools/reports/get-review-count-by-rating-by-employee"
+            ],
+            "icon": "chart-bar"
+          },
+          {
             "group": "Business",
             "pages": [
               "mcp/tools/business/overview",

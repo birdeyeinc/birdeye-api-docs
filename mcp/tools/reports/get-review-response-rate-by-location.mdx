@@ -1,0 +1,44 @@
+---
+title: "Get Review Response Rate By Location"
+description: "Compare response rates and unanswered-review backlogs across locations."
+---
+
+```
+get_review_response_rate_by_location
+```
+
+## Description
+
+Returns response rate, responded count, and unanswered count for each location. Use it for location-level response performance and backlog questions.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | All time | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | All time | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs to include |
+| `ratings` | list[integer] | No | All ratings | Star ratings from `0` to `5` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `compareStartDate` | string | No | — | Comparison-period start in `MM/DD/YYYY` format |
+| `compareEndDate` | string | No | — | Comparison-period end in `MM/DD/YYYY` format |
+| `order` | integer | No | `1` | `0` for ascending or `1` for descending |
+| `sortBy` | string | No | `"rate"` | Sort by `"rate"`, `"review-count"`, or `"name"` |
+| `startIndex` | integer | No | `0` | Pagination start index |
+| `size` | integer | No | `100` | Locations to return |
+
+## Example Usage
+
+```
+Which location has the lowest response rate and how many unanswered reviews does it have?
+```
+
+## Response Fields
+
+`summary.actual` and `summary.compare` contain account-wide response metrics. Each `dataPoints` entry contains an `actual` and `compare` object with the location `label`, `businessNumber`, total count, response rate, responded count, and unanswered count.
+
+## Notes
+
+- For an overall unanswered-review backlog, omit the dates unless the user asks for a specific period.
+- The service does not sort by unanswered or responded count. For the worst response performance, use `sortBy: "rate"` with `order: 0` and read `unrespondedCount` from the returned locations.
+- Both comparison dates must be provided together.

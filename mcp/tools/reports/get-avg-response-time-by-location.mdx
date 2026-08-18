@@ -1,0 +1,44 @@
+---
+title: "Get Average Response Time By Location"
+description: "Compare review response speed across business locations."
+---
+
+```
+get_avg_response_time_by_location
+```
+
+## Description
+
+Returns average response time and responded-review count for each location. Use it to find the fastest or slowest branches.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 3 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs to include |
+| `ratings` | list[integer] | No | All ratings | Star ratings from `0` to `5` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+| `compareStartDate` | string | No | — | Comparison-period start in `MM/DD/YYYY` format |
+| `compareEndDate` | string | No | — | Comparison-period end in `MM/DD/YYYY` format |
+| `order` | integer | No | `1` | `0` for ascending or `1` for descending |
+| `sortBy` | string | No | `"avg-resp-time"` | Sort by `"avg-resp-time"`, `"responded-count"`, or `"name"` |
+| `startIndex` | integer | No | `0` | Pagination start index |
+| `size` | integer | No | `100` | Locations to return |
+
+## Example Usage
+
+```
+Which location was slowest to respond to reviews last quarter?
+```
+
+## Response Fields
+
+The response contains account-wide summaries plus a `dataPoints` entry for each location. Each entry includes the location `label`, `businessNumber`, `avgResponseTime`, and `respondedCount` for the actual and comparison periods.
+
+## Notes
+
+- For the slowest location, use `sortBy: "avg-resp-time"` and `order: 1`; for the fastest, use `order: 0`.
+- Response time does not indicate response rate or unanswered count. Use [`get_review_response_rate_by_location`](/mcp/tools/reports/get-review-response-rate-by-location) for those metrics.
+- `avgResponseTime.days`, `hours`, and `minutes` represent one duration.
