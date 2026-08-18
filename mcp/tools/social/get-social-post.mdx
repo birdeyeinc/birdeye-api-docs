@@ -1,0 +1,85 @@
+---
+title: "Get Social Post"
+description: "Track the per-location status of a social post created via the API."
+---
+
+```
+get_social_post
+```
+
+## Description
+
+Tracks the status of a social post created with [`create_social_post`](/mcp/tools/social/create-social-post). Use it to check whether a scheduled or published post actually went out, see per-location status, and get the live post URL or the failure reason.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | string | Yes | — | Account number the post was made under |
+| `trackingId` | string | Yes | — | Tracking ID returned by [`create_social_post`](/mcp/tools/social/create-social-post) |
+
+## Example Usage
+
+```
+Did my post BvgqPRWtObg4jWTKG2wHBg go through?
+```
+
+```
+What's the status of scheduled post BvgqPRWtObg4jWTKG2wHBg?
+```
+
+```
+Which locations failed to publish post BvgqPRWtObg4jWTKG2wHBg?
+```
+
+## Example Response
+
+```json
+{
+  "trackingId": "BvgqPRWtObg4jWTKG2wHBg",
+  "accountNumber": "124356718987",
+  "socialSite": "FACEBOOK",
+  "subBusinessNumbers": [123456780, 123456781],
+  "socialPostDetails": [
+    {
+      "locationName": "Assembly Row",
+      "locationNumber": "12345678909",
+      "status": { "status": "POST_SCHEDULED" },
+      "publishedTimestamp": 1679888791000
+    },
+    {
+      "locationName": "Prince George, BC",
+      "locationNumber": "2234561212",
+      "status": {
+        "status": "POST_FAILED",
+        "failureReason": "Your session has expired. Please log back into your Facebook account to continue."
+      },
+      "publishedTimestamp": 1679888791000
+    },
+    {
+      "locationName": "New York, NY",
+      "locationNumber": "323456121",
+      "status": { "status": "POST_SUCCEEDED" },
+      "publishedTimestamp": 1679888791000,
+      "socialSitePostId": "847803613041846_899791936843015",
+      "socialSitePostUrl": "http://www.facebook.com/847803613041846_899791936843015"
+    }
+  ]
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `trackingId` | The post's tracking ID |
+| `accountNumber` | Account the post belongs to |
+| `socialSite` | Channel: `INSTAGRAM`, `FACEBOOK`, `GOOGLEMYBUSINESS`, `LINKEDIN`, or `TWITTER` |
+| `subBusinessNumbers` | Location IDs the post targeted |
+| `socialPostDetails` | One entry per location — see below |
+
+Each `socialPostDetails` entry contains `locationName`, `locationNumber`, a `status` object (`status` is one of `POST_SCHEDULED`, `POST_SUCCEEDED`, `POST_PROCESSING`, `POST_FAILED`, `REJECTED_BY_APPROVER`, plus a `failureReason` when failed), `publishedTimestamp` (Unix ms), and — when published — `socialSitePostId` and `socialSitePostUrl`.
+
+## Notes
+
+- `trackingId` comes from the response of [`create_social_post`](/mcp/tools/social/create-social-post). It is user-supplied or taken from a prior create call — it cannot be resolved from another tool.

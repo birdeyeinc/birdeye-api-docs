@@ -1,0 +1,59 @@
+---
+title: "Add Aggregation URL"
+description: "Add a review aggregation URL (monitoring source) to a location."
+---
+
+```
+add_aggregation_url
+```
+
+## Description
+
+Adds a review aggregation URL (monitoring source) to a location. Use it to connect a new review-site profile for Birdeye to monitor and start tracking reviews from that URL. Returns the created aggregation's `id`.
+
+<Warning>
+  This is a **write tool** — it connects a new external URL for Birdeye to crawl. Confirm the location, source, and URL with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessId` | string | Yes | — | Location number to add the aggregation URL to |
+| `sourceAlias` | string | Yes | — | Source alias of the review site (e.g. `"google"`, `"yelp"`, `"citysearch"`) |
+| `url` | string | Yes | — | Public URL of the business's profile on that review site to be monitored |
+
+## Example Usage
+
+```
+Add this Citysearch URL as a review source for location 943967608.
+```
+
+```
+Start monitoring this Yelp page for my Miami location.
+```
+
+## Example Response
+
+```json
+{
+  "id": "237030543",
+  "sourceAlias": "citysearch",
+  "sourceName": "Citysearch",
+  "sourceUrl": "http://www.citysearch.com/biz/acme-dental-san-francisco"
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `id` | ID of the created aggregation — use it with [`delete_aggregation_url`](/mcp/tools/aggregation/delete-aggregation-url) |
+| `sourceAlias` | Alias of the source it was added for |
+| `sourceName` | Human-readable name of the source |
+| `sourceUrl` | The URL that was registered |
+
+## Notes
+
+- Resolve `businessId` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.
+- Call [`get_all_aggregation_sources`](/mcp/tools/aggregation/get-all-aggregation-sources) first to see which source aliases are already in use for the location.

@@ -1,0 +1,43 @@
+---
+title: "Edit Published Social Post"
+description: "Edit the text of an already-published social post created via the API."
+---
+
+```
+edit_published_social_post
+```
+
+## Description
+
+Edits the text of an already-published social post created through the API. Use it to fix a typo or update the wording of a post that is already public. Only the text can be changed, and only on Facebook, Google Business Profile, and LinkedIn.
+
+<Warning>
+  This is a **write tool** — it changes live content on the connected social channel. Confirm the exact post and the new text with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | string | Yes | — | Account/business number the post belongs to |
+| `trackingId` | string | Yes | — | Tracking ID returned when the post was created through the API |
+| `text` | string | Yes | — | New post text. Character limits: Google 1500, Facebook 5000, LinkedIn 3000 |
+| `socialSite` | string | Yes | — | Channel to edit. Valid values: `"FACEBOOK"`, `"GOOGLEMYBUSINESS"`, `"LINKEDIN"` |
+| `subBusinessNumbers` | list[integer] | Yes | — | Location IDs the edit applies to. IDs not part of the original post are ignored |
+
+## Example Usage
+
+```
+Fix the typo in my published Google post BvgqPRWtObg4jWTKG2wHBg.
+```
+
+```
+Update the text on my published LinkedIn post BvgqPRWtObg4jWTKG2wHBg.
+```
+
+## Notes
+
+- Returns a success response indicating the post text was updated.
+- Only the **text** can be edited, and only on `FACEBOOK`, `GOOGLEMYBUSINESS`, and `LINKEDIN`.
+- `trackingId` is supplied by the user (returned when the post was created through the API) — it cannot be resolved from another tool.
+- To take the post down instead, use [`delete_social_post`](/mcp/tools/social/delete-social-post).

@@ -1,0 +1,38 @@
+---
+title: "Delete Business"
+description: "Permanently delete a business, account, or sub-reseller."
+---
+
+```
+delete_business
+```
+
+## Description
+
+Permanently deletes a business — an account or sub-reseller under the reseller — and everything under it.
+
+<Warning>
+  This is the most destructive action available and **cannot be undone**. It permanently deletes the entire business/account and everything under it. Only call it when the user has explicitly asked to delete that specific business; state exactly which business (by name and number) will be removed and get explicit confirmation first. To turn a business off without deleting it, use [`update_business_status`](/mcp/tools/business/update-business-status) with `"inactive"` instead.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Business number of the account or sub-reseller to delete |
+
+## Example Usage
+
+```
+Delete business 169744180007807.
+```
+
+```
+Permanently remove the sub-account 169744180007807.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the business is deleted; there is no response body to inspect.
+- **Clarify the scope first.** `businessNumber` can be the entire enterprise/parent account **or** a single child location — deleting the parent removes every location under it. Confirm whether the user means the parent account (from [`get_business_info`](/mcp/tools/business/get-business-info)) or one specific location (from [`get_child_locations`](/mcp/tools/business/get-child-locations)), and name exactly which one.
+- Do not call this to "clean up" or to deactivate — use [`update_business_status`](/mcp/tools/business/update-business-status) to deactivate.

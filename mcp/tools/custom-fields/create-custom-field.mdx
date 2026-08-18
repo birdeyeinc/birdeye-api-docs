@@ -1,0 +1,67 @@
+---
+title: "Create Custom Field"
+description: "Create a new custom field on a business."
+---
+
+```
+create_custom_field
+```
+
+## Description
+
+Creates a new custom field on a business. Use it to capture extra data on a profile — a text, number, or date field, or a dropdown with a fixed set of options. Returns the new field `id`.
+
+<Warning>
+  This is a **write tool** — it adds a new field definition. Confirm the field name, type, and options with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Business number the custom field is created for |
+| `fieldName` | string | Yes | — | Name of the custom field (e.g. `"colours"`) |
+| `type` | string | Yes | — | Field type. Valid values: `"TEXT"`, `"URL"`, `"NUMBER"`, `"DATE"`, `"DROPDOWN_SINGLE"`, `"DROPDOWN_MULTI"`, `"TEXT_RAW"` |
+| `defaultValue` | string | No | — | Default value for the field |
+| `dropDownOptions` | list[string] | No\* | — | List of options. \*Required when `type` is `"DROPDOWN_SINGLE"` or `"DROPDOWN_MULTI"` |
+| `fieldDescription` | string | No | — | Description of the custom field |
+| `filterable` | boolean | No | `false` | Whether the field can be used as a filter |
+
+## Example Usage
+
+```
+Create a dropdown custom field "colours" with options Blue, Green, Red.
+```
+
+```
+Add a text custom field called "Preferred Language".
+```
+
+```
+Create a date field "Contract Renewal" on business 169744180007807.
+```
+
+## Example Response
+
+```json
+{
+  "id": 376,
+  "fieldName": "colours",
+  "created": 1751480725861,
+  "updated": 1751480725861
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `id` | ID of the created custom field — use it for update or delete |
+| `fieldName` | Name of the custom field |
+| `created` | Creation timestamp (Unix milliseconds) |
+| `updated` | Last-updated timestamp (Unix milliseconds) |
+
+## Notes
+
+- `dropDownOptions` is required for `DROPDOWN_SINGLE` and `DROPDOWN_MULTI` types; the call fails without it.
+- Resolve `businessNumber` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.

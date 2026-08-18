@@ -1,0 +1,52 @@
+---
+title: "Update Custom Card"
+description: "Update an existing custom card on a business's microsite profile."
+---
+
+```
+update_custom_card
+```
+
+## Description
+
+Updates an existing custom card on a business's microsite profile. Use it to change a card's title, description, or image, update its click/redirect link, or show, hide, or pin a card.
+
+<Warning>
+  This is a **write tool** — it overwrites the card's content on a live microsite. Confirm the card and the new values with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `cardId` | integer | Yes | — | ID of the custom card to update. Resolve via [`get_custom_card_details`](/mcp/tools/business/get-custom-card-details) |
+| `businessNumber` | string | Yes | — | Business number that owns the card |
+| `title` | string | Yes | — | Title shown on the card |
+| `description` | string | No | — | Body content shown on the card |
+| `imageURL` | string | No | — | Public image URL displayed on the card |
+| `imagePosition` | string | No | — | Image placement: `"1"` top, `"2"` left, `"3"` right |
+| `isVisible` | integer | No | — | `0` hidden on the microsite, `1` visible |
+| `isPinOnTop` | integer | No | — | `1` to pin the card to the top of the microsite |
+| `clickURL` | string | No | — | Redirect URL for the card's click action |
+| `linkText` | string | No | — | Text displayed for the link |
+| `type` | string | No | — | Type/category of the custom card |
+
+## Example Usage
+
+```
+Update card 14744 on business 169744180007807 to title "Summer Offer".
+```
+
+```
+Point card 14744's link to https://book.acme.com and make it visible.
+```
+
+```
+Pin card 14744 to the top of my microsite.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the card is updated; there is no response body to inspect.
+- Resolve `cardId` via [`get_custom_card_details`](/mcp/tools/business/get-custom-card-details) (match the card by title) if the user names a card rather than giving an ID.
+- Resolve `businessNumber` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.

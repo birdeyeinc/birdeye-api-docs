@@ -1,9 +1,11 @@
 ---
 title: "Business Overview"
-description: "Tools for fetching business profile and location data."
+description: "Tools for business profiles, locations, account management, and microsite custom cards."
 ---
 
 ## Tools in this category
+
+### Profile and locations
 
 <CardGroup cols={1}>
   <Card title="get_business_info" icon="building" href="/mcp/tools/business/get-business-info">
@@ -14,7 +16,37 @@ description: "Tools for fetching business profile and location data."
   </Card>
 </CardGroup>
 
+### Account management
+
+<CardGroup cols={1}>
+  <Card title="create_business" icon="square-plus" href="/mcp/tools/business/create-business">
+    Create a new business or sub-account under the reseller or account
+  </Card>
+  <Card title="update_business_status" icon="power-off" href="/mcp/tools/business/update-business-status">
+    Activate or deactivate a business or location
+  </Card>
+  <Card title="delete_business" icon="trash" href="/mcp/tools/business/delete-business">
+    Permanently delete a business, account, or sub-reseller
+  </Card>
+</CardGroup>
+
+### Custom cards
+
+<CardGroup cols={1}>
+  <Card title="get_custom_card_details" icon="id-card" href="/mcp/tools/business/get-custom-card-details">
+    List the custom cards on a location's microsite profile
+  </Card>
+  <Card title="update_custom_card" icon="pen-to-square" href="/mcp/tools/business/update-custom-card">
+    Update an existing custom card on a microsite profile
+  </Card>
+  <Card title="delete_custom_card" icon="trash" href="/mcp/tools/business/delete-custom-card">
+    Delete a custom card from a microsite profile
+  </Card>
+</CardGroup>
+
 ## Tips
 
 - `get_child_locations` is a prerequisite for any location-level tool — call it first to get valid location IDs.
 - `get_business_info` returns the top-level account profile (name, address, phone, website).
+- `create_business`, `update_business_status`, and `delete_business` are **write tools** — confirm the exact target and intent before calling. `delete_business` is irreversible.
+- Resolve a `cardId` with `get_custom_card_details` before calling `update_custom_card` or `delete_custom_card`.
