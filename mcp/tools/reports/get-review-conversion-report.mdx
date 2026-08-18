@@ -31,43 +31,85 @@ How many review requests did we send last month, and how many converted into rev
 ```json
 {
   "emailSentInfo": {
-    "total": 1200,
-    "reqCount": 1050,
-    "reqReminderCount": 150,
-    "shareReqCount": 0,
-    "shareReqReminderCount": 0
+    "total": 28,
+    "emailDetails": [
+      {
+        "reqType": "share_request",
+        "count": 5
+      },
+      {
+        "reqType": "share_request_reminder",
+        "count": 3
+      },
+      {
+        "reqType": "review_request",
+        "count": 12
+      },
+      {
+        "reqType": "review_request_reminder",
+        "count": 10
+      }
+    ]
   },
   "emailOpenInfo": {
-    "total": 720,
-    "percent": 60.0,
-    "pc": 310,
-    "mobile": { "ios": 250, "android": 140, "other": 0 },
-    "tablet": { "ios": 20, "android": 0, "other": 0 }
+    "total": 26,
+    "pc": 14,
+    "mobile": {
+      "ios": 5,
+      "android": 4,
+      "other": 0
+    },
+    "tablet": {
+      "ios": 3,
+      "android": 0,
+      "other": 0
+    }
   },
   "emailClickInfo": {
-    "total": 240,
-    "percent": 20.0,
-    "pc": { "yelp": 15, "google": 90, "birdeye": 25, "otherSites": 10 },
-    "mobile": { "yelp": 10, "google": 65, "birdeye": 20, "otherSites": 5 }
-  },
-  "smsDetail": {
-    "msgSent": 800,
-    "msgClick": 200,
-    "percent": 25.0,
-    "destination": { "yelp": 10, "google": 135, "birdeye": 45, "otherSites": 10 }
+    "total": 20,
+    "pc": {
+      "citysearch": 4,
+      "google": 6,
+      "birdeye": 4,
+      "otherSites": 0
+    },
+    "mobile": {
+      "citysearch": 2,
+      "google": 0,
+      "birdeye": 4,
+      "otherSites": 0
+    }
   },
   "reviews": [
     {
-      "sourceId": 2,
+      "sourceName": "citysearch",
+      "sourceAlias": "citysearch",
+      "avgRating": 4.6,
+      "reviewCount": 159
+    },
+    {
       "sourceName": "Google",
       "sourceAlias": "google",
-      "avgRating": 4.7,
-      "reviewCount": 86
+      "avgRating": 4.9,
+      "reviewCount": 8
+    },
+    {
+      "sourceName": "Yellow Pages",
+      "sourceAlias": "yellow_pages",
+      "avgRating": 5,
+      "reviewCount": 1
     }
   ],
-  "organicReviewCount": 24,
-  "aggReviewCount": 103,
-  "alias1": "Total"
+  "smsDetail": {
+    "msgSent": 34,
+    "msgClick": 28,
+    "destination": {
+      "citysearch": 12,
+      "google": 6,
+      "birdeye": 10,
+      "otherSites": 0
+    }
+  }
 }
 ```
 
@@ -76,17 +118,13 @@ How many review requests did we send last month, and how many converted into rev
 | Field | Description |
 |---|---|
 | `emailSentInfo` | Initial, reminder, and shared review request email counts |
-| `emailOpenInfo` | Email opens and open rate, with device data when available |
-| `emailClickInfo` | Email clicks and click rate, with device and destination data when available |
-| `smsDetail` | SMS sent, clicked, click rate, and destination counts |
+| `emailOpenInfo` | Email opens, with device data when available |
+| `emailClickInfo` | Email clicks, with device and destination data when available |
+| `smsDetail` | SMS sent, clicked, and destination counts |
 | `reviews` | Reviews generated, grouped by source |
-| `organicReviewCount` | Reviews collected on Birdeye |
-| `aggReviewCount` | Reviews collected on third-party sites |
-| `alias1` | Account rollup label, normally `"Total"` |
 
 ## Notes
 
 - Pass only one date-filter style. `months` takes precedence over `days`, and both take precedence over `fromDate`.
 - This is an account-level rollup and does not accept a location filter.
-- Click percentages are based on messages sent, not messages opened.
-- Device and destination details may be zero when attribution data is unavailable; use the total and percentage fields as the authoritative funnel metrics.
+- Device and destination details may be zero when attribution data is unavailable; use the total fields as the authoritative funnel metrics.
