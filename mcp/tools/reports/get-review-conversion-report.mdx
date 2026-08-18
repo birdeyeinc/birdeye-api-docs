@@ -26,6 +26,51 @@ Returns an account-level review request funnel covering email and SMS delivery, 
 How many review requests did we send last month, and how many converted into reviews?
 ```
 
+## Example Response
+
+```json
+{
+  "emailSentInfo": {
+    "total": 1200,
+    "reqCount": 1050,
+    "reqReminderCount": 150,
+    "shareReqCount": 0,
+    "shareReqReminderCount": 0
+  },
+  "emailOpenInfo": {
+    "total": 720,
+    "percent": 60.0,
+    "pc": 310,
+    "mobile": { "ios": 250, "android": 140, "other": 0 },
+    "tablet": { "ios": 20, "android": 0, "other": 0 }
+  },
+  "emailClickInfo": {
+    "total": 240,
+    "percent": 20.0,
+    "pc": { "yelp": 15, "google": 90, "birdeye": 25, "otherSites": 10 },
+    "mobile": { "yelp": 10, "google": 65, "birdeye": 20, "otherSites": 5 }
+  },
+  "smsDetail": {
+    "msgSent": 800,
+    "msgClick": 200,
+    "percent": 25.0,
+    "destination": { "yelp": 10, "google": 135, "birdeye": 45, "otherSites": 10 }
+  },
+  "reviews": [
+    {
+      "sourceId": 2,
+      "sourceName": "Google",
+      "sourceAlias": "google",
+      "avgRating": 4.7,
+      "reviewCount": 86
+    }
+  ],
+  "organicReviewCount": 24,
+  "aggReviewCount": 103,
+  "alias1": "Total"
+}
+```
+
 ## Response Fields
 
 | Field | Description |
@@ -37,6 +82,7 @@ How many review requests did we send last month, and how many converted into rev
 | `reviews` | Reviews generated, grouped by source |
 | `organicReviewCount` | Reviews collected on Birdeye |
 | `aggReviewCount` | Reviews collected on third-party sites |
+| `alias1` | Account rollup label, normally `"Total"` |
 
 ## Notes
 

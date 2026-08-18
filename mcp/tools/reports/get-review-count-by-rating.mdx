@@ -26,6 +26,22 @@ Returns the total review count and a breakdown for ratings from 0 through 5. Use
 How many 1-star, 2-star, and 5-star Google reviews did we receive this year?
 ```
 
+## Example Response
+
+```json
+{
+  "reviewCount": 342,
+  "countByRating": [
+    { "rating": 0, "count": 12 },
+    { "rating": 1, "count": 9 },
+    { "rating": 2, "count": 16 },
+    { "rating": 3, "count": 31 },
+    { "rating": 4, "count": 96 },
+    { "rating": 5, "count": 178 }
+  ]
+}
+```
+
 ## Response Fields
 
 The response contains `reviewCount` and `countByRating` entries with `rating` and `count`.

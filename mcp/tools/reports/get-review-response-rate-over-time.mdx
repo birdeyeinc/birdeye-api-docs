@@ -29,6 +29,61 @@ Returns response-rate trends with an optional previous-period comparison. Use it
 Has our review response rate improved this quarter compared with last quarter?
 ```
 
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": {
+      "totalCount": 94,
+      "avgRating": 4.2,
+      "responseRate": 76,
+      "unrespondedRate": 24,
+      "unrespondedCount": 23,
+      "respondedCount": 71,
+      "unrespondedCountGrowth": -17.9,
+      "respondedCountGrowth": 14.5,
+      "totalCountGrowth": 5.6,
+      "responseRateGrowth": 8.6
+    },
+    "compare": {
+      "totalCount": 89,
+      "avgRating": 4.1,
+      "responseRate": 70,
+      "unrespondedRate": 30,
+      "unrespondedCount": 28,
+      "respondedCount": 62
+    }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Jul 1, 2026 - Jul 7, 2026",
+        "shortLabel": "Jul 1 - Jul 7",
+        "totalCount": 24,
+        "startDate": "07/01/2026",
+        "endDate": "07/07/2026",
+        "responseRate": 79,
+        "unrespondedCount": 5,
+        "respondedCount": 19
+      },
+      "compare": {
+        "label": "Apr 1, 2026 - Apr 7, 2026",
+        "shortLabel": "Apr 1 - Apr 7",
+        "totalCount": 22,
+        "startDate": "04/01/2026",
+        "endDate": "04/07/2026",
+        "responseRate": 73,
+        "unrespondedCount": 6,
+        "respondedCount": 16
+      }
+    }
+  ],
+  "groupByType": "week",
+  "dataPresent": true
+}
+```
+
 ## Response Fields
 
 `summary.actual` and `summary.compare` include total, responded, and unanswered counts and rates. `dataPoints` contains the same metrics for each time bucket. `groupByType` identifies the bucket size, and `dataPresent` indicates whether the period contains data.

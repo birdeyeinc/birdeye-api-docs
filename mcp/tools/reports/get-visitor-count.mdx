@@ -28,6 +28,25 @@ Returns audience reach from review sites, websites, and social channels. This to
 Which location received the most visitors last month, and where did the traffic come from?
 ```
 
+## Example Response
+
+```json
+[
+  {
+    "count": 315,
+    "milestone": "Acme Dental - Downtown",
+    "businessId": 78901,
+    "visitors": [
+      { "sourceAlias": "Facebook", "count": 18 },
+      { "sourceAlias": "Google", "count": 172 },
+      { "sourceAlias": "Review Site", "count": 74 },
+      { "sourceAlias": "Website", "count": 51 },
+      { "sourceAlias": "Total", "count": 315 }
+    ]
+  }
+]
+```
+
 ## Response Fields
 
 Each location contains `milestone` for the location name, `businessId`, total visitor `count`, and `visitors` entries with `sourceAlias` and `count`.

@@ -21,6 +21,66 @@ This tool has no parameters. It automatically uses the authenticated business.
 How is my business doing, and how do we compare with the industry benchmark?
 ```
 
+## Example Response
+
+```json
+{
+  "allTime": {
+    "avgRating": { "percentChange": 2.4, "rating": 4.6 },
+    "benchmark": {
+      "industryRating": 4.2,
+      "industryReviewCount": 285,
+      "percentChange": 9.5,
+      "rating": 4.6
+    },
+    "custCommn": { "reviewRequest": 3200, "reviewRequestSms": 1800, "shareReview": 45 },
+    "reviewCount": { "count": 742, "percentChange": 12.1 },
+    "sentiments": { "negative": 64, "neutral": 81, "positive": 597 },
+    "visitors": { "count": 8420 }
+  },
+  "last30Days": {
+    "avgRating": { "rating": 4.7 },
+    "benchmark": { "industryRating": 4.2, "industryReviewCount": 24, "percentChange": 11.9, "rating": 4.7 },
+    "custCommn": { "reviewRequest": 185, "reviewRequestSms": 96, "shareReview": 4 },
+    "reviewCount": { "count": 68, "percentChange": 8.0 },
+    "sentiments": { "negative": 4, "neutral": 7, "positive": 57 },
+    "visitors": { "count": 690 }
+  },
+  "negativeReviews": [
+    {
+      "comments": "The appointment started later than expected.",
+      "rating": 2,
+      "response": "Thank you for the feedback. We are reviewing our scheduling process.",
+      "reviewDate": "Jul 18, 2026",
+      "reviewId": "review-1001",
+      "reviewUrl": "https://example.com/reviews/review-1001",
+      "sourceType": "google"
+    }
+  ],
+  "positiveReviews": [
+    {
+      "comments": "Friendly staff and a smooth visit.",
+      "rating": 5,
+      "response": "Thank you for your kind feedback.",
+      "reviewDate": "Jul 22, 2026",
+      "reviewId": "review-1002",
+      "reviewUrl": "https://example.com/reviews/review-1002",
+      "sourceType": "google"
+    }
+  ],
+  "syndication": {
+    "presenceCount": 12,
+    "reviewDistribution": [
+      { "count": 548, "name": "Google" },
+      { "count": 194, "name": "Birdeye" }
+    ],
+    "reviewListings": [
+      { "id": 2, "name": "Google", "url": "https://example.com/acme-dental" }
+    ]
+  }
+}
+```
+
 ## Response Fields
 
 | Field | Description |
@@ -29,10 +89,7 @@ How is my business doing, and how do we compare with the industry benchmark?
 | `last30Days` | The same metrics for the last 30 days |
 | `negativeReviews` | Recent standout negative reviews |
 | `positiveReviews` | Recent standout positive reviews |
-| `reviewDistribution` | Review rating distribution |
-| `reviewListings` | Review listing information |
-| `presenceCount` | Listings presence count |
-| `syndication` | Review syndication data |
+| `syndication` | Listings presence, review distribution, and review listing data |
 
 ## Notes
 

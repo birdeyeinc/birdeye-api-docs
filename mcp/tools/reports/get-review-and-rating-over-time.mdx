@@ -30,6 +30,16 @@ Returns review count and average rating as a time series. Use it to identify rat
 Which month had the most reviews during the last year?
 ```
 
+## Example Response
+
+```json
+[
+  { "rating": 4.6, "count": 132, "milestone": "01/2026" },
+  { "rating": 4.5, "count": 118, "milestone": "02/2026" },
+  { "rating": 4.7, "count": 145, "milestone": "03/2026" }
+]
+```
+
 ## Response Fields
 
 Each time bucket contains `milestone` for the bucket date, `count` for review volume, and `rating` for average rating.

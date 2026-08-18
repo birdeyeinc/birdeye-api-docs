@@ -28,6 +28,29 @@ Returns review counts from Google, Yelp, Facebook, Birdeye, and other sources fo
 How many Google versus Yelp reviews did each location receive this year?
 ```
 
+## Example Response
+
+```json
+[
+  {
+    "count": 342,
+    "milestone": "Acme Dental - Downtown",
+    "businessId": 78901,
+    "reviewSites": [
+      { "sourceAlias": "Google", "count": 248 },
+      { "sourceAlias": "Yelp", "count": 39 },
+      { "sourceAlias": "Birdeye", "count": 55 }
+    ]
+  }
+]
+```
+
 ## Response Fields
 
 Each location contains `milestone` for the location name, `businessId`, total `count`, and `reviewSites` entries with `sourceAlias` and `count`.
+
+## Notes
+
+- `milestone` contains the location name, not a date or reporting period.
+- `count` is the location total across the returned sources; do not add it to the individual `reviewSites` counts.
+- Use `businessNumbers` to restrict the report to location IDs returned by [`get_child_locations`](/mcp/tools/business/get-child-locations).
