@@ -93,7 +93,12 @@
               "mcp/tools/listings/get-listing-category-list",
               "mcp/tools/listings/get-product-listing-list",
               "mcp/tools/listings/fix-listing",
-              "mcp/tools/listings/deactivate-listing"
+              "mcp/tools/listings/deactivate-listing",
+              "mcp/tools/listings/create-product",
+              "mcp/tools/listings/update-product",
+              "mcp/tools/listings/add-products",
+              "mcp/tools/listings/remove-products",
+              "mcp/tools/listings/delete-products"
             ],
             "icon": "map-pin"
           },
@@ -114,7 +119,8 @@
             "group": "Social",
             "pages": [
               "mcp/tools/social/overview",
-              "mcp/tools/social/get-social-open-url-performance-report"
+              "mcp/tools/social/get-social-open-url-performance-report",
+              "mcp/tools/social/create-social-post"
             ],
             "icon": "share-nodes"
           },
@@ -157,6 +163,17 @@
               "mcp/tools/user/delete-user"
             ],
             "icon": "user"
+          },
+          {
+            "group": "Google Services",
+            "pages": [
+              "mcp/tools/google-services/overview",
+              "mcp/tools/google-services/get-google-services",
+              "mcp/tools/google-services/create-google-service",
+              "mcp/tools/google-services/update-google-service",
+              "mcp/tools/google-services/delete-google-services"
+            ],
+            "icon": "google"
           },
           {
             "group": "Aggregation",

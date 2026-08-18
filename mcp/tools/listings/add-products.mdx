@@ -1,0 +1,42 @@
+---
+title: "Add Products"
+description: "Add one or more existing products to the business's Google listing."
+---
+
+```
+add_products
+```
+
+## Description
+
+Adds one or more products to the business's active Google listing (Google Merchant). Use this to publish draft products or re-list products that were previously removed.
+
+<Warning>
+  This is a **write tool** — it publishes products to Google Merchant across all mapped locations. Confirm the product list with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `productIds` | list[string] | Yes | — | List of product identifiers to add. Example: `["68767cb39ebf51000815ab39"]` |
+
+## Example Usage
+
+```
+Add product 68767cb39ebf51000815ab39 to my Google listing.
+```
+
+```
+Publish the 'Teeth Whitening Kit' and 'Dental Floss Pack' products to Google.
+```
+
+```
+Add all my draft products to the Google listing.
+```
+
+## Notes
+
+- If the user provides product names instead of IDs, call [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) with the title as `search`, present the matching results, and confirm the correct `productId` values before calling.
+- To create a new product first, use [`create_product`](/mcp/tools/listings/create-product).
+- To remove a product from the listing without deleting it, use [`remove_products`](/mcp/tools/listings/remove-products).
