@@ -33,6 +33,41 @@ Returns average response time and responded-review count for each location. Use 
 Which location was slowest to respond to reviews last quarter?
 ```
 
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": {
+      "avgResponseTime": { "days": 1.25, "hours": 30.0, "minutes": 1800.0 },
+      "respondedCount": 138
+    },
+    "compare": {
+      "avgResponseTime": { "days": 1.75, "hours": 42.0, "minutes": 2520.0 },
+      "respondedCount": 113
+    }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Acme Dental - Westlake",
+        "avgResponseTime": { "days": 1.8, "hours": 43.2, "minutes": 2592.0 },
+        "respondedCount": 51,
+        "businessNumber": 78902
+      },
+      "compare": {
+        "label": "Acme Dental - Westlake",
+        "avgResponseTime": { "days": 2.2, "hours": 52.8, "minutes": 3168.0 },
+        "respondedCount": 42,
+        "businessNumber": 78902
+      }
+    }
+  ],
+  "groupByType": "quarter",
+  "dataPresent": true
+}
+```
+
 ## Response Fields
 
 The response contains account-wide summaries plus a `dataPoints` entry for each location. Each entry includes the location `label`, `businessNumber`, `avgResponseTime`, and `respondedCount` for the actual and comparison periods.

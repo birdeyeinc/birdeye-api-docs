@@ -29,6 +29,45 @@ Returns average review response time as a time series with an optional previous-
 Did our average review response time improve this quarter?
 ```
 
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": {
+      "avgResponseTime": { "days": 1.25, "hours": 30.0, "minutes": 1800.0 },
+      "respondedCount": 138
+    },
+    "compare": {
+      "avgResponseTime": { "days": 1.75, "hours": 42.0, "minutes": 2520.0 },
+      "respondedCount": 113
+    }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Jul 1, 2026 - Jul 7, 2026",
+        "shortLabel": "Jul 1 - Jul 7",
+        "startDate": "07/01/2026",
+        "endDate": "07/07/2026",
+        "avgResponseTime": { "days": 1.1, "hours": 26.4, "minutes": 1584.0 },
+        "respondedCount": 34
+      },
+      "compare": {
+        "label": "Apr 1, 2026 - Apr 7, 2026",
+        "shortLabel": "Apr 1 - Apr 7",
+        "startDate": "04/01/2026",
+        "endDate": "04/07/2026",
+        "avgResponseTime": { "days": 1.6, "hours": 38.4, "minutes": 2304.0 },
+        "respondedCount": 29
+      }
+    }
+  ],
+  "groupByType": "week",
+  "dataPresent": true
+}
+```
+
 ## Response Fields
 
 `summary.actual` and `summary.compare` include `avgResponseTime` and `respondedCount`. `dataPoints` provides those fields for each time bucket. `groupByType` identifies the bucket size, and `dataPresent` indicates whether data exists.

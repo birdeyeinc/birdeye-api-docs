@@ -30,6 +30,47 @@ Returns NPS and promoter, passive, and detractor data for each business location
 Which location has the worst NPS this year?
 ```
 
+## Example Response
+
+```json
+{
+  "totalCount": 120,
+  "avgNpsScore": "42",
+  "promoters": "62",
+  "passives": "18",
+  "detractors": "20",
+  "dataPoints": [
+    {
+      "label": "Acme Dental - Downtown",
+      "detractorPercentile": 15,
+      "passivePercentile": 17,
+      "promoterPercentile": 68,
+      "npsScore": 53,
+      "positiveCount": 41,
+      "negativeCount": 9,
+      "neutralCount": 10,
+      "totalCount": 60,
+      "businessNumber": 78901
+    },
+    {
+      "label": "Acme Dental - Westlake",
+      "detractorPercentile": 25,
+      "passivePercentile": 18,
+      "promoterPercentile": 57,
+      "npsScore": 32,
+      "positiveCount": 34,
+      "negativeCount": 15,
+      "neutralCount": 11,
+      "totalCount": 60,
+      "businessNumber": 78902
+    }
+  ],
+  "totalPages": 1,
+  "page": 0,
+  "size": 25
+}
+```
+
 ## Response Fields
 
 The response includes account-level `totalCount`, `avgNpsScore`, promoter, passive, and detractor percentages. Each `dataPoints` entry contains the location `label`, `businessNumber`, `npsScore`, response counts, and segment percentages. Pagination is described by `totalPages`, `page`, and `size`.

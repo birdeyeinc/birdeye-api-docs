@@ -27,6 +27,37 @@ Returns the review count by rating for each assisted employee. Use it for employ
 Compare the review rating distribution by staff member for last quarter.
 ```
 
+## Example Response
+
+```json
+{
+  "employees": [
+    {
+      "employee": { "firstName": "David", "lastName": "Wood" },
+      "countByRating": [
+        { "rating": 0, "count": 0 },
+        { "rating": 1, "count": 1 },
+        { "rating": 2, "count": 0 },
+        { "rating": 3, "count": 2 },
+        { "rating": 4, "count": 8 },
+        { "rating": 5, "count": 24 }
+      ]
+    },
+    {
+      "employee": { "firstName": "Maya", "lastName": "Patel" },
+      "countByRating": [
+        { "rating": 0, "count": 1 },
+        { "rating": 1, "count": 0 },
+        { "rating": 2, "count": 1 },
+        { "rating": 3, "count": 1 },
+        { "rating": 4, "count": 6 },
+        { "rating": 5, "count": 27 }
+      ]
+    }
+  ]
+}
+```
+
 ## Response Fields
 
 Each `employees` entry contains an `employee` object with the staff member name and `countByRating` entries with `rating` and `count`.

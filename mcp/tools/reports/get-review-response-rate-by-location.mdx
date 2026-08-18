@@ -33,6 +33,52 @@ Returns response rate, responded count, and unanswered count for each location. 
 Which location has the lowest response rate and how many unanswered reviews does it have?
 ```
 
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": {
+      "totalCount": 187,
+      "responseRate": 74,
+      "unrespondedRate": 26,
+      "unrespondedCount": 49,
+      "respondedCount": 138
+    },
+    "compare": {
+      "totalCount": 164,
+      "responseRate": 69,
+      "unrespondedRate": 31,
+      "unrespondedCount": 51,
+      "respondedCount": 113
+    }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Acme Dental - Westlake",
+        "totalCount": 81,
+        "responseRate": 63,
+        "unrespondedRate": 37,
+        "unrespondedCount": 30,
+        "respondedCount": 51,
+        "businessNumber": 78902
+      },
+      "compare": {
+        "label": "Acme Dental - Westlake",
+        "totalCount": 72,
+        "responseRate": 58,
+        "unrespondedRate": 42,
+        "unrespondedCount": 30,
+        "respondedCount": 42,
+        "businessNumber": 78902
+      }
+    }
+  ],
+  "dataPresent": true
+}
+```
+
 ## Response Fields
 
 `summary.actual` and `summary.compare` contain account-wide response metrics. Each `dataPoints` entry contains an `actual` and `compare` object with the location `label`, `businessNumber`, total count, response rate, responded count, and unanswered count.
