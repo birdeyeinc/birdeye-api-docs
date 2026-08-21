@@ -16199,6 +16199,8 @@ paths:
               auth:
                 username: testUser
                 password: userpassword
+              customHeaders:
+                Authorization: Bearer ABCDBJKFJKBFK
   "/v1/subscriptions/unsubscribe/{subscriptionId}":
     get:
       responses:
@@ -16317,6 +16319,140 @@ paths:
         required: false
         example: "[Required] Partner specific API key provided by Birdeye for data
           exchange."
+        schema:
+          type: string
+  "/v1/subscriptions/list":
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Unique identifier of the subscription.
+                    customHeaders:
+                      type: object
+                      nullable: true
+                      additionalProperties:
+                        type: string
+                    webhookUrl:
+                      type: string
+                      description: The webhook endpoint URL on your server on which
+                        webhook requests are sent.
+                    eventName:
+                      type: string
+                      description: Name of the subscribed event.
+                    createdDate:
+                      type: string
+                      description: Date and time (in UTC) at which the subscription
+                        was created.
+                example:
+                - id: 64f1c2a9b3d4e5f6a7b8c9d0
+                  customHeaders: null
+                  webhookUrl: https://hooks.zapier.com/hooks/catch/12345678/abcd1234/
+                  eventName: REVIEW_CREATED
+                  createdDate: 15 Jan 2025, 10:15:00 AM UTC
+                - id: 64f1c2a9b3d4e5f6a7b8c9d1
+                  customHeaders:
+                    X-Auth-Token: sample-token-value
+                    X-Source: birdeye
+                  webhookUrl: https://webhook.site/11111111-2222-3333-4444-555555555555
+                  eventName: TICKET_CREATED
+                  createdDate: 02 Feb 2025, 11:20:35 AM UTC
+              examples:
+                response:
+                  value:
+                  - id: 64f1c2a9b3d4e5f6a7b8c9d0
+                    customHeaders: null
+                    webhookUrl: https://hooks.zapier.com/hooks/catch/12345678/abcd1234/
+                    eventName: REVIEW_CREATED
+                    createdDate: 15 Jan 2025, 10:15:00 AM UTC
+                  - id: 64f1c2a9b3d4e5f6a7b8c9d1
+                    customHeaders:
+                      X-Auth-Token: sample-token-value
+                      X-Source: birdeye
+                    webhookUrl: https://webhook.site/11111111-2222-3333-4444-555555555555
+                    eventName: TICKET_CREATED
+                    createdDate: 02 Feb 2025, 11:20:35 AM UTC
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1161Model"
+              - "$ref": "#/components/schemas/1167Model"
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1532Model"
+              examples:
+                response:
+                  value:
+                    code: 1532
+                    message: Business id is missing or invalid.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: List subscriptions
+      operationId: listSubscriptions
+      description: Get the list of webhook subscriptions configured for the account.
+      tags:
+      - Subscription
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: true
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] Long Business Number.
+        required: true
+        example: "[Required] Long Business Number."
         schema:
           type: string
   "/v1/messenger/webhook/event":
@@ -34931,6 +35067,12 @@ components:
               description: password for authorization
           description: Will be used for basic authorization, should be null for no
             auth
+        customHeaders:
+          type: object
+          nullable: true
+          additionalProperties:
+            type: string
+          description: Custom headers to be sent along with the webhook request.
       example:
         webhookUrl: https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65
         emails:
@@ -34939,6 +35081,8 @@ components:
         auth:
           username: testUser
           password: userpassword
+        customHeaders:
+          Authorization: Bearer ABCDBJKFJKBFK
     Apiary_getEvents_Response200:
       type: array
       items:
