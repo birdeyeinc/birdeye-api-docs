@@ -16336,6 +16336,8 @@ paths:
                     customHeaders:
                       type: object
                       nullable: true
+                      additionalProperties:
+                        type: string
                     webhookUrl:
                       type: string
                     eventName:
@@ -16349,7 +16351,9 @@ paths:
                   eventName: REVIEW_CREATED
                   createdDate: 15 Jan 2025, 10:15:00 AM UTC
                 - id: 64f1c2a9b3d4e5f6a7b8c9d1
-                  customHeaders: null
+                  customHeaders:
+                    X-Auth-Token: sample-token-value
+                    X-Source: birdeye
                   webhookUrl: https://webhook.site/11111111-2222-3333-4444-555555555555
                   eventName: TICKET_CREATED
                   createdDate: 02 Feb 2025, 11:20:35 AM UTC
@@ -16362,7 +16366,9 @@ paths:
                     eventName: REVIEW_CREATED
                     createdDate: 15 Jan 2025, 10:15:00 AM UTC
                   - id: 64f1c2a9b3d4e5f6a7b8c9d1
-                    customHeaders: null
+                    customHeaders:
+                      X-Auth-Token: sample-token-value
+                      X-Source: birdeye
                     webhookUrl: https://webhook.site/11111111-2222-3333-4444-555555555555
                     eventName: TICKET_CREATED
                     createdDate: 02 Feb 2025, 11:20:35 AM UTC
