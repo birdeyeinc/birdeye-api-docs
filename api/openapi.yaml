@@ -16199,6 +16199,8 @@ paths:
               auth:
                 username: testUser
                 password: userpassword
+              customHeaders:
+                Authorization: Bearer ABCDBJKFJKBFK
   "/v1/subscriptions/unsubscribe/{subscriptionId}":
     get:
       responses:
@@ -35065,6 +35067,12 @@ components:
               description: password for authorization
           description: Will be used for basic authorization, should be null for no
             auth
+        customHeaders:
+          type: object
+          nullable: true
+          additionalProperties:
+            type: string
+          description: Custom headers to be sent along with the webhook request.
       example:
         webhookUrl: https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65
         emails:
@@ -35073,6 +35081,8 @@ components:
         auth:
           username: testUser
           password: userpassword
+        customHeaders:
+          Authorization: Bearer ABCDBJKFJKBFK
     Apiary_getEvents_Response200:
       type: array
       items:
