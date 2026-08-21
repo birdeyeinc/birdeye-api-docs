@@ -16333,6 +16333,7 @@ paths:
                   properties:
                     id:
                       type: string
+                      description: Unique identifier of the subscription.
                     customHeaders:
                       type: object
                       nullable: true
@@ -16340,10 +16341,14 @@ paths:
                         type: string
                     webhookUrl:
                       type: string
+                      description: The webhook endpoint URL on your server on which
+                        webhook requests are sent.
                     eventName:
                       type: string
+                      description: Name of the subscribed event.
                     createdDate:
                       type: string
+                      description: Date and time at which the subscription was created.
                 example:
                 - id: 64f1c2a9b3d4e5f6a7b8c9d0
                   customHeaders: null
