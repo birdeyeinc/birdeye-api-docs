@@ -16443,7 +16443,7 @@ paths:
         in: header
         description: e.g. [Required] Partner specific API key provided by Birdeye
           for data exchange.
-        required: false
+        required: true
         example: "[Required] Partner specific API key provided by Birdeye for data
           exchange."
         schema:
@@ -16451,7 +16451,7 @@ paths:
       - name: x-business-number
         in: header
         description: e.g. [Required] Long Business Number.
-        required: false
+        required: true
         example: "[Required] Long Business Number."
         schema:
           type: string
