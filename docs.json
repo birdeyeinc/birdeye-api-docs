@@ -490,6 +490,7 @@
                 "pages": [
                   "api/subscription/overview",
                   "api/subscription/create-subscription",
+                  "api/subscription/list-subscriptions",
                   "api/subscription/unsubscribe-subscription"
                 ],
                 "icon": "bell"
