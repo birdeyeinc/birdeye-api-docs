@@ -16348,7 +16348,8 @@ paths:
                       description: Name of the subscribed event.
                     createdDate:
                       type: string
-                      description: Date and time at which the subscription was created.
+                      description: Date and time (in UTC) at which the subscription
+                        was created.
                 example:
                 - id: 64f1c2a9b3d4e5f6a7b8c9d0
                   customHeaders: null
