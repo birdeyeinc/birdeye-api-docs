@@ -15,12 +15,17 @@ Deletes a custom field from a business. Use it to remove a field that is no long
   This action **cannot be undone** — the custom field definition (and any values stored under it) is permanently removed. State exactly which field will be deleted and confirm with the user before proceeding.
 </Warning>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `fieldId` | integer | Yes | — | ID of the custom field to delete. Resolve via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) |
 | `businessNumber` | string | Yes | — | Business number that owns the field |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

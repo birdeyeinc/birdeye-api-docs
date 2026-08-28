@@ -19,11 +19,16 @@ Deletes a business account or sub-reseller that sits under a reseller, removing 
   If the user's real intent is to stop using a location rather than erase it, [`update_business_status`](/mcp/tools/business/update-business-status) (set to `"inactive"`) is almost always what they want — and it is reversible.
 </Note>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `businessNumber` | string | Yes | — | Business number of the account or sub-reseller to delete |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

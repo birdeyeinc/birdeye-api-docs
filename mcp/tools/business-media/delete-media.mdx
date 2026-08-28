@@ -15,12 +15,17 @@ Deletes one or more media items from a location profile. Use it to remove outdat
   This action **cannot be undone** — the media items are permanently removed. List exactly which media items will be deleted and confirm with the user before proceeding.
 </Warning>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `businessNumber` | string | Yes | — | Location number the media belongs to |
 | `mediaIds` | list[string] | Yes | — | Media item IDs to delete. Resolve via [`get_media`](/mcp/tools/business-media/get-media) |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

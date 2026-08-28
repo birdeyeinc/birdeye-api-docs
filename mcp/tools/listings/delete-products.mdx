@@ -15,11 +15,16 @@ Permanently deletes one or more products from the business's Google Merchant acc
   This is a **destructive write tool** — deletion is **permanent and cannot be undone**. All specified products are removed from Google Merchant across all mapped locations. Always confirm the exact list of products with the user before proceeding.
 </Warning>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `productIds` | list[string] | Yes | — | List of product identifiers to delete. Example: `["68767cb39ebf51000815ab39"]` |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

@@ -15,11 +15,16 @@ Stops all directory publishing for a specific location, removing the business fr
   This stops **all** directory publishing for the location. To resume publishing, call [`fix_listing`](/mcp/tools/listings/fix-listing) or create a new listing. Confirm with the user before proceeding.
 </Warning>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
 |---|---|---|---|---|
 | `locationId` | integer | Yes | — | Child location business ID (from `get_child_locations`) |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

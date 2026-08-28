@@ -19,6 +19,10 @@ Updates the listing profile of an existing location and re-publishes the changes
   **Read before you write.** Call [`get_listing`](/mcp/tools/listings/get-listing) for the location first so you know the current values, and send only the sections that are changing. A section you send **replaces** the stored one, so include the fields that should stay as well as the ones that change — `businessInfo` still needs `name`, `phone` and `location.zip`, and `additionalInfo` still needs `hoursOfOperations` and `services`, even when those are not what is changing.
 </Note>
 
+<Note>
+  **This tool uses the confirmation handshake for parent-level writes.** A write to a single child location goes straight through. A write aimed at the **parent / enterprise account** returns `status: "confirmation_required"` **having changed nothing**, because it lands on every location under that account — relay it to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
@@ -37,6 +41,7 @@ Updates the listing profile of an existing location and re-publishes the changes
 | `socialProfileURLs` | object | No | — | Social profile links |
 | `covidInfo` | object | No | — | COVID information block |
 | `healthcare` | object | No | — | Healthcare-listings plan only |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 Omit a section entirely to leave it untouched. The full field-by-field breakdown of every section is documented on [`create_listing`](/mcp/tools/listings/create-listing#section-objects).
 

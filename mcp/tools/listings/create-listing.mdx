@@ -19,6 +19,10 @@ Creates the listing profile for a location and publishes it to the online direct
   Check whether a listing already exists first. Call [`get_listing`](/mcp/tools/listings/get-listing) for the location — if it returns listing data, the user almost certainly wants [`update_listing`](/mcp/tools/listings/update-listing) instead.
 </Note>
 
+<Note>
+  **This tool uses the confirmation handshake for parent-level writes.** A write to a single child location goes straight through. A write aimed at the **parent / enterprise account** returns `status: "confirmation_required"` **having changed nothing**, because it lands on every location under that account — relay it to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
@@ -37,6 +41,7 @@ Creates the listing profile for a location and publishes it to the online direct
 | `socialProfileURLs` | object | No | — | Social profile links |
 | `covidInfo` | object | No | — | COVID information block |
 | `healthcare` | object | No | — | Healthcare-listings plan only |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 Omitted sections are left out of the request entirely.
 

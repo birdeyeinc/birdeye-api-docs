@@ -100,6 +100,77 @@ description: "Birdeye MCP provides a variety of read-only tools across different
 | `get_campaign_request_url` | Campaign | Customer-specific review or survey request link |
 | `add_integration_location` | Integration | Map a location to an integration and set it active |
 
+## Location Hierarchy and Write Confirmations
+
+Birdeye accounts are a hierarchy: an **enterprise / parent account** sits above its **child locations**, and both are identified by the same kind of numeric id. `businessNumber=169744180007807` on its own does not say whether a write lands on one storefront or on the account every storefront hangs off.
+
+Write tools resolve that from your session and gate the call accordingly. A tool is stopped for confirmation when **either** of these is true:
+
+| Condition | Example |
+|---|---|
+| The target is the **parent / enterprise account** | `update_listing` pointed at the account rather than a location |
+| The operation is **irreversible** | any `delete_*` tool, `deactivate_listing`, `update_business_status` |
+
+Ordinary, reversible writes to a single child location are never gated.
+
+### The confirmation handshake
+
+A gated tool takes an extra `confirm` parameter, and the exchange is always two steps:
+
+<Steps>
+  <Step title="Call without confirm">
+    The tool **changes nothing** and returns `status: "confirmation_required"`, naming the target, whether it is the parent account, how many child locations are affected, and why it stopped.
+  </Step>
+  <Step title="Relay it and ask">
+    Show the reasons to the user, name exactly what will be changed, and wait for an explicit go-ahead.
+  </Step>
+  <Step title="Call again with confirm=true">
+    Same arguments, plus `confirm=true`. The call now goes through.
+  </Step>
+</Steps>
+
+```json
+{
+  "status": "confirmation_required",
+  "operation": "Delete business",
+  "tool": "delete_business",
+  "scope": "parent",
+  "destructive": true,
+  "target": { "businessNumber": "169744180007807" },
+  "reasons": [
+    "This targets the PARENT / enterprise account, not a single location. It applies to the whole account, which has 12 child location(s) under it.",
+    "This operation is IRREVERSIBLE and cannot be undone.",
+    "The account and everything under it is removed."
+  ],
+  "affectedLocationCount": 12,
+  "affectedLocationsSample": ["Dublin, OH", "Dallas, TX", "Austin, TX"]
+}
+```
+
+<Warning>
+  Never pass `confirm=true` on the first call, and never set it because you assume the user would agree. The first call is what produces the warning the user needs to see.
+</Warning>
+
+<Note>
+  `scope` can also come back as `"unknown"` — the id matched neither a known child location nor the signed-in account. For an irreversible operation that is reported as a reason to double-check the target before confirming.
+</Note>
+
+### Tools that use the handshake
+
+| Module | Tools |
+|---|---|
+| Business | `update_business`, `update_business_status`, `delete_business`, `delete_custom_card` |
+| Custom Fields | `delete_custom_field` |
+| Business Media | `delete_media` |
+| Listings | `create_listing`, `update_listing`, `deactivate_listing`, `delete_products` |
+| Reviews | `delete_review_tag` |
+| Social | `delete_social_post` |
+| Contact | `delete_contact` |
+| Google Services | `delete_google_services` |
+| Aggregation | `delete_aggregation_url` |
+| User | `delete_user` |
+| Integration | `add_integration_location` |
+
 ## Common Patterns
 
 ### Enterprise Accounts with Multiple Locations

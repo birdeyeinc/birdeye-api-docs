@@ -15,6 +15,10 @@ Deletes a social post created through the API — scheduled or published. Use it
   This action **cannot be undone** — the post is removed from the connected social channel. State exactly which post will be deleted and confirm with the user before proceeding. Deleting a **published** post is only supported on Facebook, Google, and LinkedIn.
 </Warning>
 
+<Note>
+  **This tool uses the confirmation handshake.** Because the operation is irreversible it always stops on the first call: it returns `status: "confirmation_required"` **having changed nothing**, naming the target and — when it is the parent account — how many child locations are affected. Relay that to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
@@ -22,6 +26,7 @@ Deletes a social post created through the API — scheduled or published. Use it
 | `accountNumber` | string | Yes | — | Account/business number the post belongs to |
 | `trackingId` | string | Yes | — | Tracking ID returned when the post was created through the API |
 | `subBusinessNumbers` | list[integer] | Yes | — | Location IDs the deletion applies to. IDs not part of the original post are ignored |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 

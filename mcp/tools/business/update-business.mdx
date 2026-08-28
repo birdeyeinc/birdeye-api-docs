@@ -19,6 +19,10 @@ Updates the profile information of an existing business or location — name, ad
   `emailId`, `phone` and `services` are required by the API on **every** update. When the user is not changing them, pass the values the business already has — read them first with [`get_business_info`](/mcp/tools/business/get-business-info).
 </Note>
 
+<Note>
+  **This tool uses the confirmation handshake for parent-level writes.** A write to a single child location goes straight through. A write aimed at the **parent / enterprise account** returns `status: "confirmation_required"` **having changed nothing**, because it lands on every location under that account — relay it to the user, get an explicit go-ahead, then call again with the same arguments plus `confirm=true`. See [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations).
+</Note>
+
 ## Parameters
 
 ### Required
@@ -102,6 +106,7 @@ Updates the profile information of an existing business or location — name, ad
 | `covidInfo` | object | No | — | `{ "postDescription", "covid19SupportLink", "virtualCareLink" }` |
 | `customFields` | object | No | — | One custom field: `{ "id", "fieldName", "type", "fieldValue" }`. Requires `updateCustomFields` = `true` |
 | `updateCustomFields` | boolean | No | `false` | Tells the API to apply `customFields`. Set to `true` whenever you pass `customFields` |
+| `confirm` | boolean | No | `false` | Set to `true` only on the re-call that follows an explicit user go-ahead — see [Location Hierarchy and Write Confirmations](/mcp/tools/overview#location-hierarchy-and-write-confirmations) |
 
 ## Example Usage
 
