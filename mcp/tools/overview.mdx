@@ -30,6 +30,12 @@ description: "Birdeye MCP provides a variety of read-only tools across different
   <Card title="Ticketing" icon="ticket" href="/mcp/tools/ticketing/overview">
     Ticket retrieval with filtering and pagination
   </Card>
+  <Card title="Campaign" icon="link" href="/mcp/tools/campaign/overview">
+    Customer-specific review and survey request links
+  </Card>
+  <Card title="Integration" icon="plug" href="/mcp/tools/integration/overview">
+    Mapping locations to third-party integrations
+  </Card>
   <Card title="Aggregation" icon="layer-group" href="/mcp/tools/aggregation/overview">
     Review source monitoring
   </Card>
@@ -85,6 +91,14 @@ description: "Birdeye MCP provides a variety of read-only tools across different
 | `retrieve_competitor_review_metrics` | Competitor AI | Aggregated average rating and review count per competitor |
 | `get_insight_experience_score_benchmark` | Insight AI | Experience scores vs industry benchmarks |
 | `get_insight_experience_location_info` | Insight AI | Location-level scores with period-over-period deltas |
+| `update_business` | Business | Update the profile information of an existing business or location |
+| `delete_business` | Business | Delete a business account or sub-reseller under a reseller |
+| `create_listing` | Listings | Create a location's listing profile and publish it to the connected directories |
+| `update_listing` | Listings | Update a location's listing profile and re-publish the changes |
+| `edit_scheduled_social_post` | Social | Edit a scheduled post before it goes out |
+| `update_communication_preferences` | Contact | Granular marketing / feedback / service opt-ins per channel |
+| `get_campaign_request_url` | Campaign | Customer-specific review or survey request link |
+| `add_integration_location` | Integration | Map a location to an integration and set it active |
 
 ## Common Patterns
 

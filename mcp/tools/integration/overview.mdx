@@ -1,0 +1,18 @@
+---
+title: "Integration Overview"
+description: "Tools for mapping locations to third-party integrations."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="add_integration_location" icon="plug" href="/mcp/tools/integration/add-integration-location">
+    Map a location to an integration and set whether that mapping is active
+  </Card>
+</CardGroup>
+
+## Tips
+
+- `add_integration_location` is a **write tool** that changes how data flows between Birdeye and an external system — confirm the location, the integration and the intended state before calling.
+- It handles **one location per call**. Resolve location ids with [`get_child_locations`](/mcp/tools/business/get-child-locations) and confirm the full list with the user before looping.
+- `integrationGroupId` comes from the user or from Birdeye support — there is no tool that resolves it, and a wrong id maps the location to the wrong system.

@@ -25,6 +25,9 @@ description: "Tools for publishing, tracking, and measuring social posts across 
   <Card title="edit_published_social_post" icon="pen" href="/mcp/tools/social/edit-published-social-post">
     Edit the text of an already-published social post
   </Card>
+  <Card title="edit_scheduled_social_post" icon="calendar-pen" href="/mcp/tools/social/edit-scheduled-social-post">
+    Edit a scheduled post's text, media, schedule time or target locations before it goes out
+  </Card>
   <Card title="delete_social_post" icon="trash" href="/mcp/tools/social/delete-social-post">
     Delete a scheduled or published social post
   </Card>
@@ -33,6 +36,7 @@ description: "Tools for publishing, tracking, and measuring social posts across 
 ## Supported Platforms
 
 - **Posting** (`create_social_post`): Google Business Profile, Facebook, Instagram, LinkedIn, Twitter
+- **Editing scheduled posts** (`edit_scheduled_social_post`): Google Business Profile, Facebook, Instagram, LinkedIn
 - **Editing / deleting published posts**: Facebook, Google Business Profile, LinkedIn
 - **Performance report**: Instagram, Facebook, LinkedIn, TikTok
 
@@ -41,3 +45,5 @@ description: "Tools for publishing, tracking, and measuring social posts across 
 - Use `get_social_open_url_performance_report` with `comparisonStartDate` and `comparisonEndDate` to get growth percentages vs. a prior period.
 - `create_social_post` returns a `trackingId` — use it with `get_social_post` to confirm the post succeeded or failed per location.
 - `edit_published_social_post` and `delete_social_post` are **write tools** on live content — confirm the exact post before calling.
+- Pick the right edit tool: `edit_scheduled_social_post` for a post that has not gone out yet (text, media, schedule time and locations can all change), `edit_published_social_post` for one that is already live (text only). Check with `get_social_post` if you are unsure.
+- `edit_scheduled_social_post` treats `subBusinessNumbers` as the complete list — locations left out are unscheduled from the post.

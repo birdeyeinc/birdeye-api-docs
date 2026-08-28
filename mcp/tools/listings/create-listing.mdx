@@ -1,0 +1,111 @@
+---
+title: "Create Listing"
+description: "Create a location's listing profile and publish it to the connected online directories."
+---
+
+```
+create_listing
+```
+
+## Description
+
+Creates the listing profile for a location and publishes it to the online directories Birdeye syncs with — Google, Facebook, Bing, Apple and 50+ more. The payload is made of optional top-level **section objects** that map 1:1 onto the [Create Listing API](/api/listing/create-listing) request body.
+
+<Warning>
+  This is a **write tool** that publishes **public** information to external directories under the business's name. Confirm the location and the exact values with the user before calling, and never invent an address, phone number, category or set of hours.
+</Warning>
+
+<Note>
+  Check whether a listing already exists first. Call [`get_listing`](/mcp/tools/listings/get-listing) for the location — if it returns listing data, the user almost certainly wants [`update_listing`](/mcp/tools/listings/update-listing) instead.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | integer | Yes | — | Business id of the **location** the listing is created for. Resolve via [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+| `businessInfo` | object | Yes | — | Core identity and address — see below |
+| `additionalInfo` | object | Yes | — | Hours, services and SEO text — see below |
+| `internalListing` | object | No | — | Birdeye microsite category data |
+| `media` | object | No | — | Logo and cover image URLs |
+| `optOut` | object | No | — | What Birdeye pushes to connected profiles |
+| `gmbListing` | object | No | — | Google Business Profile overrides |
+| `appleListing` | object | No | — | Apple Business Connect overrides |
+| `facebookListing` | object | No | — | Facebook page overrides |
+| `bingListing` | object | No | — | Bing listing overrides |
+| `thirdPartyListing` | object | No | — | Secondary directory categories |
+| `socialProfileURLs` | object | No | — | Social profile links |
+| `covidInfo` | object | No | — | COVID information block |
+| `healthcare` | object | No | — | Healthcare-listings plan only |
+
+Omitted sections are left out of the request entirely.
+
+## Section objects
+
+### `businessInfo`
+
+| Field | Required | Description |
+|---|---|---|
+| `name` | Yes | Business/location name, max 250 chars |
+| `phone` | Yes | Format `(xxx) xxx-xxxx` |
+| `location` | Yes | `{ "address1", "address2", "city", "state", "countryCode", "zip", "subLocality" }`. `zip` required; `subLocality` for New Zealand only |
+| `websiteUrl`, `emailId` | No | Website and email |
+| `isAddressHidden` | No | Hide the street address for a business customers cannot visit |
+| `isServiceAreaProvider` | No | `true` if you deliver or serve at customer locations |
+| `serviceAreas` | No | Up to 10 entries, each `{ "description": "City, State, Country" }` |
+| `mainBusinessDescription` | No | Sending an **empty value clears** the stored description — omit the key unless you mean to change it |
+
+### `additionalInfo`
+
+| Field | Required | Description |
+|---|---|---|
+| `hoursOfOperations` | Yes | One entry per day: `{ "day": 0-6, "isOpen": 0\|1, "workingHours": [ { "startHour": 32400, "endHour": 68400 } ] }`. Day `0` is Monday; hours are **seconds from midnight** (32400 = 09:00). Two `workingHours` entries express a split shift |
+| `services` | Yes | Comma-separated services, used for SEO |
+| `keywords`, `products` | No | Comma-separated, max 1000 chars each |
+| `wholeWeekOperating` | No | `1` if open 24x7, else `0` |
+| `specialHours` | No | `{ "specialDate": "MM/DD/YYYY", "startHour": <seconds>, "endHour": <seconds>, "isOpen": 0\|1 }` |
+| `moreHours` / `appleMoreHours` | No | Service-specific hours keyed by service name, e.g. `{ "Delivery": [ { "day": 0, "isOpen": 1, "workingHours": [...] } ] }`. Requires the matching Google/Apple primary category |
+| `businessStatus` | No | `"Open"`, `"Temporarily Closed"`, `"Permanently Closed"` or `"Opening Soon"` |
+| `reopenDate` | No | `MM/dd/yyyy`. **Required** for `"Temporarily Closed"` and `"Opening Soon"` |
+| `establishedYear`, `timezone`, `languages` | No | Year, IANA timezone, list of languages |
+| `paymentTypes` | No | From: China Union Pay, Bitcoin, Cash Accepted, MasterCard, PayPal, Check / Cheque, Contactless Payment, Debit Card, Diners Club, JCB, Financing, Visa, American Express, Cash Only, Rupay, Credit Card, Discover. Use `additionalPaymentTypes` for anything else |
+| `appointmentLink`, `reservationLink`, `menuLink`, `orderAheadLink`, `impressum`, `localPhoneNumber`, `tollFreePhoneNumber`, `androidAppURL`, `iosAppURL` | No | Action links and extra contact details |
+
+### Other sections
+
+| Section | Fields |
+|---|---|
+| `media` | `logoUrl` (min 250x250px, 720x720 recommended), `coverImageUrl` (min 1296x367px, JPG/JPEG/PNG), `gmbCover`, `facebookCover` |
+| `optOut` | `gmbLogoOptOut`, `fbLogoOptOut`, `gmbCoverOptOut`, `fbCoverOptOut`, `gmbProfileOptOut`, `businessProfileOptOut` (booleans) |
+| `internalListing` | `category` (required), `subCategories` (required, up to 3), `displayCategory`, `description` (empty value clears it) |
+| `gmbListing` | `googleWebsiteUrl`, `googlePhoneNumber`, `googleStoreId`, `primaryCategoryGmb`, `additionalCategories` (up to 9), `googleDescription` (max 750 chars), `attributes`, `hotelAttributes`, `foodDelivery`, `foodTakeout`, `whatsappBusinessLink`, `textMessageNumber` |
+| `appleListing` | `primaryCategory`, `additionalCategories` (up to 5), `phoneNumber`, `appleWebsiteUrl`, `appleBusinessName` (3–250 chars), `appleBusinessDescription` (20–500 chars), `appleLocationAttributes`, `appleActionLinks`. Apple categories are dotted ids, e.g. `health_care.dentistry.dental_clinic.dentist` |
+| `facebookListing` | `categories` (up to 3), `facebookDescription` (max 255 chars), `facebookPhoneNumber` |
+| `bingListing` | `primaryCategoryBing`, `bingCategories` (up to 3), `bingDescription` (max 4096 chars), `bingPhoneNumber` |
+| `thirdPartyListing` | `thirdPartyCategory`, `thirdPartySubCategories` (up to 3) |
+| `socialProfileURLs` | `facebookUrl`, `twitterUrl`, `linkedInUrl`, `googleUrl`, `youTubeUrl`, `instagramUrl`, `pintrestUrl`, `bbbUrl`, `lendingtreeUrl` |
+| `covidInfo` | `postDescription`, `covid19SupportLink`, `virtualCareLink` |
+| `healthcare` | `doctorCategories`, `isProvider`, `practiceName`, `firstName`, `middleName`, `surName`, `npi` (10 digits), `credentials`, `university`, `hospitalAffiliations`, `insurancesAccepted` |
+
+`gmbListing.attributes` is keyed by attribute group, e.g. `{ "Accessibility": [ { "attributeId": "has_wheelchair_accessible_elevator", "attributeName": "Wheelchair accessible elevator", "value": false } ] }`.
+
+## Example Usage
+
+```
+Create the listing for our new Livingston location.
+```
+
+```
+Set up listings for location 169744180007807 with these hours and categories.
+```
+
+```
+Publish our new branch to Google, Bing and Apple.
+```
+
+## Notes
+
+- **Resolve categories before calling; do not guess.** Use [`get_listing_category_list`](/mcp/tools/listings/get-listing-category-list) with the relevant `sourceName` and `countryCode`, present the matches to the user, and use the exact category they pick.
+- Gather the input **section by section** rather than as one large blob: start with `businessInfo` and `additionalInfo`, then ask which directories to tailor.
+- Use [`get_listing_location_status_report`](/mcp/tools/listings/get-listing-location-status-report) afterwards to see per-site sync status.
+- To change an existing listing, use [`update_listing`](/mcp/tools/listings/update-listing). To stop publishing entirely, use [`deactivate_listing`](/mcp/tools/listings/deactivate-listing).

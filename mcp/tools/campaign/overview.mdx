@@ -1,0 +1,18 @@
+---
+title: "Campaign Overview"
+description: "Tools for generating customer-specific review and survey request links."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_campaign_request_url" icon="link" href="/mcp/tools/campaign/get-campaign-request-url">
+    Generate the short review or survey request link for a specific customer
+  </Card>
+</CardGroup>
+
+## Tips
+
+- `get_campaign_request_url` is a **write tool** — it creates a real review or survey request against the customer's record, not just a preview of a link.
+- Pass `templateId` for a review request or `surveyId` for a survey request, never both. Resolve survey ids with [`get_all_surveys`](/mcp/tools/surveys/get-all-surveys).
+- Resolve `customerId` from the user or from a prior [`upsert_contact`](/mcp/tools/contact/upsert-contact) call — never guess it.

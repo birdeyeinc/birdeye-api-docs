@@ -1,0 +1,57 @@
+---
+title: "Get Campaign Request URL"
+description: "Generate the short review or survey request link for a specific customer."
+---
+
+```
+get_campaign_request_url
+```
+
+## Description
+
+Generates the short review- or survey-request link for a specific customer, so it can be handed over through the business's own channel — in person, in a chat, or in an email the user writes themselves.
+
+<Warning>
+  This is a **write tool**, not a lookup: it creates a real review/survey request against the customer's record. Confirm the customer and the template or survey with the user before calling. Do not call it just to "see what the link looks like".
+</Warning>
+
+<Note>
+  The returned URL is customer-specific and single-purpose — it maps to that customer and that template/survey, and must not be reused for anyone else.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Business id the request is created under. Sent as `businessId` in the body. Use [`get_business_info`](/mcp/tools/business/get-business-info) for the account or [`get_child_locations`](/mcp/tools/business/get-child-locations) for a location |
+| `customerId` | integer | Yes | — | Birdeye customer/contact id the link is for |
+| `templateId` | integer | No* | — | Id of the text template to use. Required for everything except survey requests |
+| `surveyId` | integer | No* | — | Id of the survey. Required only for survey requests. Resolve with [`get_all_surveys`](/mcp/tools/surveys/get-all-surveys) |
+| `checkinId` | integer | No | — | Check-in id to attach the request to, when the request follows a recorded check-in |
+
+\* Exactly one of `templateId` (review request) or `surveyId` (survey request) applies. Ask the user which they want rather than guessing — a survey request and a review request are different things to the customer receiving them.
+
+## Example Usage
+
+```
+Get the review request link for customer 39870987 using template 1133204.
+```
+
+```
+Give me the survey link for contact 39870987 for our post-visit survey.
+```
+
+```
+I want to text the review link myself — what's the URL for this customer?
+```
+
+## Response
+
+| Field | Description |
+|---|---|
+| Short request URL | The customer-specific link for the review or survey request |
+
+## Notes
+
+- `customerId` is the Birdeye contact id. Ask the user for it, or take it from a prior [`upsert_contact`](/mcp/tools/contact/upsert-contact) response — a guessed id generates a link tied to a different real person.
+- Wraps the [Fetch Request URL](/api/campaign/fetch-request-url) API.

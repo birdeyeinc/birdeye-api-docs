@@ -1,0 +1,55 @@
+---
+title: "Edit Scheduled Social Post"
+description: "Edit a social post that has not gone out yet."
+---
+
+```
+edit_scheduled_social_post
+```
+
+## Description
+
+Edits a social post that is still **scheduled** — the text, media, schedule time and target locations can all be changed before it publishes. Supported on Google Business Profile, Facebook, Instagram and LinkedIn.
+
+<Warning>
+  This is a **write tool** on an upcoming public post. `subBusinessNumbers` **replaces** the previous location list: locations you add get the post scheduled for them, and locations you leave out are **unscheduled** from it. List the intended locations back to the user and confirm before calling.
+</Warning>
+
+<Note>
+  Use this tool for a post that has **not** gone out yet; use [`edit_published_social_post`](/mcp/tools/social/edit-published-social-post) for one that is already live. If you are unsure which state the post is in, call [`get_social_post`](/mcp/tools/social/get-social-post) with the `trackingId` and check the per-location status first.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | string | Yes | — | Account/business number the post belongs to — the **account** number in the URL path, not a review-site id |
+| `trackingId` | string | Yes | — | Tracking id returned when the post was created through the API. User-supplied |
+| `text` | string | Yes | — | Post text after the edit. Character limits: Google 1500, Facebook 5000, Instagram 5000, LinkedIn 3000 |
+| `socialSite` | string | Yes | — | Channel the post is on. Valid values: `"GOOGLEMYBUSINESS"`, `"FACEBOOK"`, `"INSTAGRAM"`, `"LINKEDIN"` |
+| `subBusinessNumbers` | list[integer] | Yes | — | **Complete** list of location ids the post should be scheduled for after the edit |
+| `scheduleTimestamp` | integer | No | original time | Unix timestamp in **milliseconds** for the new send time |
+| `media` | list[object] | No | — | Media items, each `{ "type": "IMAGE" \| "VIDEO" \| "REEL", "mediaUrl": "<public URL>" }`. Replaces the media on the post |
+| `callToActionType` | string | No | — | CTA button type — **Google Business Profile only**. Valid values: `"LEARN_MORE"`, `"BOOK"`, `"ORDER"`, `"SHOP"`, `"SIGN_UP"`, `"CALL"` |
+| `callToActionUrl` | string | No | — | URL for the CTA button. Not required when `callToActionType` is `"CALL"` |
+
+## Example Usage
+
+```
+Move my scheduled post 4ece211b82162d1101d2d82a24876a92 to next Friday at 10am.
+```
+
+```
+Change the text on scheduled post 4ece211b82162d1101d2d82a24876a92 before it goes out.
+```
+
+```
+Add location 123456780 to my scheduled post.
+```
+
+## Notes
+
+- `text` and `socialSite` are **required by the API** even when the user only wants to change the schedule time or media — pass the post's existing text and channel in that case rather than substituting text of your own.
+- `trackingId` comes from the [`create_social_post`](/mcp/tools/social/create-social-post) response. It cannot be resolved from any other tool.
+- Confirm the result with [`get_social_post`](/mcp/tools/social/get-social-post) using the same `trackingId`.
+- To cancel the post entirely instead of editing it, use [`delete_social_post`](/mcp/tools/social/delete-social-post).

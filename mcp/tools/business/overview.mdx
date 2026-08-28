@@ -22,8 +22,14 @@ description: "Tools for business profiles, locations, account management, and mi
   <Card title="create_business" icon="square-plus" href="/mcp/tools/business/create-business">
     Create a new business or sub-account under the reseller or account
   </Card>
+  <Card title="update_business" icon="pen-to-square" href="/mcp/tools/business/update-business">
+    Update the profile information of an existing business or location
+  </Card>
   <Card title="update_business_status" icon="power-off" href="/mcp/tools/business/update-business-status">
     Activate or deactivate a business or location
+  </Card>
+  <Card title="delete_business" icon="trash" href="/mcp/tools/business/delete-business">
+    Delete a business account or sub-reseller under a reseller
   </Card>
 </CardGroup>
 
@@ -45,5 +51,7 @@ description: "Tools for business profiles, locations, account management, and mi
 
 - `get_child_locations` is a prerequisite for any location-level tool — call it first to get valid location IDs.
 - `get_business_info` returns the top-level account profile (name, address, phone, website).
-- `create_business` and `update_business_status` are **write tools** — confirm the exact target and intent before calling.
+- `create_business`, `update_business`, `update_business_status` and `delete_business` are **write tools** — confirm the exact target and intent before calling.
+- `update_business` requires `emailId`, `phone` and `services` on **every** call — read the current values with `get_business_info` before changing anything else.
+- `delete_business` **cannot be undone** and takes child locations with it. If the user only wants to stop using a location, `update_business_status` set to `"inactive"` is reversible and is usually what they mean.
 - Resolve a `cardId` with `get_custom_card_details` before calling `update_custom_card` or `delete_custom_card`.

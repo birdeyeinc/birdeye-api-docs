@@ -1,0 +1,53 @@
+---
+title: "Add Integration Location"
+description: "Map a location to an integration and set whether that mapping is active."
+---
+
+```
+add_integration_location
+```
+
+## Description
+
+Maps a location to an existing integration (PMS, EHR, POS, CRM, …) and sets whether that mapping is active, along with any partner-specific integration properties.
+
+<Warning>
+  This is a **write tool** that changes how data flows between Birdeye and an external system. Setting `active` to `false` stops that location syncing; setting it to `true` starts a sync with whatever properties are supplied. Confirm the location, the integration and the intended state with the user before calling.
+</Warning>
+
+<Note>
+  **One location per call.** `businessNumber` is the child **location** id, not the enterprise account id. To map several locations, call the tool once per location and confirm the full list with the user first.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Child location id to map. Resolve via [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+| `integrationGroupId` | integer | Yes | — | Id of the integration group the location is mapped to. **User-supplied** — no tool resolves it |
+| `active` | boolean | Yes | — | `true` to activate the mapping, `false` to deactivate it |
+| `integrationProperties` | list[object] | No | — | Partner-specific settings, each `{ "propertyKey": "<key>", "propertyValue": "<value>" }` |
+
+## Example Usage
+
+```
+Add location 166015909542313 to integration group 12345 and activate it.
+```
+
+```
+Deactivate the PMS integration for our Dallas location.
+```
+
+```
+Map our new branch to the integration with office_id 1234567.
+```
+
+## Response
+
+Returns an empty success response (HTTP 200) when the mapping is saved.
+
+## Notes
+
+- `integrationGroupId` is supplied by the user or by Birdeye support during onboarding. **Never guess it** — a wrong id maps the location to the wrong external system.
+- The valid `integrationProperties` keys depend on the integration. Use exactly the keys the user gives you; do not invent property names.
+- Wraps the [Add Business Integration Mapping](/api/integration/add-locations) API.

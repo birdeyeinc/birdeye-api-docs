@@ -18,6 +18,9 @@ description: "Tools for creating, updating, and managing customer contacts and t
   <Card title="update_contact_subscription" icon="bell" href="/mcp/tools/contact/update-contact-subscription">
     Subscribe or unsubscribe contacts from email and/or SMS communications
   </Card>
+  <Card title="update_communication_preferences" icon="sliders" href="/mcp/tools/contact/update-communication-preferences">
+    Set granular marketing, feedback and service opt-ins per channel for one or more contacts
+  </Card>
 </CardGroup>
 
 ## Tips
@@ -26,3 +29,4 @@ description: "Tools for creating, updating, and managing customer contacts and t
 - Use `get_child_locations` to get location IDs when a tool requires a location-level ID.
 - For `upsert_contact`, the `businessIds` field takes child location IDs — ask the user to provide these directly rather than auto-fetching them.
 - Always confirm destructive actions (delete) with the user before proceeding.
+- Two tools change subscriptions: `update_contact_subscription` for a blanket subscribe/unsubscribe across email and/or SMS, and `update_communication_preferences` for granular marketing / feedback / service opt-ins per channel. They write different fields — ask which the user means.

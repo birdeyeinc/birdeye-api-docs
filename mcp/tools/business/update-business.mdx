@@ -1,0 +1,130 @@
+---
+title: "Update Business"
+description: "Update the profile information of an existing business or location."
+---
+
+```
+update_business
+```
+
+## Description
+
+Updates the profile information of an existing business or location — name, address, contact details, hours, SEO fields, imagery, social links and listing-site overrides. The values flow out to the Birdeye profile and the connected listing sites.
+
+<Warning>
+  This is a **write tool** on a live business record. Confirm the exact target and the exact new values with the user before calling, and never invent an address, phone number or set of hours to fill a gap.
+</Warning>
+
+<Note>
+  `emailId`, `phone` and `services` are required by the API on **every** update. When the user is not changing them, pass the values the business already has — read them first with [`get_business_info`](/mcp/tools/business/get-business-info).
+</Note>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Business number of the account or location to update |
+| `emailId` | string | Yes | — | Business email id. Required on every update |
+| `phone` | string | Yes | — | Business phone, format `(xxx) xxx-xxxx`. Required on every update |
+| `services` | string | Yes | — | Comma-separated services offered, used for SEO. Required on every update |
+
+### Profile
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `name` | string | No | — | Business/location name, max 250 chars |
+| `alias` | string | No | — | Your internal identifier for this location |
+| `websiteUrl` | string | No | — | Business website URL |
+| `keywords` | string | No | — | Comma-separated SEO keywords, max 1000 chars |
+| `products` | string | No | — | Comma-separated products, used for SEO |
+| `timezone` | string | No | — | Business timezone, e.g. `"America/Los_Angeles"` |
+| `establishedYear` | integer | No | — | Year the business was established |
+| `languages` | list[string] | No | — | Languages spoken. **Replaces** the stored list |
+| `location` | object | No | — | `{ "address1", "address2", "city", "state", "countryCode", "zip", "subLocality" }`. `zip` is required within the object; `subLocality` applies to New Zealand only |
+| `isAddressHidden` | integer | No | — | `1` to hide the street address, `0` to show it. Not honoured by every listing site |
+| `isServiceAreaProvider` | string | No | `"No"` | `"Yes"` if the business delivers or serves at customer locations |
+| `serviceAreas` | list[object] | No | — | Up to 10 entries, each `{ "description": "City, State, Country" }`. **Replaces** the stored list |
+| `entityCategory` | string | No | — | `"physical_location"` or `"provider"` |
+| `externalReferenceId` | string | No | — | Your own unique identifier for this location |
+| `isSEOEnabled` | boolean | No | `true` | Whether search engines may index the business profile |
+
+### Hours and status
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `working24x7` | integer | No | — | `1` if open 24x7, else `0` |
+| `hoursOfOperations` | list[object] | No | — | Full week of regular hours: `{ "day": 0-6, "isOpen": 0\|1, "workingHours": [ { "startHour": "9:00", "endHour": "18:00" } ], "comment": "..." }`. Day `0` is Monday. **Replaces** the stored week |
+| `specialHours` | list[object] | No | — | Holiday overrides: `{ "specialDate": "MM/DD/YYYY", "startHour": "9:00", "endHour": "18:00", "isOpen": 0\|1 }`. **Replaces** the stored list |
+| `businessStatus` | string | No | — | `"Open"`, `"Temporarily Closed"`, `"Permanently Closed"` or `"Opening Soon"` |
+| `reopenDate` | string | No | — | `MM/dd/yyyy`. **Required** for `"Temporarily Closed"` and `"Opening Soon"` |
+
+### Contact and action links
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `appointmentLink` | string | No | — | Link to the appointments page |
+| `reservationLink` | string | No | — | Link to the reservations page |
+| `menuLink` | string | No | — | Link to the menu |
+| `orderAheadLink` | string | No | — | Link to the ordering page |
+| `impressum` | string | No | — | Statement of ownership, required by law in some countries |
+| `payment` | string | No | — | Accepted payment types, max 250 chars |
+| `localPhoneNumber` | string | No | — | Local phone number |
+| `tollFreePhoneNumber` | string | No | — | Toll-free number |
+| `fax` | string | No | — | Fax number, format `(xxx) xxx-xxxx` |
+| `androidAppURL` | string | No | — | Android app store link |
+| `iosAppURL` | string | No | — | iOS app store link |
+
+### Media
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `logoUrl` | string | No | — | Logo image URL. Minimum 250x250px, 720x720 recommended |
+| `coverImageUrl` | string | No | — | Cover image for the Birdeye profile. JPG/JPEG/PNG, minimum 1296x367px |
+| `gmbCover` | string | No | — | Google cover image URL |
+| `facebookCover` | string | No | — | Facebook cover image URL |
+| `coverBusinessInfoLayout` | string | No | — | How the cover block is laid out on the Birdeye profile |
+| `gmbLogoOptOut` | integer | No | — | Push the logo to Google. **Inverted encoding**: `1` = false, `0` = true |
+| `fbLogoOptOut` | integer | No | — | Push the logo to Facebook. **Inverted encoding**: `1` = false, `0` = true |
+| `gmbCoverOptOut` | integer | No | — | Push the cover to Google. **Inverted encoding**: `1` = false, `0` = true |
+| `fbCoverOptOut` | integer | No | — | Push the cover to Facebook. **Inverted encoding**: `1` = false, `0` = true |
+
+### Listing sites and custom fields
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `socialProfileURLs` | object | No | — | `{ "facebookUrl", "twitterUrl", "linkedInUrl", "googleUrl", "youTubeUrl" }` |
+| `gmbListing` | object | No | — | `{ "googleWebsiteUrl", "googlePhoneNumber", "googleStoreId", "primaryCategoryGmb", "additionalCategory", "googleDescription", "attributes", "foodDelivery", "foodTakeout" }`. Description max 750 chars, up to 9 additional categories |
+| `facebookListing` | object | No | — | `{ "category", "facebookDescription", "facebookPhoneNumber" }`. Description max 255 chars, up to 3 categories |
+| `bingListing` | object | No | — | `{ "primaryCategoryBing", "categories", "bingDescription", "bingPhoneNumber" }`. Description max 4096 chars, up to 3 categories |
+| `internalListing` | object | No | — | `{ "category", "subcategory", "displayCategory", "description" }`. `category` and `subcategory` are required within the object |
+| `covidInfo` | object | No | — | `{ "postDescription", "covid19SupportLink", "virtualCareLink" }` |
+| `customFields` | object | No | — | One custom field: `{ "id", "fieldName", "type", "fieldValue" }`. Requires `updateCustomFields` = `true` |
+| `updateCustomFields` | boolean | No | `false` | Tells the API to apply `customFields`. Set to `true` whenever you pass `customFields` |
+
+## Example Usage
+
+```
+Update the phone number for business 169744180007807 to (973) 716-0007.
+```
+
+```
+Change our Downtown location's website to https://acme.com.
+```
+
+```
+Mark business 169744180007807 as temporarily closed, reopening 01/15/2027.
+```
+
+```
+Update the Google description for our enterprise account.
+```
+
+## Notes
+
+- **Clarify the scope first.** `businessNumber` can be the enterprise/parent account **or** a single child location. Confirm whether the user means the parent (from [`get_business_info`](/mcp/tools/business/get-business-info)) or one location (from [`get_child_locations`](/mcp/tools/business/get-child-locations)).
+- **List-valued fields replace, they do not merge.** `hoursOfOperations`, `specialHours`, `serviceAreas` and `languages` must each be sent complete — sending only Saturday in `hoursOfOperations` wipes the other six days.
+- To change only whether the business is active or inactive, use [`update_business_status`](/mcp/tools/business/update-business-status) instead.
+- To publish listing-site-specific data (Apple, third-party directories, more hours), use [`update_listing`](/mcp/tools/listings/update-listing).
+- Resolve `customFields.id` and `customFields.fieldName` with [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) first — a mismatched name creates a **new** field instead of updating the intended one.

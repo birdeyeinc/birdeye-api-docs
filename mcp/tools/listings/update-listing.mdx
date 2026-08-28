@@ -1,0 +1,66 @@
+---
+title: "Update Listing"
+description: "Update a location's listing profile and re-publish it to the connected directories."
+---
+
+```
+update_listing
+```
+
+## Description
+
+Updates the listing profile of an existing location and re-publishes the changes to the connected online directories. The payload is made of optional top-level **section objects** that map 1:1 onto the [Update Listing API](/api/listing/update-listing) request body — the same sections [`create_listing`](/mcp/tools/listings/create-listing) accepts, all optional here.
+
+<Warning>
+  This is a **write tool** that changes **public** information on external directories. Confirm the location and the exact new values with the user before calling, and never invent a value to fill a gap.
+</Warning>
+
+<Note>
+  **Read before you write.** Call [`get_listing`](/mcp/tools/listings/get-listing) for the location first so you know the current values, and send only the sections that are changing. A section you send **replaces** the stored one, so include the fields that should stay as well as the ones that change — `businessInfo` still needs `name`, `phone` and `location.zip`, and `additionalInfo` still needs `hoursOfOperations` and `services`, even when those are not what is changing.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | integer | Yes | — | Business id of the **location** whose listing is updated. Resolve via [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+| `businessInfo` | object | No | — | Core identity and address |
+| `additionalInfo` | object | No | — | Hours, services and SEO text |
+| `internalListing` | object | No | — | Birdeye microsite category data |
+| `media` | object | No | — | Logo and cover image URLs |
+| `optOut` | object | No | — | What Birdeye pushes to connected profiles |
+| `gmbListing` | object | No | — | Google Business Profile overrides |
+| `appleListing` | object | No | — | Apple Business Connect overrides |
+| `facebookListing` | object | No | — | Facebook page overrides |
+| `bingListing` | object | No | — | Bing listing overrides |
+| `thirdPartyListing` | object | No | — | Secondary directory categories |
+| `socialProfileURLs` | object | No | — | Social profile links |
+| `covidInfo` | object | No | — | COVID information block |
+| `healthcare` | object | No | — | Healthcare-listings plan only |
+
+Omit a section entirely to leave it untouched. The full field-by-field breakdown of every section is documented on [`create_listing`](/mcp/tools/listings/create-listing#section-objects).
+
+## Example Usage
+
+```
+Update the phone number on our Livingston listing to (973) 716-0007.
+```
+
+```
+Change our Saturday hours to 9am-2pm on location 169744180007807.
+```
+
+```
+Mark the downtown location as temporarily closed until 01/15/2027.
+```
+
+```
+Update the Google description for our dental clinic listing.
+```
+
+## Notes
+
+- **Resolve categories before calling; do not guess.** Use [`get_listing_category_list`](/mcp/tools/listings/get-listing-category-list) with the relevant `sourceName` and `countryCode`.
+- Hours in `additionalInfo.hoursOfOperations` are **seconds from midnight** (32400 = 09:00), and day `0` is Monday.
+- Use [`get_listing_location_status_report`](/mcp/tools/listings/get-listing-location-status-report) afterwards to see per-site sync status.
+- To edit the business record itself rather than the listing profile, use [`update_business`](/mcp/tools/business/update-business).

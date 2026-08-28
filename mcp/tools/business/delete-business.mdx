@@ -1,0 +1,41 @@
+---
+title: "Delete Business"
+description: "Delete a business account or sub-reseller under a reseller."
+---
+
+```
+delete_business
+```
+
+## Description
+
+Deletes a business account or sub-reseller that sits under a reseller, removing the account and everything under it.
+
+<Warning>
+  This is a **destructive write tool and it cannot be undone.** Before calling: resolve the business with [`get_business_info`](/mcp/tools/business/get-business-info) or [`get_child_locations`](/mcp/tools/business/get-child-locations), state its **name and number** back to the user, and get an explicit go-ahead for that specific business. Never call it speculatively or on a business the user only mentioned in passing.
+</Warning>
+
+<Note>
+  If the user's real intent is to stop using a location rather than erase it, [`update_business_status`](/mcp/tools/business/update-business-status) (set to `"inactive"`) is almost always what they want — and it is reversible.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Business number of the account or sub-reseller to delete |
+
+## Example Usage
+
+```
+Delete the test sub-account 169744180007807 I created under our reseller.
+```
+
+```
+Remove the sub-reseller we set up last week.
+```
+
+## Notes
+
+- **Deleting a parent deletes what is under it.** If the target is an enterprise account or a reseller, its child locations and sub-accounts go with it. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first and tell the user exactly how many locations would be lost before asking for confirmation.
+- Returns a success response when the business is deleted.

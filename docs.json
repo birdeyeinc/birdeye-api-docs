@@ -76,7 +76,9 @@
                   "mcp/tools/business/get-business-info",
                   "mcp/tools/business/get-child-locations",
                   "mcp/tools/business/create-business",
+                  "mcp/tools/business/update-business",
                   "mcp/tools/business/update-business-status",
+                  "mcp/tools/business/delete-business",
                   "mcp/tools/business/get-custom-card-details",
                   "mcp/tools/business/update-custom-card",
                   "mcp/tools/business/delete-custom-card"
@@ -130,6 +132,8 @@
                   "mcp/tools/listings/get-listing-insights",
                   "mcp/tools/listings/get-listing-category-list",
                   "mcp/tools/listings/get-product-listing-list",
+                  "mcp/tools/listings/create-listing",
+                  "mcp/tools/listings/update-listing",
                   "mcp/tools/listings/fix-listing",
                   "mcp/tools/listings/deactivate-listing",
                   "mcp/tools/listings/create-product",
@@ -163,6 +167,7 @@
                   "mcp/tools/social/create-social-post",
                   "mcp/tools/social/get-social-post",
                   "mcp/tools/social/edit-published-social-post",
+                  "mcp/tools/social/edit-scheduled-social-post",
                   "mcp/tools/social/delete-social-post"
                 ]
               },
@@ -187,7 +192,26 @@
                   "mcp/tools/contact/upsert-contact",
                   "mcp/tools/contact/customer-checkin",
                   "mcp/tools/contact/delete-contact",
-                  "mcp/tools/contact/update-contact-subscription"
+                  "mcp/tools/contact/update-contact-subscription",
+                  "mcp/tools/contact/update-communication-preferences"
+                ]
+              },
+              {
+                "group": "Campaign",
+                "collapsed": true,
+                "icon": "link",
+                "pages": [
+                  "mcp/tools/campaign/overview",
+                  "mcp/tools/campaign/get-campaign-request-url"
+                ]
+              },
+              {
+                "group": "Integration",
+                "collapsed": true,
+                "icon": "plug",
+                "pages": [
+                  "mcp/tools/integration/overview",
+                  "mcp/tools/integration/add-integration-location"
                 ]
               },
               {

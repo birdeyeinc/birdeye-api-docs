@@ -1,0 +1,60 @@
+---
+title: "Update Communication Preferences"
+description: "Set granular email and SMS opt-ins for one or more contacts at a location."
+---
+
+```
+update_communication_preferences
+```
+
+## Description
+
+Updates the granular email and SMS communication preferences of one or more contacts at a specific location — separate marketing, feedback and service opt-ins per channel, plus the master SMS opt-in flag.
+
+<Warning>
+  This is a **write tool** that changes what messages a real customer receives. Confirm the exact contacts and the exact flags being turned on or off before calling. Only the flags you pass are changed; flags you omit are left as-is.
+</Warning>
+
+<Note>
+  **Choosing between the two subscription tools:** use this tool for per-channel-type control (separate marketing / feedback / service opt-ins). Use [`update_contact_subscription`](/mcp/tools/contact/update-contact-subscription) for a blanket subscribe or unsubscribe across email and/or SMS. The two endpoints write different fields — if the user's intent is ambiguous, ask which they mean.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | integer | Yes | — | Child **location** id the contacts belong to — not the enterprise business id |
+| `email` | list[string] | No* | — | Customer email addresses to target |
+| `phone` | list[string] | No* | — | Customer phone numbers to target |
+| `smsOptin` | boolean | No | — | Master SMS opt-in flag. `true` = the contact may be sent SMS, `false` = SMS is switched off |
+| `emailPreferences` | object | No | — | Any subset of `{ "marketingOptin": true, "feedbackOptin": true, "serviceOptin": true }` |
+| `smsPreferences` | object | No | — | Same three keys and meanings as `emailPreferences`, for SMS |
+
+\* At least one of `email` or `phone` is required to identify the contacts, and at least one of `smsOptin`, `emailPreferences` or `smsPreferences` must be supplied so there is something to change.
+
+### Preference flags
+
+| Flag | Covers |
+|---|---|
+| `marketingOptin` | Promotional / marketing messages |
+| `feedbackOptin` | Review and survey requests |
+| `serviceOptin` | Transactional / service messages |
+
+## Example Usage
+
+```
+Opt john@example.com out of marketing emails at location 161322681923726.
+```
+
+```
+Stop sending review requests to 2345654326 but keep service messages on.
+```
+
+```
+Turn off SMS entirely for these two customers at our Dallas location.
+```
+
+## Notes
+
+- `accountNumber` is a child location id. Ask the user for it directly rather than auto-calling [`get_child_locations`](/mcp/tools/business/get-child-locations).
+- To set preferences at the same time as creating or editing a contact, [`upsert_contact`](/mcp/tools/contact/upsert-contact) accepts the same `emailPreferences` and `smsPreferences` objects.
