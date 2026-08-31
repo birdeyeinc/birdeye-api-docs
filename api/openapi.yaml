@@ -10499,9 +10499,13 @@ paths:
                     message: Rate limit exceeded
       summary: NPS Over time Report
       operationId: nPSOverTimeReport
-      description: NPS Over time gives you the NPS score for a selected period of
+      description: |-
+        NPS Over time gives you the review-derived NPS score for a selected period of
         time for all locations across businesses and the count of promoters, passives,
         and detractors for this business. The report can be grouped per day/week/month/year.
+
+        NOTE: This report is derived from REVIEW data, served by the review service. The
+        population is review records and can be narrowed using the reviewSites filter.
       tags:
       - Report
       parameters:
@@ -10630,8 +10634,12 @@ paths:
                     message: Rate limit exceeded
       summary: NPS By Location Report
       operationId: nPSByLocationReport
-      description: NPS By Location gives you the NPS score for each location and the
+      description: |-
+        NPS By Location gives you the review-derived NPS score for each location and the
         count of promoters, passives, and detractors for the business.
+
+        NOTE: This report is derived from REVIEW data, served by the review service. The
+        population is review records and can be narrowed using the reviewSites filter.
       tags:
       - Report
       parameters:
