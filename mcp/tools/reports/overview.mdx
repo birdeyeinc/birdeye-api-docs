@@ -48,10 +48,10 @@ description: "Tools for review performance, response operations, NPS, visitor, u
 ### Business and customer reporting
 
 <CardGroup cols={1}>
-  <Card title="get_nps_over_time" icon="arrow-trend-up" href="/mcp/tools/reports/get-nps-over-time">
+  <Card title="get_reviews_nps_over_time" icon="arrow-trend-up" href="/mcp/tools/reports/get-reviews-nps-over-time">
     Track review-derived Net Promoter Score over time
   </Card>
-  <Card title="get_nps_by_location" icon="ranking-star" href="/mcp/tools/reports/get-nps-by-location">
+  <Card title="get_reviews_nps_by_location" icon="ranking-star" href="/mcp/tools/reports/get-reviews-nps-by-location">
     Compare review-derived Net Promoter Score across locations
   </Card>
   <Card title="get_visitor_count" icon="users-viewfinder" href="/mcp/tools/reports/get-visitor-count">
@@ -71,4 +71,4 @@ description: "Tools for review performance, response operations, NPS, visitor, u
 - Use `businessNumbers` to scope supported reports to location IDs returned by [`get_child_locations`](/mcp/tools/business/get-child-locations).
 - Use over-time tools for trends and by-location tools for branch comparisons.
 - All report tools are read-only and automatically use the authenticated account context.
-- **NPS here is review-derived.** `get_nps_over_time` and `get_nps_by_location` are computed from review data, served by the review service, and can be narrowed with `reviewSites`.
+- **NPS here is review-derived.** `get_reviews_nps_over_time` and `get_reviews_nps_by_location` are computed from review data, served by the review service, and can be narrowed with `reviewSites`.
