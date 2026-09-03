@@ -191,15 +191,6 @@
                 ]
               },
               {
-                "group": "Webhook",
-                "collapsed": true,
-                "icon": "webhook",
-                "pages": [
-                  "mcp/tools/webhook/overview",
-                  "mcp/tools/webhook/create-webhook"
-                ]
-              },
-              {
                 "group": "User",
                 "collapsed": true,
                 "icon": "user",
@@ -220,17 +211,6 @@
                   "mcp/tools/google-services/create-google-service",
                   "mcp/tools/google-services/update-google-service",
                   "mcp/tools/google-services/delete-google-services"
-                ]
-              },
-              {
-                "group": "Aggregation",
-                "collapsed": true,
-                "icon": "layer-group",
-                "pages": [
-                  "mcp/tools/aggregation/overview",
-                  "mcp/tools/aggregation/get-all-aggregation-sources",
-                  "mcp/tools/aggregation/add-aggregation-url",
-                  "mcp/tools/aggregation/delete-aggregation-url"
                 ]
               },
               {
