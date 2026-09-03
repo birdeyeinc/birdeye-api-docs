@@ -1,15 +1,19 @@
 ---
-title: "Get NPS By Location"
-description: "Compare Net Promoter Score and customer loyalty across locations."
+title: "Get Reviews NPS By Location"
+description: "Compare review-derived Net Promoter Score and customer loyalty across locations."
 ---
 
 ```
-get_nps_by_location
+get_reviews_nps_by_location
 ```
 
 ## Description
 
-Returns NPS and promoter, passive, and detractor data for each business location.
+Returns **review-derived** NPS and promoter, passive, and detractor data for each business location.
+
+<Note>
+  **This is review-derived NPS.** It is computed from Birdeye **review** data, served by the review service. The population is review records and can be narrowed with `reviewSites`. Present the figure as review-based NPS so the source of the number is unambiguous.
+</Note>
 
 ## Parameters
 
@@ -79,4 +83,5 @@ The response includes account-level `totalCount`, `avgNpsScore`, promoter, passi
 
 - `order` uses the strings `"asc"` and `"desc"`, unlike report tools that use `0` and `1`.
 - NPS ranges from `-100` to `100`.
+- The population is **review records**, filterable with `reviewSites`.
 - Choose the intended server-side sort and use the first result for best, worst, or highest-count questions.
