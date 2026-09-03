@@ -31473,7 +31473,12 @@ components:
               description: You can add up to 3 categories.
             facebookDescription:
               type: string
-              description: Facebook description cannot be more than 255 characters.
+              description: An ‘about/bio of your business’. Facebook description cannot
+                be more than 255 characters.
+            facebookPrivacyAndLegalDescription:
+              type: string
+              description: This will update the description under the Privacy and
+                Legal information of your page and max allowed is 32000 characters.
             facebookPhoneNumber:
               type: string
               description: Phone number for facebook profile. This phone number will
