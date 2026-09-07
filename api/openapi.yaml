@@ -13034,12 +13034,20 @@ paths:
                 endDate:
                   type: string
                   description: End date.
+                deepPagination:
+                  type: boolean
+                  description: When set to true, enables deep pagination to reliably
+                    fetch results beyond the default pagination limit for large
+                    result sets. Defaults to false.
+                  default: false
               example:
                 startDate: 07/03/2018 06:30:00
                 endDate: 07/23/2018 06:45:00
+                deepPagination: false
             example:
               startDate: 07/03/2018 06:30:00
               endDate: 07/23/2018 06:45:00
+              deepPagination: false
   "/v1/survey/{surveyId}/usage/by-location":
     post:
       summary: Get Survey Usage by Location
