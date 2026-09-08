@@ -22604,6 +22604,23 @@ paths:
               - "$ref": "#/components/schemas/2522Model"
               - "$ref": "#/components/schemas/6000Model"
               - "$ref": "#/components/schemas/6001Model"
+              - "$ref": "#/components/schemas/2827Model"
+              - "$ref": "#/components/schemas/2828Model"
+              - "$ref": "#/components/schemas/2829Model"
+              - "$ref": "#/components/schemas/2830Model"
+              - "$ref": "#/components/schemas/2831Model"
+              - "$ref": "#/components/schemas/2832Model"
+              - "$ref": "#/components/schemas/2833Model"
+              - "$ref": "#/components/schemas/2834Model"
+              - "$ref": "#/components/schemas/2835Model"
+              - "$ref": "#/components/schemas/2836Model"
+              - "$ref": "#/components/schemas/2837Model"
+              - "$ref": "#/components/schemas/2838Model"
+              - "$ref": "#/components/schemas/2839Model"
+              - "$ref": "#/components/schemas/2840Model"
+              - "$ref": "#/components/schemas/2841Model"
+              - "$ref": "#/components/schemas/2842Model"
+              - "$ref": "#/components/schemas/2843Model"
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -22701,6 +22718,82 @@ paths:
                   value:
                     code: 6001
                     message: The 'sub_locality' field cannot exceed 80 characters.
+                error_2827:
+                  value:
+                    code: 2827
+                    message: Education details cannot have more than 5 entries
+                error_2828:
+                  value:
+                    code: 2828
+                    message: Each education detail must have courseName, university
+                      and year
+                error_2829:
+                  value:
+                    code: 2829
+                    message: Hospital affiliation details cannot have more than
+                      10 entries
+                error_2830:
+                  value:
+                    code: 2830
+                    message: Each hospital affiliation detail must have organizationName,
+                      state and city
+                error_2831:
+                  value:
+                    code: 2831
+                    message: Insurance details cannot have more than 20 entries
+                error_2832:
+                  value:
+                    code: 2832
+                    message: Each insurance detail must have companyName and plan
+                error_2833:
+                  value:
+                    code: 2833
+                    message: Education year must be a valid number
+                error_2834:
+                  value:
+                    code: 2834
+                    message: Education university name cannot be more than 250
+                      characters
+                error_2835:
+                  value:
+                    code: 2835
+                    message: Education year must be between 1964 and the current
+                      year
+                error_2836:
+                  value:
+                    code: 2836
+                    message: Hospital affiliation organization name cannot be more
+                      than 150 characters
+                error_2837:
+                  value:
+                    code: 2837
+                    message: Hospital affiliation state cannot be more than 50
+                      characters
+                error_2838:
+                  value:
+                    code: 2838
+                    message: Hospital affiliation city cannot be more than 50 characters
+                error_2839:
+                  value:
+                    code: 2839
+                    message: Conditions cannot be more than 1000 characters
+                error_2840:
+                  value:
+                    code: 2840
+                    message: Procedures cannot be more than 1000 characters
+                error_2841:
+                  value:
+                    code: 2841
+                    message: 'Education course must be exactly one of: Medical
+                      School, Internship, Residency, or Fellowship'
+                error_2842:
+                  value:
+                    code: 2842
+                    message: Insurance company name cannot be more than 100 characters
+                error_2843:
+                  value:
+                    code: 2843
+                    message: Insurance plan name cannot be more than 150 characters
               examples:
                 response:
                   value:
@@ -22808,6 +22901,23 @@ paths:
               - "$ref": "#/components/schemas/2522Model"
               - "$ref": "#/components/schemas/6000Model"
               - "$ref": "#/components/schemas/6001Model"
+              - "$ref": "#/components/schemas/2827Model"
+              - "$ref": "#/components/schemas/2828Model"
+              - "$ref": "#/components/schemas/2829Model"
+              - "$ref": "#/components/schemas/2830Model"
+              - "$ref": "#/components/schemas/2831Model"
+              - "$ref": "#/components/schemas/2832Model"
+              - "$ref": "#/components/schemas/2833Model"
+              - "$ref": "#/components/schemas/2834Model"
+              - "$ref": "#/components/schemas/2835Model"
+              - "$ref": "#/components/schemas/2836Model"
+              - "$ref": "#/components/schemas/2837Model"
+              - "$ref": "#/components/schemas/2838Model"
+              - "$ref": "#/components/schemas/2839Model"
+              - "$ref": "#/components/schemas/2840Model"
+              - "$ref": "#/components/schemas/2841Model"
+              - "$ref": "#/components/schemas/2842Model"
+              - "$ref": "#/components/schemas/2843Model"
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -22905,6 +23015,82 @@ paths:
                   value:
                     code: 6001
                     message: The 'sub_locality' field cannot exceed 80 characters.
+                error_2827:
+                  value:
+                    code: 2827
+                    message: Education details cannot have more than 5 entries
+                error_2828:
+                  value:
+                    code: 2828
+                    message: Each education detail must have courseName, university
+                      and year
+                error_2829:
+                  value:
+                    code: 2829
+                    message: Hospital affiliation details cannot have more than
+                      10 entries
+                error_2830:
+                  value:
+                    code: 2830
+                    message: Each hospital affiliation detail must have organizationName,
+                      state and city
+                error_2831:
+                  value:
+                    code: 2831
+                    message: Insurance details cannot have more than 20 entries
+                error_2832:
+                  value:
+                    code: 2832
+                    message: Each insurance detail must have companyName and plan
+                error_2833:
+                  value:
+                    code: 2833
+                    message: Education year must be a valid number
+                error_2834:
+                  value:
+                    code: 2834
+                    message: Education university name cannot be more than 250
+                      characters
+                error_2835:
+                  value:
+                    code: 2835
+                    message: Education year must be between 1964 and the current
+                      year
+                error_2836:
+                  value:
+                    code: 2836
+                    message: Hospital affiliation organization name cannot be more
+                      than 150 characters
+                error_2837:
+                  value:
+                    code: 2837
+                    message: Hospital affiliation state cannot be more than 50
+                      characters
+                error_2838:
+                  value:
+                    code: 2838
+                    message: Hospital affiliation city cannot be more than 50 characters
+                error_2839:
+                  value:
+                    code: 2839
+                    message: Conditions cannot be more than 1000 characters
+                error_2840:
+                  value:
+                    code: 2840
+                    message: Procedures cannot be more than 1000 characters
+                error_2841:
+                  value:
+                    code: 2841
+                    message: 'Education course must be exactly one of: Medical
+                      School, Internship, Residency, or Fellowship'
+                error_2842:
+                  value:
+                    code: 2842
+                    message: Insurance company name cannot be more than 100 characters
+                error_2843:
+                  value:
+                    code: 2843
+                    message: Insurance plan name cannot be more than 150 characters
               examples:
                 response:
                   value:
@@ -23366,9 +23552,19 @@ paths:
                       surName: Doe
                       npi: '1245319599'
                       credentials: MD
-                      university: Sample text
-                      hospitalAffiliations: Sample text
-                      insurancesAccepted: Sample text
+                      educationDetails:
+                      - courseName: Medical School
+                        university: Sample University Name
+                        year: 1998
+                      hospitalAffiliationsDetails:
+                      - organizationName: Sample Hospital Name
+                        state: CA
+                        city: San Jose
+                      insuranceDetails:
+                      - companyName: Sample Insurance Company
+                        plan: PPO
+                      conditions: Sample text
+                      procedures: Sample text
         '401':
           description: Unauthorized
           content:
@@ -30788,6 +30984,179 @@ components:
       example:
         code: 6001
         message: The 'sub_locality' field cannot exceed 80 characters.
+    2827Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2827
+        message: Education details cannot have more than 5 entries
+    2828Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2828
+        message: Each education detail must have courseName, university and year
+    2829Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2829
+        message: Hospital affiliation details cannot have more than 10 entries
+    2830Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2830
+        message: Each hospital affiliation detail must have organizationName, state
+          and city
+    2831Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2831
+        message: Insurance details cannot have more than 20 entries
+    2832Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2832
+        message: Each insurance detail must have companyName and plan
+    2833Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2833
+        message: Education year must be a valid number
+    2834Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2834
+        message: Education university name cannot be more than 250 characters
+    2835Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2835
+        message: Education year must be between 1964 and the current year
+    2836Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2836
+        message: Hospital affiliation organization name cannot be more than 150
+          characters
+    2837Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2837
+        message: Hospital affiliation state cannot be more than 50 characters
+    2838Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2838
+        message: Hospital affiliation city cannot be more than 50 characters
+    2839Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2839
+        message: Conditions cannot be more than 1000 characters
+    2840Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2840
+        message: Procedures cannot be more than 1000 characters
+    2841Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2841
+        message: 'Education course must be exactly one of: Medical School, Internship,
+          Residency, or Fellowship'
+    2842Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2842
+        message: Insurance company name cannot be more than 100 characters
+    2843Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2843
+        message: Insurance plan name cannot be more than 150 characters
     Search: {}
     Get: {}
     Update: {}
@@ -37103,20 +37472,71 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
-            university:
+            educationDetails:
+              type: array
+              description: Education details of the provider/practice. Maximum
+                of 5 entries allowed. Each entry must include courseName, university
+                and year.
+              items:
+                type: object
+                properties:
+                  courseName:
+                    type: string
+                    description: 'Course/qualification name. Must be exactly one
+                      of: Medical School, Internship, Residency, or Fellowship.'
+                  university:
+                    type: string
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
+                  year:
+                    type: integer
+                    description: Year the course was completed. Must be a valid
+                      number between 1964 and the current year.
+            hospitalAffiliationsDetails:
+              type: array
+              description: Hospital affiliation details of the provider/practice.
+                Maximum of 10 entries allowed. Each entry must include organizationName,
+                state and city.
+              items:
+                type: object
+                properties:
+                  organizationName:
+                    type: string
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
+                  state:
+                    type: string
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
+                  city:
+                    type: string
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
+            insuranceDetails:
+              type: array
+              description: Insurance details accepted by the provider/practice.
+                Maximum of 20 entries allowed. Each entry must include companyName
+                and plan.
+              items:
+                type: object
+                properties:
+                  companyName:
+                    type: string
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
+                  plan:
+                    type: string
+                    description: Insurance plan name. Must not exceed 150 characters.
+            conditions:
               type: string
-              description: University of the provider/practice. Must be less than
-                255 characters
-            hospitalAffiliations:
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
+            procedures:
               type: string
-              description: Hospital Affiliations of the provider/practice. Must be
-                less than 150 characters
-            insurancesAccepted:
-              type: string
-              description: Insurance Accepted of the provider/practice.  Must be less
-                than 50 characters
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
       example:
@@ -37492,9 +37912,19 @@ components:
           surName: Doe
           npi: '1245319599'
           credentials: MD
-          university: Sample text
-          hospitalAffiliations: Sample text
-          insurancesAccepted: Sample text
+          educationDetails:
+          - courseName: Medical School
+            university: Sample University Name
+            year: 1998
+          hospitalAffiliationsDetails:
+          - organizationName: Sample Hospital Name
+            state: CA
+            city: San Jose
+          insuranceDetails:
+          - companyName: Sample Insurance Company
+            plan: PPO
+          conditions: Sample text
+          procedures: Sample text
     Apiary_updateListing_Request:
       type: object
       properties:
@@ -38059,20 +38489,71 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
-            university:
+            educationDetails:
+              type: array
+              description: Education details of the provider/practice. Maximum
+                of 5 entries allowed. Each entry must include courseName, university
+                and year.
+              items:
+                type: object
+                properties:
+                  courseName:
+                    type: string
+                    description: 'Course/qualification name. Must be exactly one
+                      of: Medical School, Internship, Residency, or Fellowship.'
+                  university:
+                    type: string
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
+                  year:
+                    type: integer
+                    description: Year the course was completed. Must be a valid
+                      number between 1964 and the current year.
+            hospitalAffiliationsDetails:
+              type: array
+              description: Hospital affiliation details of the provider/practice.
+                Maximum of 10 entries allowed. Each entry must include organizationName,
+                state and city.
+              items:
+                type: object
+                properties:
+                  organizationName:
+                    type: string
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
+                  state:
+                    type: string
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
+                  city:
+                    type: string
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
+            insuranceDetails:
+              type: array
+              description: Insurance details accepted by the provider/practice.
+                Maximum of 20 entries allowed. Each entry must include companyName
+                and plan.
+              items:
+                type: object
+                properties:
+                  companyName:
+                    type: string
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
+                  plan:
+                    type: string
+                    description: Insurance plan name. Must not exceed 150 characters.
+            conditions:
               type: string
-              description: University of the provider/practice. Must be less than
-                255 characters
-            hospitalAffiliations:
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
+            procedures:
               type: string
-              description: Hospital Affiliations of the provider/practice. Must be
-                less than 150 characters
-            insurancesAccepted:
-              type: string
-              description: Insurance Accepted of the provider/practice.  Must be less
-                than 50 characters
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
       example:
@@ -38448,9 +38929,19 @@ components:
           surName: Doe
           npi: '1245319599'
           credentials: MD
-          university: Sample text
-          hospitalAffiliations: Sample text
-          insurancesAccepted: Sample text
+          educationDetails:
+          - courseName: Medical School
+            university: Sample University Name
+            year: 1998
+          hospitalAffiliationsDetails:
+          - organizationName: Sample Hospital Name
+            state: CA
+            city: San Jose
+          insuranceDetails:
+          - companyName: Sample Insurance Company
+            plan: PPO
+          conditions: Sample text
+          procedures: Sample text
     Apiary_getListing_Response200:
       type: object
       properties:
@@ -39016,20 +39507,71 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
-            university:
+            educationDetails:
+              type: array
+              description: Education details of the provider/practice. Maximum
+                of 5 entries allowed. Each entry must include courseName, university
+                and year.
+              items:
+                type: object
+                properties:
+                  courseName:
+                    type: string
+                    description: 'Course/qualification name. Must be exactly one
+                      of: Medical School, Internship, Residency, or Fellowship.'
+                  university:
+                    type: string
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
+                  year:
+                    type: integer
+                    description: Year the course was completed. Must be a valid
+                      number between 1964 and the current year.
+            hospitalAffiliationsDetails:
+              type: array
+              description: Hospital affiliation details of the provider/practice.
+                Maximum of 10 entries allowed. Each entry must include organizationName,
+                state and city.
+              items:
+                type: object
+                properties:
+                  organizationName:
+                    type: string
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
+                  state:
+                    type: string
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
+                  city:
+                    type: string
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
+            insuranceDetails:
+              type: array
+              description: Insurance details accepted by the provider/practice.
+                Maximum of 20 entries allowed. Each entry must include companyName
+                and plan.
+              items:
+                type: object
+                properties:
+                  companyName:
+                    type: string
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
+                  plan:
+                    type: string
+                    description: Insurance plan name. Must not exceed 150 characters.
+            conditions:
               type: string
-              description: University of the provider/practice. Must be less than
-                255 characters
-            hospitalAffiliations:
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
+            procedures:
               type: string
-              description: Hospital Affiliations of the provider/practice. Must be
-                less than 150 characters
-            insurancesAccepted:
-              type: string
-              description: Insurance Accepted of the provider/practice.  Must be less
-                than 50 characters
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
     Apiary_getGoogleKeywordsCount_Response200:
