@@ -22619,6 +22619,8 @@ paths:
               - "$ref": "#/components/schemas/2839Model"
               - "$ref": "#/components/schemas/2840Model"
               - "$ref": "#/components/schemas/2841Model"
+              - "$ref": "#/components/schemas/2842Model"
+              - "$ref": "#/components/schemas/2843Model"
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -22761,7 +22763,7 @@ paths:
                   value:
                     code: 2836
                     message: Hospital affiliation organization name cannot be more
-                      than 250 characters
+                      than 150 characters
                 error_2837:
                   value:
                     code: 2837
@@ -22784,6 +22786,14 @@ paths:
                     code: 2841
                     message: 'Education course must be exactly one of: Medical
                       School, Internship, Residency, or Fellowship'
+                error_2842:
+                  value:
+                    code: 2842
+                    message: Insurance company name cannot be more than 100 characters
+                error_2843:
+                  value:
+                    code: 2843
+                    message: Insurance plan name cannot be more than 150 characters
               examples:
                 response:
                   value:
@@ -22906,6 +22916,8 @@ paths:
               - "$ref": "#/components/schemas/2839Model"
               - "$ref": "#/components/schemas/2840Model"
               - "$ref": "#/components/schemas/2841Model"
+              - "$ref": "#/components/schemas/2842Model"
+              - "$ref": "#/components/schemas/2843Model"
               x-apiary-response-examples:
                 error_2296:
                   value:
@@ -23048,7 +23060,7 @@ paths:
                   value:
                     code: 2836
                     message: Hospital affiliation organization name cannot be more
-                      than 250 characters
+                      than 150 characters
                 error_2837:
                   value:
                     code: 2837
@@ -23071,6 +23083,14 @@ paths:
                     code: 2841
                     message: 'Education course must be exactly one of: Medical
                       School, Internship, Residency, or Fellowship'
+                error_2842:
+                  value:
+                    code: 2842
+                    message: Insurance company name cannot be more than 100 characters
+                error_2843:
+                  value:
+                    code: 2843
+                    message: Insurance plan name cannot be more than 150 characters
               examples:
                 response:
                   value:
@@ -31064,7 +31084,7 @@ components:
           type: string
       example:
         code: 2836
-        message: Hospital affiliation organization name cannot be more than 250
+        message: Hospital affiliation organization name cannot be more than 150
           characters
     2837Model:
       type: object
@@ -31117,6 +31137,26 @@ components:
         code: 2841
         message: 'Education course must be exactly one of: Medical School, Internship,
           Residency, or Fellowship'
+    2842Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2842
+        message: Insurance company name cannot be more than 100 characters
+    2843Model:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+      example:
+        code: 2843
+        message: Insurance plan name cannot be more than 150 characters
     Search: {}
     Get: {}
     Update: {}
@@ -37432,7 +37472,7 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
             educationDetails:
               type: array
@@ -37448,8 +37488,8 @@ components:
                       of: Medical School, Internship, Residency, or Fellowship.'
                   university:
                     type: string
-                    description: University of the provider/practice. Must be less
-                      than 250 characters.
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
                   year:
                     type: integer
                     description: Year the course was completed. Must be a valid
@@ -37464,16 +37504,16 @@ components:
                 properties:
                   organizationName:
                     type: string
-                    description: Name of the hospital/organization. Must be less
-                      than 250 characters.
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
                   state:
                     type: string
-                    description: State of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
                   city:
                     type: string
-                    description: City of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
             insuranceDetails:
               type: array
               description: Insurance details accepted by the provider/practice.
@@ -37484,18 +37524,19 @@ components:
                 properties:
                   companyName:
                     type: string
-                    description: Name of the insurance company.
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
                   plan:
                     type: string
-                    description: Insurance plan name.
+                    description: Insurance plan name. Must not exceed 150 characters.
             conditions:
               type: string
-              description: Conditions treated by the provider/practice. Must be
-                less than 1000 characters.
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
             procedures:
               type: string
-              description: Procedures performed by the provider/practice. Must be
-                less than 1000 characters.
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
       example:
@@ -38448,7 +38489,7 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
             educationDetails:
               type: array
@@ -38464,8 +38505,8 @@ components:
                       of: Medical School, Internship, Residency, or Fellowship.'
                   university:
                     type: string
-                    description: University of the provider/practice. Must be less
-                      than 250 characters.
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
                   year:
                     type: integer
                     description: Year the course was completed. Must be a valid
@@ -38480,16 +38521,16 @@ components:
                 properties:
                   organizationName:
                     type: string
-                    description: Name of the hospital/organization. Must be less
-                      than 250 characters.
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
                   state:
                     type: string
-                    description: State of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
                   city:
                     type: string
-                    description: City of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
             insuranceDetails:
               type: array
               description: Insurance details accepted by the provider/practice.
@@ -38500,18 +38541,19 @@ components:
                 properties:
                   companyName:
                     type: string
-                    description: Name of the insurance company.
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
                   plan:
                     type: string
-                    description: Insurance plan name.
+                    description: Insurance plan name. Must not exceed 150 characters.
             conditions:
               type: string
-              description: Conditions treated by the provider/practice. Must be
-                less than 1000 characters.
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
             procedures:
               type: string
-              description: Procedures performed by the provider/practice. Must be
-                less than 1000 characters.
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
       example:
@@ -39465,7 +39507,7 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: University of the provider/practice. Must be less than
+              description: Credentials of the provider/practice. Must be less than
                 25 characters
             educationDetails:
               type: array
@@ -39481,8 +39523,8 @@ components:
                       of: Medical School, Internship, Residency, or Fellowship.'
                   university:
                     type: string
-                    description: University of the provider/practice. Must be less
-                      than 250 characters.
+                    description: University of the provider/practice. Must not
+                      exceed 250 characters.
                   year:
                     type: integer
                     description: Year the course was completed. Must be a valid
@@ -39497,16 +39539,16 @@ components:
                 properties:
                   organizationName:
                     type: string
-                    description: Name of the hospital/organization. Must be less
-                      than 250 characters.
+                    description: Name of the hospital/organization. Must not exceed
+                      150 characters.
                   state:
                     type: string
-                    description: State of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: State of the hospital/organization. Must not exceed
+                      50 characters.
                   city:
                     type: string
-                    description: City of the hospital/organization. Must be less
-                      than 50 characters.
+                    description: City of the hospital/organization. Must not exceed
+                      50 characters.
             insuranceDetails:
               type: array
               description: Insurance details accepted by the provider/practice.
@@ -39517,18 +39559,19 @@ components:
                 properties:
                   companyName:
                     type: string
-                    description: Name of the insurance company.
+                    description: Name of the insurance company. Must not exceed
+                      100 characters.
                   plan:
                     type: string
-                    description: Insurance plan name.
+                    description: Insurance plan name. Must not exceed 150 characters.
             conditions:
               type: string
-              description: Conditions treated by the provider/practice. Must be
-                less than 1000 characters.
+              description: Conditions treated by the provider/practice. Must not
+                exceed 1000 characters.
             procedures:
               type: string
-              description: Procedures performed by the provider/practice. Must be
-                less than 1000 characters.
+              description: Procedures performed by the provider/practice. Must
+                not exceed 1000 characters.
           description: This section is only applicable if you have purchased the health
             care listings plan and have been onboarded on the same.
     Apiary_getGoogleKeywordsCount_Response200:
