@@ -23442,6 +23442,7 @@ paths:
                       displayCategory: Eyelash Service
                     facebookListing:
                       facebookDescription: This is sample facebook description
+                      facebookPrivacyAndLegalDescription: This is sample privacy and legal description for the business.
                       facebookPhoneNumber: "(415) 673-0868"
                       categories:
                       - Science
@@ -31858,7 +31859,13 @@ components:
               description: You can add up to 3 categories.
             facebookDescription:
               type: string
-              description: Facebook description cannot be more than 255 characters.
+              description: About/Bio description for your business page. Facebook
+                description cannot be more than 255 characters.
+            facebookPrivacyAndLegalDescription:
+              type: string
+              description: This will update the description under the Privacy and
+                Legal information of your page and cannot be more than 32000
+                characters.
             facebookPhoneNumber:
               type: string
               description: Phone number for facebook profile. This phone number will
@@ -36939,7 +36946,9 @@ components:
                 with an empty value in the API request, the existing Business Description
                 will be cleared for the location. If a value is provided, it must
                 contain at least 200 characters. Avoid sending URLs, phone numbers,
-                addresses, or promotional content in this field.
+                addresses, or promotional content in this field. Facebook
+                supports up to 255 characters for your description. If it's
+                longer, add a Facebook override description.
             serviceAreas:
               type: array
               description: 'Locations where you deliver or provide service (applicable
@@ -37275,8 +37284,13 @@ components:
               items: {}
             facebookDescription:
               type: string
-              description: An ‘about your business’ description. Facebook description
-                cannot be more than 255 characters.
+              description: About/Bio description for your business page. Facebook
+                description cannot be more than 255 characters.
+            facebookPrivacyAndLegalDescription:
+              type: string
+              description: This will update the description under the Privacy and
+                Legal information of your page and cannot be more than 32000
+                characters.
           description: This data will be used to update your Facebook business page/
             listing.
         gmbListing:
@@ -37805,6 +37819,7 @@ components:
           displayCategory: Eyelash Service
         facebookListing:
           facebookDescription: This is sample facebook description
+          facebookPrivacyAndLegalDescription: This is sample privacy and legal description for the business.
           facebookPhoneNumber: "(415) 673-0868"
           categories:
           - Science
@@ -37956,7 +37971,9 @@ components:
                 with an empty value in the API request, the existing Business Description
                 will be cleared for the location. If a value is provided, it must
                 contain at least 200 characters. Avoid sending URLs, phone numbers,
-                addresses, or promotional content in this field.
+                addresses, or promotional content in this field. Facebook
+                supports up to 255 characters for your description. If it's
+                longer, add a Facebook override description.
             serviceAreas:
               type: array
               description: 'Locations where you deliver or provide service (applicable
@@ -38292,8 +38309,13 @@ components:
               items: {}
             facebookDescription:
               type: string
-              description: An ‘about your business’ description. Facebook description
-                cannot be more than 255 characters.
+              description: About/Bio description for your business page. Facebook
+                description cannot be more than 255 characters.
+            facebookPrivacyAndLegalDescription:
+              type: string
+              description: This will update the description under the Privacy and
+                Legal information of your page and cannot be more than 32000
+                characters.
           description: This data will be used to update your Facebook business page/
             listing.
         gmbListing:
@@ -38822,6 +38844,7 @@ components:
           displayCategory: Eyelash Service
         facebookListing:
           facebookDescription: This is sample facebook description
+          facebookPrivacyAndLegalDescription: This is sample privacy and legal description for the business.
           facebookPhoneNumber: "(415) 673-0868"
           categories:
           - Science
@@ -39310,8 +39333,13 @@ components:
               items: {}
             facebookDescription:
               type: string
-              description: An ‘about your business’ description. Facebook description
-                cannot be more than 255 characters.
+              description: About/Bio description for your business page. Facebook
+                description cannot be more than 255 characters.
+            facebookPrivacyAndLegalDescription:
+              type: string
+              description: This will update the description under the Privacy and
+                Legal information of your page and cannot be more than 32000
+                characters.
           description: This data will be used to update your Facebook business page/
             listing.
         gmbListing:
