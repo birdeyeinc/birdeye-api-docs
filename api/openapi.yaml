@@ -36559,7 +36559,9 @@ components:
                 with an empty value in the API request, the existing Business Description
                 will be cleared for the location. If a value is provided, it must
                 contain at least 200 characters. Avoid sending URLs, phone numbers,
-                addresses, or promotional content in this field.
+                addresses, or promotional content in this field. Facebook
+                supports up to 255 characters for your description. If it's
+                longer, add a Facebook override description.
             serviceAreas:
               type: array
               description: 'Locations where you deliver or provide service (applicable
@@ -37520,7 +37522,9 @@ components:
                 with an empty value in the API request, the existing Business Description
                 will be cleared for the location. If a value is provided, it must
                 contain at least 200 characters. Avoid sending URLs, phone numbers,
-                addresses, or promotional content in this field.
+                addresses, or promotional content in this field. Facebook
+                supports up to 255 characters for your description. If it's
+                longer, add a Facebook override description.
             serviceAreas:
               type: array
               description: 'Locations where you deliver or provide service (applicable
