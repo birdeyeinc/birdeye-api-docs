@@ -9,11 +9,21 @@ The Birdeye MCP Server uses **OAuth 2.0 with Dynamic Client Registration (DCR)**
 
 You never need to copy API keys or manage tokens manually.
 
+<Info>
+  Birdeye has two regional MCP endpoints. Use the one that matches your account's region:
+
+  | Region | MCP Server URL |
+  |--------|---------------|
+  | Global (default) | `https://mcp.birdeye.com/mcp` |
+  | EU | `https://mcp-eu.birdeye.com/mcp` |
+
+</Info>
+
 ## How It Works
 
 <Steps>
   <Step title="Client discovers the server">
-    Your AI client connects to `https://mcp.birdeye.com/mcp` and discovers the OAuth configuration automatically.
+    Your AI client connects to your regional MCP endpoint (`https://mcp.birdeye.com/mcp` for Global, `https://mcp-eu.birdeye.com/mcp` for EU) and discovers the OAuth configuration automatically.
   </Step>
   <Step title="Dynamic client registration">
     The client registers itself with Birdeye. This happens automatically — no manual setup required.
