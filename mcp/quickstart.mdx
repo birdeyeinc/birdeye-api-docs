@@ -5,11 +5,16 @@ description: "Connect your AI assistant to Birdeye in under 5 minutes."
 
 ## MCP Server URL
 
-```
-https://mcp.birdeye.com/mcp
-```
+| Region | MCP Server URL |
+|--------|---------------|
+| Global (default) | `https://mcp.birdeye.com/mcp` |
+| EU | `https://mcp-eu.birdeye.com/mcp` |
 
-Add this URL to your AI client to get started. Choose your client below.
+<Info>
+  Use the **EU endpoint** if your Birdeye account is hosted in the European Union region.
+</Info>
+
+Add the appropriate URL for your region to your AI client to get started. Choose your client below.
 
 <Tabs>
   <Tab title="Claude (claude.ai)">
@@ -21,6 +26,7 @@ Add this URL to your AI client to get started. Choose your client below.
     ```
     https://mcp.birdeye.com/mcp
     ```
+    <Note>EU accounts: use `https://mcp-eu.birdeye.com/mcp` instead.</Note>
 
     <img src="/images/quickstart-claude.png" alt="Claude Add custom connector dialog with Birdeye name and MCP URL filled in" />
 
@@ -36,6 +42,7 @@ Add this URL to your AI client to get started. Choose your client below.
        ```
        https://mcp.birdeye.com/mcp
        ```
+       <Note>EU accounts: use `https://mcp-eu.birdeye.com/mcp` instead.</Note>
     5. Choose Authentication as **OAuth**
     6. Check **I understand and want to continue** → click **Create**
 
@@ -47,7 +54,8 @@ Add this URL to your AI client to get started. Choose your client below.
   <Tab title="Other MCP Clients">
     Any client that supports MCP over **Streamable HTTP** can connect to Birdeye.
 
-    **Server URL**: `https://mcp.birdeye.com/mcp`  
+    **Server URL (Global)**: `https://mcp.birdeye.com/mcp`  
+    **Server URL (EU)**: `https://mcp-eu.birdeye.com/mcp`  
     **Transport**: Streamable HTTP (stateless sessions)  
     **Auth**: OAuth 2.0 with Dynamic Client Registration
 
