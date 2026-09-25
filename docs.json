@@ -520,7 +520,18 @@
                   "api/insight-ai/overview",
                   "api/insight-ai/get-insight-experience-score-benchmark",
                   "api/insight-ai/get-insight-experience-location-info",
-                  "api/insight-ai/get-insight-experience-over-time"
+                  "api/insight-ai/get-insight-experience-location-info-rank",
+                  "api/insight-ai/get-insight-experience-over-time",
+                  "api/insight-ai/get-insight-sentiment-score-benchmark",
+                  "api/insight-ai/get-insight-sentiment-location-info",
+                  "api/insight-ai/get-insight-sentiment-location-info-rank",
+                  "api/insight-ai/get-insight-sentiment-over-time",
+                  "api/insight-ai/get-insight-sentiment-category",
+                  "api/insight-ai/get-insight-reputation-score-benchmark",
+                  "api/insight-ai/get-insight-reputation-location-info",
+                  "api/insight-ai/get-insight-reputation-location-info-rank",
+                  "api/insight-ai/get-insight-reputation-over-time",
+                  "api/insight-ai/get-insight-reputation-source"
                 ],
                 "icon": "lightbulb"
               },

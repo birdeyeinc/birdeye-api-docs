@@ -19096,6 +19096,2507 @@ paths:
                 - Region2
               groupByLevel: Region
               userEmail: example@birdeye.com
+  "/v1/insight/experience/locationInfo/rank":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Apiary_getInsightExperienceLocationInfo_Response200"
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 149546078883527
+                  name: 194 - Greywolf Veterinary Hospital
+                  experienceScore: 93.1
+                  listingScore: 86.7
+                  sentimentScore: 96.2
+                  reputationScore: 93.8
+                  experienceDeltaScore: 93
+                  listingDeltaScore: 86
+                  sentimentDeltaScore: 96
+                  reputationDeltaScore: 93
+                  experienceDelta: 0.1
+                  listingDelta: 0.7
+                  reputationDelta: 0.8
+                  sentimentDelta: 0.2
+                - id: 149546078886677
+                  name: The animal hospital
+                  experienceScore: 87.3
+                  listingScore: 80.9
+                  sentimentScore: 90.0
+                  reputationScore: 88.8
+                  experienceDeltaScore: 87
+                  listingDeltaScore: 80
+                  sentimentDeltaScore: 90
+                  reputationDeltaScore: 88
+                  experienceDelta: -0.2
+                  listingDelta: -0.1
+                  reputationDelta: 0.3
+                  sentimentDelta: 0.1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email:
+                  value:
+                    code: 2003
+                    message: "userEmail is mandatory"
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Experience Location Info Rank
+      operationId: getInsightExperienceLocationInfoRank
+      description: Insight Experience Location Info Rank API retrieves the top or
+        bottom performing business locations ranked by experience score, for specified
+        business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: type
+        in: query
+        description: Ranking type. `top` returns the highest experience-score locations
+          first; `bottom` returns the lowest experience-score locations first.
+        required: false
+        example: top
+        schema:
+          type: string
+          enum:
+          - top
+          - bottom
+          default: top
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
+  "/v1/insight/sentiment/scoreBenchmark":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actual:
+                    type: object
+                    properties:
+                      score:
+                        type: number
+                        description: Actual sentiment score
+                      industryScore:
+                        type: number
+                        description: Industry benchmark sentiment score
+                    description: Current performance metrics
+              example:
+                actual:
+                  score: 83.2
+                  industryScore: 89.7
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Sentiment Score Benchmark
+      operationId: getInsightSentimentScoreBenchmark
+      description: Insight Sentiment Score Benchmark API retrieves the actual sentiment
+        score compared against the industry benchmark for specified business locations
+        and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+  "/v1/insight/sentiment/locationInfo":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        mentions:
+                          type: integer
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 149546078883527
+                  name: 194 - Greywolf Veterinary Hospital
+                  score: 96.2
+                  mentions: 120
+                - id: 149546078886677
+                  name: The animal hospital
+                  score: 90.0
+                  mentions: 87
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_user_email_invalid:
+                  value:
+                    code: 2003
+                    message: "No user found for userEmail: example@birdeye.com"
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Sentiment Location Info
+      operationId: getInsightSentimentLocationInfo
+      description: Insight Sentiment Location Info API retrieves location-wise sentiment
+        scores and mention counts for specified business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          - sentiment-score
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
+  "/v1/insight/sentiment/locationInfo/rank":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        mentions:
+                          type: integer
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 149546078883527
+                  name: 194 - Greywolf Veterinary Hospital
+                  score: 96.2
+                  mentions: 120
+                - id: 149546078886677
+                  name: The animal hospital
+                  score: 90.0
+                  mentions: 87
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Sentiment Location Info Rank
+      operationId: getInsightSentimentLocationInfoRank
+      description: Insight Sentiment Location Info Rank API retrieves the top or
+        bottom performing business locations ranked by sentiment score, for specified
+        business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: type
+        in: query
+        description: Ranking type. `top` returns the highest sentiment-score locations
+          first; `bottom` returns the lowest sentiment-score locations first.
+        required: false
+        example: top
+        schema:
+          type: string
+          enum:
+          - top
+          - bottom
+          default: top
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
+  "/v1/insight/sentiment/over-time":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groupByType:
+                    type: string
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startDate:
+                          type: string
+                        endDate:
+                          type: string
+                        label:
+                          type: string
+                        shortLabel:
+                          type: string
+                        mentions:
+                          type: integer
+                        score:
+                          type: number
+              example:
+                groupByType: month
+                dataPoints:
+                - startDate: 05/01/2026
+                  endDate: 05/31/2026
+                  label: May 2026
+                  shortLabel: May '26
+                  mentions: 340
+                  score: 90.0
+                - startDate: 06/01/2026
+                  endDate: 06/30/2026
+                  label: Jun 2026
+                  shortLabel: Jun '26
+                  mentions: 298
+                  score: 92.5
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_group_by:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Sentiment Over Time
+      operationId: getInsightSentimentOverTime
+      description: The Insight Sentiment Over Time API provides a time-series view
+        of sentiment scores and mention counts at the account level, aggregated across
+        configurable time intervals — day, week, month, quarter, or year — enabling
+        trend analysis over custom date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupBy:
+                  type: string
+                  description: Time interval to group results by.
+                  enum:
+                  - day
+                  - week
+                  - month
+                  - quarter
+                  - year
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupBy: month
+  "/v1/insight/sentiment/category":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        mentions:
+                          type: integer
+              example:
+                totalCount: 2
+                dataPoints:
+                - name: Customer Service
+                  score: 58.4
+                  mentions: 87
+                - name: Wait Time
+                  score: 42.1
+                  mentions: 53
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Sentiment Category
+      operationId: getInsightSentimentCategory
+      description: Insight Sentiment Category API retrieves sentiment scores and
+        mention counts broken down by review category (e.g. Customer Service, Wait
+        Time) for specified business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          - sentiment-score
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              userEmail: example@birdeye.com
+  "/v1/insight/reputation/scoreBenchmark":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actual:
+                    type: object
+                    properties:
+                      score:
+                        type: number
+                        description: Actual reputation score
+                      industryScore:
+                        type: number
+                        description: Industry benchmark reputation score
+                    description: Current performance metrics
+              example:
+                actual:
+                  score: 73.2
+                  industryScore: 86.0
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Reputation Score Benchmark
+      operationId: getInsightReputationScoreBenchmark
+      description: Insight Reputation Score Benchmark API retrieves the actual reputation
+        score compared against the industry benchmark for specified business locations
+        and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+  "/v1/insight/reputation/over-time":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groupByType:
+                    type: string
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startDate:
+                          type: string
+                        endDate:
+                          type: string
+                        label:
+                          type: string
+                        shortLabel:
+                          type: string
+                        score:
+                          type: number
+              example:
+                groupByType: month
+                dataPoints:
+                - startDate: 05/01/2026
+                  endDate: 05/31/2026
+                  label: May 2026
+                  shortLabel: May '26
+                  score: 90.0
+                - startDate: 06/01/2026
+                  endDate: 06/30/2026
+                  label: Jun 2026
+                  shortLabel: Jun '26
+                  score: 92.5
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_group_by:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Reputation Over Time
+      operationId: getInsightReputationOverTime
+      description: The Insight Reputation Over Time API provides a time-series view
+        of reputation scores at the account level, aggregated across configurable
+        time intervals — day, week, month, quarter, or year — enabling trend analysis
+        over custom date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupBy:
+                  type: string
+                  description: Time interval to group results by.
+                  enum:
+                  - day
+                  - week
+                  - month
+                  - quarter
+                  - year
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupBy: month
+  "/v1/insight/reputation/locationInfo":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        averageRating:
+                          type: number
+                        reviewCount:
+                          type: number
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 149546078883527
+                  name: 194 - Greywolf Veterinary Hospital
+                  score: 93.8
+                  averageRating: 4.6
+                  reviewCount: 320
+                - id: 149546078886677
+                  name: The animal hospital
+                  score: 88.8
+                  averageRating: 4.4
+                  reviewCount: 210
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_user_email_invalid:
+                  value:
+                    code: 2003
+                    message: "No user found for userEmail: example@birdeye.com"
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Reputation Location Info
+      operationId: getInsightReputationLocationInfo
+      description: Insight Reputation Location Info API retrieves location-wise
+        reputation scores, average ratings, and review counts for specified business
+        locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          - reputation-score
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
+  "/v1/insight/reputation/locationInfo/rank":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        averageRating:
+                          type: number
+                        reviewCount:
+                          type: number
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 149546078883527
+                  name: 194 - Greywolf Veterinary Hospital
+                  score: 93.8
+                  averageRating: 4.6
+                  reviewCount: 320
+                - id: 149546078886677
+                  name: The animal hospital
+                  score: 88.8
+                  averageRating: 4.4
+                  reviewCount: 210
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Reputation Location Info Rank
+      operationId: getInsightReputationLocationInfoRank
+      description: Insight Reputation Location Info Rank API retrieves the top or
+        bottom performing business locations ranked by reputation score, for specified
+        business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: type
+        in: query
+        description: Ranking type. `top` returns the highest reputation-score locations
+          first; `bottom` returns the lowest reputation-score locations first.
+        required: false
+        example: top
+        schema:
+          type: string
+          enum:
+          - top
+          - bottom
+          default: top
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupByLevel:
+                  type: string
+                  description: The level to group results by (e.g. Region).
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+                - userEmail
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupByLevel: Region
+              userEmail: example@birdeye.com
+  "/v1/insight/reputation/source":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        averageRating:
+                          type: number
+                        reviewCount:
+                          type: number
+              example:
+                totalCount: 2
+                dataPoints:
+                - name: Google
+                  score: 93.8
+                  averageRating: 4.6
+                  reviewCount: 210
+                - name: Facebook
+                  score: 88.8
+                  averageRating: 4.4
+                  reviewCount: 95
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Reputation Source
+      operationId: getInsightReputationSource
+      description: Insight Reputation Source API retrieves reputation scores, average
+        ratings, and review counts broken down by review source (e.g. Google, Facebook)
+        for specified business locations and date ranges.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          - reputation-score
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                startDate:
+                  type: string
+                  description: Start date in MM/DD/YYYY format.
+                endDate:
+                  type: string
+                  description: End date in MM/DD/YYYY format.
+                reviewSources:
+                  type: array
+                  description: Review sources to include (e.g. Google, Facebook).
+                  items:
+                    type: string
+                ratings:
+                  type: array
+                  description: Rating values to filter (e.g. "1", "2", "3", "4", "5").
+                  items:
+                    type: string
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+              required:
+                - businessNumbers
+                - startDate
+                - endDate
+            example:
+              reviewSources:
+              - Google
+              - Facebook
+              - CitySearch
+              ratings:
+              - '0'
+              - '1'
+              - '3'
+              - '4'
+              - '5'
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              startDate: 02/25/2025
+              endDate: 02/01/2026
   "/v1/qna/question/create":
     post:
       responses:
