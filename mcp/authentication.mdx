@@ -1,5 +1,5 @@
 ---
-title: "Authentication"
+title: "Authentication and Rate limiting"
 description: "The Birdeye MCP Server uses OAuth 2.0 to authenticate requests. No API keys or manual token management required."
 ---
 
@@ -68,3 +68,13 @@ No write access to your Birdeye account is requested or granted. All tools are *
 ## Revoking Access
 
 To revoke access, disconnect the integration from your AI client's settings. Your Birdeye account data is not affected.
+
+## Token Lifecycle
+
+- Access tokens and refresh tokens expire in 7 days
+- Tokens are scoped to the authenticated Birdeye business at issuance
+- Deactivating a user account revokes their tokens
+
+## Rate Limits
+
+Birdeye enforces a rate limit of 50 requests per minute on the MCP Server to prevent excessive or abusive traffic from a single user's IP address and to ensure fair usage and service stability.
