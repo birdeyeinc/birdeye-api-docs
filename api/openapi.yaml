@@ -34812,9 +34812,11 @@ components:
       properties:
         locationsNumberAccess:
           type: array
-          description: Location Numbers list of which the user has access. Must provide
-            full list each time, empty list grants access to all locations.
-          items: {}
+          description: Complete list of integer location numbers the user can access.
+            Pass an empty list to grant access to all locations.
+          example: []
+          items:
+            type: integer
         user:
           type: object
           properties:
