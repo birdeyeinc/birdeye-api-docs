@@ -1758,7 +1758,8 @@ paths:
                                       type: string
                                     child:
                                       type: array
-                                      items: {}
+                                      items:
+                                        type: object
                   parents:
                     type: array
                     items:
@@ -1786,10 +1787,12 @@ paths:
                           nullable: true
                         child:
                           type: array
-                          items: {}
+                          items:
+                            type: object
                         parents:
                           type: array
-                          items: {}
+                          items:
+                            type: object
                 example:
                   id: 143424324234234
                   name: Psychiatry
@@ -2900,7 +2903,8 @@ paths:
                     description: Whether the custom field will be filterable or not.
                   dropDownOptions:
                     type: array
-                    items: {}
+                    items:
+                      type: object
                     description: The list of options in custom field and will only
                       be visible if value is present.
               example:
@@ -4292,21 +4296,24 @@ paths:
                 ratings:
                   type: array
                   description: Review rating Possible values 0,1,2,3,4,5.
-                  items: {}
+                  items:
+                    type: integer
                 searchStr:
                   type: string
                   description: String that is contained by review.
                 subBusinessIds:
                   type: array
                   description: BusinessIds under enterprise account.
-                  items: {}
+                  items:
+                    type: integer
                 statuses:
                   type: array
                   description: Review status filter. Valid values are "published",
                     "parked", and "all". If omitted, default is "published" only (featured
                     reviews). "published" refers to featured reviews and "parked"
                     refers to non-featured reviews.
-                  items: {}
+                  items:
+                    type: string
                 allChild:
                   type: boolean
                   description: Get review from all child ignoring merge reviews flag
@@ -4314,7 +4321,8 @@ paths:
                 tags:
                   type: array
                   description: Reviews with assigned tags
-                  items: {}
+                  items:
+                    type: string
                 fetchExtraParams:
                   type: boolean
                   description: To fetch custom field(s) associated with the customer
@@ -4972,7 +4980,8 @@ paths:
                 tags:
                   type: array
                   description: List of tag name.
-                  items: {}
+                  items:
+                    type: string
               example:
                 tags:
                 - positive
@@ -5522,7 +5531,8 @@ paths:
                 tags:
                   type: array
                   description: List of tags to be removed.
-                  items: {}
+                  items:
+                    type: string
               example:
                 tags:
                 - happy
@@ -5942,7 +5952,8 @@ paths:
                   description: List of business Ids. If businessIds are provided,
                     mappings would be deleted from those locations only. If no businessIds
                     are provided, the customer would be deleted from all the locations.
-                  items: {}
+                  items:
+                    type: integer
               required:
               - id
               example:
@@ -6814,7 +6825,8 @@ paths:
                 sources:
                   type: array
                   description: Source of the customer/lead. Possible values are api,dashboard,facebook,integration,sftp,bulkupload,webchat,crmimport,other,referral,voicecall,text,email,google.
-                  items: {}
+                  items:
+                    type: string
                 startDateUtc:
                   type: string
                   description: Start date in format mm/dd/yyyy.
@@ -7846,11 +7858,13 @@ paths:
                 email:
                   type: array
                   description: Customer email ids.
-                  items: {}
+                  items:
+                    type: string
                 phone:
                   type: array
                   description: Customer phone numbers.
-                  items: {}
+                  items:
+                    type: string
                 accountNumber:
                   type: number
                   description: Location id.
@@ -8242,7 +8256,8 @@ paths:
                 customerId:
                   type: array
                   description: List of business ids under a reseller.
-                  items: {}
+                  items:
+                    type: integer
               required:
               - businessId
               - customerId
@@ -8349,7 +8364,8 @@ paths:
                   aliases:
                     type: array
                     description: List of source aliases.
-                    items: {}
+                    items:
+                      type: string
               example:
                 aliases:
                 - Google
@@ -9647,11 +9663,13 @@ paths:
                 sourceAliases:
                   type: array
                   description: List of source aliases.
-                  items: {}
+                  items:
+                    type: string
                 businessNumbers:
                   type: array
                   description: List of business number.
-                  items: {}
+                  items:
+                    type: string
                 days:
                   type: number
                   description: Use to get results for last some days.
@@ -9933,7 +9951,8 @@ paths:
                 businessNumbers:
                   type: array
                   description: Business Numbers under enterprise account.
-                  items: {}
+                  items:
+                    type: integer
                 sourceAlias:
                   type: string
                   description: Alias of the source.
@@ -10219,11 +10238,13 @@ paths:
                 reviewSites:
                   type: array
                   description: List of Souce Ids.
-                  items: {}
+                  items:
+                    type: string
                 businessNumbers:
                   type: array
                   description: List of business numbers.
-                  items: {}
+                  items:
+                    type: string
               example:
                 startDate: 04/01/2013
                 endDate: 05/3/2015
@@ -10690,11 +10711,13 @@ paths:
                 reviewSites:
                   type: array
                   description: List of Souce Ids.
-                  items: {}
+                  items:
+                    type: string
                 businessNumbers:
                   type: array
                   description: List of business numbers.
-                  items: {}
+                  items:
+                    type: string
               example:
                 startDate: 10/08/2019
                 endDate: 01/15/2020
@@ -11484,11 +11507,13 @@ paths:
                 reviewSites:
                   type: array
                   description: List of review sites.
-                  items: {}
+                  items:
+                    type: integer
                 ratings:
                   type: array
                   description: List of ratings.
-                  items: {}
+                  items:
+                    type: integer
                 days:
                   type: number
                   description: Use to get results for last some days.
@@ -14678,7 +14703,8 @@ paths:
                 mediaIds:
                   type: array
                   description: List of Media Ids to be deleted.
-                  items: {}
+                  items:
+                    type: string
               required:
               - mediaIds
               example:
@@ -15202,7 +15228,8 @@ paths:
                   description: List of location ids for which this post should be
                     deleted. If list contains a location which is not part of the
                     post, then no action will be taken for that location.
-                  items: {}
+                  items:
+                    type: integer
               required:
               - trackingId
               - subBusinessNumbers
@@ -16521,7 +16548,8 @@ paths:
                   events:
                     type: array
                     description: A list of event names that should trigger this webhook.
-                    items: {}
+                    items:
+                      type: string
                   businessId:
                     type: number
                     description: A unique ID generated by the Birdeye platform that
@@ -17509,20 +17537,23 @@ paths:
                 ratings:
                   type: array
                   description: Review rating Possible values 0,1,2,3,4,5.
-                  items: {}
+                  items:
+                    type: integer
                 searchStr:
                   type: string
                   description: String that is contained by review.
                 subBusinessIds:
                   type: array
                   description: BusinessIds under enterprise account.
-                  items: {}
+                  items:
+                    type: integer
                 statuses:
                   type: array
                   description: Review status. Valid values are "published","parked","all".
                     Default is "published" only. Status “published” refers to featured
                     reviews, while “parked” refers to non-featured reviews.
-                  items: {}
+                  items:
+                    type: string
               example:
                 fromDate: 04/01/2013
                 toDate: 05/3/2015
@@ -18174,7 +18205,8 @@ paths:
                   type: array
                   description: Location numbers of enterprise locations. If empty
                     all valid enterprise locations will be selected.
-                  items: {}
+                  items:
+                    type: integer
                 fromDate:
                   type: string
                   description: Start date for the analysis period.
@@ -18184,15 +18216,18 @@ paths:
                 sources:
                   type: array
                   description: Aggregation sources.
-                  items: {}
+                  items:
+                    type: string
                 brandIds:
                   type: array
                   description: Filter by specific competitor brand id.
-                  items: {}
+                  items:
+                    type: integer
                 competitorLocationIds:
                   type: array
                   description: Filter by specific competitor location IDs.
-                  items: {}
+                  items:
+                    type: integer
               example:
                 businessNumbers: []
                 fromDate: 04/01/2024
@@ -18368,7 +18403,8 @@ paths:
                   type: array
                   description: Location numbers of enterprise locations. If empty
                     all valid enterprise locations will be selected.
-                  items: {}
+                  items:
+                    type: integer
                 fromDate:
                   type: string
                   description: Start date for the analysis period.
@@ -18378,16 +18414,19 @@ paths:
                 sources:
                   type: array
                   description: Aggregation sources.
-                  items: {}
+                  items:
+                    type: string
                 brandIds:
                   type: array
                   description: Filter by specific competitor brand IDs. Maximum 5
                     brand IDs are allowed.
-                  items: {}
+                  items:
+                    type: integer
                 competitorLocationIds:
                   type: array
                   description: Filter by specific competitor location IDs.
-                  items: {}
+                  items:
+                    type: integer
               example:
                 businessNumbers: []
                 fromDate: 04/01/2024
@@ -23570,7 +23609,8 @@ paths:
                 serviceIds:
                   type: array
                   description: List of unique service identifier
-                  items: {}
+                  items:
+                    type: string
               required:
               - serviceIds
               example:
@@ -23838,7 +23878,8 @@ paths:
                 service_id:
                   type: array
                   description: List of unique service identifier
-                  items: {}
+                  items:
+                    type: string
               required:
               - category_name
               - service_id
@@ -24008,7 +24049,8 @@ paths:
                   description: "[OPTIONAL] Business numbers of locations under enterprise.
                     If not assigned, all valid QnA assigned in the enterprise will
                     be selected."
-                  items: {}
+                  items:
+                    type: integer
               example:
                 businessNumbers:
                 - 175009059995828
@@ -24745,7 +24787,8 @@ paths:
                 properties:
                   Accessibility:
                     type: array
-                    items: {}
+                    items:
+                      type: object
                     description: This is dynamic field. Depends upon request inputs.
               example:
                 crossbusiness.family_kids:
@@ -24863,7 +24906,8 @@ paths:
                 properties:
                   Accessibility:
                     type: array
-                    items: {}
+                    items:
+                      type: object
                     description: This is dynamic field. Depends upon request inputs.
               example:
               - id: quicklinks.parking_available_parking
@@ -26129,7 +26173,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: {}
+                items:
+                  type: string
         '400':
           description: Bad Request
           content:
@@ -26366,13 +26411,15 @@ paths:
                 selectedMonth:
                   type: array
                   description: Filter months for which keyword data is required
-                  items: {}
+                  items:
+                    type: string
                 selectedkeywords:
                   type: array
                   description: 'Gives you keyword count for the selected keywords.
                     keywordsSearch: To search by keywords that may also exist in search
                     phrases, including the keyword itself.'
-                  items: {}
+                  items:
+                    type: string
                 keywordsSearch:
                   type: string
                   description: To search by keywords that may also exist in search
@@ -26392,7 +26439,8 @@ paths:
                 businessNumbers:
                   type: array
                   description: list of the unique business ids associated with a business.
-                  items: {}
+                  items:
+                    type: integer
               required:
               - selectedMonth
               example:
@@ -26686,7 +26734,8 @@ paths:
                   type: array
                   description: Location numbers of enterprise locations. If empty
                     all valid enterprise locations will be selected.
-                  items: {}
+                  items:
+                    type: integer
               example:
                 businessNumbers:
                 - 175009059995828
@@ -27282,7 +27331,8 @@ paths:
                   type: array
                   description: Location numbers of enterprise locations. If empty
                     all valid enterprise locations will be selected.
-                  items: {}
+                  items:
+                    type: integer
                 title:
                   type: string
                   description: Product title.
@@ -27294,7 +27344,8 @@ paths:
                 additionalImageLinks:
                   type: array
                   description: Additional public image URLs.
-                  items: {}
+                  items:
+                    type: string
                 brandName:
                   type: string
                 googleProductCategoryId:
@@ -27325,7 +27376,8 @@ paths:
                 productTypes:
                   type: array
                   description: Product categorization keywords.
-                  items: {}
+                  items:
+                    type: string
                 productUrl:
                   type: string
                   description: implant (string, optional)
@@ -27416,7 +27468,8 @@ paths:
                     type: string
                   additionalImageLinks:
                     type: array
-                    items: {}
+                    items:
+                      type: string
                   videoUrl:
                     type: string
                   brandName:
@@ -27432,7 +27485,8 @@ paths:
                         type: string
                   productTypes:
                     type: array
-                    items: {}
+                    items:
+                      type: string
                   salePrice:
                     type: object
                     properties:
@@ -27647,7 +27701,8 @@ paths:
                 productIds:
                   type: array
                   description: IDs to delete.
-                  items: {}
+                  items:
+                    type: string
               required:
               - productIds
               example:
@@ -27804,12 +27859,14 @@ paths:
                 status:
                   type: array
                   description: Filter by status.
-                  items: {}
+                  items:
+                    type: string
                 businessNumbers:
                   type: array
                   description: Location numbers of enterprise locations. If empty
                     all valid enterprise locations will be selected.
-                  items: {}
+                  items:
+                    type: integer
               example:
                 search: Dental
                 status:
@@ -30362,7 +30419,8 @@ components:
               reviewSites:
                 type: array
                 description: List of Souce Ids.
-                items: {}
+                items:
+                  type: string
             example:
               startDate: 10/08/2019
               endDate: 01/15/2020
@@ -30383,11 +30441,13 @@ components:
               sourceAliases:
                 type: array
                 description: List of source aliases.
-                items: {}
+                items:
+                  type: string
               businessNumbers:
                 type: array
                 description: List of business number.
-                items: {}
+                items:
+                  type: string
               months:
                 type: number
                 description: Use to get results for last some months.
@@ -30441,7 +30501,8 @@ components:
                   Like opted-out to get email and text optouts, and blocked for contacts
                   getting blocked. If not provided, only opted-out updates will be
                   returned, by default.
-                items: {}
+                items:
+                  type: string
             required:
             - start
             - end
@@ -30461,15 +30522,18 @@ components:
               reviewSources:
                 type: array
                 description: Review sources to include.
-                items: {}
+                items:
+                  type: string
               ratings:
                 type: array
                 description: Rating values to filter.
-                items: {}
+                items:
+                  type: string
               businessNumbers:
                 type: array
                 description: List of business numbers (max 100).
-                items: {}
+                items:
+                  type: integer
               startDate:
                 type: string
                 description: Start date in MM/DD/YYYY format.
@@ -30534,15 +30598,18 @@ components:
               reviewSites:
                 type: array
                 description: List of review site IDs.
-                items: {}
+                items:
+                  type: integer
               ratings:
                 type: array
                 description: Ratings to include in the report.
-                items: {}
+                items:
+                  type: string
               businessNumbers:
                 type: array
                 description: List of business numbers.
-                items: {}
+                items:
+                  type: integer
               startDate:
                 type: string
                 description: Start date in `MM/dd/YYYY` format.
@@ -30612,7 +30679,8 @@ components:
             properties:
               productIds:
                 type: array
-                items: {}
+                items:
+                  type: string
             required:
             - productIds
             example:
@@ -33967,7 +34035,8 @@ components:
         languages:
           type: array
           description: Language.
-          items: {}
+          items:
+            type: string
         isServiceAreaProvider:
           type: string
           description: 'To select whether the business is Service Area Business Type.
@@ -34153,7 +34222,8 @@ components:
         languages:
           type: array
           description: Language.
-          items: {}
+          items:
+            type: string
         isServiceAreaProvider:
           type: string
           description: 'To select whether the business is Service Area Business Type.
@@ -34720,7 +34790,8 @@ components:
         dropDownOptions:
           type: array
           description: The list of options in custom field.
-          items: {}
+          items:
+            type: string
         fieldDescription:
           type: string
           description: Description of custom field.
@@ -34757,7 +34828,8 @@ components:
           type: array
           description: The list of options in custom field.The list of options in
             custom field
-          items: {}
+          items:
+            type: string
         fieldDescription:
           type: string
           description: Description of custom field.
@@ -34812,11 +34884,18 @@ components:
       properties:
         locationsNumberAccess:
           type: array
-          description: Complete list of integer location numbers the user can access.
-            Pass an empty list to grant access to all locations.
-          example: []
+          description: Location Numbers list of which the user has access. Each item
+            must be a long business number represented as a string. Must provide the
+            full list each time; an empty list grants access to all locations.
+          example:
+          - '3901784402334'
+          - '3901744402337'
+          x-default:
+          - '3901784402334'
+          - '3901744402337'
           items:
-            type: integer
+            type: string
+            description: Long business number represented as a string.
         user:
           type: object
           properties:
@@ -34911,7 +34990,8 @@ components:
             reviewAlertRatings:
               type: array
               description: Array of review ratings that trigger alerts.
-              items: {}
+              items:
+                type: integer
             messengerEmailConversationType:
               type: string
               description: Comma-separated conversation types for messenger email
@@ -35055,7 +35135,8 @@ components:
           description: List of business numbers to filter the report. If empty, all
             accessible business numbers are considered.
           type: array
-          items: {}
+          items:
+            type: integer
         startDate:
           type: number
           description: Review Start date in milliseconds, pass epoch timestamp.
@@ -35065,7 +35146,8 @@ components:
         sourceAlias:
           type: array
           description: List of review source aliases to include.
-          items: {}
+          items:
+            type: string
         deleteStartDate:
           type: number
           description: Review deletion start date in milliseconds, pass epoch timestamp.
@@ -35075,13 +35157,15 @@ components:
         ratings:
           type: array
           description: Review ratings to filter. Possible values are `0,1,2,3,4,5`.
-          items: {}
+          items:
+            type: integer
         statuses:
           type: array
           description: Review status filter. Valid values are "published", "parked".
             If omitted, default is "published" only (featured reviews). "published"
             refers to featured reviews and "parked" refers to non-featured reviews.
-          items: {}
+          items:
+            type: string
         searchStr:
           type: string
           description: Free-text search term for review content.
@@ -35233,7 +35317,8 @@ components:
       properties:
         reviewIds:
           type: array
-          items: {}
+          items:
+            type: string
           description: List of reviewIds.
         fromDate:
           type: string
@@ -35293,7 +35378,8 @@ components:
       properties:
         reviewIds:
           type: array
-          items: {}
+          items:
+            type: integer
           description: List of reviewIds.
         fromDate:
           type: string
@@ -35383,7 +35469,8 @@ components:
           description: Business Ids under enterprise account. The Business Ids field
             is mandatory while creating a new contact. While updating, if no business
             Ids are provided, the same location mappings are retained.
-          items: {}
+          items:
+            type: integer
         tags:
           type: string
           description: List of tags.
@@ -35579,11 +35666,13 @@ components:
         email:
           type: array
           description: Customer email ids.
-          items: {}
+          items:
+            type: string
         phone:
           type: array
           description: Customer phone numbers.
-          items: {}
+          items:
+            type: string
         accountNumber:
           type: number
           description: Location id.
@@ -35790,11 +35879,13 @@ components:
           description: Business Ids under enterprise account. The Business Ids field
             is mandatory while creating a new contact. While updating, if no business
             Ids are provided, the same location mappings are retained.
-          items: {}
+          items:
+            type: integer
         tags:
           type: array
           description: List of tags
-          items: {}
+          items:
+            type: string
         customFields:
           type: array
           description: List of Custom fields. We currently support 4 types of customfields
@@ -36073,7 +36164,8 @@ components:
                   xxx-xxxx.
               optOutFrom:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: Categories from which the contact has opted out (e.g.,
                   marketing, feedback, service).
         textOptOut:
@@ -36101,7 +36193,8 @@ components:
                   xxx-xxxx.
               optOutFrom:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: Categories from which the contact has opted out (e.g.,
                   marketing, feedback, service).
         blocked:
@@ -36129,7 +36222,8 @@ components:
                   xxx-xxxx.
               optOutFrom:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: Categories from which the contact has opted out (e.g.,
                   marketing, feedback, service).
     Apiary_getAllAggregationSource_Response200:
@@ -36360,7 +36454,8 @@ components:
         businessNumbers:
           type: array
           description: Business Numbers under enterprise account.
-          items: {}
+          items:
+            type: integer
         sourceAlias:
           type: string
           description: Alias of the source.
@@ -36806,7 +36901,6 @@ components:
                 properties:
                   label:
                     type: string
-                    items: {}
                     description: Display label for the bucket.
                   shortLabel:
                     type: string
@@ -36843,7 +36937,6 @@ components:
                 properties:
                   label:
                     type: string
-                    items: {}
                     description: Comparison label for the bucket.
                   shortLabel:
                     type: string
@@ -37435,7 +37528,8 @@ components:
         subBusinessNumbers:
           type: array
           description: List of Location Ids. Optional for SMB.
-          items: {}
+          items:
+            type: integer
         scheduleTimestamp:
           type: number
           description: A Unix timestamp in milliseconds that represents the date and
@@ -37503,7 +37597,8 @@ components:
         subBusinessNumbers:
           type: array
           description: List of location ids for which this post should be edited.
-          items: {}
+          items:
+            type: integer
         scheduleTimestamp:
           type: number
           description: A Unix timestamp in milliseconds that represents the date and
@@ -37576,7 +37671,8 @@ components:
           description: List of location ids for which this post should be edited.
             If list contains a location which is not part of the post, then no action
             will be taken for that location.
-          items: {}
+          items:
+            type: integer
       required:
       - trackingId
       - text
@@ -37604,7 +37700,8 @@ components:
         subBusinessNumbers:
           type: array
           description: List of Location Ids. Optional for SMB.
-          items: {}
+          items:
+            type: integer
         socialPostDetails:
           type: array
           description: An array of objects containing post details, including status,
@@ -37650,12 +37747,14 @@ components:
         sourceNames:
           type: array
           description: List of social channels to include in the report.
-          items: {}
+          items:
+            type: string
         businessNumbers:
           description: List of business numbers to filter the report. If empty, all
             accessible business numbers are considered.
           type: array
-          items: {}
+          items:
+            type: integer
         comparisonFilter:
           type: object
           properties:
@@ -37947,7 +38046,8 @@ components:
         emails:
           type: array
           description: The email id(s) of the business.
-          items: {}
+          items:
+            type: string
         eventName:
           type: string
           description: Name of the evnet to be subscribed
@@ -38003,7 +38103,8 @@ components:
           type: array
           description: A list of event name strings from the list of available events
             that should trigger this webhook. Possible values are
-          items: {}
+          items:
+            type: string
         endpoint:
           type: string
           description: The webhook endpoint URL on your server on which webhook requests
@@ -38356,7 +38457,8 @@ components:
           sources:
             type: array
             description: Aggregation sources.
-            items: {}
+            items:
+              type: string
           timePeriodSelected:
             type: string
             description: 'For all time : all.'
@@ -38369,7 +38471,8 @@ components:
           competitors:
             type: array
             description: List of competitors
-            items: {}
+            items:
+              type: object
       type: object
       properties:
         sourceType:
@@ -38377,7 +38480,8 @@ components:
           description: Type of source e.g. review [by default] or social.
         sources:
           type: array
-          items: {}
+          items:
+            type: string
           description: Aggregation sources.
         timePeriodSelected:
           type: string
@@ -38399,7 +38503,8 @@ components:
                   of Enterprise Business API].
               compAccountIds:
                 type: array
-                items: {}
+                items:
+                  type: integer
                 description: Locations Ids of competitor account [compAccountIds in
                   Child Business of Competitor API].
           description: List of competitors
@@ -38412,7 +38517,8 @@ components:
         sources:
           type: array
           description: Aggregation sources.
-          items: {}
+          items:
+            type: string
         timePeriodSelected:
           type: string
           description: 'For all time : all.'
@@ -38434,7 +38540,8 @@ components:
                   of Enterprise Business API].
               compAccountIds:
                 type: array
-                items: {}
+                items:
+                  type: integer
                 description: Locations Ids of competitor account [compAccountIds in
                   Child Business of Competitor API].
         topThm:
@@ -38478,7 +38585,8 @@ components:
           description: Name of Enterprise.
         themes:
           type: array
-          items: {}
+          items:
+            type: string
           description: List of Themes.
         occr:
           type: number
@@ -38554,7 +38662,8 @@ components:
                 description: Name of Enterprise.
               themes:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: List of Themes.
               occr:
                 type: number
@@ -38620,7 +38729,8 @@ components:
         sources:
           type: array
           description: Aggregation sources.
-          items: {}
+          items:
+            type: string
         timePeriodSelected:
           type: string
           description: 'For all time : all.'
@@ -38642,7 +38752,8 @@ components:
                   of Enterprise Business API].
               compAccountIds:
                 type: array
-                items: {}
+                items:
+                  type: integer
                 description: Locations Ids of competitor account [compAccountIds in
                   Child Business of Competitor API].
         topKW:
@@ -38690,7 +38801,8 @@ components:
           description: Name of Enterprise
         keywords:
           type: array
-          items: {}
+          items:
+            type: string
           description: List of keywords.
         ct:
           type: number
@@ -38748,7 +38860,8 @@ components:
                 description: Name of Enterprise
               keywords:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: List of keywords.
               ct:
                 type: number
@@ -39195,7 +39308,8 @@ components:
                   etc.
               businessNumbers:
                 type: array
-                items: {}
+                items:
+                  type: integer
                 description: Array of location/business numbers, if specific.
           description: List of QnA objects.
     Apiary_getLocationStatusReport_Response200:
@@ -39264,7 +39378,8 @@ components:
           description: Message to initiate publish locations listings.
         errors:
           type: array
-          items: {}
+          items:
+            type: string
           description: List of Error messages in case of Not Published state if exists.
         sites:
           type: array
@@ -39283,7 +39398,8 @@ components:
                 description: Location source link.
               errors:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: Possible errors would be come when status of directory
                   is 'Action Required'
           description: List of location status.
@@ -39294,7 +39410,8 @@ components:
           type: array
           description: Location numbers of enterprise locations. If empty all valid
             enterprise locations will be selected.
-          items: {}
+          items:
+            type: integer
         startDate:
           type: string
           description: 'Start Date, Format: yyyy-MM-dd.'
@@ -39306,7 +39423,8 @@ components:
           description: for mobile or desktop or both (if none is provided then data
             for both will be displayed) Example “Desktop”, ”Mobile”
           type: array
-          items: {}
+          items:
+            type: string
       required:
       - viewMode
       example:
@@ -39324,7 +39442,8 @@ components:
           type: array
           description: Location numbers of enterprise locations. If empty all valid
             enterprise locations will be selected.
-          items: {}
+          items:
+            type: integer
         startDate:
           type: string
           description: 'Start Date, Format: yyyy-MM-dd.'
@@ -39337,7 +39456,8 @@ components:
           description: is data required for mobile or desktop or both (if none is
             provided then data for both will be displayed)
           type: array
-          items: {}
+          items:
+            type: string
         groupByType:
           type: string
           description: Group the data accordingly. The default value will be the week.
@@ -39510,7 +39630,8 @@ components:
             languages:
               type: array
               description: Languages.
-              items: {}
+              items:
+                type: string
             moreHours:
               description: 'Google more hours for specific services you offer such
                 as delivery, takeout, drive-through, and pickup (see: Supported More
@@ -39519,7 +39640,8 @@ components:
                 supported more hours type api.  NOTE: In more hours, day 0 denotes
                 Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             appleMoreHours:
               description: 'Apple more hours for specific services you offer such
                 as Dining, Bar and Delivery. Apple more hours can only be added if
@@ -39528,7 +39650,8 @@ components:
                 apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …,
                 day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             wholeWeekOperating:
               type: number
               description: Whether your business is open 24/7, Possible Values - 0
@@ -39649,7 +39772,8 @@ components:
                     + Credit Card
                     + Discover
               type: array
-              items: {}
+              items:
+                type: string
             additionalPaymentTypes:
               type: string
               description: Additional Payment Type (Max 250 character long).
@@ -39738,7 +39862,8 @@ components:
             bingCategories:
               description: You can add a maximum of up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             bingPhoneNumber:
               type: string
               description: You can provide a phone number which will be pushed only
@@ -39765,7 +39890,8 @@ components:
             subCategories:
               description: You can add up to 3 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             displayCategory:
               type: string
               description: Choose one of the category either from primary category
@@ -39784,7 +39910,8 @@ components:
             categories:
               description: You can add up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             facebookDescription:
               type: string
               description: About/Bio description for your business page. Facebook
@@ -39818,7 +39945,8 @@ components:
             additionalCategories:
               description: You can add up to 9 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             googleDescription:
               type: string
               description: An ‘about your business’ description. Google description
@@ -39889,7 +40017,8 @@ components:
                 for your business. Please pass an acceptable category name/ id by
                 first getting the approved list using the Get category API.
               type: array
-              items: {}
+              items:
+                type: string
             appleLocationAttributes:
               type: object
               properties: {}
@@ -39966,7 +40095,8 @@ components:
               description: This is the doctor specific category your business belongs
                 to. Please refer to the sheet "Doctor Specific Categories" to get
                 the possible values.
-              items: {}
+              items:
+                type: string
             isProvider:
               type: boolean
               description: If provider then select value true. If practice then select
@@ -40535,7 +40665,8 @@ components:
             languages:
               type: array
               description: Languages.
-              items: {}
+              items:
+                type: string
             moreHours:
               description: 'Google more hours for specific services you offer such
                 as delivery, takeout, drive-through, and pickup (see: Supported More
@@ -40544,7 +40675,8 @@ components:
                 supported more hours type api. NOTE: In more hours, day 0 denotes
                 Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             appleMoreHours:
               description: 'Apple more hours for specific services you offer such
                 as Dining, Bar and Delivery. Apple more hours can only be added if
@@ -40553,7 +40685,8 @@ components:
                 apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …,
                 day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             wholeWeekOperating:
               type: number
               description: Whether your business is open 24/7, Possible Values - 0
@@ -40674,7 +40807,8 @@ components:
                     + Credit Card
                     + Discover
               type: array
-              items: {}
+              items:
+                type: string
             additionalPaymentTypes:
               type: string
               description: Additional Payment Type (Max 250 character long).
@@ -40763,7 +40897,8 @@ components:
             bingCategories:
               description: You can add a maximum of up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             bingPhoneNumber:
               type: string
               description: You can provide a phone number which will be pushed only
@@ -40790,7 +40925,8 @@ components:
             subCategories:
               description: You can add up to 3 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             displayCategory:
               type: string
               description: Choose one of the category either from primary category
@@ -40809,7 +40945,8 @@ components:
             categories:
               description: You can add up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             facebookDescription:
               type: string
               description: About/Bio description for your business page. Facebook
@@ -40843,7 +40980,8 @@ components:
             additionalCategories:
               description: You can add up to 9 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             googleDescription:
               type: string
               description: An ‘about your business’ description. Google description
@@ -40914,7 +41052,8 @@ components:
                 for your business. Please pass an acceptable category name/ id by
                 first getting the approved list using the Get category API.
               type: array
-              items: {}
+              items:
+                type: string
             appleLocationAttributes:
               type: object
               properties: {}
@@ -40991,7 +41130,8 @@ components:
               description: This is the doctor specific category your business belongs
                 to. Please refer to the sheet "Doctor Specific Categories" to get
                 the possible values.
-              items: {}
+              items:
+                type: string
             isProvider:
               type: boolean
               description: If provider then select value true. If practice then select
@@ -41559,7 +41699,8 @@ components:
             languages:
               type: array
               description: Languages.
-              items: {}
+              items:
+                type: string
             moreHours:
               description: 'Google more hours for specific services you offer such
                 as delivery, takeout, drive-through, and pickup (see: Supported More
@@ -41568,7 +41709,8 @@ components:
                 supported more hours type api. NOTE: In more hours, day 0 denotes
                 Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             appleMoreHours:
               description: 'Apple more hours for specific services you offer such
                 as Dining, Bar and Delivery. Apple more hours can only be added if
@@ -41577,7 +41719,8 @@ components:
                 apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …,
                 day 6 denotes Sunday.'
               type: array
-              items: {}
+              items:
+                type: object
             wholeWeekOperating:
               type: number
               description: Whether your business is open 24/7, Possible Values - 0
@@ -41698,7 +41841,8 @@ components:
                     + Credit Card
                     + Discover
               type: array
-              items: {}
+              items:
+                type: string
             additionalPaymentTypes:
               type: string
               description: Additional Payment Type (Max 250 character long).
@@ -41787,7 +41931,8 @@ components:
             bingCategories:
               description: You can add a maximum of up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             bingPhoneNumber:
               type: string
               description: You can provide a phone number which will be pushed only
@@ -41814,7 +41959,8 @@ components:
             subCategories:
               description: You can add up to 3 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             displayCategory:
               type: string
               description: Choose one of the category either from primary category
@@ -41833,7 +41979,8 @@ components:
             categories:
               description: You can add up to 3 categories.
               type: array
-              items: {}
+              items:
+                type: string
             facebookDescription:
               type: string
               description: About/Bio description for your business page. Facebook
@@ -41867,7 +42014,8 @@ components:
             additionalCategories:
               description: You can add up to 9 subcategories.
               type: array
-              items: {}
+              items:
+                type: string
             googleDescription:
               type: string
               description: An ‘about your business’ description. Google description
@@ -41934,14 +42082,16 @@ components:
             additionalCategories:
               description: Additional categories Id for Apple.
               type: array
-              items: {}
+              items:
+                type: string
             primaryCategoryName:
               type: string
               description: Primary category Name for Apple.
             additionalCategoriesNames:
               description: Additional categories Name for Apple.
               type: array
-              items: {}
+              items:
+                type: string
             appleLocationAttributes:
               type: object
               properties: {}
@@ -42015,7 +42165,8 @@ components:
               description: This is the doctor specific category your business belongs
                 to. Please refer to the sheet "Doctor Specific Categories" to get
                 the possible values.
-              items: {}
+              items:
+                type: string
             isProvider:
               type: boolean
               description: If provider then select value true. If practice then select
@@ -42151,7 +42302,8 @@ components:
                   properties:
                     cuisines:
                       type: array
-                      items: {}
+                      items:
+                        type: string
                       description: List of cuisines served
                     labels:
                       type: array
@@ -42210,10 +42362,12 @@ components:
                                           type: number
                                     allergen:
                                       type: array
-                                      items: {}
+                                      items:
+                                        type: string
                                     dietaryRestriction:
                                       type: array
-                                      items: {}
+                                      items:
+                                        type: string
                                     nutritionFacts:
                                       type: object
                                       properties:
@@ -42236,7 +42390,8 @@ components:
                                       type: number
                                     preparationMethods:
                                       type: array
-                                      items: {}
+                                      items:
+                                        type: string
                                     portionSize:
                                       type: object
                                       properties:
@@ -42246,7 +42401,8 @@ components:
                                           type: string
                                     mediaKeys:
                                       type: array
-                                      items: {}
+                                      items:
+                                        type: string
                                 options:
                                   type: array
                                   items:
@@ -42348,7 +42504,8 @@ components:
           type: array
           description: Location numbers of enterprise locations. If empty all valid
             enterprise locations will be selected.
-          items: {}
+          items:
+            type: integer
         title:
           type: string
           description: Product title.
@@ -42360,7 +42517,8 @@ components:
         additionalImageLinks:
           type: array
           description: Additional public image URLs.
-          items: {}
+          items:
+            type: string
         brandName:
           type: string
         googleProductCategoryId:
@@ -42394,7 +42552,8 @@ components:
         productTypes:
           type: array
           description: Product categorization keywords.
-          items: {}
+          items:
+            type: string
         productUrl:
           type: string
           description: implant (string, optional)
@@ -42510,7 +42669,8 @@ components:
                 type: string
               additionalImageLinks:
                 type: array
-                items: {}
+                items:
+                  type: string
               videoUrl:
                 type: string
               brandName:
@@ -42526,7 +42686,8 @@ components:
                     type: string
               productTypes:
                 type: array
-                items: {}
+                items:
+                  type: string
               salePrice:
                 type: object
                 properties:
@@ -42820,11 +42981,13 @@ components:
         assignees:
           type: array
           description: List of assignee email id.
-          items: {}
+          items:
+            type: string
         businessNumbers:
           type: array
           description: List of Location Business Numbers.
-          items: {}
+          items:
+            type: integer
         fromDate:
           type: number
           description: Epoc start date.
@@ -42834,23 +42997,28 @@ components:
         sourceAliases:
           type: array
           description: Source alias.
-          items: {}
+          items:
+            type: string
         sourceTypes:
           type: array
           description: Source Type.
-          items: {}
+          items:
+            type: string
         tagNames:
           type: array
           description: Tag assigned to any review ticket.
-          items: {}
+          items:
+            type: string
         ticketStatuses:
           type: array
           description: Filter tickets with status.
-          items: {}
+          items:
+            type: string
         ticketTypes:
           type: array
           description: List of ticket type, Possible values
-          items: {}
+          items:
+            type: string
       example:
         assignees: []
         businessNumbers: []
@@ -42926,7 +43094,8 @@ components:
                 description: Type of the ticket.
               tags:
                 type: array
-                items: {}
+                items:
+                  type: string
                 description: List of Ticket tags.
               reporter:
                 type: object
