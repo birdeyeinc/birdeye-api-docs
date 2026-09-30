@@ -302,7 +302,7 @@ paths:
         in: query
         description: Business Email id.
         required: true
-        example: sample@birdeye.com
+        example: test@example.com
         schema:
           type: string
       - name: Accept
@@ -15840,7 +15840,7 @@ paths:
               example:
               - firstName: sachin
                 lastName: birdeye
-                emailId: sachin@birdeye.com
+                emailId: test@example.com
                 phone: ''
                 imageUrl: ''
               - firstName: Kailash
@@ -19134,7 +19134,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/experience/locationInfo/rank":
     post:
       responses:
@@ -19378,7 +19378,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/sentiment/scoreBenchmark":
     post:
       responses:
@@ -19615,7 +19615,7 @@ paths:
                 error_user_email_invalid:
                   value:
                     code: 2003
-                    message: "No user found for userEmail: example@birdeye.com"
+                    message: "No user found for userEmail: test@example.com"
                 error_page_size:
                   value:
                     code: 2003
@@ -19809,7 +19809,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/sentiment/locationInfo/rank":
     post:
       responses:
@@ -20049,7 +20049,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/sentiment/over-time":
     post:
       responses:
@@ -20509,7 +20509,7 @@ paths:
                 levelNames:
                 - Region1
                 - Region2
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/reputation/scoreBenchmark":
     post:
       responses:
@@ -20964,7 +20964,7 @@ paths:
                 error_user_email_invalid:
                   value:
                     code: 2003
-                    message: "No user found for userEmail: example@birdeye.com"
+                    message: "No user found for userEmail: test@example.com"
                 error_page_size:
                   value:
                     code: 2003
@@ -21159,7 +21159,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/reputation/locationInfo/rank":
     post:
       responses:
@@ -21403,7 +21403,7 @@ paths:
                 - Region1
                 - Region2
               groupByLevel: Region
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
   "/v1/insight/reputation/source":
     post:
       responses:
@@ -25723,7 +25723,7 @@ paths:
                       name: Dieci Lifestyle Spa
                       phone: "(973) 716-0007"
                       websiteUrl: http://www.diecispa.org/
-                      emailId: example@birdeye.com
+                      emailId: test@example.com
                       isAddressHidden: 'No'
                       isServiceAreaProvider: 'No'
                       mainBusinessDescription: A cozy neighborhood café serving freshly
@@ -29593,7 +29593,7 @@ paths:
               "$ref": "#/components/schemas/Apiary_createTicket_Request"
             example:
               externalId: 3943351204239963055
-              assignedTo: pranav.singh@birdeye.com
+              assignedTo: test@example.com
               ticketType: review
               customer:
                 emailId: test+4@yopmail.com
@@ -29839,7 +29839,7 @@ paths:
               - assignedTo: steve@ymail.com
                 ticketId: '882382'
                 ticketStatus: assigned
-              userEmail: pranav.singh@birdeye.com
+              userEmail: test@example.com
   "/v1/ticket/{businessNumber}/get/all?":
     post:
       responses:
@@ -29864,7 +29864,7 @@ paths:
                   assignedTo:
                     firstName: Atul
                     lastName: Ghainna
-                    emailId: atulkumar.ghainna@birdeye.com
+                    emailId: test@example.com
                     name: Atul Ghainna
                   business:
                     name: JYSK - Whitby
@@ -29905,7 +29905,7 @@ paths:
                   assignedTo:
                     firstName: April
                     lastName: Dover
-                    emailId: aparna.dass@birdeye.com
+                    emailId: test@example.com
                     name: April Dover
                   business:
                     name: JYSK - Cambridge
@@ -29933,7 +29933,7 @@ paths:
                   assignedTo:
                     firstName: April
                     lastName: Dover
-                    emailId: aparna.dass@birdeye.com
+                    emailId: test@example.com
                     name: April Dover
                   business:
                     name: JYSK - Whitby
@@ -30583,7 +30583,7 @@ components:
                 levelNames:
                 - Region1
                 - Region2
-              userEmail: example@birdeye.com
+              userEmail: test@example.com
     Add_aggregation_URLBody:
       content:
         application/json:
@@ -40191,7 +40191,7 @@ components:
           name: Dieci Lifestyle Spa
           phone: "(973) 716-0007"
           websiteUrl: http://www.diecispa.org/
-          emailId: example@birdeye.com
+          emailId: test@example.com
           isAddressHidden: false
           isServiceAreaProvider: false
           mainBusinessDescription: A cozy neighborhood café serving freshly roasted
@@ -41226,7 +41226,7 @@ components:
           name: Dieci Lifestyle Spa
           phone: "(973) 716-0007"
           websiteUrl: http://www.diecispa.org/
-          emailId: example@birdeye.com
+          emailId: test@example.com
           isAddressHidden: false
           isServiceAreaProvider: false
           mainBusinessDescription: A cozy neighborhood café serving freshly roasted
@@ -42939,7 +42939,7 @@ components:
       - ticketType
       example:
         externalId: 3943351204239963000
-        assignedTo: pranav.singh@birdeye.com
+        assignedTo: test@example.com
         ticketType: review
         customer:
           emailId: test+4@yopmail.com
@@ -42974,7 +42974,7 @@ components:
         - assignedTo: steve@ymail.com
           ticketId: '882382'
           ticketStatus: assigned
-        userEmail: pranav.singh@birdeye.com
+        userEmail: test@example.com
     Apiary_getAllTicketData_Request:
       type: object
       properties:
