@@ -7,12 +7,12 @@ title: "Change Logs"
 * <b>08/21/2026</b> - Added support for social events under the Subscription Service for Published Post, Failed Post, Rejected Post, and Channel Disconnected.
 * <b>08/12/2026</b> - Added Get Survey Usage by Location API (`POST /v1/survey/{surveyId}/usage/by-location`) to retrieve survey sent data and response rate per location, with pagination and sort order support.
 * <b>08/12/2026</b> - Updated the List Responses for a Survey API (`POST /v1/survey/ext/list/responses/{survey_id}`) response to include a `source` field at the response level and a `questionId` field within `childAnswers` items.
-* <b>08/05/2026</b> - Added Social Media Upload and Track Upload Status APIs under the Social group to support async two-step media ingestion: submit up to 50 image/video URLs and poll for per-item processing results (V2BIRD-16118).
-* <b>08/04/2026</b> - Extended hotel attributes support in Create, Update, and Get Listing APIs and Get Hotel Attributes API: added Property category (builtYear, lastRenovatedYear, roomsCount, floorsCount); added `attributeValueType` field to Get Hotel Attributes response with enum values BOOLEAN, INTEGER, YEAR, TIME, SINGLE_SELECT, MULTI_SELECT; updated supported attribute categories list (BIRD-12343).
+* <b>08/05/2026</b> - Added Social Media Upload and Track Upload Status APIs under the Social group to support async two-step media ingestion: submit up to 50 image/video URLs and poll for per-item processing results.
+* <b>08/04/2026</b> - Extended hotel attributes support in Create, Update, and Get Listing APIs and Get Hotel Attributes API: added Property category (builtYear, lastRenovatedYear, roomsCount, floorsCount); added `attributeValueType` field to Get Hotel Attributes response with enum values BOOLEAN, INTEGER, YEAR, TIME, SINGLE_SELECT, MULTI_SELECT; updated supported attribute categories list.
 * <b>08/03/2026</b> - Added new Insight Experience Over Time API (`POST /v1/insight/experience/over-time`) to retrieve time-series insight scores with support for hierarchy-level filtering and grouping.
 * <b>08/03/2026</b> - Updated the existing Get Insight Experience Location Info API to include the `userEmail` field in the request body.
 * <b>08/03/2026</b> - Added `userRole` field to the Get User Details API (`GET /v1/user/details`) response to return the user's role on the account.
-* <b>07/03/2026</b> - Updated `mainBusinessDescription` and microsite `internalListing.description` fields in Create, Update and Get Listing APIs to be optional instead of required, with support for clearing the existing value by sending an empty string (V2BIRD-1690).
+* <b>07/03/2026</b> - Updated `mainBusinessDescription` and microsite `internalListing.description` fields in Create, Update and Get Listing APIs to be optional instead of required, with support for clearing the existing value by sending an empty string.
 * <b>06/10/2026</b> - Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: false). When set to true, the response includes the customer's experience score and source.
 * <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
 * <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
@@ -32,15 +32,15 @@ title: "Change Logs"
 * <b>08/19/2025</b> - Added competitor /raptor public APIs for reviews aggregates.
 * <b>06/26/2025</b> - Added Contact V2 APIs with communication preference flag support.
 * <b>12/13/2024</b> - Added inline reply support for GetReviews APIs.
-* <b>09/27/2024</b> - Added update for Google Opening Soon (BIRD-56987)
-* <b>06/25/2024</b> - Updated Listings Insights API (BIRDEYE-137367)
+* <b>09/27/2024</b> - Added update for Google Opening Soon
+* <b>06/25/2024</b> - Updated Listings Insights API
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
 * <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
-* <b>03/22/2024</b> - Add Update Hierarchy API (BIRD-32609)
+* <b>03/22/2024</b> - Add Update Hierarchy API
 * <b>03/19/2024</b> - Added Ticket APIs Create, Get, Update APIs under Ticket module
-* <b>02/26/2024</b> - Updated logoUrl description in Get, Update APIs under Business module and Create, Get, Update APIs under Listing module (BIRD-29386)
-* <b>12/21/2023</b> - Add listing phase 2 api changes (BIRD-16589)
-* <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
+* <b>02/26/2024</b> - Updated logoUrl description in Get, Update APIs under Business module and Create, Get, Update APIs under Listing module
+* <b>12/21/2023</b> - Add listing phase 2 api changes
+* <b>11/08/2023</b> - Add survey changes and listing changes
 * <b>11/08/2023</b> - Added CRUD APIs for Apple chat
 * <b>10/15/2023</b> - Added CRUD APIs for Business Media.
 * <b>10/11/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
