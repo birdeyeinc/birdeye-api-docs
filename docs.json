@@ -657,6 +657,11 @@
       }
     ]
   },
+  "api": {
+    "examples": {
+      "prefill": true
+    }
+  },
   "logo": {
     "light": "/images/birdeye-vector-logo.svg",
     "dark": "/images/birdeye-vector-logo-dark.svg"
