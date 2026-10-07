@@ -12855,6 +12855,9 @@ paths:
                     Integration Trigger: Updated Rentals
                     Current balance due: '0.0000'
                     Move In date: 12-19-2023
+                  tags:
+                  - one
+                  - two
                 totalResponses: 1
                 pageNo: 0
                 pageSize: 1
