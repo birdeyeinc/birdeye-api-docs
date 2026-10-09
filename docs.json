@@ -35,6 +35,7 @@
                   "mcp/tools/reviews/overview",
                   "mcp/tools/reviews/review-and-rating-overview",
                   "mcp/tools/reviews/get-reviews",
+                  "mcp/tools/reviews/get-review-responses",
                   "mcp/tools/reviews/get-review-summary",
                   "mcp/tools/reviews/get-review-tags",
                   "mcp/tools/reviews/reply-to-review",
@@ -313,6 +314,7 @@
                 "pages": [
                   "api/reviews/overview",
                   "api/reviews/get-reviews",
+                  "api/reviews/get-review-responses",
                   "api/reviews/archived-get-reviews",
                   "api/reviews/get-reviews-summary",
                   "api/reviews/post-review-reply",
