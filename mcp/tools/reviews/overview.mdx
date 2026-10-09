@@ -12,6 +12,9 @@ description: "Tools for accessing review data, rating trends, per-source summari
   <Card title="get_reviews" icon="list" href="/mcp/tools/reviews/get-reviews">
     Fetch individual reviews with full detail — rating, comment, reviewer info, source, status
   </Card>
+  <Card title="get_review_responses" icon="comment" href="/mcp/tools/reviews/get-review-responses">
+    Fetch just the response text, review ID, and response date for reviews
+  </Card>
   <Card title="get_review_summary" icon="chart-bar" href="/mcp/tools/reviews/get-review-summary">
     Get total review counts and average ratings grouped by review source
   </Card>
@@ -37,7 +40,7 @@ description: "Tools for accessing review data, rating trends, per-source summari
 
 ## Tips
 
-- `review_and_rating_overview`, `get_reviews`, `get_review_summary`, and `get_review_tags` operate at the account level — no `locationId` needed.
+- `review_and_rating_overview`, `get_reviews`, `get_review_responses`, `get_review_summary`, and `get_review_tags` operate at the account level — no `locationId` needed.
 - `assign_tags_to_reviews` and `remove_tags_from_reviews` require a child location `bid` — use `get_child_locations` to get valid IDs.
 - Use `get_review_tags` before `create_review_tag` to avoid duplicates, and before `assign_tags_to_reviews` to confirm exact tag names.
 - `reply_to_review` is a write tool — always confirm the reply text with the user before submitting.

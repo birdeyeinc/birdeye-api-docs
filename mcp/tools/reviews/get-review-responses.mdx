@@ -1,0 +1,83 @@
+---
+title: "Get Review Responses"
+description: "Fetch just the response text, review ID, and response date for reviews — without the full review payload."
+---
+
+```
+get_review_responses
+```
+
+## Description
+
+Returns a lightweight list of review responses — `reviewId`, `response` text, and `responseDate` only. Supports the same filtering as [`get_reviews`](/mcp/tools/reviews/get-reviews) (source, rating, date range, status, search string), but omits reviewer details, comments, and other review fields for a smaller payload.
+
+## Parameters
+
+### Pagination
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `sindex` | integer | No | `0` | Start index for pagination |
+| `count` | integer | No | — | Number of reviews to return |
+
+### Date Filters
+
+| Parameter | Type | Format | Description |
+|---|---|---|---|
+| `fromDate` | string | `MM/DD/YYYY` | Reviews on or after this date |
+| `toDate` | string | `MM/DD/YYYY` | Reviews on or before this date |
+| `fromTimestamp` | string | — | Reviews on or after this timestamp |
+| `toTimestamp` | string | — | Reviews on or before this timestamp |
+| `updateFromDate` | string | `MM/DD/YYYY` | Reviews updated on or after this date |
+| `updateToDate` | string | `MM/DD/YYYY` | Reviews updated on or before this date |
+
+### Content Filters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `sources` | list[string] | Filter by review source (e.g., `"Google"`, `"Facebook"`) |
+| `ratings` | list[integer] | Filter by star rating (e.g., `[1, 2]` for negative reviews) |
+| `searchStr` | string | Full-text search within review content |
+| `subBusinessIds` | list | Filter to specific child location IDs |
+| `statuses` | list[string] | Filter by review status |
+| `messageOptions.reviewFilterOptions` | list[string] | Filter by response status — valid values are `"responded"` and `"non-responded"`. Defaults to `["responded"]` if `messageOptions` is omitted |
+
+### Flags
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `includeNonAggregatedReviews` | boolean | — | Include reviews from non-aggregated sources |
+| `allChild` | boolean | — | Include reviews from all child locations |
+
+## Example Usage
+
+```
+Get the responses we've posted on reviews from the last 30 days.
+```
+
+```
+Show me the response text for all 5-star Google reviews this quarter.
+```
+
+## Example Response
+
+```json
+[
+  {
+    "reviewId": "5876543375490790392",
+    "response": "Hi Bellatrix, \nWe are so happy to hear that you had a great experience with us and that Eric and Kayla provided exceptional service. We will be sure to pass along your kind words to our team and look forward to welcoming you back!",
+    "responseDate": 1790726400000
+  },
+  {
+    "reviewId": "5876543395490790394",
+    "response": "Hi Ariana, \nThank you for leaving us a 5-star review. We appreciate your feedback and look forward to welcoming you back soon!",
+    "responseDate": 1790726400000
+  }
+]
+```
+
+## Notes
+
+- `responseDate` is an epoch timestamp in milliseconds.
+- If `messageOptions` is omitted, the API defaults to `reviewFilterOptions: ["responded"]` — only reviews with a response are returned.
+- Use [`get_reviews`](/mcp/tools/reviews/get-reviews) instead when you need reviewer details, comments, or rating alongside the response.
