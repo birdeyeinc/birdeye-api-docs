@@ -4536,7 +4536,7 @@ paths:
       summary: Get Review Responses
       operationId: getReviewResponses
       description: |-
-        Get Review Responses returns only the response details (review id, response text, and response date) for reviews belonging to a business account, filtered the same way as Get Reviews.
+        Get Review Responses returns only the response details (review id, response text, and response date) for reviews belonging to a business account.
 
         > __Behavior Note__
         > - _If `statuses` is not provided, the API defaults to `["published"]`, which returns featured reviews only._
@@ -4611,13 +4611,6 @@ paths:
             schema:
               type: object
               properties:
-                fromDate:
-                  type: string
-                  description: Review date start in UTC format.
-                toDate:
-                  type: string
-                  description: Review date end in UTC format, eg if toDate is 04/01/2013,
-                    reviews of date 04/01/2013 is excluded .
                 fromTimestamp:
                   type: number
                   description: Review start date in milliseconds, pass either fromDate
@@ -4626,12 +4619,6 @@ paths:
                   type: number
                   description: Review end date in milliseconds, pass either endDate
                     or toTimestamp.
-                updateFromDate:
-                  type: string
-                  description: Review updated date start in UTC format.
-                updateToDate:
-                  type: string
-                  description: Review updated date end in UTC format.
                 sources:
                   type: string
                   description: 'Aggregation source name Note: use "our_website" to
@@ -4680,8 +4667,6 @@ paths:
               example:
                 fromTimestamp: 1712986782000
                 toTimestamp: 1715578782000
-                updateFromDate: 04/01/2013
-                updateToDate: 05/3/2015
                 sources:
                 - google
                 - citysearch
