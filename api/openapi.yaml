@@ -40156,8 +40156,18 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: Credentials of the provider/practice. Must be less than
-                25 characters
+              description: |-
+                Credentials of the provider/practice. Must be less than 25 characters.
+
+                The credential field supports the following healthcare professional credentials:
+
+                ANP, APN, APRN, ARNP, AUD, BSW, CCCA, CCC-SLP, CNM, CNP, CNS, CPNP, CPNP-PC, CRNA, CRNP, DC, DDS, DMD, DNP, DNP-C, DO, DPM, DPT, DSW, DVM, FNP, FNP-C, FNP-BC, GNP, IBCLC, LAC, LCSW, LLP, LMFT, LP, LPC, LPN, LSW, MBA, MBBS, MD, MPAS, MPH, MS, MSW, ND, NNP, NP, OD, OT, OTR, OTR/L, PA, PAC, PHARMD, PHD, PMHS, PNP, PSYD, RD, RSW, SLP, VMD, WHNP.
+
+                Example:
+
+                {
+                  "credential": "MD"
+                }
             educationDetails:
               type: array
               description: Education details of the provider/practice. Maximum
@@ -41191,8 +41201,18 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: Credentials of the provider/practice. Must be less than
-                25 characters
+              description: |-
+                Credentials of the provider/practice. Must be less than 25 characters.
+
+                The credential field supports the following healthcare professional credentials:
+
+                ANP, APN, APRN, ARNP, AUD, BSW, CCCA, CCC-SLP, CNM, CNP, CNS, CPNP, CPNP-PC, CRNA, CRNP, DC, DDS, DMD, DNP, DNP-C, DO, DPM, DPT, DSW, DVM, FNP, FNP-C, FNP-BC, GNP, IBCLC, LAC, LCSW, LLP, LMFT, LP, LPC, LPN, LSW, MBA, MBBS, MD, MPAS, MPH, MS, MSW, ND, NNP, NP, OD, OT, OTR, OTR/L, PA, PAC, PHARMD, PHD, PMHS, PNP, PSYD, RD, RSW, SLP, VMD, WHNP.
+
+                Example:
+
+                {
+                  "credential": "MD"
+                }
             educationDetails:
               type: array
               description: Education details of the provider/practice. Maximum
@@ -42226,8 +42246,18 @@ components:
               description: National Provider Identifier - NPI. Must be 10 digits
             credentials:
               type: string
-              description: Credentials of the provider/practice. Must be less than
-                25 characters
+              description: |-
+                Credentials of the provider/practice. Must be less than 25 characters.
+
+                The credential field supports the following healthcare professional credentials:
+
+                ANP, APN, APRN, ARNP, AUD, BSW, CCCA, CCC-SLP, CNM, CNP, CNS, CPNP, CPNP-PC, CRNA, CRNP, DC, DDS, DMD, DNP, DNP-C, DO, DPM, DPT, DSW, DVM, FNP, FNP-C, FNP-BC, GNP, IBCLC, LAC, LCSW, LLP, LMFT, LP, LPC, LPN, LSW, MBA, MBBS, MD, MPAS, MPH, MS, MSW, ND, NNP, NP, OD, OT, OTR, OTR/L, PA, PAC, PHARMD, PHD, PMHS, PNP, PSYD, RD, RSW, SLP, VMD, WHNP.
+
+                Example:
+
+                {
+                  "credential": "MD"
+                }
             educationDetails:
               type: array
               description: Education details of the provider/practice. Maximum
