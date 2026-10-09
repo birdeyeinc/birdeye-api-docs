@@ -4449,10 +4449,6 @@ paths:
               x-apiary-response-models:
               - "$ref": "#/components/schemas/1163Model"
               - "$ref": "#/components/schemas/1167Model"
-              - "$ref": "#/components/schemas/1186Model"
-              - "$ref": "#/components/schemas/1187Model"
-              - "$ref": "#/components/schemas/1227Model"
-              - "$ref": "#/components/schemas/1228Model"
               - "$ref": "#/components/schemas/1244Model"
               x-apiary-response-examples:
                 error_1163:
@@ -4463,22 +4459,6 @@ paths:
                   value:
                     code: 1167
                     message: API key is missing
-                error_1186:
-                  value:
-                    code: 1186
-                    message: Invalid from date. Allowed format is "MM/dd/yyyy".
-                error_1187:
-                  value:
-                    code: 1187
-                    message: Invalid to date. Allowed format is "MM/dd/yyyy".
-                error_1227:
-                  value:
-                    code: 1227
-                    message: Invalid updated from date. Allowed format is MM/dd/yyyy
-                error_1228:
-                  value:
-                    code: 1228
-                    message: Invalid updated to date. Allowed format is MM/dd/yyyy
                 error_1244:
                   value:
                     code: 1244
