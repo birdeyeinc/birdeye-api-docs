@@ -4058,6 +4058,8 @@ paths:
                 response: Thanks
                 responseDate: Feb 18, 2014
                 recommended: 1
+                extReferenceId: loc-ext-ref
+                reviewOperationalStatus: CREATED
               - reviewId: '73748574902'
                 rating: 0
                 comments: I am a long time customer and love Dieici. I am there at
@@ -4097,6 +4099,8 @@ paths:
                   lastName: S.
                   emailId: smith@test.com
                   phoneNum: ''
+                extReferenceId:
+                reviewOperationalStatus: UPDATED
         '400':
           description: Bad Request
           content:
@@ -4335,6 +4339,23 @@ paths:
                   type: boolean
                   description: To retrieve employees associated with the review [if
                     mapped].
+                messageOptions:
+                  type: object
+                  description: Optional filtering options for reviews.
+                  properties:
+                    reviewFilterOptions:
+                      type: array
+                      description: >-
+                        Filter reviews by operational status. Accepted values:
+                        `"Updated-Reviews"` (reviews that have been updated after
+                        being posted) and `"Non-Updated-Reviews"` (reviews
+                        that have never been updated). Values are case-insensitive.
+                        If both values are provided together, no filter is applied.
+                      items:
+                        type: string
+                        enum:
+                          - Updated-Reviews
+                          - Non-Updated-Reviews
               example:
                 fromTimestamp: 1712986782000
                 toTimestamp: 1715578782000
@@ -4364,6 +4385,9 @@ paths:
                 fetchExtraParams: false
                 needCustomerInfo: false
                 fetchAssitedByDetails: true
+                messageOptions:
+                  reviewFilterOptions:
+                  - Updated-Reviews
             example:
               fromTimestamp: 1712986782000
               toTimestamp: 1715578782000
@@ -4393,6 +4417,9 @@ paths:
               fetchExtraParams: false
               needCustomerInfo: false
               fetchAssitedByDetails: true
+              messageOptions:
+                reviewFilterOptions:
+                - Updated-Reviews
   "/v1/review/response":
     post:
       responses:
@@ -35415,6 +35442,16 @@ components:
                 type: string
                 description: Employee phone number.
             description: Employees associated with the review
+          extReferenceId:
+            type: string
+            nullable: true
+            description: External reference ID associated with the review location. Returns
+              null if not set.
+          reviewOperationalStatus:
+            type: string
+            description: Operational status of the review. Possible values are `CREATED`
+              (original review that was never updated) and `UPDATED` (review has been updated
+              after being posted).
     Apiary_getReviewResponses_Response200:
       type: array
       items:
