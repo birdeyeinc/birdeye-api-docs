@@ -40166,7 +40166,7 @@ components:
                 Example:
 
                 {
-                  "credential": "MD"
+                  "credentials": "MD"
                 }
             educationDetails:
               type: array
@@ -41211,7 +41211,7 @@ components:
                 Example:
 
                 {
-                  "credential": "MD"
+                  "credentials": "MD"
                 }
             educationDetails:
               type: array
@@ -42256,7 +42256,7 @@ components:
                 Example:
 
                 {
-                  "credential": "MD"
+                  "credentials": "MD"
                 }
             educationDetails:
               type: array
