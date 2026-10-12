@@ -16220,7 +16220,9 @@ paths:
       summary: Create subscription
       operationId: createSubscription
       description: Create webhook subscription listens to subscribed webhook events
-        on a specific passed URL.
+        on a specific passed URL. Failed deliveries are retried (at least once, up
+        to 5 times via retryConfig) with the same eventId, so your endpoint may
+        receive the same event more than once and should de-duplicate on eventId.
       tags:
       - Subscription
       parameters:
@@ -16271,6 +16273,9 @@ paths:
                 password: userpassword
               customHeaders:
                 Authorization: Bearer ABCDBJKFJKBFK
+              retryConfig:
+                maxRetries: 3
+                initialBackoffMs: 2000
   "/v1/subscriptions/unsubscribe/{subscriptionId}":
     get:
       responses:
@@ -38105,6 +38110,28 @@ components:
           additionalProperties:
             type: string
           description: Custom headers to be sent along with the webhook request.
+        retryConfig:
+          type: object
+          nullable: true
+          properties:
+            maxRetries:
+              type: integer
+              minimum: 1
+              maximum: 5
+              default: 1
+              description: Number of times a failed webhook delivery is retried.
+            initialBackoffMs:
+              type: integer
+              format: int64
+              minimum: 1
+              maximum: 30000
+              default: 1000
+              description: Wait in milliseconds before the first retry. The wait
+                doubles on each subsequent retry (with jitter), up to 30 seconds.
+          description: Retry settings for failed webhook deliveries. Any 4xx, 5xx,
+            connection or timeout error is retried with exponential backoff. If
+            omitted, failed deliveries are retried once after 1 second. When updating
+            an existing subscription, omitting retryConfig keeps the current settings.
       example:
         webhookUrl: https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65
         emails:
@@ -38115,6 +38142,9 @@ components:
           password: userpassword
         customHeaders:
           Authorization: Bearer ABCDBJKFJKBFK
+        retryConfig:
+          maxRetries: 3
+          initialBackoffMs: 2000
     Apiary_getEvents_Response200:
       type: array
       items:
