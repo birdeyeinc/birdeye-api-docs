@@ -4420,6 +4420,258 @@ paths:
               messageOptions:
                 reviewFilterOptions:
                 - Updated-Reviews
+  "/v1/review/response":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Apiary_getReviewResponses_Response200"
+              example:
+              - reviewId: '5876543375490790392'
+                response: |-
+                  Hi Bellatrix,
+                  We are so happy to hear that you had a great experience with us and that Eric and Kayla provided exceptional service. We will be sure to pass along your kind words to our team and look forward to welcoming you back!
+                responseDate: 1790726400000
+              - reviewId: '5876543395490790394'
+                response: |-
+                  Hi Ariana,
+                  Thank you for leaving us a 5-star review. We appreciate your feedback and look forward to welcoming you back soon!
+                responseDate: 1790726400000
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1163Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1163Model"
+              - "$ref": "#/components/schemas/1167Model"
+              - "$ref": "#/components/schemas/1244Model"
+              x-apiary-response-examples:
+                error_1163:
+                  value:
+                    code: 1163
+                    message: Invalid start index value
+                error_1167:
+                  value:
+                    code: 1167
+                    message: API key is missing
+                error_1244:
+                  value:
+                    code: 1244
+                    message: Maximum 5 keywords can be selected for filter.
+              examples:
+                response:
+                  value:
+                    code: 1163
+                    message: Invalid start index value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              x-apiary-response-models:
+              - "$ref": "#/components/schemas/1161Model"
+              - "$ref": "#/components/schemas/1164Model"
+              x-apiary-response-examples:
+                error_1161:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+                error_1164:
+                  value:
+                    code: 1164
+                    message: Invalid result count value
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1011Model"
+              examples:
+                response:
+                  value:
+                    code: 1011
+                    message: Business id is invalid
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Get Review Responses
+      operationId: getReviewResponses
+      description: |-
+        Get Review Responses returns only the response details (review id, response text, and response date) for reviews belonging to a business account.
+
+        > __Behavior Note__
+        > - _If `statuses` is not provided, the API defaults to `["published"]`, which returns featured reviews only._
+        > - _Status mapping: `published` = featured reviews, `parked` = non-featured reviews._
+        > - _To fetch both featured and non-featured reviews, pass `statuses: ["published","parked"]` or `statuses: ["all"]` in the request body._
+        > - _`ratings` filters are applied only within the statuses selected for the request._
+        > - _If `messageOptions` is not provided, the API defaults to `reviewFilterOptions: ["responded"]`, which returns only reviews that have a response._
+
+        > __Note__
+        > - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
+      tags:
+      - Reviews
+      parameters:
+      - name: sindex
+        in: query
+        description: Start index of the reviews. Refer API note for max permissible
+          value.
+        required: true
+        example: '10'
+        schema:
+          type: integer
+      - name: count
+        in: query
+        description: Number of reviews to query. Refer API note for max permissible
+          value.
+        required: true
+        example: '30'
+        schema:
+          type: integer
+      - name: includeNonAggregatedReviews
+        in: query
+        description: Include Reviews whose auto-crawling is blocked e.g. PressGaney
+        required: false
+        example: 'false'
+        schema:
+          type: boolean
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User-associated business number.
+        required: false
+        example: "[Required] User-associated business number."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromTimestamp:
+                  type: number
+                  description: Review start date in milliseconds, pass either fromDate
+                    or fromTimestamp.
+                toTimestamp:
+                  type: number
+                  description: Review end date in milliseconds, pass either endDate
+                    or toTimestamp.
+                sources:
+                  type: string
+                  description: 'Aggregation source name Note: use "our_website" to
+                    filter reviews posted on Birdeye platform or use "direct_feedback"
+                    for direct feedback.'
+                ratings:
+                  type: array
+                  description: Review rating Possible values 0,1,2,3,4,5.
+                  items:
+                    type: integer
+                searchStr:
+                  type: string
+                  description: String that is contained by review.
+                subBusinessIds:
+                  type: array
+                  description: BusinessIds under enterprise account.
+                  items:
+                    type: integer
+                statuses:
+                  type: array
+                  description: Review status filter. Valid values are "published",
+                    "parked", and "all". If omitted, default is "published" only (featured
+                    reviews). "published" refers to featured reviews and "parked"
+                    refers to non-featured reviews.
+                  items:
+                    type: string
+                allChild:
+                  type: boolean
+                  description: Get review from all child ignoring merge reviews flag
+                    configured at parent/child relationship level.
+                tags:
+                  type: array
+                  description: Reviews with assigned tags
+                  items:
+                    type: string
+                messageOptions:
+                  type: object
+                  description: Filter reviews by their response message options.
+                  properties:
+                    reviewFilterOptions:
+                      type: array
+                      description: Message option values to filter responses by.
+                        Valid values are "responded" and "non-responded".
+                      items:
+                        type: string
+              example:
+                fromTimestamp: 1712986782000
+                toTimestamp: 1715578782000
+                sources:
+                - google
+                - citysearch
+                ratings:
+                - 1
+                - 2
+                - 3
+                - 4
+                - 5
+                - 0
+                searchStr: test string
+                subBusinessIds:
+                - 12345678
+                - 1232111
+                - 1231231321
+                statuses:
+                - all
+                allChild: 'true'
+                tags:
+                - positive
+                - negative
+                messageOptions:
+                  reviewFilterOptions:
+                  - responded
+                  - non-responded
   "/v1/review/archive/public":
     post:
       responses:
@@ -35165,6 +35417,20 @@ components:
             description: Operational status of the review. Possible values are `CREATED`
               (original review that was never updated) and `UPDATED` (review has been updated
               after being posted).
+    Apiary_getReviewResponses_Response200:
+      type: array
+      items:
+        type: object
+        properties:
+          reviewId:
+            type: string
+            description: Id of the review.
+          response:
+            type: string
+            description: Review response text.
+          responseDate:
+            type: number
+            description: Response date, as an epoch timestamp in milliseconds.
     Apiary_archivedGetReviews_Request:
       type: object
       properties:
