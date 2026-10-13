@@ -28376,6 +28376,89 @@ paths:
               productIds:
               - 68767cb39ebf51000815ab39
               - 68767cb39ebf51000815ab39
+  "/v1/search-ai/public/brands-list/{businessNumber}":
+    get:
+      summary: Get Brands List
+      operationId: getBrandsList
+      description: >-
+        Returns a list of all brand names configured under the given business
+        number. Brands represent the tracked entities (your business and any
+        competitors) set up in your Search AI account. Use the returned names
+        to reference brands across other Search AI APIs.
+      tags:
+        - Search AI
+      parameters:
+        - name: businessNumber
+          in: path
+          required: true
+          description: Your Birdeye business number (long format).
+          schema:
+            type: integer
+            format: int64
+          example: 177337970010644
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brands:
+                    type: array
+                    description: List of all brand names configured for this account.
+                    items:
+                      type: string
+              example:
+                brands:
+                  - Acme Dental Downtown
+                  - Acme Dental Uptown
+                  - Acme Dental Westside
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: No business found for the given business number
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
   "/v1/listing/searchAi/public/account-setup":
     get:
       responses:

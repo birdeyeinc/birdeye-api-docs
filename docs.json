@@ -627,7 +627,8 @@
                   "api/search-ai/get-search-ai-citations",
                   "api/search-ai/get-search-ai-businesses",
                   "api/search-ai/get-accuracy-report",
-                  "api/search-ai/get-sentiment-report"
+                  "api/search-ai/get-sentiment-report",
+                  "api/search-ai/get-brands-list"
                 ],
                 "icon": "magnifying-glass"
               },
