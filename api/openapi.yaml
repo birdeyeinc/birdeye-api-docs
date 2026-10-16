@@ -28526,11 +28526,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Configuration
+      summary: Get AI Search Configuration
       operationId: getSearchAiConfiguration
-      description: Retrieves the Search AI configuration for the specified business.
+      description: Retrieves the AI Search configuration for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -28698,11 +28698,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Available Runs
+      summary: Get AI Search Available Runs
       operationId: getSearchAiAvailableRuns
-      description: Retrieves the Search AI available runs for the specified business.
+      description: Retrieves the AI Search available runs for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -28896,12 +28896,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Citations
+      summary: Get AI Search Citations
       operationId: getSearchAiCitations
-      description: Retrieves Search AI citations for the specified business, including
+      description: Retrieves AI Search citations for the specified business, including
         sources referenced by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29121,12 +29121,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Businesses
+      summary: Get AI Search Businesses
       operationId: getSearchAiBusinesses
-      description: Retrieves Search AI business results for the specified business,
+      description: Retrieves AI Search business results for the specified business,
         including businesses identified by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29345,7 +29345,7 @@ paths:
       description: Provides an accuracy report for the specified business, highlighting
         how consistent and reliable the business information is across platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29726,7 +29726,7 @@ paths:
       description: Returns the sentiment report for the specified business, providing
         insights into customer sentiment across supported platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30600,8 +30600,8 @@ tags:
 - name: GMB Products
   description: To manage products, locations, and business details through Listing
     GMB platform
-- name: Search AI
-  description: Search AI provides a comprehensive view of your business performance
+- name: AI Search
+  description: AI Search provides a comprehensive view of your business performance
     across AI-powered search platforms, including data accuracy, sentiment analysis,
     citations, brand ranking, and overall visibility.
 - name: Ticketing
