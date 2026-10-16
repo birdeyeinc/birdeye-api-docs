@@ -1985,7 +1985,7 @@ paths:
           exchange."
         schema:
           type: string
-  "/v2/business/hierarchyInfo":
+  "/v2/business/hierarchy/info":
     get:
       responses:
         '200':
