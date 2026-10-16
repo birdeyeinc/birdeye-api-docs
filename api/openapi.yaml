@@ -1985,7 +1985,7 @@ paths:
           exchange."
         schema:
           type: string
-  "/v1/business/hierarchy/v2":
+  "/v2/business/hierarchyInfo":
     get:
       responses:
         '200':
@@ -2028,8 +2028,8 @@ paths:
                             but the depths are not necessarily consecutive.
                         levelValueId:
                           type: number
-                          description: Id of the value at this level, e.g. the Region
-                            1 value.
+                          description: Id of the value at this level, e.g. the id
+                            of the West region.
                         levelValueName:
                           type: string
                           description: Name of the value at this level.
