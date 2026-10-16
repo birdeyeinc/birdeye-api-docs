@@ -1,0 +1,31 @@
+---
+title: "Custom Fields Overview"
+description: "Tools for creating, reading, updating, and deleting custom fields on a business."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_custom_fields_list" icon="list" href="/mcp/tools/custom-fields/get-custom-fields-list">
+    List a business's custom fields with pagination, search, and sorting
+  </Card>
+  <Card title="get_custom_field" icon="magnifying-glass" href="/mcp/tools/custom-fields/get-custom-field">
+    Get a single custom field's definition (and value, if set) by ID
+  </Card>
+  <Card title="create_custom_field" icon="square-plus" href="/mcp/tools/custom-fields/create-custom-field">
+    Create a new custom field on a business
+  </Card>
+  <Card title="update_custom_field" icon="pen-to-square" href="/mcp/tools/custom-fields/update-custom-field">
+    Update an existing custom field's configuration
+  </Card>
+  <Card title="delete_custom_field" icon="trash" href="/mcp/tools/custom-fields/delete-custom-field">
+    Delete a custom field from a business
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Field types: `TEXT`, `URL`, `NUMBER`, `DATE`, `DROPDOWN_SINGLE`, `DROPDOWN_MULTI`, `TEXT_RAW`.
+- `dropDownOptions` is required when the type is `DROPDOWN_SINGLE` or `DROPDOWN_MULTI`.
+- Resolve a field's ID with `get_custom_fields_list` before calling `get_custom_field`, `update_custom_field`, or `delete_custom_field`.
+- The field **definition** is account-level; a field can also carry a per-location **value** — pass `locationBizNumber` to read location-specific values.

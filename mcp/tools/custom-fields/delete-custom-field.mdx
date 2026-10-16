@@ -1,0 +1,38 @@
+---
+title: "Delete Custom Field"
+description: "Delete a custom field from a business."
+---
+
+```
+delete_custom_field
+```
+
+## Description
+
+Deletes a custom field from a business. Use it to remove a field that is no longer used or one created by mistake.
+
+<Warning>
+  This action **cannot be undone** — the custom field definition (and any values stored under it) is permanently removed. State exactly which field will be deleted and confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fieldId` | integer | Yes | — | ID of the custom field to delete. Resolve via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) |
+| `businessNumber` | string | Yes | — | Business number that owns the field |
+
+## Example Usage
+
+```
+Delete custom field 376.
+```
+
+```
+Remove the "Legacy ID" custom field.
+```
+
+## Notes
+
+- Returns a success response when the field is deleted.
+- Resolve `fieldId` via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) (match the field by name) if the user refers to the field by name rather than ID.

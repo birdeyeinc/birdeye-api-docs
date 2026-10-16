@@ -1,0 +1,37 @@
+---
+title: "Update Contact Subscription"
+description: "Subscribe or unsubscribe contacts from email and/or SMS communications."
+---
+
+```
+update_contact_subscription
+```
+
+## Description
+
+Updates the subscription status for one or more contacts, controlling whether they receive email and/or SMS communications. Contacts can be identified by email address or phone number.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | integer | Yes | — | Child location ID — ask the user to provide this directly |
+| `permission` | string | Yes | — | Subscription action: `"both-subscribed"`, `"both-unsubscribed"`, `"sms-subscribed"`, or `"email-subscribed"` |
+| `email` | list[string] | Conditional | — | List of email addresses to update — required if `phone` is not provided |
+| `phone` | list[string] | Conditional | — | List of phone numbers to update — required if `email` is not provided |
+
+## Example Usage
+
+```
+Unsubscribe jane@example.com from all communications at location 78901.
+```
+
+```
+Subscribe 555-0100 and 555-0200 to SMS messages only.
+```
+
+## Notes
+
+- `accountNumber` is the child location ID — ask the user to provide it directly rather than looking it up automatically.
+- At least one of `email` or `phone` must be provided to identify the contacts.
+- Use `"both-subscribed"` to opt contacts in to both email and SMS, or `"both-unsubscribed"` to opt them out of all communications.

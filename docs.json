@@ -12,7 +12,6 @@
     "tabs": [
       {
         "tab": "MCP",
-        "url": "mcp/introduction",
         "groups": [
           {
             "group": "Get Started",
@@ -26,99 +25,216 @@
             "icon": "rocket"
           },
           {
-            "group": "Reviews",
+            "group": "Tools",
             "pages": [
-              "mcp/tools/reviews/overview",
-              "mcp/tools/reviews/review-and-rating-overview",
-              "mcp/tools/reviews/get-reviews",
-              "mcp/tools/reviews/get-review-summary"
-            ],
-            "icon": "star"
-          },
-          {
-            "group": "Business",
-            "pages": [
-              "mcp/tools/business/overview",
-              "mcp/tools/business/get-business-info",
-              "mcp/tools/business/get-child-locations"
-            ],
-            "icon": "building"
-          },
-          {
-            "group": "Surveys",
-            "pages": [
-              "mcp/tools/surveys/overview",
-              "mcp/tools/surveys/get-all-surveys",
-              "mcp/tools/surveys/get-survey-responses"
-            ],
-            "icon": "clipboard-list"
-          },
-          {
-            "group": "Listings",
-            "pages": [
-              "mcp/tools/listings/overview",
-              "mcp/tools/listings/get-listing",
-              "mcp/tools/listings/get-listing-location-status-report",
-              "mcp/tools/listings/get-listing-insights",
-              "mcp/tools/listings/get-listing-category-list",
-              "mcp/tools/listings/get-product-listing-list"
-            ],
-            "icon": "map-pin"
-          },
-          {
-            "group": "Search AI",
-            "pages": [
-              "mcp/tools/search-ai/overview",
-              "mcp/tools/search-ai/get-search-ai-configuration",
-              "mcp/tools/search-ai/get-search-ai-available-runs",
-              "mcp/tools/search-ai/get-search-ai-citations",
-              "mcp/tools/search-ai/get-search-ai-businesses",
-              "mcp/tools/search-ai/get-search-ai-accuracy-report",
-              "mcp/tools/search-ai/get-search-ai-sentiment-report"
-            ],
-            "icon": "magnifying-glass"
-          },
-          {
-            "group": "Social",
-            "pages": [
-              "mcp/tools/social/overview",
-              "mcp/tools/social/get-social-open-url-performance-report"
-            ],
-            "icon": "share-nodes"
-          },
-          {
-            "group": "Ticketing",
-            "pages": [
-              "mcp/tools/ticketing/overview",
-              "mcp/tools/ticketing/get-all-ticket-data"
-            ],
-            "icon": "ticket"
-          },
-          {
-            "group": "Aggregation",
-            "pages": [
-              "mcp/tools/aggregation/overview",
-              "mcp/tools/aggregation/get-all-aggregation-sources"
-            ],
-            "icon": "layer-group"
-          },
-          {
-            "group": "Competitor AI",
-            "pages": [
-              "mcp/tools/competitor-ai/overview",
-              "mcp/tools/competitor-ai/retrieve-competitor-reviews",
-              "mcp/tools/competitor-ai/retrieve-competitor-review-metrics"
-            ],
-            "icon": "robot"
-          },
-          {
-            "group": "Insight AI",
-            "pages": [
-              "mcp/tools/insight-ai/overview",
-              "mcp/tools/insight-ai/get-insight-experience-score-benchmark",
-              "mcp/tools/insight-ai/get-insight-experience-location-info"
-            ],
-            "icon": "lightbulb"
+              {
+                "group": "Reviews",
+                "collapsed": true,
+                "icon": "star",
+                "pages": [
+                  "mcp/tools/reviews/overview",
+                  "mcp/tools/reviews/review-and-rating-overview",
+                  "mcp/tools/reviews/get-reviews",
+                  "mcp/tools/reviews/get-review-responses",
+                  "mcp/tools/reviews/get-review-summary",
+                  "mcp/tools/reviews/get-review-tags",
+                  "mcp/tools/reviews/reply-to-review",
+                  "mcp/tools/reviews/create-review-tag",
+                  "mcp/tools/reviews/delete-review-tag",
+                  "mcp/tools/reviews/assign-tags-to-reviews",
+                  "mcp/tools/reviews/remove-tags-from-reviews"
+                ]
+              },
+              {
+                "group": "Reports",
+                "collapsed": true,
+                "icon": "chart-bar",
+                "pages": [
+                  "mcp/tools/reports/overview",
+                  "mcp/tools/reports/get-review-conversion-report",
+                  "mcp/tools/reports/get-review-and-rating-over-time",
+                  "mcp/tools/reports/get-review-and-rating-by-location",
+                  "mcp/tools/reports/get-review-count-by-source",
+                  "mcp/tools/reports/get-visitor-count",
+                  "mcp/tools/reports/get-reviews-nps-over-time",
+                  "mcp/tools/reports/get-reviews-nps-by-location",
+                  "mcp/tools/reports/get-usage-report",
+                  "mcp/tools/reports/get-business-dashboard-report",
+                  "mcp/tools/reports/get-review-response-rate-over-time",
+                  "mcp/tools/reports/get-review-response-rate-by-location",
+                  "mcp/tools/reports/get-avg-response-time-over-time",
+                  "mcp/tools/reports/get-avg-response-time-by-location",
+                  "mcp/tools/reports/get-review-count-by-rating",
+                  "mcp/tools/reports/get-review-count-by-rating-by-employee"
+                ]
+              },
+              {
+                "group": "Business",
+                "collapsed": true,
+                "icon": "building",
+                "pages": [
+                  "mcp/tools/business/overview",
+                  "mcp/tools/business/get-business-info",
+                  "mcp/tools/business/get-child-locations",
+                  "mcp/tools/business/create-business",
+                  "mcp/tools/business/update-business-status",
+                  "mcp/tools/business/get-custom-card-details",
+                  "mcp/tools/business/update-custom-card",
+                  "mcp/tools/business/delete-custom-card"
+                ]
+              },
+              {
+                "group": "Custom Fields",
+                "collapsed": true,
+                "icon": "sliders",
+                "pages": [
+                  "mcp/tools/custom-fields/overview",
+                  "mcp/tools/custom-fields/get-custom-fields-list",
+                  "mcp/tools/custom-fields/get-custom-field",
+                  "mcp/tools/custom-fields/create-custom-field",
+                  "mcp/tools/custom-fields/update-custom-field",
+                  "mcp/tools/custom-fields/delete-custom-field"
+                ]
+              },
+              {
+                "group": "Business Media",
+                "collapsed": true,
+                "icon": "photo-film",
+                "pages": [
+                  "mcp/tools/business-media/overview",
+                  "mcp/tools/business-media/get-media",
+                  "mcp/tools/business-media/add-media",
+                  "mcp/tools/business-media/update-media-category",
+                  "mcp/tools/business-media/delete-media"
+                ]
+              },
+              {
+                "group": "Surveys",
+                "collapsed": true,
+                "icon": "clipboard-list",
+                "pages": [
+                  "mcp/tools/surveys/overview",
+                  "mcp/tools/surveys/get-all-surveys",
+                  "mcp/tools/surveys/get-survey-responses",
+                  "mcp/tools/surveys/create-survey",
+                  "mcp/tools/surveys/update-survey-settings"
+                ]
+              },
+              {
+                "group": "Listings",
+                "collapsed": true,
+                "icon": "map-pin",
+                "pages": [
+                  "mcp/tools/listings/overview",
+                  "mcp/tools/listings/get-listing",
+                  "mcp/tools/listings/get-listing-location-status-report",
+                  "mcp/tools/listings/get-listing-insights",
+                  "mcp/tools/listings/get-listing-category-list",
+                  "mcp/tools/listings/get-product-listing-list",
+                  "mcp/tools/listings/fix-listing",
+                  "mcp/tools/listings/deactivate-listing",
+                  "mcp/tools/listings/create-product",
+                  "mcp/tools/listings/update-product",
+                  "mcp/tools/listings/add-products",
+                  "mcp/tools/listings/remove-products",
+                  "mcp/tools/listings/delete-products"
+                ]
+              },
+              {
+                "group": "Search AI",
+                "collapsed": true,
+                "icon": "magnifying-glass",
+                "pages": [
+                  "mcp/tools/search-ai/overview",
+                  "mcp/tools/search-ai/get-search-ai-configuration",
+                  "mcp/tools/search-ai/get-search-ai-available-runs",
+                  "mcp/tools/search-ai/get-search-ai-citations",
+                  "mcp/tools/search-ai/get-search-ai-businesses",
+                  "mcp/tools/search-ai/get-search-ai-accuracy-report",
+                  "mcp/tools/search-ai/get-search-ai-sentiment-report"
+                ]
+              },
+              {
+                "group": "Social",
+                "collapsed": true,
+                "icon": "share-nodes",
+                "pages": [
+                  "mcp/tools/social/overview",
+                  "mcp/tools/social/get-social-open-url-performance-report",
+                  "mcp/tools/social/create-social-post",
+                  "mcp/tools/social/get-social-post",
+                  "mcp/tools/social/edit-published-social-post",
+                  "mcp/tools/social/delete-social-post"
+                ]
+              },
+              {
+                "group": "Ticketing",
+                "collapsed": true,
+                "icon": "ticket",
+                "pages": [
+                  "mcp/tools/ticketing/overview",
+                  "mcp/tools/ticketing/get-all-ticket-data",
+                  "mcp/tools/ticketing/create-ticket",
+                  "mcp/tools/ticketing/add-ticket-comment",
+                  "mcp/tools/ticketing/update-ticket"
+                ]
+              },
+              {
+                "group": "Contact",
+                "collapsed": true,
+                "icon": "address-book",
+                "pages": [
+                  "mcp/tools/contact/overview",
+                  "mcp/tools/contact/upsert-contact",
+                  "mcp/tools/contact/customer-checkin",
+                  "mcp/tools/contact/delete-contact",
+                  "mcp/tools/contact/update-contact-subscription"
+                ]
+              },
+              {
+                "group": "User",
+                "collapsed": true,
+                "icon": "user",
+                "pages": [
+                  "mcp/tools/user/overview",
+                  "mcp/tools/user/create-user",
+                  "mcp/tools/user/update-user",
+                  "mcp/tools/user/delete-user"
+                ]
+              },
+              {
+                "group": "Google Services",
+                "collapsed": true,
+                "icon": "google",
+                "pages": [
+                  "mcp/tools/google-services/overview",
+                  "mcp/tools/google-services/get-google-services",
+                  "mcp/tools/google-services/create-google-service",
+                  "mcp/tools/google-services/update-google-service",
+                  "mcp/tools/google-services/delete-google-services"
+                ]
+              },
+              {
+                "group": "Competitor AI",
+                "collapsed": true,
+                "icon": "robot",
+                "pages": [
+                  "mcp/tools/competitor-ai/overview",
+                  "mcp/tools/competitor-ai/retrieve-competitor-reviews",
+                  "mcp/tools/competitor-ai/retrieve-competitor-review-metrics"
+                ]
+              },
+              {
+                "group": "Insight AI",
+                "collapsed": true,
+                "icon": "lightbulb",
+                "pages": [
+                  "mcp/tools/insight-ai/overview",
+                  "mcp/tools/insight-ai/get-insight-experience-score-benchmark",
+                  "mcp/tools/insight-ai/get-insight-experience-location-info"
+                ]
+              }
+            ]
           }
         ],
         "icon": "/images/mcp.svg"
@@ -198,6 +314,7 @@
                 "pages": [
                   "api/reviews/overview",
                   "api/reviews/get-reviews",
+                  "api/reviews/get-review-responses",
                   "api/reviews/archived-get-reviews",
                   "api/reviews/get-reviews-summary",
                   "api/reviews/post-review-reply",
@@ -297,6 +414,7 @@
                   "api/survey/get-survey",
                   "api/survey/post-a-survey-response",
                   "api/survey/list-responses-for-a-survey",
+                  "api/survey/get-survey-usage-by-location",
                   "api/survey/get-all-surveys",
                   "api/survey/create-survey",
                   "api/survey/update-survey-settings"
@@ -354,6 +472,7 @@
                 "pages": [
                   "api/subscription/overview",
                   "api/subscription/create-subscription",
+                  "api/subscription/list-subscriptions",
                   "api/subscription/unsubscribe-subscription"
                 ],
                 "icon": "bell"
@@ -403,7 +522,18 @@
                   "api/insight-ai/overview",
                   "api/insight-ai/get-insight-experience-score-benchmark",
                   "api/insight-ai/get-insight-experience-location-info",
-                  "api/insight-ai/get-insight-experience-over-time"
+                  "api/insight-ai/get-insight-experience-location-info-rank",
+                  "api/insight-ai/get-insight-experience-over-time",
+                  "api/insight-ai/get-insight-sentiment-score-benchmark",
+                  "api/insight-ai/get-insight-sentiment-location-info",
+                  "api/insight-ai/get-insight-sentiment-location-info-rank",
+                  "api/insight-ai/get-insight-sentiment-over-time",
+                  "api/insight-ai/get-insight-sentiment-category",
+                  "api/insight-ai/get-insight-reputation-score-benchmark",
+                  "api/insight-ai/get-insight-reputation-location-info",
+                  "api/insight-ai/get-insight-reputation-location-info-rank",
+                  "api/insight-ai/get-insight-reputation-over-time",
+                  "api/insight-ai/get-insight-reputation-source"
                 ],
                 "icon": "lightbulb"
               },
@@ -528,6 +658,11 @@
         "icon": "code"
       }
     ]
+  },
+  "api": {
+    "examples": {
+      "prefill": true
+    }
   },
   "logo": {
     "light": "/images/birdeye-vector-logo.svg",

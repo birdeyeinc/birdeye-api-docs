@@ -1,0 +1,42 @@
+---
+title: "Delete Google Services"
+description: "Permanently delete one or more services from the business's Google profile."
+---
+
+```
+delete_google_services
+```
+
+## Description
+
+Permanently deletes one or more services from the business's Google profile. Deletions affect all locations the service is mapped to and cannot be undone.
+
+<Warning>
+  This is a **destructive write tool** — deletion is **permanent and cannot be undone**. Deleted services are removed from Google across **all mapped locations**. Always confirm the full list of services to delete with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `serviceIds` | list[string] | Yes | — | List of unique service identifiers to delete. Example: `["SERV10021056", "SERV10021057"]` |
+
+## Example Usage
+
+```
+Delete service SERV10021056.
+```
+
+```
+Remove the 'Deep Cleaning' and 'Color Treatment' services.
+```
+
+```
+Delete all services in the Hair Care group.
+```
+
+## Notes
+
+- If the user provides service names instead of IDs, call [`get_google_services`](/mcp/tools/google-services/get-google-services) with each name as `search`, present the matched results (name, group, price, serviceId), and confirm the full list of IDs before calling.
+- If a name matches multiple services, present all matches and ask the user to confirm which ones to delete.
+- Deletion removes the service from the Google profile across all locations it was mapped to.

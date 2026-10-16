@@ -1,0 +1,40 @@
+---
+title: "Delete Social Post"
+description: "Delete a social post created via the API, whether scheduled or published."
+---
+
+```
+delete_social_post
+```
+
+## Description
+
+Deletes a social post created through the API — scheduled or published. Use it to take down a published post or cancel a scheduled post before it goes out.
+
+<Warning>
+  This action **cannot be undone** — the post is removed from the connected social channel. State exactly which post will be deleted and confirm with the user before proceeding. Deleting a **published** post is only supported on Facebook, Google, and LinkedIn.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | string | Yes | — | Account/business number the post belongs to |
+| `trackingId` | string | Yes | — | Tracking ID returned when the post was created through the API |
+| `subBusinessNumbers` | list[integer] | Yes | — | Location IDs the deletion applies to. IDs not part of the original post are ignored |
+
+## Example Usage
+
+```
+Delete my scheduled post BvgqPRWtObg4jWTKG2wHBg.
+```
+
+```
+Take down the published Facebook post BvgqPRWtObg4jWTKG2wHBg.
+```
+
+## Notes
+
+- Returns a success response indicating the post was deleted.
+- Deleting a **published** post is only supported on Facebook, Google, and LinkedIn; scheduled posts can be cancelled on any connected channel.
+- `trackingId` is supplied by the user (returned when the post was created through the API) — it cannot be resolved from another tool.

@@ -1,0 +1,34 @@
+---
+title: "Get Review Tags"
+description: "Fetch all review tags associated with the business account."
+---
+
+```
+get_review_tags
+```
+
+## Description
+
+Returns all review tags currently defined for the business account. Use this to see which tags exist before creating new ones or assigning tags to reviews.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+
+## Example Usage
+
+```
+What review tags do I have set up?
+```
+
+```
+List all available tags I can assign to reviews.
+```
+
+## Notes
+
+- Use this before [`create_review_tag`](/mcp/tools/reviews/create-review-tag) to avoid creating duplicate tags.
+- Use this before [`assign_tags_to_reviews`](/mcp/tools/reviews/assign-tags-to-reviews) or [`remove_tags_from_reviews`](/mcp/tools/reviews/remove-tags-from-reviews) to get the exact tag names required by those tools.
+- Call [`get_business_info`](/mcp/tools/business/get-business-info) to retrieve `businessNumber` if not already known.

@@ -1,0 +1,48 @@
+---
+title: "Update Custom Field"
+description: "Update an existing custom field's configuration."
+---
+
+```
+update_custom_field
+```
+
+## Description
+
+Updates an existing custom field's configuration. Use it to change the default value or description, add or change dropdown options, hide the field, or toggle whether it is filterable.
+
+<Warning>
+  This is a **write tool** — it overwrites the field's configuration. Confirm the field and the new values with the user before calling. When changing dropdown options, pass the **complete** desired list — existing options are not merged, so omitting one removes it.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fieldId` | integer | Yes | — | ID of the custom field to update. Resolve via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) |
+| `businessNumber` | string | Yes | — | Business number that owns the field |
+| `defaultValue` | string | No | — | New default value |
+| `dropDownOptions` | list[string] | No | — | The **full** list of options (not merged with existing — pass every option to keep) |
+| `fieldDescription` | string | No | — | New description |
+| `filterable` | boolean | No | — | Whether the field can be used as a filter |
+| `isHidden` | boolean | No | — | Whether the field is hidden |
+
+## Example Usage
+
+```
+Add "Yellow" to custom field 376's options.
+```
+
+```
+Change the description on custom field 376.
+```
+
+```
+Hide custom field 376.
+```
+
+## Notes
+
+- Returns a success response when the field is updated.
+- When changing dropdown options, pass the complete list — omitting an existing option removes it.
+- Resolve `fieldId` via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) (match the field by name) if the user refers to the field by name rather than ID.

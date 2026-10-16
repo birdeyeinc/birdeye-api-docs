@@ -1,0 +1,39 @@
+---
+title: "Delete Media"
+description: "Delete one or more media items from a location profile."
+---
+
+```
+delete_media
+```
+
+## Description
+
+Deletes one or more media items from a location profile. Use it to remove outdated or incorrect photos and videos by ID.
+
+<Warning>
+  This action **cannot be undone** — the media items are permanently removed. List exactly which media items will be deleted and confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Location number the media belongs to |
+| `mediaIds` | list[string] | Yes | — | Media item IDs to delete. Resolve via [`get_media`](/mcp/tools/business-media/get-media) |
+
+## Example Usage
+
+```
+Delete media 987654321123 and 7654321123 from location 169744180007807.
+```
+
+```
+Remove media 987654321123 from location 169744180007807.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the media items are deleted; there is no response body to inspect.
+- Resolve `mediaIds` via [`get_media`](/mcp/tools/business-media/get-media) (match items by description) if the user refers to photos or videos rather than giving IDs.
+- Resolve `businessNumber` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.

@@ -1,0 +1,60 @@
+---
+title: "Get Custom Field"
+description: "Get a single custom field's definition, and value if set, by its ID."
+---
+
+```
+get_custom_field
+```
+
+## Description
+
+Returns a single custom field's definition — and its stored value, if set — by field ID. Use it to inspect one field before updating it, or to check its type and default value.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `fieldId` | integer | Yes | — | ID of the custom field to fetch. Resolve via [`get_custom_fields_list`](/mcp/tools/custom-fields/get-custom-fields-list) |
+| `businessNumber` | string | Yes | — | Account business number that owns the field (from [`get_business_info`](/mcp/tools/business/get-business-info)) |
+| `locationBizNumber` | integer | No | — | Location number to read the field's stored value for a specific location |
+
+## Example Usage
+
+```
+Show me custom field 376.
+```
+
+```
+What type is my "colours" custom field?
+```
+
+## Example Response
+
+```json
+{
+  "id": 376,
+  "fieldName": "colours",
+  "fieldValue": "Green",
+  "type": "DROPDOWN_MULTI",
+  "defaultValue": "Green",
+  "fieldDescription": "This custom field contains a list of colours",
+  "filterable": false
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `id` | The custom field ID |
+| `fieldName` | Name of the custom field |
+| `type` | Field type (`TEXT`, `URL`, `NUMBER`, `DATE`, `DROPDOWN_SINGLE`, `DROPDOWN_MULTI`, `TEXT_RAW`) |
+| `defaultValue` | Default value — present only when set |
+| `fieldValue` | Stored value for the location — present only when set |
+| `fieldDescription` | Description of the field |
+| `filterable` | Whether the field can be used as a filter |
+
+## Notes
+
+- The field **definition** is account-level, but its stored **value** can differ per location. To read a specific location's value, pass its number as `locationBizNumber` (resolve via [`get_child_locations`](/mcp/tools/business/get-child-locations)); otherwise the account-level definition is returned.

@@ -1,0 +1,45 @@
+---
+title: "Get Google Services"
+description: "Fetch all services listed on the business's Google profile."
+---
+
+```
+get_google_services
+```
+
+## Description
+
+Returns a paginated, sortable list of services the business offers on their Google profile. Each service includes its `serviceId`, name, price, currency, description, group, and duration. Use this tool to browse services or look up a `serviceId` before calling [`update_google_service`](/mcp/tools/google-services/update-google-service) or [`delete_google_services`](/mcp/tools/google-services/delete-google-services).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `pageSize` | integer | No | `25` | Number of services per page |
+| `startIndex` | integer | No | `0` | Pagination offset |
+| `sortBy` | string | No | `"name"` | Field to sort by, e.g. `"name"`, `"price"` |
+| `sortOrder` | string | No | `"asc"` | Sort direction: `"asc"` or `"desc"` |
+| `search` | string | No | — | Keyword to filter services by name. Returns all services if omitted |
+
+## Example Usage
+
+```
+What services does my business offer on Google?
+```
+
+```
+Show me all services sorted by price descending.
+```
+
+```
+Search for the 'Deep Cleaning' service.
+```
+
+```
+List the first 10 services in my account.
+```
+
+## Notes
+
+- Use `search` to quickly locate a specific service and retrieve its `serviceId` for use in [`update_google_service`](/mcp/tools/google-services/update-google-service) or [`delete_google_services`](/mcp/tools/google-services/delete-google-services).
+- Increase `pageSize` or increment `startIndex` to paginate through large service lists.

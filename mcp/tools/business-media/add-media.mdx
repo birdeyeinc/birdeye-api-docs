@@ -1,0 +1,78 @@
+---
+title: "Add Media"
+description: "Upload one or more photos or videos to a location profile."
+---
+
+```
+add_media
+```
+
+## Description
+
+Uploads one or more media items (photos or videos) to a location profile. Use it to add storefront, interior, or team photos, or an intro or promotional video. Returns the uploaded items with their assigned `mediaId`.
+
+<Warning>
+  This is a **write tool** — it publishes media to a live profile. Confirm the target location and the media list with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Location number the media should be added to (for an SMB, the business number) |
+| `media` | list[object] | Yes | — | Media items to upload. See the item fields below |
+
+Each `media` item contains:
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `url` | string | Yes | Public URL of the media item |
+| `mediaCategory` | string | Yes | `"EXTERIOR"`, `"INTERIOR"`, `"TEAMS"`, or `"ADDITIONAL"` |
+| `description` | string | Yes | Description of the media |
+| `mediaFormat` | string | Yes | `"PHOTO"` or `"VIDEO"` |
+
+## Example Usage
+
+```
+Add this team photo (url ...) to location 169744180007807 under TEAMS.
+```
+
+```
+Upload this interior photo (url ...) to my Dallas location.
+```
+
+```
+Add this intro video (url ...) to location 169744180007807 as ADDITIONAL.
+```
+
+## Example Response
+
+```json
+{
+  "media": [
+    {
+      "mediaId": "987654321123",
+      "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg",
+      "mediaCategory": "TEAMS",
+      "description": "Image of the team",
+      "mediaFormat": "PHOTO"
+    },
+    {
+      "mediaId": "7654321123",
+      "url": "https://videos.pexels.com/video/123123/pexels-video-12323.mp4",
+      "mediaCategory": "ADDITIONAL",
+      "description": "Introductory video",
+      "mediaFormat": "VIDEO"
+    }
+  ]
+}
+```
+
+## Response Fields
+
+Each uploaded `media` entry contains its assigned `mediaId` plus the `url`, `mediaCategory`, `description`, and `mediaFormat` that were stored.
+
+## Notes
+
+- Resolve `businessNumber` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.
+- Use the returned `mediaId` with [`update_media_category`](/mcp/tools/business-media/update-media-category) or [`delete_media`](/mcp/tools/business-media/delete-media).

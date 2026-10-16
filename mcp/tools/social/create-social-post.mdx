@@ -1,0 +1,60 @@
+---
+title: "Create Social Post"
+description: "Schedule or immediately publish a social post to a connected channel."
+---
+
+```
+create_social_post
+```
+
+## Description
+
+Schedules or immediately publishes a social post to a connected channel (Google Business Profile, Facebook, Instagram, LinkedIn, or Twitter). If no schedule time is provided, the post goes out approximately 5 minutes after the call. Returns a `trackingId` to monitor post status per location using [`get_social_post`](/mcp/tools/social/get-social-post).
+
+<Warning>
+  This is a **write tool** — it publishes public content on the connected social channel. Confirm the exact text, channel, target locations, and timing with the user before calling. If `scheduleTimestamp` is omitted, the post goes live ~5 minutes after this call — communicate this to the user.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `accountNumber` | string | Yes | — | Account number the post is made under. Resolve from context or [`get_business_info`](/mcp/tools/business/get-business-info) |
+| `text` | string | Yes | — | Post text. Character limits: Google 1500, Facebook 5000, Instagram 5000, LinkedIn 3000, Twitter 240 |
+| `socialSite` | string | Yes | — | Channel to post to. Valid values: `"INSTAGRAM"`, `"FACEBOOK"`, `"GOOGLEMYBUSINESS"`, `"LINKEDIN"`, `"TWITTER"` |
+| `subBusinessNumbers` | list[integer] | No | — | Location IDs to post for. Optional for single-location (SMB) accounts |
+| `scheduleTimestamp` | integer | No | ~5 min from now | Unix timestamp in **milliseconds** for when the post should go out |
+| `media` | list[object] | No | — | Media items to attach. Each item: `{ "type": "IMAGE" \| "VIDEO" \| "REEL", "mediaUrl": "<public URL>" }` |
+| `callToActionType` | string | No | — | Call-to-action button type — **Google Business Profile only**. Valid values: `"LEARN_MORE"`, `"BOOK"`, `"ORDER"`, `"SHOP"`, `"SIGN_UP"`, `"CALL"` |
+| `callToActionUrl` | string | No | — | URL for the CTA button. Not required when `callToActionType` is `"CALL"` |
+
+## Example Usage
+
+```
+Post 'Check out our summer collection!' to Facebook for my account.
+```
+
+```
+Schedule a Google Business Profile post with this image for next Monday at 9am.
+```
+
+```
+Post to Instagram across locations 145308764185002 and 145308769721320 with a photo.
+```
+
+```
+Create a Google post with a 'Book Now' call-to-action linking to our booking page.
+```
+
+## Response
+
+| Field | Description |
+|---|---|
+| `trackingId` | Use this with [`get_social_post`](/mcp/tools/social/get-social-post) to check post status per location |
+
+## Notes
+
+- Use the returned `trackingId` with [`get_social_post`](/mcp/tools/social/get-social-post) to verify whether the post succeeded or failed per location.
+- `callToActionType` and `callToActionUrl` are only supported for `GOOGLEMYBUSINESS` posts.
+- `scheduleTimestamp` must be in Unix milliseconds (not seconds).
+- To edit a published post, use [`edit_published_social_post`](/mcp/tools/social/edit-published-social-post). To delete it, use [`delete_social_post`](/mcp/tools/social/delete-social-post).

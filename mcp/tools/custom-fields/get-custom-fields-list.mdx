@@ -1,0 +1,79 @@
+---
+title: "Get Custom Fields List"
+description: "List a business's custom fields with pagination, search, and sorting."
+---
+
+```
+get_custom_fields_list
+```
+
+## Description
+
+Returns a paginated list of the business's custom fields. Use it to discover which custom fields exist (names, types, options) and to resolve a field's ID before calling [`get_custom_field`](/mcp/tools/custom-fields/get-custom-field), [`update_custom_field`](/mcp/tools/custom-fields/update-custom-field), or [`delete_custom_field`](/mcp/tools/custom-fields/delete-custom-field).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Account business number whose custom fields to list (from [`get_business_info`](/mcp/tools/business/get-business-info)) |
+| `page` | integer | No | `0` | Zero-based page number |
+| `size` | integer | No | `50` | Maximum custom fields per page |
+| `searchStr` | string | No | — | Filter by custom field name (contains match) |
+| `sortBy` | string | No | — | Field attribute to sort by, e.g. `"fieldName"`, `"fieldDescription"`, `"id"` |
+| `orderBy` | string | No | — | `"asc"` or `"desc"` |
+| `locationBizNumber` | integer | No | — | Location number to scope the list (and stored values) to a specific location |
+
+## Example Usage
+
+```
+List my custom fields.
+```
+
+```
+Search my custom fields for "colour".
+```
+
+```
+Show my custom fields sorted by name.
+```
+
+## Example Response
+
+```json
+[
+  {
+    "id": 376,
+    "fieldName": "colours",
+    "fieldValue": "Green",
+    "type": "DROPDOWN_MULTI",
+    "defaultValue": "Green",
+    "fieldDescription": "This custom field contains a list of colours",
+    "filterable": false,
+    "dropDownOptions": [
+      { "value": "Blue" },
+      { "value": "Green" },
+      { "value": "Red" }
+    ]
+  }
+]
+```
+
+## Response Fields
+
+Each custom field contains:
+
+| Field | Description |
+|---|---|
+| `id` | The custom field ID |
+| `fieldName` | Name of the custom field |
+| `type` | Field type (`TEXT`, `URL`, `NUMBER`, `DATE`, `DROPDOWN_SINGLE`, `DROPDOWN_MULTI`, `TEXT_RAW`) |
+| `defaultValue` | Default value — present only when set |
+| `fieldValue` | Stored value — present only when set |
+| `fieldDescription` | Description of the field |
+| `filterable` | Whether the field can be used as a filter |
+| `dropDownOptions` | Option values for `DROPDOWN_SINGLE` / `DROPDOWN_MULTI` fields — present only when the field has options |
+
+## Notes
+
+- **Clarify the scope first.** Custom fields exist at the enterprise/parent account level and can also carry per-location values. Pass the account business number as `businessNumber` for account-level fields, or set `locationBizNumber` (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) to include a specific location's stored values.
+- `orderBy` accepts only `"asc"` or `"desc"`.

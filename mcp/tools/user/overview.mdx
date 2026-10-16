@@ -1,0 +1,24 @@
+---
+title: "User Overview"
+description: "Tools for managing Birdeye user accounts — create, update roles and access, and remove users."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="create_user" icon="user-plus" href="/mcp/tools/user/create-user">
+    Add a new user to the Birdeye business account
+  </Card>
+  <Card title="update_user" icon="user-pen" href="/mcp/tools/user/update-user">
+    Update a user's role, name, location access, and notification preferences
+  </Card>
+  <Card title="delete_user" icon="user-minus" href="/mcp/tools/user/delete-user">
+    Remove a user's access from the business account
+  </Card>
+</CardGroup>
+
+## Tips
+
+- User management is performed at the account level — no `locationId` is needed for most operations.
+- Always confirm destructive actions (delete) with the user before proceeding.
+- When updating `locationsNumberAccess` via `update_user`, provide the **complete** desired list — partial updates are not supported and the full list replaces the existing one.

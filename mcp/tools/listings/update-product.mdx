@@ -1,0 +1,62 @@
+---
+title: "Update Product"
+description: "Update an existing Google Merchant product listing on the business account."
+---
+
+```
+update_product
+```
+
+## Description
+
+Updates an existing product on the business's Google Merchant profile. All required fields must be provided — this is a full replacement, not a partial update. Fetch the current product first using [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) to preserve fields the user isn't changing.
+
+<Warning>
+  This is a **write tool** — it modifies a live or draft product on Google Merchant. Fetch the current product data first to avoid unintentionally clearing fields. Confirm all changes with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `productId` | string | Yes | — | Unique identifier of the product to update. Use [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) with a title search if unknown |
+| `title` | string | Yes | — | Product title displayed on Google Merchant |
+| `imageLink` | string | Yes | — | Publicly accessible URL of the main product image |
+| `googleProductCategoryId` | string | Yes | — | Google product taxonomy ID. Use [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) to look up valid IDs |
+| `price` | object | Yes | — | Price object: `{ "amount": "1500.00", "currencyCode": "USD" }` |
+| `status` | string | Yes | — | `"PUBLISH"` (live) or `"DRAFT"` (saved, not published) |
+| `businessNumbers` | list[integer] | No | All locations | Enterprise location numbers to apply the update to |
+| `description` | string | No | — | Product description text |
+| `additionalImageLinks` | list[string] | No | — | Additional publicly accessible image URLs |
+| `brandName` | string | No | — | Brand or manufacturer name |
+| `salePrice` | object | No | — | Sale price object: `{ "amount": "1200.00", "currencyCode": "USD" }` |
+| `productTypes` | list[string] | No | — | Categorization keywords, e.g. `["Dental Services", "Implants"]` |
+| `productUrl` | string | No | — | URL of the product's landing page |
+
+### `price` / `salePrice` Object
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `amount` | string | Yes | Price as a decimal string, e.g. `"1500.00"` |
+| `currencyCode` | string | Yes | ISO 4217 currency code, e.g. `"USD"`. Use [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) with `actions=["PRODUCT_CURRENCY"]` for supported codes |
+
+## Example Usage
+
+```
+Update the price of 'Dental Implant' to $1800.
+```
+
+```
+Change the status of product 68767cb39ebf51000815ab39 to DRAFT.
+```
+
+```
+Update the title and description of our 'Teeth Whitening' product.
+```
+
+## Notes
+
+- If the user provides a product name instead of a `productId`, call [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) with the name as `search`, present results, and confirm the correct product.
+- This is a full replacement — always fetch the current product data first and carry forward any fields the user isn't explicitly changing.
+- `status` must be exactly `"PUBLISH"` or `"DRAFT"`.
+- If the user doesn't know the Google product category ID, call [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) with `actions=["PRODUCT_GOOGLE_CATEGORY"]`.

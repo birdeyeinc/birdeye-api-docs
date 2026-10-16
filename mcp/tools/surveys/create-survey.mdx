@@ -1,0 +1,64 @@
+---
+title: "Create Survey"
+description: "Create a new customer feedback or NPS survey."
+---
+
+```
+create_survey
+```
+
+## Description
+
+Creates a new survey in the Birdeye account. Surveys are built from one or more pages, each containing a list of questions. Supports a wide range of question types including text, multiple choice, NPS, and matrix formats.
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `surveyName` | string | Yes | — | Name of the survey |
+| `ownerEmailId` | string | Yes | — | Email of the Birdeye user who owns the survey |
+| `pages` | list[object] | Yes | — | List of page objects containing questions (see below) |
+
+### Optional
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `surveyType` | string | No | — | Type of survey (e.g. `"NPS"`, `"feedback"`) |
+| `thankYouMessage` | string | No | — | Message shown to respondents after submission |
+
+### Page object fields
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `title` | string | No | Optional page title |
+| `questions` | list[object] | Yes | List of question objects on this page |
+
+### Question object fields
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `title` | string | Yes | Question text |
+| `type` | string | Yes | Question type: `"text"`, `"textarea"`, `"checkbox"`, `"dropdown"`, `"radio"`, `"rating"`, `"nps"`, `"datetime"`, `"contact"`, `"matrixrating"`, `"matrixradio"`, `"matrixdropdown"`, or `"label"` |
+| `required` | boolean | No | Whether the question is required |
+| `choices` | list[string] | No | Answer choices (for `checkbox`, `dropdown`, `radio`) |
+| `minLabel` | string | No | Label for the minimum end of a scale (for `rating`, `nps`) |
+| `maxLabel` | string | No | Label for the maximum end of a scale (for `rating`, `nps`) |
+| `maxValue` | integer | No | Maximum value for numeric scales |
+
+## Example Usage
+
+```
+Create a 5-question NPS survey called "Post-Visit Patient Feedback" owned by dr.smith@acme.com.
+```
+
+```
+Build a survey with a rating question and an open-ended follow-up text question.
+```
+
+## Notes
+
+- Surveys are created at the account level and are not scoped to individual locations.
+- Use [`get_all_surveys`](/mcp/tools/surveys/get-all-surveys) to list existing surveys before creating a new one.
+- After creating a survey, use [`update_survey_settings`](/mcp/tools/surveys/update-survey-settings) to configure appearance and access control.

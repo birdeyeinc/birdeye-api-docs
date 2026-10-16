@@ -1,0 +1,62 @@
+---
+title: "Create Product"
+description: "Create a new Google Merchant product listing for the business account."
+---
+
+```
+create_product
+```
+
+## Description
+
+Creates a new product on the business's Google Merchant profile. Products can be published immediately (`PUBLISH`) or saved as a draft (`DRAFT`). The product can be scoped to specific locations or applied to all locations on the account.
+
+<Warning>
+  This is a **write tool** — it creates a live or draft product on Google Merchant. Collect all required fields from the user before calling. Confirm the status (`PUBLISH` vs `DRAFT`) and target locations before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `title` | string | Yes | — | Product title displayed on Google Merchant |
+| `imageLink` | string | Yes | — | Publicly accessible URL of the main product image |
+| `googleProductCategoryId` | string | Yes | — | Google product taxonomy ID. Use [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) to look up valid IDs |
+| `price` | object | Yes | — | Price object: `{ "amount": "1500.00", "currencyCode": "USD" }` |
+| `status` | string | Yes | — | `"PUBLISH"` (live immediately) or `"DRAFT"` (saved, not published) |
+| `businessNumbers` | list[integer] | No | All locations | Enterprise location numbers to apply the product to |
+| `description` | string | No | — | Product description text |
+| `additionalImageLinks` | list[string] | No | — | Additional publicly accessible image URLs |
+| `brandName` | string | No | — | Brand or manufacturer name |
+| `salePrice` | object | No | — | Sale price object: `{ "amount": "1200.00", "currencyCode": "USD" }` |
+| `productSku` | string | No | — | Merchant SKU. System assigns one automatically if omitted |
+| `productTypes` | list[string] | No | — | Categorization keywords, e.g. `["Dental Services", "Implants"]` |
+| `productUrl` | string | No | — | URL of the product's landing page |
+
+### `price` / `salePrice` Object
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `amount` | string | Yes | Price as a decimal string, e.g. `"1500.00"` |
+| `currencyCode` | string | Yes | ISO 4217 currency code, e.g. `"USD"`. Use [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) with `actions=["PRODUCT_CURRENCY"]` to see all supported codes |
+
+## Example Usage
+
+```
+Create a new product called 'Dental Implant' priced at $1500 USD and publish it.
+```
+
+```
+Add a draft product listing for 'Teeth Whitening' at $299 with a sale price of $199.
+```
+
+```
+Create a Google Merchant product for 'SmileCare Implant' with SKU DENTAL-001 for locations 145308764185002 and 145308769721320.
+```
+
+## Notes
+
+- If the user doesn't know the Google product category ID, call [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) with `actions=["PRODUCT_GOOGLE_CATEGORY"]` and present the options.
+- If the user doesn't know the currency code, call [`get_product_listing_options`](/mcp/tools/listings/get-product-listing-options) with `actions=["PRODUCT_CURRENCY"]` first.
+- `status` must be exactly `"PUBLISH"` or `"DRAFT"` — ask the user if not stated.
+- After creating, use [`add_products`](/mcp/tools/listings/add-products) to add the product to the active Google listing if it was created as a draft.

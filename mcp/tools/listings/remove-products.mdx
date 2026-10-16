@@ -1,0 +1,42 @@
+---
+title: "Remove Products"
+description: "Remove one or more products from the business's Google listing without permanently deleting them."
+---
+
+```
+remove_products
+```
+
+## Description
+
+Removes one or more products from the business's active Google listing (Google Merchant). The products are **unlisted** but not deleted — they remain in the system and can be re-added later using [`add_products`](/mcp/tools/listings/add-products).
+
+<Warning>
+  This is a **write tool** — it unlists products from Google Merchant across all mapped locations. To permanently delete products instead, use [`delete_products`](/mcp/tools/listings/delete-products). Confirm the product list with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `productIds` | list[string] | Yes | — | List of product identifiers to remove. Example: `["68767cb39ebf51000815ab39"]` |
+
+## Example Usage
+
+```
+Remove product 68767cb39ebf51000815ab39 from my Google listing.
+```
+
+```
+Unlist the 'Teeth Whitening Kit' and 'Dental Floss Pack' from Google.
+```
+
+```
+Take down all seasonal products from my Google listing.
+```
+
+## Notes
+
+- If the user provides product names instead of IDs, call [`get_product_listing_list`](/mcp/tools/listings/get-product-listing-list) with the title as `search`, present the matching results, and confirm the correct `productId` values before calling.
+- Remove vs Delete: `remove_products` unlists products (reversible). [`delete_products`](/mcp/tools/listings/delete-products) permanently deletes them (irreversible).
+- To re-add removed products, use [`add_products`](/mcp/tools/listings/add-products).

@@ -1,0 +1,34 @@
+---
+title: "Create Review Tag"
+description: "Create one or more new review tags for the account."
+---
+
+```
+create_review_tag
+```
+
+## Description
+
+Creates one or more review tags at the account level. Tags can then be assigned to reviews using [`assign_tags_to_reviews`](/mcp/tools/reviews/assign-tags-to-reviews) to help categorize and filter review data.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `tags` | list[string] | Yes | — | List of tag names to create (e.g. `["positive", "urgent", "follow-up"]`) |
+
+## Example Usage
+
+```
+Create review tags called "great-service" and "pricing-concern".
+```
+
+```
+Add a new tag "needs-follow-up" for flagging unresolved reviews.
+```
+
+## Notes
+
+- Tags are created at the account level and are shared across all locations.
+- Use [`get_review_tags`](/mcp/tools/reviews/get-review-tags) to check existing tags before creating new ones — duplicate tag names may cause errors.
+- After creating a tag, use [`assign_tags_to_reviews`](/mcp/tools/reviews/assign-tags-to-reviews) to apply it to reviews.

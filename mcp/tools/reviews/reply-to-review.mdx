@@ -1,0 +1,41 @@
+---
+title: "Reply to Review"
+description: "Post a public or private reply to a customer review."
+---
+
+```
+reply_to_review
+```
+
+## Description
+
+Posts a reply to a customer review on behalf of the business. Replies can be public (visible to all) or private (direct message to the reviewer), depending on the platform. Not all platforms support private replies — private responses are only available on platforms such as Facebook that explicitly allow them.
+
+<Warning>
+  This is a **write tool** — it posts a visible reply to the customer's review. Confirm the message content with the user before submitting.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+| `reviewId` | string | Yes | — | ID of the review to reply to (from `get_reviews`) |
+| `response` | string | Yes | — | Text of the reply to post |
+| `isPrivateResponse` | boolean | No | `false` | Send as a private message instead of a public reply (only supported on platforms that allow it, e.g. Facebook) |
+
+## Example Usage
+
+```
+Reply to review ID abc123 with "Thank you for your feedback — we're glad you had a great experience!"
+```
+
+```
+Send a private reply to review ID xyz789 apologizing for the long wait time.
+```
+
+## Notes
+
+- Call [`get_business_info`](/mcp/tools/business/get-business-info) to retrieve `businessNumber` if not provided.
+- Call [`get_reviews`](/mcp/tools/reviews/get-reviews) to find the `reviewId` to reply to.
+- Private replies (`isPrivateResponse: true`) are only delivered on platforms that support direct messaging (e.g. Facebook). On platforms like Google, replies are always public.

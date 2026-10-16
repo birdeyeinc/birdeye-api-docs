@@ -21,12 +21,33 @@ description: "Tools for managing and analyzing your business listings across Goo
   <Card title="get_product_listing_list" icon="box" href="/mcp/tools/listings/get-product-listing-list">
     Google Merchant product listings linked to your account
   </Card>
+  <Card title="fix_listing" icon="rotate" href="/mcp/tools/listings/fix-listing">
+    Publish / sync business information to 50+ online listing directories for a location
+  </Card>
+  <Card title="deactivate_listing" icon="circle-xmark" href="/mcp/tools/listings/deactivate-listing">
+    Stop publishing business information to online listing directories for a location
+  </Card>
+  <Card title="create_product" icon="plus" href="/mcp/tools/listings/create-product">
+    Create a new Google Merchant product listing for the business account
+  </Card>
+  <Card title="update_product" icon="pen" href="/mcp/tools/listings/update-product">
+    Update an existing Google Merchant product listing
+  </Card>
+  <Card title="add_products" icon="cart-plus" href="/mcp/tools/listings/add-products">
+    Add one or more products to the business's active Google listing
+  </Card>
+  <Card title="remove_products" icon="cart-arrow-down" href="/mcp/tools/listings/remove-products">
+    Remove (unlist) one or more products from the business's Google listing
+  </Card>
+  <Card title="delete_products" icon="trash" href="/mcp/tools/listings/delete-products">
+    Permanently delete one or more Google Merchant products from the account
+  </Card>
 </CardGroup>
 
 ## Location-Level Tools
 
 <Warning>
-  `get_listing` and `get_listing_location_status_report` are **location-level tools** — they require a `locationId` parameter.
+  `get_listing`, `get_listing_location_status_report`, `fix_listing`, and `deactivate_listing` are **location-level tools** — they require a `locationId` parameter.
 
   Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get the list of valid location IDs.
 </Warning>
@@ -36,3 +57,4 @@ description: "Tools for managing and analyzing your business listings across Goo
 - `get_listing_insights` defaults to the last 12 months if no date range is provided.
 - `get_listing_category_list` is useful before updating a listing — use it to find the correct category ID for a given platform.
 - `get_product_listing_list` only returns data if your Google Merchant account is connected in Birdeye.
+- After calling `deactivate_listing`, use `fix_listing` to resume publishing to directories.

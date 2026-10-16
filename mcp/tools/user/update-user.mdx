@@ -1,0 +1,59 @@
+---
+title: "Update User"
+description: "Update a user's role, name, location access, and notification preferences."
+---
+
+```
+update_user
+```
+
+## Description
+
+Updates an existing user's role, personal details, location access, and notification preferences. When updating `locationsNumberAccess`, the provided list replaces the user's entire current location access — partial updates are not supported.
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `userEmailId` | string | Yes | — | Email address of the user to update |
+| `entUser` | boolean | Yes | `false` | Set to `true` to grant enterprise-level access to all locations; `false` to restrict to specific locations |
+
+### Optional
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `userRole` | string | No | — | New role: `"owner"` or `"admin"` |
+| `firstName` | string | No | — | Updated first name |
+| `lastName` | string | No | — | Updated last name |
+| `locationsNumberAccess` | list[integer] | No | — | **Complete** list of location IDs the user should have access to. Replaces the existing list — always provide the full desired set |
+
+### Notification preferences (`notification` object)
+
+| Field | Type | Description |
+|---|---|---|
+| `sendReviewEmailAlert` | integer | Email alert for new reviews: `1` = on, `0` = off |
+| `sendDailyReviewDigest` | integer | Daily review digest email: `1` = on, `0` = off |
+| `dailyDigestAbsoluteTime` | string | Time to send daily digest (`"HH:MM"` format) |
+| `sendWeeklyReviewDigest` | integer | Weekly review digest: `1` = on, `0` = off |
+| `weeklyDigestAbsoluteTime` | string | Time to send weekly digest (`"HH:MM"` format) |
+| `weeklyDigestRunDay` | integer | Day of week for weekly digest: `0` = Sunday, `1` = Monday, … `6` = Saturday |
+| `sendReviewSmsAlert` | integer | SMS alert for new reviews: `1` = on, `0` = off |
+| `sendDailySocialDigest` | integer | Daily social digest email: `1` = on, `0` = off |
+
+## Example Usage
+
+```
+Give sarah.jones@acme.com access to locations 78901, 78902, and 78903.
+```
+
+```
+Enable daily review digest for rm.west@acme.com, sent at 8:00 AM on weekdays.
+```
+
+## Notes
+
+- `locationsNumberAccess` always **replaces** the full location access list — it is not additive. Always provide the complete desired list of location IDs.
+- Setting `entUser: true` grants access to all locations and ignores `locationsNumberAccess`.
+- Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to retrieve valid location IDs for `locationsNumberAccess`.

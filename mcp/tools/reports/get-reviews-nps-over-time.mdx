@@ -1,0 +1,92 @@
+---
+title: "Get Reviews NPS Over Time"
+description: "Track review-derived Net Promoter Score and promoter, passive, and detractor share over time."
+---
+
+```
+get_reviews_nps_over_time
+```
+
+## Description
+
+Returns the account's **review-derived** Net Promoter Score as a time series, including the promoter, passive, and detractor split for each period.
+
+<Note>
+  **This is review-derived NPS.** It is computed from Birdeye **review** data, served by the review service. The population is review records and can be narrowed with `reviewSites`. Present the figure as review-based NPS so the source of the number is unambiguous.
+</Note>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | 12 months ago when no period is requested | Start date in `MM/DD/YYYY` format |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format |
+| `reviewSites` | list[integer] | No | All sources | Review source IDs, such as `2` for Google, `1` for Yelp, `110` for Facebook, or `100` for Birdeye |
+
+## Example Usage
+
+```
+Is our Net Promoter Score improving, and how has the detractor share changed?
+```
+
+## Example Response
+
+```json
+{
+  "totalCount": 120,
+  "avgNpsScore": "42",
+  "promoters": "62",
+  "passives": "18",
+  "detractors": "20",
+  "dataPoints": [
+    {
+      "label": "01/01/2026 - 01/31/2026",
+      "shortLabel": "Jan 2026",
+      "startDate": "01/01/2026",
+      "endDate": "01/31/2026",
+      "detractorPercentile": 22,
+      "passivePercentile": 18,
+      "promoterPercentile": 60,
+      "npsScore": 38,
+      "positiveCount": 36,
+      "negativeCount": 13,
+      "neutralCount": 11,
+      "totalCount": 60
+    },
+    {
+      "label": "02/01/2026 - 02/28/2026",
+      "shortLabel": "Feb 2026",
+      "startDate": "02/01/2026",
+      "endDate": "02/28/2026",
+      "detractorPercentile": 18,
+      "passivePercentile": 18,
+      "promoterPercentile": 64,
+      "npsScore": 46,
+      "positiveCount": 38,
+      "negativeCount": 11,
+      "neutralCount": 11,
+      "totalCount": 60
+    }
+  ],
+  "groupByType": "month"
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `totalCount` | Total responses counted |
+| `avgNpsScore` | Account NPS |
+| `promoters` | Promoter percentage |
+| `passives` | Passive percentage |
+| `detractors` | Detractor percentage |
+| `dataPoints` | Period-level NPS, counts, percentages, labels, and dates |
+| `groupByType` | Time bucket selected by the service |
+
+## Notes
+
+- NPS ranges from `-100` to `100`; a negative score is valid.
+- The population is **review records**, filterable with `reviewSites`.
+- `promoters`, `passives`, and `detractors` are percentages, not raw counts.
+- Use [`get_reviews_nps_by_location`](/mcp/tools/reports/get-reviews-nps-by-location) for location comparisons.

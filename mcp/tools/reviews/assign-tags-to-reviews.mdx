@@ -1,0 +1,47 @@
+---
+title: "Assign Tags to Reviews"
+description: "Assign a tag to reviews — by explicit review IDs or by filter criteria."
+---
+
+```
+assign_tags_to_reviews
+```
+
+## Description
+
+Assigns an existing tag to one or more reviews. You can target reviews explicitly by ID, or apply the tag in bulk using filter criteria such as date range, source, rating, or keyword. The tag must already exist — create it first with [`create_review_tag`](/mcp/tools/reviews/create-review-tag) if needed.
+
+<Warning>
+  `bid` is the **location** business ID (child location), not the enterprise account ID. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid location IDs.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `tag` | string | Yes | — | Tag name to assign — must already exist (use `create_review_tag` first) |
+| `bid` | string | Yes | — | Child location business ID (from `get_child_locations`) |
+| `reviewIds` | list[string] | No | — | Explicit list of review IDs to tag (from `get_reviews`) |
+| `fromDate` | string | No | — | Filter reviews on or after this date (`yyyy-MM-dd`) |
+| `toDate` | string | No | — | Filter reviews on or before this date (`yyyy-MM-dd`) |
+| `sources` | list[string] | No | — | Filter by review source (e.g. `["GOOGLE", "YELP"]`) |
+| `ratings` | list[integer] | No | — | Filter by star rating (e.g. `[1, 2]` for negative reviews) |
+| `keywords` | list[string] | No | — | Filter reviews containing specific keywords |
+| `searchStr` | string | No | — | Full-text search string to filter reviews |
+| `subBusinessIds` | list[integer] | No | — | Filter to specific sub-location IDs |
+
+## Example Usage
+
+```
+Assign the tag "negative-experience" to all 1-star and 2-star Google reviews from the last 30 days.
+```
+
+```
+Tag review IDs abc123 and def456 with "follow-up".
+```
+
+## Notes
+
+- Either `reviewIds` OR at least one filter parameter (`fromDate`, `toDate`, `sources`, `ratings`, `keywords`, `searchStr`) must be provided.
+- The tag must already exist — use [`create_review_tag`](/mcp/tools/reviews/create-review-tag) to create it first and [`get_review_tags`](/mcp/tools/reviews/get-review-tags) to verify it exists.
+- Use [`get_reviews`](/mcp/tools/reviews/get-reviews) to find `reviewIds` for explicit assignment.

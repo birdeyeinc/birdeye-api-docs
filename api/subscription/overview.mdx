@@ -3,3 +3,13 @@ title: "Subscription"
 ---
 
 Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver real-time notifications.
+
+## Delivery retries
+
+If a webhook delivery fails (any 4xx or 5xx response, a connection error, or a timeout), Birdeye retries it with exponential backoff.
+
+- **Default:** one retry, 1 second after the failure.
+- **Configurable:** set `retryConfig` when you [subscribe](/api/subscription/create-subscription):
+  - `maxRetries`: 1 to 5 retries.
+  - `initialBackoffMs`: 1 to 30000 ms before the first retry. The wait doubles on each retry (with jitter), capped at 30 seconds.
+- **Duplicates:** every retry sends the same payload with the same `eventId`. Your endpoint may receive an event more than once, so de-duplicate on `eventId`.

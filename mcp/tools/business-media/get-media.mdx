@@ -1,0 +1,72 @@
+---
+title: "Get Media"
+description: "List the photos and videos on a location's profile."
+---
+
+```
+get_media
+```
+
+## Description
+
+Returns the media items (photos and videos) on a location's Birdeye profile. Use it to review which media are in each category, or to resolve a `mediaId` before calling [`update_media_category`](/mcp/tools/business-media/update-media-category) or [`delete_media`](/mcp/tools/business-media/delete-media).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | The location (or account) business number whose media to fetch |
+
+## Example Usage
+
+```
+Show me the photos on business 169744180007807.
+```
+
+```
+What media does my Dallas location have?
+```
+
+```
+Find the ID of my team photo.
+```
+
+## Example Response
+
+```json
+{
+  "media": [
+    {
+      "mediaId": "987654321123",
+      "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg",
+      "mediaCategory": "TEAMS",
+      "description": "Image of the team",
+      "mediaFormat": "PHOTO"
+    },
+    {
+      "mediaId": "7654321122",
+      "url": "https://videos.pexels.com/video/123123/pexels-video-12323.mp4",
+      "mediaCategory": "ADDITIONAL",
+      "description": "Introductory video",
+      "mediaFormat": "VIDEO"
+    }
+  ]
+}
+```
+
+## Response Fields
+
+Each `media` entry contains:
+
+| Field | Description |
+|---|---|
+| `mediaId` | Media ID — use it with `update_media_category` / `delete_media` |
+| `url` | URL of the media item |
+| `mediaCategory` | Category, e.g. `EXTERIOR`, `INTERIOR`, `TEAMS`, `ADDITIONAL` |
+| `description` | Description of the media |
+| `mediaFormat` | `PHOTO` or `VIDEO` |
+
+## Notes
+
+- **Clarify the scope first.** Media is captured per location — confirm which location the user means (from [`get_child_locations`](/mcp/tools/business/get-child-locations)). For the parent/enterprise account's own media, use the account number from [`get_business_info`](/mcp/tools/business/get-business-info).
+- To find a media item by name, list the media and match on `description`, then use its `mediaId`.

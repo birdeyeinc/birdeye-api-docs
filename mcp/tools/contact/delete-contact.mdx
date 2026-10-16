@@ -1,0 +1,40 @@
+---
+title: "Delete Contact"
+description: "Delete a contact from the business account."
+---
+
+```
+delete_contact
+```
+
+## Description
+
+Removes a contact from the business account. If `businessIds` is specified, the contact is removed only from those locations. If omitted, the contact is deleted from all locations in the account.
+
+<Warning>
+  If `businessIds` is omitted, the contact is deleted from **all locations**. This action cannot be undone. Confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+| `id` | string | Yes | — | Birdeye enterprise customer ID of the contact to delete |
+| `businessIds` | list[integer] | No | — | Child location IDs to remove the contact from. If omitted, the contact is removed from **all** locations |
+
+## Example Usage
+
+```
+Delete contact ID cust_abc123 from the account.
+```
+
+```
+Remove contact cust_xyz789 from locations 78901 and 78902 only.
+```
+
+## Notes
+
+- The `id` parameter is the Birdeye enterprise customer ID — not an external CRM ID.
+- To scope the deletion to specific locations, provide `businessIds` with the relevant child location IDs from [`get_child_locations`](/mcp/tools/business/get-child-locations).
+- Always confirm with the user before deleting, especially when `businessIds` is omitted (full deletion).

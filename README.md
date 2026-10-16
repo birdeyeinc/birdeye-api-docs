@@ -11,6 +11,7 @@ The **Birdeye MCP Server** connects AI assistants like Claude and ChatGPT direct
 | Category | Tools |
 |---|---|
 | Reviews | Get reviews, get review summary, review & rating overview |
+| Reports | Review conversion, rating trends, source and visitor counts, NPS, usage, dashboard, response rate and time, rating distribution |
 | Business | Get business info, get child locations |
 | Surveys | Get all surveys, get survey responses |
 | Listings | Get listing, listing status report, listing insights, category list, product listing list |
@@ -39,6 +40,7 @@ Full setup instructions: [quickstart.mdx](./quickstart.mdx)
 └── tools/                 # Tool reference docs
     ├── overview.mdx
     ├── reviews/
+    ├── reports/
     ├── business/
     ├── surveys/
     ├── listings/

@@ -1,0 +1,40 @@
+---
+title: "Add Ticket Comment"
+description: "Add a comment or internal note to an existing ticket."
+---
+
+```
+add_ticket_comment
+```
+
+## Description
+
+Adds a comment or internal note to an existing support ticket. Use this to log updates, communicate internally, or document progress on a ticket.
+
+<Warning>
+  This is a **location-level tool**. Use the same `locationId` as the ticket's location.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | string | Yes | — | Child location ID — must match the ticket's location (from `get_child_locations`) |
+| `ticketId` | integer | Yes | — | ID of the ticket to comment on (from `get_all_ticket_data`) |
+| `comment` | string | Yes | — | Comment text to add to the ticket |
+| `userEmail` | string | Yes | — | Email of the user posting the comment |
+
+## Example Usage
+
+```
+Add a comment to ticket 1042 saying "Customer was contacted and issue is being reviewed."
+```
+
+```
+Post an internal note on ticket 5567 from support@acme.com: "Escalated to billing team."
+```
+
+## Notes
+
+- Call [`get_all_ticket_data`](/mcp/tools/ticketing/get-all-ticket-data) to find the `ticketId` if not already known.
+- Call [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid `locationId` values.

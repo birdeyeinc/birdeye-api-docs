@@ -1,0 +1,58 @@
+---
+title: "Update Google Service"
+description: "Update the price, description, duration, or group of an existing Google service."
+---
+
+```
+update_google_service
+```
+
+## Description
+
+Updates an existing service on the business's Google profile. `serviceId` and `name` are always required. All other fields are optional, but this tool performs a **full replacement** — fields not passed will be cleared. Always fetch current service data first and carry forward any values the user isn't explicitly changing.
+
+<Warning>
+  This is a **write tool** — changes apply across **all locations** mapped to this service. Fetch the current service data via [`get_google_services`](/mcp/tools/google-services/get-google-services) before calling to avoid accidentally clearing existing values. Confirm the update with the user.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `serviceId` | string | Yes | — | Unique identifier of the service to update. Use [`get_google_services`](/mcp/tools/google-services/get-google-services) with a `search` to find it |
+| `name` | string | Yes | — | **Cannot be changed** — pass the existing name unchanged |
+| `currencyCode` | string | No* | — | ISO currency code. Required if updating `price`. See supported values below |
+| `price` | float | No* | — | Service price. Min: `0.10`, Max: `2147483647`. Required if updating `currencyCode` |
+| `description` | string | No | — | Service description. Max 300 characters |
+| `group` | string | No | — | Category/group label. Min 3, Max 64 characters. Not synced to Google |
+| `duration` | integer | No | — | Duration in minutes. Min: `1`, Max: `9999`. Not synced to Google |
+
+### Supported `currencyCode` Values
+
+`USD`, `GBP`, `CAD`, `AUD`, `NZD`, `EUR`, `MXN`, `INR`, `AED`, `CHF`, `CNY`, `CZK`, `EGP`, `HKD`, `HUF`, `IDR`, `ILS`, `JPY`, `KES`, `KRW`, `LKR`, `MAD`, `MOP`, `MYR`, `PHP`, `PLN`, `RON`, `RUB`, `ZAR`, `SEK`, `SGD`, `THB`, `TRY`, `TWD`, `VND`, `SAR`, `KHR`, `MNT`, `NOK`, `DKK`
+
+## Example Usage
+
+```
+Update the price of service SERV10021056 to $150 USD.
+```
+
+```
+Change the description of 'Customer Service' to '24x7 premium support'.
+```
+
+```
+Update the duration of SERV10021056 to 120 minutes.
+```
+
+```
+Change the group of my Hair Care service to 'Wellness'.
+```
+
+## Notes
+
+- If the user provides a service name instead of a `serviceId`, call [`get_google_services`](/mcp/tools/google-services/get-google-services) with the name as `search`, present the results, and confirm before proceeding.
+- The service `name` cannot be changed on Google — always pass the existing name unchanged.
+- `price` and `currencyCode` are required together — if updating price, collect both.
+- `group` and `duration` are stored in Birdeye but are **not synced to Google**.
+- To avoid data loss: fetch the current service first, then only change what the user specified.

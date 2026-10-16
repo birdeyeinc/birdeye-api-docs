@@ -1,0 +1,28 @@
+---
+title: "Google Services Overview"
+description: "Tools for managing services listed on the business's Google profile."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="get_google_services" icon="magnifying-glass" href="/mcp/tools/google-services/get-google-services">
+    Fetch all services listed on the business's Google profile with pricing and duration
+  </Card>
+  <Card title="create_google_service" icon="plus" href="/mcp/tools/google-services/create-google-service">
+    Add a new service to the business's Google profile
+  </Card>
+  <Card title="update_google_service" icon="pen" href="/mcp/tools/google-services/update-google-service">
+    Update the price, description, duration, or group of an existing Google service
+  </Card>
+  <Card title="delete_google_services" icon="trash" href="/mcp/tools/google-services/delete-google-services">
+    Permanently delete one or more services from the business's Google profile
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Use `get_google_services` with a `search` keyword to find a specific service and retrieve its `serviceId` before updating or deleting.
+- When updating a service, fetch the current service data first — `update_google_service` is a full replacement and will clear any fields not explicitly passed.
+- `group` and `duration` are stored internally in Birdeye and are not synced to Google.
+- Deletions via `delete_google_services` affect all locations the service is mapped to — always confirm with the user before proceeding.

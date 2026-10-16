@@ -1,0 +1,40 @@
+---
+title: "Update Media Category"
+description: "Re-categorize a single existing media item on a location profile."
+---
+
+```
+update_media_category
+```
+
+## Description
+
+Re-categorizes a single existing media item on a location profile. Use it to move a photo into a different category or correct the category of a previously uploaded item.
+
+<Warning>
+  This is a **write tool** — it changes a live media item. Confirm the media item and the new category with the user before calling.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | string | Yes | — | Location number the media belongs to |
+| `mediaId` | string | Yes | — | ID of the media item to update. Resolve via [`get_media`](/mcp/tools/business-media/get-media) |
+| `mediaCategory` | string | Yes | — | New category. Valid values: `"EXTERIOR"`, `"INTERIOR"`, `"TEAMS"`, `"ADDITIONAL"` (and other Google-supported categories such as `COVER`, `PROFILE`, `PRODUCT`, `MENU`) |
+
+## Example Usage
+
+```
+Change media 62185029212 on location 169744180007807 to INTERIOR.
+```
+
+```
+Recategorize media 62185029212 as TEAMS.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the media category is updated; there is no response body to inspect.
+- Resolve `mediaId` via [`get_media`](/mcp/tools/business-media/get-media) (match the item by description) if the user refers to a photo or video rather than giving an ID.
+- Resolve `businessNumber` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.

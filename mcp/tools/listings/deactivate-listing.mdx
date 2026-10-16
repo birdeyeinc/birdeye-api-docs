@@ -1,0 +1,38 @@
+---
+title: "Deactivate Listing"
+description: "Stop publishing business information to online listing directories for a location."
+---
+
+```
+deactivate_listing
+```
+
+## Description
+
+Stops all directory publishing for a specific location, removing the business from syncing to online listing directories such as Google, Bing, Apple, and Facebook. This is typically used when a location is temporarily closed or being restructured.
+
+<Warning>
+  This stops **all** directory publishing for the location. To resume publishing, call [`fix_listing`](/mcp/tools/listings/fix-listing) or create a new listing. Confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `locationId` | integer | Yes | — | Child location business ID (from `get_child_locations`) |
+
+## Example Usage
+
+```
+Deactivate the listing for location 78901 — the branch is temporarily closed.
+```
+
+```
+Stop directory publishing for my Westside location.
+```
+
+## Notes
+
+- `locationId` follows the same child location convention as [`fix_listing`](/mcp/tools/listings/fix-listing) — use [`get_child_locations`](/mcp/tools/business/get-child-locations) to get valid IDs.
+- To resume publishing after deactivation, call [`fix_listing`](/mcp/tools/listings/fix-listing).
+- Use [`get_listing_location_status_report`](/mcp/tools/listings/get-listing-location-status-report) to confirm the deactivation status.

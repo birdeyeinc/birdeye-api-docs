@@ -1,0 +1,98 @@
+---
+title: "Get Review Conversion Report"
+description: "Analyze how review request emails and SMS messages convert into clicks and reviews."
+---
+
+```
+get_review_conversion_report
+```
+
+## Description
+
+Returns an account-level review request funnel covering email and SMS delivery, opens, clicks, destination sites, and reviews generated. If no period is provided, use the last 30 days.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `fromDate` | string | No | Start date in `MM/DD/YYYY` format |
+| `toDate` | string | No | Inclusive end date in `MM/DD/YYYY` format |
+| `days` | integer | No | Relative window ending today; `0` is today and `-1` is yesterday |
+| `months` | integer | No | Relative month window; `-1` is month to date and `-12` is year to date |
+
+## Example Usage
+
+```
+How many review requests did we send last month, and how many converted into reviews?
+```
+
+## Example Response
+
+```json
+{
+  "emailSentInfo": {
+    "total": 1200,
+    "reqCount": 1050,
+    "reqReminderCount": 150,
+    "shareReqCount": 0,
+    "shareReqReminderCount": 0,
+    "emailDetails": [
+      { "reqType": "review_request", "count": 1050 },
+      { "reqType": "review_request_reminder", "count": 150 },
+      { "reqType": "share_request", "count": 0 },
+      { "reqType": "share_request_reminder", "count": 0 }
+    ]
+  },
+  "emailOpenInfo": {
+    "total": 720,
+    "percent": 60.0,
+    "pc": 310,
+    "mobile": { "ios": 250, "android": 140, "other": 0 },
+    "tablet": { "ios": 20, "android": 0, "other": 0 }
+  },
+  "emailClickInfo": {
+    "total": 240,
+    "percent": 20.0,
+    "pc": { "yelp": 15, "google": 90, "birdeye": 25, "otherSites": 10 },
+    "mobile": { "yelp": 10, "google": 65, "birdeye": 20, "otherSites": 5 }
+  },
+  "smsDetail": {
+    "msgSent": 800,
+    "msgClick": 200,
+    "percent": 25.0,
+    "destination": { "yelp": 10, "google": 135, "birdeye": 45, "otherSites": 10 }
+  },
+  "reviews": [
+    {
+      "sourceId": 2,
+      "sourceName": "Google",
+      "sourceAlias": "google",
+      "avgRating": 4.7,
+      "reviewCount": 86
+    }
+  ],
+  "organicReviewCount": 24,
+  "aggReviewCount": 103,
+  "alias1": "Total"
+}
+```
+
+## Response Fields
+
+| Field | Description |
+|---|---|
+| `emailSentInfo` | Initial, reminder, and shared review request email counts, with a per-request-type `emailDetails` breakdown |
+| `emailOpenInfo` | Email opens and open rate, with device data when available |
+| `emailClickInfo` | Email clicks and click rate, with device and destination data when available |
+| `smsDetail` | SMS sent, clicked, click rate, and destination counts |
+| `reviews` | Reviews generated, grouped by source |
+| `organicReviewCount` | Reviews collected on Birdeye |
+| `aggReviewCount` | Reviews collected on third-party sites |
+| `alias1` | Account rollup label, normally `"Total"` |
+
+## Notes
+
+- Pass only one date-filter style. `months` takes precedence over `days`, and both take precedence over `fromDate`.
+- This is an account-level rollup and does not accept a location filter.
+- Click percentages are based on messages sent, not messages opened.
+- Device and destination details may be zero when attribution data is unavailable; use the total and percentage fields as the authoritative funnel metrics.

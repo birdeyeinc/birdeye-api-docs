@@ -1,0 +1,54 @@
+---
+title: "Upsert Contact"
+description: "Create a new contact or update an existing one (upsert by email or phone)."
+---
+
+```
+upsert_contact
+```
+
+## Description
+
+Creates a new contact or updates an existing one in the Birdeye account. If a contact with the provided email or phone already exists, it is updated. To explicitly update an existing contact, provide the `id` or `externalId`.
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessNumber` | integer | Yes | — | Enterprise business ID (from `get_business_info → businessId`) |
+| `email` | string | Conditional | — | Contact email address — required if `phone` is not provided |
+| `phone` | string | Conditional | — | Contact phone number — required if `email` is not provided |
+
+### Optional
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `firstName` | string | No | — | Contact's first name |
+| `lastName` | string | No | — | Contact's last name |
+| `countryCode` | string | No | — | Country code (e.g. `"US"`) |
+| `id` | string | No | — | Existing Birdeye contact ID — provide to update a specific contact |
+| `externalId` | string | No | — | Your CRM/external system ID — provide to update a contact matched by external ID |
+| `businessIds` | list[integer] | No | — | Child location IDs to associate the contact with. Required when creating a new contact — ask the user to provide these directly |
+| `smsOptin` | boolean | No | — | Whether the contact has opted in to SMS |
+| `blocked` | boolean | No | — | Whether the contact is blocked |
+| `tags` | list[string] | No | — | Tags to associate with the contact |
+| `emailPreferences` | object | No | — | `{ marketingOptin, feedbackOptin, serviceOptin }` |
+| `smsPreferences` | object | No | — | `{ marketingOptin, feedbackOptin, serviceOptin }` |
+
+## Example Usage
+
+```
+Create a new contact for John Doe (john.doe@example.com, 555-0100) and associate them with location 78901.
+```
+
+```
+Update the SMS opt-in status to true for existing contact ID c_abc123.
+```
+
+## Notes
+
+- To **create** a contact: omit `id` and `externalId`, and provide `businessIds` along with `email` or `phone`.
+- To **update** a contact: provide `id` (Birdeye contact ID) or `externalId` (your CRM ID).
+- `businessIds` takes child location IDs — do not call `get_child_locations` automatically; ask the user to provide them directly.

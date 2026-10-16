@@ -1,0 +1,28 @@
+---
+title: "Contact Overview"
+description: "Tools for creating, updating, and managing customer contacts and their communication preferences."
+---
+
+## Tools in this category
+
+<CardGroup cols={1}>
+  <Card title="upsert_contact" icon="user-plus" href="/mcp/tools/contact/upsert-contact">
+    Create a new contact or update an existing one (upsert by email or phone)
+  </Card>
+  <Card title="customer_checkin" icon="location-dot" href="/mcp/tools/contact/customer-checkin">
+    Record a customer check-in at a specific location
+  </Card>
+  <Card title="delete_contact" icon="user-minus" href="/mcp/tools/contact/delete-contact">
+    Delete a contact from the business account
+  </Card>
+  <Card title="update_contact_subscription" icon="bell" href="/mcp/tools/contact/update-contact-subscription">
+    Subscribe or unsubscribe contacts from email and/or SMS communications
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Use `get_business_info` to retrieve the enterprise `businessId` required by most contact tools.
+- Use `get_child_locations` to get location IDs when a tool requires a location-level ID.
+- For `upsert_contact`, the `businessIds` field takes child location IDs — ask the user to provide these directly rather than auto-fetching them.
+- Always confirm destructive actions (delete) with the user before proceeding.

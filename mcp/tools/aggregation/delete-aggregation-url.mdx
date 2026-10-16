@@ -1,0 +1,39 @@
+---
+title: "Delete Aggregation URL"
+description: "Delete a review aggregation URL (monitoring source) from a location."
+---
+
+```
+delete_aggregation_url
+```
+
+## Description
+
+Deletes a review aggregation URL (monitoring source) from a location. Use it to stop monitoring a review site for a location or remove an outdated or incorrect source.
+
+<Warning>
+  This action **cannot be undone** — Birdeye stops monitoring that review source for the location. State exactly which aggregation source will be removed and confirm with the user before proceeding.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessId` | string | Yes | — | Location number the aggregation belongs to |
+| `aggregationId` | string | Yes | — | ID of the aggregation source to delete. Resolve via [`get_all_aggregation_sources`](/mcp/tools/aggregation/get-all-aggregation-sources) |
+
+## Example Usage
+
+```
+Stop monitoring aggregation 237030543 for location 943967608.
+```
+
+```
+Remove the old Citysearch review source from my Miami location.
+```
+
+## Notes
+
+- Returns an empty success response (HTTP 200) when the aggregation source is deleted; there is no response body to inspect.
+- Resolve `aggregationId` via [`get_all_aggregation_sources`](/mcp/tools/aggregation/get-all-aggregation-sources) (match the source, then use its `id`).
+- Resolve `businessId` via [`get_child_locations`](/mcp/tools/business/get-child-locations) if the user names a location instead of giving a number.

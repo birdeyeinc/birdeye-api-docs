@@ -1,0 +1,37 @@
+---
+title: "Delete Review Tag"
+description: "Permanently delete a review tag from the account."
+---
+
+```
+delete_review_tag
+```
+
+## Description
+
+Permanently removes a review tag from the account. Once deleted, the tag is removed from all reviews it is currently assigned to and can no longer be used for filtering or assignment.
+
+<Warning>
+  Deleting a tag removes it from **all reviews** it is currently assigned to. This action cannot be undone.
+</Warning>
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `tagname` | string | Yes | — | Exact name of the tag to delete (case-sensitive) |
+
+## Example Usage
+
+```
+Delete the review tag named "follow-up".
+```
+
+```
+Remove the "outdated" tag from the account.
+```
+
+## Notes
+
+- Use [`get_review_tags`](/mcp/tools/reviews/get-review-tags) to list current tags and verify the exact tag name before deleting — the name is case-sensitive.
+- There is no soft delete — once removed, the tag is gone from all associated reviews immediately.
