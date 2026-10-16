@@ -1,6 +1,6 @@
 ---
-title: "Get Search AI Configuration"
-description: "Get the Search AI configuration — themes and the exact prompts being monitored for your business."
+title: "Get AI Search Configuration"
+description: "Get the AI Search configuration — themes and the exact prompts being monitored for your business."
 ---
 
 ```
@@ -9,7 +9,7 @@ get_search_ai_configuration
 
 ## Description
 
-Returns the Search AI configuration for the authenticated business, including all monitored themes and the exact prompt text used for each AI engine query.
+Returns the AI Search configuration for the authenticated business, including all monitored themes and the exact prompt text used for each AI engine query.
 
 <Note>
   Always display the complete list of prompts verbatim. Do not summarize or truncate prompts in your response — the exact wording matters.
@@ -22,11 +22,11 @@ None.
 ## Example Usage
 
 ```
-What prompts is Birdeye monitoring for my Search AI?
+What prompts is Birdeye monitoring for my AI Search?
 ```
 
 ```
-Show me all Search AI themes and their prompts.
+Show me all AI Search themes and their prompts.
 ```
 
 ## Example Response
@@ -60,7 +60,7 @@ Show me all Search AI themes and their prompts.
 
 | Field | Description |
 |---|---|
-| `frequency` | How often Search AI runs (`WEEKLY`, `MONTHLY`, etc.) |
+| `frequency` | How often AI Search runs (`WEEKLY`, `MONTHLY`, etc.) |
 | `quota` | Number of AI runs included in the current plan |
 | `billingType` | Billing tier |
 | `themes` | List of themes, each with a name and array of prompt strings |
