@@ -2131,7 +2131,7 @@ paths:
       summary: Get hierarchy (v2)
       operationId: getBusinessHierarchyV2
       description: |-
-        Get Hierarchy v2 API returns the business hierarchy of an enterprise as a lightweight tree. Each node represents a value of a hierarchy level (for example a region or a city), and the nodes below it are returned under `children`.
+        Get Hierarchy v2 API returns the business hierarchy of an enterprise or a location as a lightweight tree. Pass the business number of an enterprise or of a location in the `x-business-number` header. Each node represents a value of a hierarchy level (for example a region or a city), and the nodes below it are returned under `children`.
 
         The businesses mapped to a node are returned as identifiers only (`businessIds` and `businessNumbers`). Details such as the business name and address are not included, which keeps the response small even for large enterprises. Use the Get Child Businesses API to fetch business details. Compared to Get Hierarchy, which also returns business details, this API is faster and returns a much smaller response.
 
@@ -2156,7 +2156,7 @@ paths:
       - name: x-business-number
         in: header
         description: Long business number of the business whose hierarchy you want
-          to fetch, e.g. the business number of the enterprise.
+          to fetch, e.g. the business number of an enterprise or of a location.
         required: true
         example: '123456789012345'
         schema:
