@@ -2,6 +2,11 @@
 title: "Change Logs"
 ---
 
+- <b>10/16/2026</b> - Added Get Hierarchy v2 API (`GET
+  /v2/business/hierarchy/info`) under the Business group to retrieve the business
+  hierarchy of an enterprise or a location as a lightweight tree. It returns only
+  the business ids and business numbers mapped to each hierarchy node, without
+  business details, so responses stay small for large enterprises.
 - <b>10/14/2026</b> - Added an optional `retryConfig` object to the Create
   Subscription API (`POST /v1/subscriptions/subscribe`) request body to
   configure retries for failed webhook deliveries: `maxRetries` (1-5, default:
