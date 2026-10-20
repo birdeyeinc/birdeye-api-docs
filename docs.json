@@ -534,7 +534,12 @@
                   "api/insight-ai/get-insight-reputation-location-info",
                   "api/insight-ai/get-insight-reputation-location-info-rank",
                   "api/insight-ai/get-insight-reputation-over-time",
-                  "api/insight-ai/get-insight-reputation-source"
+                  "api/insight-ai/get-insight-reputation-source",
+                  "api/insight-ai/get-insight-listing-score-benchmark",
+                  "api/insight-ai/get-insight-listing-location-info",
+                  "api/insight-ai/get-insight-listing-location-info-rank",
+                  "api/insight-ai/get-insight-listing-over-time",
+                  "api/insight-ai/get-insight-listing-source"
                 ],
                 "icon": "lightbulb"
               },
