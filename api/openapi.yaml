@@ -5009,7 +5009,9 @@ paths:
             schema:
               "$ref": "#/components/schemas/Apiary_archivedGetReviews_Request"
             example:
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
               startDate: 1712986782000
               endDate: 1715578782000
               sourceAlias:
@@ -15996,7 +15998,9 @@ paths:
               - Tiktok
               - Facebook
               - Linkedin
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
               comparisonFilter:
                 startDate: 01/01/2020
                 endDate: 01/10/2020
@@ -18689,18 +18693,22 @@ paths:
                   items:
                     type: integer
               example:
-                businessNumbers: []
+                businessNumbers:
+                - 177337970010644
+                - 177337970029743
                 fromDate: 04/01/2024
                 toDate: '08/03/2025'
                 sources: []
                 brandIds: []
                 competitorLocationIds: []
             example:
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
               fromDate: 04/01/2024
               toDate: '08/03/2025'
               sources: []
-              brandIds: []
+              brands: []
               competitorLocationIds: []
   "/v1/competitors/review/metrics":
     post:
@@ -18888,18 +18896,22 @@ paths:
                   items:
                     type: integer
               example:
-                businessNumbers: []
+                businessNumbers:
+                - 177337970010644
+                - 177337970029743
                 fromDate: 04/01/2024
                 toDate: '08/03/2025'
                 sources: []
                 brandIds: []
                 competitorLocationIds: []
             example:
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
               fromDate: 04/01/2024
               toDate: '08/03/2025'
               sources: []
-              brandIds: []
+              brands: []
               competitorLocationIds: []
   "/v1/insight/experience/scoreBenchmark":
     post:
@@ -28332,13 +28344,17 @@ paths:
                 status:
                 - DRAFT
                 - PUBLISH
-                businessNumbers: []
+                businessNumbers:
+                - 177337970010644
+                - 177337970029743
             example:
               search: Dental
               status:
               - DRAFT
               - PUBLISH
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
   "/v1/listing/public/product/addProduct":
     post:
       responses:
@@ -28557,6 +28573,1151 @@ paths:
               productIds:
               - 68767cb39ebf51000815ab39
               - 68767cb39ebf51000815ab39
+  "/v1/search-ai/public/brands-list":
+    get:
+      summary: Get Brands List
+      operationId: getBrandsList
+      description: >-
+        Returns a list of all brand names configured for the account. Use the returned names to reference brands across
+        other Search AI APIs.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number (long format).
+          schema:
+            type: string
+          example: "177337970010644"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brands:
+                    type: array
+                    description: List of all brand names configured for this account.
+                    items:
+                      type: string
+              example:
+                brands:
+                  - Acme Dental Downtown
+                  - Acme Dental Uptown
+                  - Acme Dental Westside
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: No business found for the given business number
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/visibility/summary":
+    post:
+      summary: Get Visibility Summary
+      operationId: getVisibilitySummary
+      description: >-
+        Returns the aggregated visibility score per AI site (e.g. ChatGPT, Gemini) for a
+        given date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "01/01/2025"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "03/31/2025"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Visibility scores are aggregated
+                    across all locations for the matched brands. Cannot be used together with
+                    `businessIds`.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "01/01/2025"
+              endDate: "03/31/2025"
+              brands:
+                - Acme Downtown
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ChatGPT:
+                    type: object
+                    properties:
+                      visibilityScore:
+                        type: number
+                        format: double
+                  Gemini:
+                    type: object
+                    properties:
+                      visibilityScore:
+                        type: number
+                        format: double
+                  Perplexity:
+                    type: object
+                    properties:
+                      visibilityScore:
+                        type: number
+                        format: double
+                  Claude:
+                    type: object
+                    properties:
+                      visibilityScore:
+                        type: number
+                        format: double
+                  Grok:
+                    type: object
+                    properties:
+                      visibilityScore:
+                        type: number
+                        format: double
+              example:
+                ChatGPT:
+                  visibilityScore: 72.4
+                Gemini:
+                  visibilityScore: 61.0
+                Perplexity:
+                  visibilityScore: 55.3
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: Cannot filter by both brands and businessIds simultaneously. Provide one or the other.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/citations/summary":
+    post:
+      summary: Get Citations Summary
+      operationId: getCitationsShareSummary
+      description: >-
+        Returns the aggregated citation share per AI site (e.g. ChatGPT, Gemini) for a
+        given date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                citationSource:
+                  type: string
+                  description: Optional citation source filter (e.g. a specific domain or source type).
+                  example: ""
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              citationSource: ""
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ChatGPT:
+                    type: object
+                    properties:
+                      citationShare:
+                        type: number
+                        format: double
+                  Gemini:
+                    type: object
+                    properties:
+                      citationShare:
+                        type: number
+                        format: double
+                  Perplexity:
+                    type: object
+                    properties:
+                      citationShare:
+                        type: number
+                        format: double
+                  Claude:
+                    type: object
+                    properties:
+                      citationShare:
+                        type: number
+                        format: double
+                  Grok:
+                    type: object
+                    properties:
+                      citationShare:
+                        type: number
+                        format: double
+              example:
+                ChatGPT:
+                  citationShare: 34.5
+                Gemini:
+                  citationShare: 22.1
+                Perplexity:
+                  citationShare: 18.7
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/citations/overtime-summary":
+    post:
+      summary: Get Citations Share Summary Graph
+      operationId: getCitationsShareSummaryGraph
+      description: >-
+        Returns time-bucketed citation share and count per AI site (plus an Overall rollup)
+        for a given date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                themes:
+                  type: array
+                  description: Theme names to filter by. Pass an empty array to include all themes.
+                  items:
+                    type: string
+                  example: []
+                citationSource:
+                  type: string
+                  description: Optional citation source filter.
+                  example: ""
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              themes:
+                - Customer Service
+                - Pricing
+              citationSource: ""
+      responses:
+        '200':
+          description: >-
+            A map keyed by date (mm/dd/yyyy). Each date contains an `Overall` rollup and
+            one entry per AI site, each with `citationShare` and `citationCount`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  "04/03/2026":
+                    type: object
+                    properties:
+                      Overall:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+                      ChatGPT:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+                      Gemini:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+                      Perplexity:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+                      Claude:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+                      Grok:
+                        type: object
+                        properties:
+                          citationShare:
+                            type: number
+                            format: double
+                          citationCount:
+                            type: integer
+              example:
+                "04/03/2026":
+                  Overall:
+                    citationShare: 75.3
+                    citationCount: 320
+                  ChatGPT:
+                    citationShare: 34.5
+                    citationCount: 142
+                  Gemini:
+                    citationShare: 22.1
+                    citationCount: 98
+                  Perplexity:
+                    citationShare: 18.7
+                    citationCount: 80
+                "05/03/2026":
+                  Overall:
+                    citationShare: 78.1
+                    citationCount: 340
+                  ChatGPT:
+                    citationShare: 36.0
+                    citationCount: 150
+                  Gemini:
+                    citationShare: 23.5
+                    citationCount: 105
+                  Perplexity:
+                    citationShare: 18.6
+                    citationCount: 85
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/citations/competitor":
+    post:
+      summary: Get Citations Competitor
+      operationId: getCitationsCompetitor
+      description: >-
+        Returns time-bucketed citation share and rank per competitor domain for a given
+        date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                aiSites:
+                  type: array
+                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  items:
+                    type: string
+                  example: ["ChatGPT", "Gemini"]
+                themes:
+                  type: array
+                  description: Theme names to filter by. Pass an empty array to include all themes.
+                  items:
+                    type: string
+                  example: ["Customer Service", "Pricing"]
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              aiSites:
+                - ChatGPT
+                - Gemini
+              themes:
+                - Customer Service
+                - Pricing
+      responses:
+        '200':
+          description: >-
+            A map keyed by date (mm/dd/yyyy). Each date contains one entry per competitor
+            domain with `averageCitationShare` and `citationRank`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  "04/03/2026":
+                    type: object
+                    description: Competitor citation data for this date bucket.
+                    properties:
+                      domain1.com:
+                        type: object
+                        properties:
+                          averageCitationShare:
+                            type: number
+                            format: double
+                          citationRank:
+                            type: integer
+                      domain2.com:
+                        type: object
+                        properties:
+                          averageCitationShare:
+                            type: number
+                            format: double
+                          citationRank:
+                            type: integer
+              example:
+                "04/03/2026":
+                  "competitor-a.com":
+                    averageCitationShare: 42.3
+                    citationRank: 1
+                  "competitor-b.com":
+                    averageCitationShare: 28.7
+                    citationRank: 2
+                  "mysite.com":
+                    averageCitationShare: 18.5
+                    citationRank: 3
+                "05/03/2026":
+                  "competitor-a.com":
+                    averageCitationShare: 40.1
+                    citationRank: 1
+                  "competitor-b.com":
+                    averageCitationShare: 30.2
+                    citationRank: 2
+                  "mysite.com":
+                    averageCitationShare: 20.0
+                    citationRank: 3
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/visibility/overtime-summary":
+    post:
+      summary: Get Visibility Compare on AI Models
+      operationId: getVisibilityCompareOnAiModels
+      description: >-
+        Returns time-bucketed visibility share per AI site (plus an Overall rollup)
+        for a given date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                themes:
+                  type: array
+                  description: Theme names to filter by. Pass an empty array to include all themes.
+                  items:
+                    type: string
+                  example: ["Customer Service", "Pricing"]
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              themes:
+                - Customer Service
+                - Pricing
+      responses:
+        '200':
+          description: >-
+            A map keyed by date (mm/dd/yyyy). Each date contains an `Overall` rollup and
+            one entry per AI site, each with a `visibilityShare` score.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  "04/03/2026":
+                    type: object
+                    properties:
+                      Overall:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+                      ChatGPT:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+                      Gemini:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+                      Perplexity:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+                      Claude:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+                      Grok:
+                        type: object
+                        properties:
+                          visibilityShare:
+                            type: number
+                            format: double
+              example:
+                "04/03/2026":
+                  Overall:
+                    visibilityShare: 75.3
+                  ChatGPT:
+                    visibilityShare: 34.5
+                  Gemini:
+                    visibilityShare: 22.1
+                  Perplexity:
+                    visibilityShare: 18.7
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/visibility/competitors":
+    post:
+      summary: Get Competitor Visibility
+      operationId: getCompetitorVisibility
+      description: >-
+        Returns time-bucketed average visibility score per competitor for a given date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                aiSites:
+                  type: array
+                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  items:
+                    type: string
+                  example: ["ChatGPT", "Gemini"]
+                themes:
+                  type: array
+                  description: Theme names to filter by. Pass an empty array to include all themes.
+                  items:
+                    type: string
+                  example: ["Customer Service", "Pricing"]
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              aiSites:
+                - ChatGPT
+                - Gemini
+              themes:
+                - Customer Service
+                - Pricing
+      responses:
+        '200':
+          description: >-
+            A map keyed by date (mm/dd/yyyy). Each date contains one entry per competitor
+            name with their `averageVisibility` score.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  "04/03/2026":
+                    type: object
+                    description: Competitor visibility data for this date bucket.
+                    properties:
+                      competitorName1:
+                        type: object
+                        properties:
+                          averageVisibility:
+                            type: number
+                            format: double
+                      competitorName2:
+                        type: object
+                        properties:
+                          averageVisibility:
+                            type: number
+                            format: double
+              example:
+                "04/03/2026":
+                  "Competitor A":
+                    averageVisibility: 68.4
+                  "Competitor B":
+                    averageVisibility: 54.2
+                  "My Business":
+                    averageVisibility: 72.1
+                "05/03/2026":
+                  "Competitor A":
+                    averageVisibility: 70.1
+                  "Competitor B":
+                    averageVisibility: 52.8
+                  "My Business":
+                    averageVisibility: 74.3
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/search-ai/public/visibility/share-of-voice":
+    post:
+      summary: Get Share of Voice
+      operationId: getShareOfVoice
+      description: >-
+        Returns time-bucketed share of voice rank and score per competitor for a given
+        date range.
+      tags:
+        - Search AI
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Partner-specific API key provided by Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          schema:
+            type: string
+          example: "177337970010644"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - startDate
+                - endDate
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (long) to include in the report.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                startDate:
+                  type: string
+                  description: Start of the date range in mm/dd/yyyy format.
+                  example: "08/01/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in mm/dd/yyyy format.
+                  example: "08/31/2026"
+                brands:
+                  type: array
+                  description: >-
+                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
+                    `businessNumbers`. Pass an empty array to include all brands.
+                  items:
+                    type: string
+                  example: ["Acme Downtown", "Acme Uptown"]
+                aiSites:
+                  type: array
+                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  items:
+                    type: string
+                  example: ["ChatGPT", "Gemini"]
+            example:
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
+              startDate: "08/01/2026"
+              endDate: "08/31/2026"
+              brands:
+                - Acme Downtown
+                - Acme Uptown
+              aiSites:
+                - ChatGPT
+                - Gemini
+      responses:
+        '200':
+          description: >-
+            A map keyed by date (mm/dd/yyyy). Each date contains one entry per competitor
+            name with their `rank` and `shareOfVoice` score.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  "04/03/2026":
+                    type: object
+                    description: Share of voice data for this date bucket.
+                    properties:
+                      competitorName1:
+                        type: object
+                        properties:
+                          rank:
+                            type: integer
+                          shareOfVoice:
+                            type: number
+                            format: double
+                      competitorName2:
+                        type: object
+                        properties:
+                          rank:
+                            type: integer
+                          shareOfVoice:
+                            type: number
+                            format: double
+              example:
+                "04/03/2026":
+                  "My Business":
+                    rank: 1
+                    shareOfVoice: 42.3
+                  "Competitor A":
+                    rank: 2
+                    shareOfVoice: 31.5
+                  "Competitor B":
+                    rank: 3
+                    shareOfVoice: 26.2
+                "05/03/2026":
+                  "My Business":
+                    rank: 1
+                    shareOfVoice: 44.1
+                  "Competitor A":
+                    rank: 2
+                    shareOfVoice: 30.8
+                  "Competitor B":
+                    rank: 3
+                    shareOfVoice: 25.1
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
   "/v1/listing/searchAi/public/account-setup":
     get:
       responses:
@@ -30550,7 +31711,9 @@ paths:
               "$ref": "#/components/schemas/Apiary_getAllTicketData_Request"
             example:
               assignees: []
-              businessNumbers: []
+              businessNumbers:
+                - 177337970010644
+                - 177337970029743
               fromDate: 1581230064000
               sourceAliases:
               - ''
@@ -30861,7 +32024,7 @@ tags:
 
     * <b>10/04/2024</b> - Added support to fetch ticketId associated with the survey responses in List Response API.
 servers:
-- url: https://api.birdeye.com/resources
+- url: http://preproduat1-armor.birdeye.internal:8080/resources
 components:
   requestBodies:
     Competitive_Ranking_ReportBody:
