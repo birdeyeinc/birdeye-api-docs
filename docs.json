@@ -629,7 +629,13 @@
                   "api/search-ai/get-accuracy-report",
                   "api/search-ai/get-sentiment-report",
                   "api/search-ai/get-brands-list",
-                  "api/search-ai/get-visibility-summary"
+                  "api/search-ai/get-citations-share-summary",
+                  "api/search-ai/get-citations-share-summary-graph",
+                  "api/search-ai/get-citations-competitor",
+                  "api/search-ai/get-visibility-summary",
+                  "api/search-ai/get-visibility-compare-on-ai-models",
+                  "api/search-ai/get-competitor-visibility",
+                  "api/search-ai/get-share-of-voice"
                 ],
                 "icon": "magnifying-glass"
               },
