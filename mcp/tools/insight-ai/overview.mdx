@@ -1,6 +1,6 @@
 ---
 title: "Insight AI Overview"
-description: "Tools for experience score benchmarks and location-level performance metrics."
+description: "Tools for experience, sentiment, and reputation score benchmarks, location-level performance metrics, and trends over time."
 ---
 
 ## Tools in this category
@@ -12,10 +12,47 @@ description: "Tools for experience score benchmarks and location-level performan
   <Card title="get_insight_experience_location_info" icon="map-pin" href="/mcp/tools/insight-ai/get-insight-experience-location-info">
     Get location-level experience metrics with delta comparisons vs a prior period
   </Card>
+  <Card title="get_insight_experience_location_info_rank" icon="arrow-down-wide-short" href="/mcp/tools/insight-ai/get-insight-experience-location-info-rank">
+    Get locations ranked by experience score, highest or lowest first
+  </Card>
+  <Card title="get_insight_experience_over_time" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-experience-over-time">
+    Get the experience score trend over time, broken into intervals
+  </Card>
+  <Card title="get_insight_sentiment_score_benchmark" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-sentiment-score-benchmark">
+    Compare your sentiment score against the industry benchmark
+  </Card>
+  <Card title="get_insight_sentiment_location_info" icon="map-pin" href="/mcp/tools/insight-ai/get-insight-sentiment-location-info">
+    Get location-wise sentiment scores and mention counts
+  </Card>
+  <Card title="get_insight_sentiment_location_info_rank" icon="arrow-down-wide-short" href="/mcp/tools/insight-ai/get-insight-sentiment-location-info-rank">
+    Get locations ranked by sentiment score, highest or lowest first
+  </Card>
+  <Card title="get_insight_sentiment_over_time" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-sentiment-over-time">
+    Get the sentiment score trend over time, broken into intervals
+  </Card>
+  <Card title="get_insight_sentiment_category" icon="tags" href="/mcp/tools/insight-ai/get-insight-sentiment-category">
+    Get sentiment scores broken down by review category
+  </Card>
+  <Card title="get_insight_reputation_score_benchmark" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-reputation-score-benchmark">
+    Compare your reputation score against the industry benchmark
+  </Card>
+  <Card title="get_insight_reputation_location_info" icon="map-pin" href="/mcp/tools/insight-ai/get-insight-reputation-location-info">
+    Get location-wise reputation scores, average ratings, and review counts
+  </Card>
+  <Card title="get_insight_reputation_location_info_rank" icon="arrow-down-wide-short" href="/mcp/tools/insight-ai/get-insight-reputation-location-info-rank">
+    Get locations ranked by reputation score, highest or lowest first
+  </Card>
+  <Card title="get_insight_reputation_over_time" icon="chart-line" href="/mcp/tools/insight-ai/get-insight-reputation-over-time">
+    Get the reputation score trend over time, broken into intervals
+  </Card>
+  <Card title="get_insight_reputation_source" icon="layer-group" href="/mcp/tools/insight-ai/get-insight-reputation-source">
+    Get reputation scores broken down by review source
+  </Card>
 </CardGroup>
 
 ## Tips
 
-- Both tools require `businessNumbers` — always call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid values.
+- All tools require `businessNumbers` — always call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid values.
 - If the user doesn't specify which locations to include, present the available locations and ask them to choose before calling these tools.
-- Use `get_insight_experience_score_benchmark` to answer "how do we compare to the industry?" and `get_insight_experience_location_info` to answer "which of our locations are improving or declining?"
+- Use the `*_score_benchmark` tools to answer "how do we compare to the industry?", the `*_location_info` tools to answer "which of our locations are improving or declining?", the `*_location_info_rank` tools to surface top/bottom performers, and the `*_over_time` tools to answer "how has this trended?"
+- `get_insight_sentiment_category` breaks sentiment down by review category (e.g. Customer Service, Wait Time); `get_insight_reputation_source` breaks reputation down by review source (e.g. Google, Facebook).
