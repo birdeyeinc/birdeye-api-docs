@@ -1985,6 +1985,182 @@ paths:
           exchange."
         schema:
           type: string
+  "/v2/business/hierarchy/info":
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  businessId:
+                    type: number
+                    description: Id of the business whose hierarchy is returned.
+                  businessNumber:
+                    type: number
+                    description: Business number of the business whose hierarchy
+                      is returned.
+                  name:
+                    type: string
+                    description: Name of the business.
+                  type:
+                    type: string
+                    description: Type of the business, e.g. `Enterprise-Location`.
+                  hierarchy:
+                    type: array
+                    description: Top level nodes of the hierarchy tree.
+                    items:
+                      type: object
+                      properties:
+                        levelId:
+                          type: number
+                          description: Id of the hierarchy level, e.g. the Region
+                            level.
+                        levelName:
+                          type: string
+                          description: Name of the hierarchy level.
+                        depth:
+                          type: number
+                          description: Position of the level in the hierarchy. A
+                            child node always has a greater depth than its parent,
+                            but the depths are not necessarily consecutive.
+                        levelValueId:
+                          type: number
+                          description: Id of the value at this level, e.g. the id
+                            of the West region.
+                        levelValueName:
+                          type: string
+                          description: Name of the value at this level.
+                        children:
+                          type: array
+                          description: Nodes of the levels below this node. Each
+                            child has the same structure as its parent node. Not
+                            returned when there are no nodes below this node.
+                          items:
+                            type: object
+                        businessIds:
+                          type: array
+                          description: Ids of the businesses mapped to this node.
+                            Not returned when no business is mapped to this node.
+                          items:
+                            type: number
+                        businessNumbers:
+                          type: array
+                          description: Business numbers of the businesses mapped
+                            to this node. Not returned when no business is mapped
+                            to this node.
+                          items:
+                            type: number
+              examples:
+                response:
+                  value:
+                    businessId: 1234567
+                    businessNumber: 123456789012345
+                    name: Acme Retail
+                    type: Enterprise-Location
+                    hierarchy:
+                    - levelId: 101
+                      levelName: Region
+                      depth: 1
+                      levelValueId: 5001
+                      levelValueName: West
+                      children:
+                      - levelId: 102
+                        levelName: City
+                        depth: 3
+                        levelValueId: 6001
+                        levelValueName: Seattle
+                        businessIds:
+                        - 2001
+                        - 2002
+                        businessNumbers:
+                        - 223456789012301
+                        - 223456789012302
+                      - levelId: 102
+                        levelName: City
+                        depth: 3
+                        levelValueId: 6002
+                        levelValueName: Portland
+                        businessIds:
+                        - 2003
+                        businessNumbers:
+                        - 223456789012303
+                      businessIds:
+                      - 2004
+                      businessNumbers:
+                      - 223456789012304
+                    - levelId: 101
+                      levelName: Region
+                      depth: 1
+                      levelValueId: 5002
+                      levelValueName: East
+                      children:
+                      - levelId: 103
+                        levelName: Area Manager
+                        depth: 6
+                        levelValueId: 7001
+                        levelValueName: Area 12
+                        businessIds:
+                        - 2005
+                        businessNumbers:
+                        - 223456789012305
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+      summary: Get hierarchy (v2)
+      operationId: getBusinessHierarchyV2
+      description: |-
+        Get Hierarchy v2 API returns the business hierarchy of an enterprise or a location as a lightweight tree. Pass the business number of an enterprise or of a location in the `x-business-number` header. Each node represents a value of a hierarchy level (for example a region or a city), and the nodes below it are returned under `children`.
+
+        The businesses mapped to a node are returned as identifiers only (`businessIds` and `businessNumbers`). Details such as the business name and address are not included, which keeps the response small even for large enterprises. Use the Get Child Businesses API to fetch business details. Compared to Get Hierarchy, which also returns business details, this API is faster and returns a much smaller response.
+
+        Level names and values come from the hierarchy configured for the account. They carry no built-in meaning: for example, a value named `Inactive` is a regular hierarchy value that lists the businesses mapped to it.
+      tags:
+      - Business
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: Partner specific API key provided by Birdeye for data exchange.
+        required: true
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: Long business number of the business whose hierarchy you want
+          to fetch, e.g. the business number of an enterprise or of a location.
+        required: true
+        example: '123456789012345'
+        schema:
+          type: string
   "/v1/business/business-hierarchy/location/update-mapping/{businessId}":
     post:
       responses:
@@ -28529,11 +28705,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Configuration
+      summary: Get AI Search Configuration
       operationId: getSearchAiConfiguration
-      description: Retrieves the Search AI configuration for the specified business.
+      description: Retrieves the AI Search configuration for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -28701,11 +28877,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Available Runs
+      summary: Get AI Search Available Runs
       operationId: getSearchAiAvailableRuns
-      description: Retrieves the Search AI available runs for the specified business.
+      description: Retrieves the AI Search available runs for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -28899,12 +29075,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Citations
+      summary: Get AI Search Citations
       operationId: getSearchAiCitations
-      description: Retrieves Search AI citations for the specified business, including
+      description: Retrieves AI Search citations for the specified business, including
         sources referenced by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29124,12 +29300,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Businesses
+      summary: Get AI Search Businesses
       operationId: getSearchAiBusinesses
-      description: Retrieves Search AI business results for the specified business,
+      description: Retrieves AI Search business results for the specified business,
         including businesses identified by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29348,7 +29524,7 @@ paths:
       description: Provides an accuracy report for the specified business, highlighting
         how consistent and reliable the business information is across platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29729,7 +29905,7 @@ paths:
       description: Returns the sentiment report for the specified business, providing
         insights into customer sentiment across supported platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30603,8 +30779,8 @@ tags:
 - name: GMB Products
   description: To manage products, locations, and business details through Listing
     GMB platform
-- name: Search AI
-  description: Search AI provides a comprehensive view of your business performance
+- name: AI Search
+  description: AI Search provides a comprehensive view of your business performance
     across AI-powered search platforms, including data accuracy, sentiment analysis,
     citations, brand ranking, and overall visibility.
 - name: Ticketing

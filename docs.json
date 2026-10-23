@@ -141,7 +141,7 @@
                 ]
               },
               {
-                "group": "Search AI",
+                "group": "AI Search",
                 "collapsed": true,
                 "icon": "magnifying-glass",
                 "pages": [
@@ -271,6 +271,7 @@
                   "api/business/get-child-businesses",
                   "api/business/update-public-profile-of-businesses",
                   "api/business/get-hierarchy-for-an-enterprise",
+                  "api/business/get-hierarchy-v2",
                   "api/business/update-hierarchy",
                   "api/business/get-custom-card-details",
                   "api/business/update-custom-card",
@@ -618,7 +619,7 @@
                 "icon": "bag-shopping"
               },
               {
-                "group": "Search AI",
+                "group": "AI Search",
                 "collapsed": true,
                 "pages": [
                   "api/search-ai/overview",
