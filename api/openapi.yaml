@@ -28398,9 +28398,9 @@ paths:
       operationId: getBrandsList
       description: >-
         Returns a list of all brand names configured for the account. Use the returned names to reference brands across
-        other Search AI APIs.
+        other AI Search APIs.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -28474,7 +28474,7 @@ paths:
         Returns the aggregated visibility score per AI site (e.g. ChatGPT, Gemini) for a
         given date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -28500,7 +28500,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -28516,7 +28516,7 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Visibility scores are aggregated
+                    Brand names to filter by. Visibility scores are aggregated
                     across all locations for the matched brands. Cannot be used together with
                     `businessIds`.
                   items:
@@ -28616,7 +28616,7 @@ paths:
         Returns the aggregated citation share per AI site (e.g. ChatGPT, Gemini) for a
         given date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -28643,7 +28643,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -28659,15 +28659,11 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
-                citationSource:
-                  type: string
-                  description: Optional citation source filter (e.g. a specific domain or source type).
-                  example: ""
             example:
               businessNumbers:
                 - 177337970010644
@@ -28677,7 +28673,6 @@ paths:
               brands:
                 - Acme Downtown
                 - Acme Uptown
-              citationSource: ""
       responses:
         '200':
           description: OK
@@ -28750,10 +28745,9 @@ paths:
       summary: Get Citations Share Summary Graph
       operationId: getCitationsShareSummaryGraph
       description: >-
-        Returns time-bucketed citation share and count per AI site (plus an Overall rollup)
-        for a given date range.
+        Returns time-bucketed citation share and count per AI site for a given date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -28780,7 +28774,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -28796,8 +28790,8 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -28807,10 +28801,6 @@ paths:
                   items:
                     type: string
                   example: []
-                citationSource:
-                  type: string
-                  description: Optional citation source filter.
-                  example: ""
             example:
               businessNumbers:
                 - 177337970010644
@@ -28823,12 +28813,10 @@ paths:
               themes:
                 - Customer Service
                 - Pricing
-              citationSource: ""
       responses:
         '200':
           description: >-
-            A map keyed by date (mm/dd/yyyy). Each date contains an `Overall` rollup and
-            one entry per AI site, each with `citationShare` and `citationCount`.
+            A map keyed by date (mm/dd/yyyy). Each date contains one entry per AI site with `citationShare` and `citationCount`.
           content:
             application/json:
               schema:
@@ -28837,14 +28825,6 @@ paths:
                   "04/03/2026":
                     type: object
                     properties:
-                      Overall:
-                        type: object
-                        properties:
-                          citationShare:
-                            type: number
-                            format: double
-                          citationCount:
-                            type: integer
                       ChatGPT:
                         type: object
                         properties:
@@ -28887,9 +28867,6 @@ paths:
                             type: integer
               example:
                 "04/03/2026":
-                  Overall:
-                    citationShare: 75.3
-                    citationCount: 320
                   ChatGPT:
                     citationShare: 34.5
                     citationCount: 142
@@ -28900,9 +28877,6 @@ paths:
                     citationShare: 18.7
                     citationCount: 80
                 "05/03/2026":
-                  Overall:
-                    citationShare: 78.1
-                    citationCount: 340
                   ChatGPT:
                     citationShare: 36.0
                     citationCount: 150
@@ -28942,7 +28916,7 @@ paths:
         Returns time-bucketed citation share and rank per competitor domain for a given
         date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -28969,7 +28943,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -28985,8 +28959,8 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29095,10 +29069,9 @@ paths:
       summary: Get Visibility Compare on AI Models
       operationId: getVisibilityCompareOnAiModels
       description: >-
-        Returns time-bucketed visibility share per AI site (plus an Overall rollup)
-        for a given date range.
+        Returns time-bucketed visibility share per AI site for a given date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -29125,7 +29098,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -29141,8 +29114,8 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29252,7 +29225,7 @@ paths:
       description: >-
         Returns time-bucketed average visibility score per competitor for a given date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -29279,7 +29252,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -29295,8 +29268,8 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29398,7 +29371,7 @@ paths:
         Returns time-bucketed share of voice rank and score per competitor for a given
         date range.
       tags:
-        - Search AI
+        - AI Search
       parameters:
         - name: x-api-key
           in: header
@@ -29425,7 +29398,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers (long) to include in the report.
+                  description: List of business numbers to include in the report.
                   items:
                     type: integer
                     format: int64
@@ -29441,8 +29414,8 @@ paths:
                 brands:
                   type: array
                   description: >-
-                    Brand names to filter by (ACCOUNT_LEVEL). Cannot be used together with
-                    `businessNumbers`. Pass an empty array to include all brands.
+                    Brand names to filter by. Cannot be used together with
+                    `businessNumbers`.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29682,11 +29655,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Configuration
+      summary: Get AI Search Configuration
       operationId: getSearchAiConfiguration
-      description: Retrieves the Search AI configuration for the specified business.
+      description: Retrieves the AI Search configuration for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -29854,11 +29827,11 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Available Runs
+      summary: Get AI Search Available Runs
       operationId: getSearchAiAvailableRuns
-      description: Retrieves the Search AI available runs for the specified business.
+      description: Retrieves the AI Search available runs for the specified business.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30052,12 +30025,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Citations
+      summary: Get AI Search Citations
       operationId: getSearchAiCitations
-      description: Retrieves Search AI citations for the specified business, including
+      description: Retrieves AI Search citations for the specified business, including
         sources referenced by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30277,12 +30250,12 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-      summary: Get Search AI Businesses
+      summary: Get AI Search Businesses
       operationId: getSearchAiBusinesses
-      description: Retrieves Search AI business results for the specified business,
+      description: Retrieves AI Search business results for the specified business,
         including businesses identified by AI models for given prompts and themes.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30501,7 +30474,7 @@ paths:
       description: Provides an accuracy report for the specified business, highlighting
         how consistent and reliable the business information is across platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -30882,7 +30855,7 @@ paths:
       description: Returns the sentiment report for the specified business, providing
         insights into customer sentiment across supported platforms.
       tags:
-      - Search AI
+      - AI Search
       parameters:
       - name: Accept
         in: header
@@ -31758,8 +31731,8 @@ tags:
 - name: GMB Products
   description: To manage products, locations, and business details through Listing
     GMB platform
-- name: Search AI
-  description: Search AI provides a comprehensive view of your business performance
+- name: AI Search
+  description: AI Search provides a comprehensive view of your business performance
     across AI-powered search platforms, including data accuracy, sentiment analysis,
     citations, brand ranking, and overall visibility.
 - name: Ticketing

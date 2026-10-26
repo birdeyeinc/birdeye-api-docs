@@ -15,7 +15,7 @@ The **Birdeye MCP Server** connects AI assistants like Claude and ChatGPT direct
 | Business | Get business info, get child locations |
 | Surveys | Get all surveys, get survey responses |
 | Listings | Get listing, listing status report, listing insights, category list, product listing list |
-| Search AI | Configuration, available runs, citations, businesses, accuracy report, sentiment report |
+| AI Search | Configuration, available runs, citations, businesses, accuracy report, sentiment report |
 | Social | Track social post, get open URL performance report |
 | Ticketing | Get all ticket data |
 | Aggregation | Get all aggregation sources, get review site aliases |

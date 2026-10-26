@@ -141,7 +141,7 @@
                 ]
               },
               {
-                "group": "Search AI",
+                "group": "AI Search",
                 "collapsed": true,
                 "icon": "magnifying-glass",
                 "pages": [
@@ -618,7 +618,7 @@
                 "icon": "bag-shopping"
               },
               {
-                "group": "Search AI",
+                "group": "AI Search",
                 "collapsed": true,
                 "pages": [
                   "api/search-ai/overview",
