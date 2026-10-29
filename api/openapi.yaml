@@ -5009,9 +5009,7 @@ paths:
             schema:
               "$ref": "#/components/schemas/Apiary_archivedGetReviews_Request"
             example:
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
               startDate: 1712986782000
               endDate: 1715578782000
               sourceAlias:
@@ -16001,9 +15999,7 @@ paths:
               - Tiktok
               - Facebook
               - Linkedin
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
               comparisonFilter:
                 startDate: 01/01/2020
                 endDate: 01/10/2020
@@ -18696,22 +18692,18 @@ paths:
                   items:
                     type: integer
               example:
-                businessNumbers:
-                - 177337970010644
-                - 177337970029743
+                businessNumbers: []
                 fromDate: 04/01/2024
                 toDate: '08/03/2025'
                 sources: []
                 brandIds: []
                 competitorLocationIds: []
             example:
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
               fromDate: 04/01/2024
               toDate: '08/03/2025'
               sources: []
-              brands: []
+              brandIds: []
               competitorLocationIds: []
   "/v1/competitors/review/metrics":
     post:
@@ -18899,22 +18891,18 @@ paths:
                   items:
                     type: integer
               example:
-                businessNumbers:
-                - 177337970010644
-                - 177337970029743
+                businessNumbers: []
                 fromDate: 04/01/2024
                 toDate: '08/03/2025'
                 sources: []
                 brandIds: []
                 competitorLocationIds: []
             example:
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
               fromDate: 04/01/2024
               toDate: '08/03/2025'
               sources: []
-              brands: []
+              brandIds: []
               competitorLocationIds: []
   "/v1/insight/experience/scoreBenchmark":
     post:
@@ -28347,17 +28335,13 @@ paths:
                 status:
                 - DRAFT
                 - PUBLISH
-                businessNumbers:
-                - 177337970010644
-                - 177337970029743
+                businessNumbers: []
             example:
               search: Dental
               status:
               - DRAFT
               - PUBLISH
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
   "/v1/listing/public/product/addProduct":
     post:
       responses:
@@ -31667,9 +31651,7 @@ paths:
               "$ref": "#/components/schemas/Apiary_getAllTicketData_Request"
             example:
               assignees: []
-              businessNumbers:
-                - 177337970010644
-                - 177337970029743
+              businessNumbers: []
               fromDate: 1581230064000
               sourceAliases:
               - ''
@@ -31980,7 +31962,7 @@ tags:
 
     * <b>10/04/2024</b> - Added support to fetch ticketId associated with the survey responses in List Response API.
 servers:
-- url: https://api.birdeye.com/resources/
+- url: https://api.birdeye.com/resources
 components:
   requestBodies:
     Competitive_Ranking_ReportBody:
