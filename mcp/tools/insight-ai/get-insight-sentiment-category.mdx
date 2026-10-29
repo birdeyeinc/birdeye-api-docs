@@ -1,0 +1,54 @@
+---
+title: "Get Insight Sentiment Category"
+description: "Get sentiment scores broken down by review category."
+---
+
+```
+get_insight_sentiment_category
+```
+
+## Description
+
+Returns sentiment scores broken down by review category (e.g. Customer Service, Wait Time), with mention counts per category. Use this to identify what customers are praising or complaining about most.
+
+The response contains:
+- `totalCount` — total number of categories returned
+- `dataPoints` (array) — one entry per category, each with:
+  - `name` — category name
+  - `score` — sentiment score for the category
+  - `mentions` — number of mentions for the category
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `sortBy` | string | `"name"` (default) or `"sentiment-score"` |
+| `sortOrder` | integer | `0` for ascending (default), `1` for descending |
+| `startIndex` | integer | Zero-based index of the first record to return (default `0`) |
+| `pageSize` | integer | Number of records to return, 1-100 (default `10`) |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+What are customers complaining about most?
+```
+
+```
+Show me sentiment by review category for this quarter.
+```
