@@ -22099,6 +22099,973 @@ paths:
               - 174436684666401
               startDate: 02/25/2025
               endDate: 02/01/2026
+  "/v1/insight/listing/scoreBenchmark":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actual:
+                    type: object
+                    properties:
+                      score:
+                        type: number
+                        description: Actual listing score
+                    description: Current performance metrics
+              example:
+                actual:
+                  score: 69.8
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Listing Score Benchmark
+      operationId: getInsightListingScoreBenchmark
+      description: Insight Listing Score Benchmark API retrieves the actual listing
+        score for specified business locations. Listing data reflects the most recent
+        12 months and does not accept a custom date range.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+              required:
+                - businessNumbers
+            example:
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+  "/v1/insight/listing/over-time":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groupByType:
+                    type: string
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        startDate:
+                          type: string
+                        endDate:
+                          type: string
+                        label:
+                          type: string
+                        shortLabel:
+                          type: string
+                        score:
+                          type: number
+              example:
+                groupByType: month
+                dataPoints:
+                - startDate: 10/14/2025
+                  endDate: 10/31/2025
+                  label: Oct 2025
+                  shortLabel: Oct '25
+                  score: 59.7
+                - startDate: 11/01/2025
+                  endDate: 11/30/2025
+                  label: Nov 2025
+                  shortLabel: Nov '25
+                  score: 62.3
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_group_by:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: "Invalid groupBy value: 'fortnight'. Valid values are: DAY, WEEK, MONTH, QUARTER, YEAR"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Listing Over Time
+      operationId: getInsightListingOverTime
+      description: The Insight Listing Over Time API provides a time-series view
+        of listing scores at the account level, aggregated across configurable time
+        intervals — day, week, month, quarter, or year. Listing data reflects the
+        most recent 12 months and does not accept a custom date range.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                groupBy:
+                  type: string
+                  description: Time interval to group results by.
+                  enum:
+                  - day
+                  - week
+                  - month
+                  - quarter
+                  - year
+              required:
+                - businessNumbers
+            example:
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              groupBy: month
+  "/v1/insight/listing/locationInfo":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        accuracyScore:
+                          type: number
+                        gbpScore:
+                          type: number
+                        localSeoRank:
+                          type: number
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 1397860
+                  name: Nabil Mehta, MD
+                  score: 53.7
+                  accuracyScore: 94.0
+                  gbpScore: 66.0
+                  localSeoRank: 21.0
+                - id: 1111344
+                  name: Michael K. Merz, MD
+                  score: 59.9
+                  accuracyScore: 72.7
+                  gbpScore: 80.0
+                  localSeoRank: 16.8
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_user_email_invalid:
+                  value:
+                    code: 2003
+                    message: "No user found for userEmail: test@example.com"
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Listing Location Info
+      operationId: getInsightListingLocationInfo
+      description: Insight Listing Location Info API retrieves location-wise listing
+        scores along with accuracy score, Google Business Profile (GBP) score, and
+        local SEO rank for specified business locations. Listing data reflects the
+        most recent 12 months and does not accept a custom date range.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          - listing-score
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - userEmail
+            example:
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              userEmail: test@example.com
+  "/v1/insight/listing/locationInfo/rank":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        score:
+                          type: number
+                        accuracyScore:
+                          type: number
+                        gbpScore:
+                          type: number
+                        localSeoRank:
+                          type: number
+              example:
+                totalCount: 2
+                dataPoints:
+                - id: 1397860
+                  name: Nabil Mehta, MD
+                  score: 53.7
+                  accuracyScore: 94.0
+                  gbpScore: 66.0
+                  localSeoRank: 21.0
+                - id: 1111344
+                  name: Michael K. Merz, MD
+                  score: 59.9
+                  accuracyScore: 72.7
+                  gbpScore: 80.0
+                  localSeoRank: 16.8
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_user_email_mandatory:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: userEmail is mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Listing Location Info Rank
+      operationId: getInsightListingLocationInfoRank
+      description: Insight Listing Location Info Rank API retrieves the top or bottom
+        performing business locations ranked by listing score, for specified business
+        locations. Listing data reflects the most recent 12 months and does not accept
+        a custom date range.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: type
+        in: query
+        description: Ranking type. `top` returns the highest listing-score locations
+          first; `bottom` returns the lowest listing-score locations first.
+        required: false
+        example: top
+        schema:
+          type: string
+          enum:
+          - top
+          - bottom
+          default: top
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+                userEmail:
+                  type: string
+                  description: Email of the user performing the request.
+              required:
+                - businessNumbers
+                - userEmail
+            example:
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
+              hierarchyNodeData:
+              - levelId: Region
+                levelNames:
+                - Region1
+                - Region2
+              userEmail: test@example.com
+  "/v1/insight/listing/source":
+    post:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: integer
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        accuracyScore:
+                          type: number
+                        lowPerformingLocationsCount:
+                          type: integer
+              example:
+                totalCount: 1
+                dataPoints:
+                - name: apple
+                  accuracyScore: 72.6
+                  lowPerformingLocationsCount: 7
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2003Model"
+              x-apiary-response-examples:
+                error_mandatory:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+                error_max_business_numbers:
+                  value:
+                    code: 2003
+                    message: Only 100 businessNumbers are allowed
+                error_page_size:
+                  value:
+                    code: 2003
+                    message: page-size must be between 1 and 100
+              examples:
+                response:
+                  value:
+                    code: 2003
+                    message: businessNumbers are mandatory
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/2151Model"
+              examples:
+                response:
+                  value:
+                    code: 2151
+                    message: Not a valid reseller/enterprise id.
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1027Model"
+              examples:
+                response:
+                  value:
+                    code: 1027
+                    message: Invalid business number.
+      summary: Get Insight Listing Source
+      operationId: getInsightListingSource
+      description: Insight Listing Source API retrieves accuracy scores and low-performing
+        location counts broken down by listing source (e.g. Apple, Google) for specified
+        business locations. Listing data reflects the most recent 12 months and does
+        not accept a custom date range.
+      tags:
+      - Insight AI
+      parameters:
+      - name: Accept
+        in: header
+        description: e.g. application/json
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: x-api-key
+        in: header
+        description: e.g. [Required] Partner specific API key provided by Birdeye
+          for data exchange.
+        required: false
+        example: "[Required] Partner specific API key provided by Birdeye for data
+          exchange."
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        description: e.g. [Required] User associated businessNumber.
+        required: false
+        example: "[Required] User associated businessNumber."
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        description: Media type of the JSON request body.
+        required: false
+        example: application/json
+        schema:
+          type: string
+          default: application/json
+      - name: start-index
+        in: query
+        description: Zero-based index of the first record to return.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          default: 0
+      - name: page-size
+        in: query
+        description: Number of records to return. Must be between 1 and 100 (default 10).
+        required: false
+        example: 10
+        schema:
+          type: integer
+          default: 10
+      - name: sort-by
+        in: query
+        description: Field to sort results by.
+        required: false
+        example: name
+        schema:
+          type: string
+          enum:
+          - name
+          default: name
+      - name: sort-order
+        in: query
+        description: Sort order. 0 = ascending, 1 = descending.
+        required: false
+        example: 0
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                businessNumbers:
+                  type: array
+                  description: List of business numbers (max 100).
+                  items:
+                    type: integer
+                hierarchyNodeData:
+                  type: array
+                  description: List of hierarchy nodes to filter by level.
+                  items:
+                    type: object
+                    properties:
+                      levelId:
+                        type: string
+                        description: The hierarchy level identifier (e.g. Region).
+                      levelNames:
+                        type: array
+                        description: List of level names to filter.
+                        items:
+                          type: string
+              required:
+                - businessNumbers
+            example:
+              businessNumbers:
+              - 172957184851864
+              - 174436684666401
   "/v1/qna/question/create":
     post:
       responses:
