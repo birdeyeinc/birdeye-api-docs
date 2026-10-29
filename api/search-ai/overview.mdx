@@ -2,23 +2,21 @@
 title: "AI Search"
 ---
 
-AI Search provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
+Get your business's accuracy, sentiment, citations, ranking, and visibility across AI platforms.
 
-## Notes
+### Filter by brand or location
 
-### Filtering by Brand or Location
+Every AI Search API filters by brand or by location, not both
 
-All AI Search public APIs support two mutually exclusive filtering modes:
+- **Brand** (`brands`): Pass brand names to get data for each brand.
+- **Location** (`businessNumbers`): Pass business numbers to get data for specific locations.
 
-- **Brand filter** (`brands`): Pass one or more brand names to aggregate data at the brand level.
-- **Location filter** (`businessNumbers`): Pass one or more business numbers to scope data to specific locations.
+> **Important:** Send `brands` or `businessNumbers`, not both. A request with both returns an error.
 
-> **Important:** Providing both `brands` and `businessNumbers` in the same request will return a `500` error. Use one or the other, never both.
+### Responses grouped by date
 
-### Time-Bucketed Responses
+APIs that return data over time, such as over time, competitor, and share of voice, group results by date. Each group covers a day, week, or month, based on the data collection schedule set for your account.
 
-APIs that return time-series data (overtime, competitor, share of voice) group results into date buckets. The bucketing frequency — daily, weekly, or monthly — is determined by the data collection schedule configured for your account at both the brand and location level.
+### AI Platforms
 
-### AI Sites
-
-If `aiSites` is omitted or empty, the response includes all AI platforms enabled for your account (e.g. ChatGPT, Gemini, Perplexity, Grok). Pass specific site names to narrow results to those platforms only.
+If you leave out {aiSites} or send it empty, the response covers every AI platform enabled for your account, such as ChatGPT, Gemini, Perplexity, and Grok. To narrow results, pass platform names.

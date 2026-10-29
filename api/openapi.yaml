@@ -28576,94 +28576,19 @@ paths:
               productIds:
               - 68767cb39ebf51000815ab39
               - 68767cb39ebf51000815ab39
-  "/v1/search-ai/public/brands-list":
-    get:
-      summary: Get Brands List
-      operationId: getBrandsList
-      description: >-
-        Returns a list of all brand names configured for the account. Use the returned names to reference brands across
-        other AI Search APIs.
-      tags:
-        - AI Search
-      parameters:
-        - name: x-api-key
-          in: header
-          required: true
-          description: Partner-specific API key provided by Birdeye.
-          schema:
-            type: string
-        - name: x-business-number
-          in: header
-          required: true
-          description: Your Birdeye business number (long format).
-          schema:
-            type: string
-          example: "177337970010644"
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  brands:
-                    type: array
-                    description: List of all brand names configured for this account.
-                    items:
-                      type: string
-              example:
-                brands:
-                  - Acme Dental Downtown
-                  - Acme Dental Uptown
-                  - Acme Dental Westside
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-              example:
-                message: No business found for the given business number
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/1161Model'
-              examples:
-                response:
-                  value:
-                    code: 1161
-                    message: Invalid API key
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/89Model'
-              examples:
-                response:
-                  value:
-                    code: 89
-                    message: Rate limit exceeded
   "/v1/search-ai/public/visibility/summary":
     post:
       summary: Get Visibility Summary
       operationId: getVisibilitySummary
       description: >-
-        Returns the aggregated visibility score per AI site (e.g. ChatGPT, Gemini) for a
-        given date range.
+        Returns the aggregated visibility score per AI platform (e.g. ChatGPT, Gemini) for a given date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
@@ -28684,7 +28609,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -28699,10 +28624,7 @@ paths:
                   example: "03/31/2025"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Visibility scores are aggregated
-                    across all locations for the matched brands. Cannot be used together with
-                    `businessIds`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -28797,21 +28719,20 @@ paths:
       summary: Get Citations Summary
       operationId: getCitationsShareSummary
       description: >-
-        Returns the aggregated citation share per AI site (e.g. ChatGPT, Gemini) for a
-        given date range.
+        Returns citation share for each AI platform, such as ChatGPT and Gemini, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -28827,7 +28748,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -28842,9 +28763,7 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -28926,23 +28845,23 @@ paths:
                     message: Rate limit exceeded
   "/v1/search-ai/public/citations/overtime-summary":
     post:
-      summary: Get Citations Share Summary Graph
+      summary: Get Citations Over Time Summary
       operationId: getCitationsShareSummaryGraph
       description: >-
-        Returns time-bucketed citation share and count per AI site for a given date range.
+        Returns citation share and count for each AI platform, grouped by date, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -28958,7 +28877,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -28973,9 +28892,7 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29000,7 +28917,7 @@ paths:
       responses:
         '200':
           description: >-
-            A map keyed by date (mm/dd/yyyy). Each date contains one entry per AI site with `citationShare` and `citationCount`.
+            A map keyed by date (mm/dd/yyyy). Each date contains one entry per AI platform with `citationShare` and `citationCount`.
           content:
             application/json:
               schema:
@@ -29094,24 +29011,23 @@ paths:
                     message: Rate limit exceeded
   "/v1/search-ai/public/citations/competitor":
     post:
-      summary: Get Citations Competitor
+      summary: Get Citations vs. Competitors
       operationId: getCitationsCompetitor
       description: >-
-        Returns time-bucketed citation share and rank per competitor domain for a given
-        date range.
+        Returns citation share and rank for each competitor domain, grouped by date, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -29127,7 +29043,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -29142,15 +29058,13 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
                 aiSites:
                   type: array
-                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  description: AI platforms to filter by. Pass an empty array to include all platforms.
                   items:
                     type: string
                   example: ["ChatGPT", "Gemini"]
@@ -29250,23 +29164,23 @@ paths:
                     message: Rate limit exceeded
   "/v1/search-ai/public/visibility/overtime-summary":
     post:
-      summary: Get Visibility Compare on AI Models
+      summary: Get Visibility Over Time Summary
       operationId: getVisibilityCompareOnAiModels
       description: >-
-        Returns time-bucketed visibility share per AI site for a given date range.
+        Returns visibility share for each AI platform, grouped by date, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -29282,7 +29196,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -29297,9 +29211,7 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
@@ -29325,7 +29237,7 @@ paths:
         '200':
           description: >-
             A map keyed by date (mm/dd/yyyy). Each date contains an `Overall` rollup and
-            one entry per AI site, each with a `visibilityShare` score.
+            one entry per AI platform, each with a `visibilityShare` score.
           content:
             application/json:
               schema:
@@ -29404,23 +29316,23 @@ paths:
                     message: Rate limit exceeded
   "/v1/search-ai/public/visibility/competitors":
     post:
-      summary: Get Competitor Visibility
+      summary: Get Visibility vs. Competitors
       operationId: getCompetitorVisibility
       description: >-
-        Returns time-bucketed average visibility score per competitor for a given date range.
+        Returns the average visibility score for each competitor, grouped by date, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -29436,7 +29348,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -29451,15 +29363,13 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
                 aiSites:
                   type: array
-                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  description: AI platforms to filter by. Pass an empty array to include all platforms.
                   items:
                     type: string
                   example: ["ChatGPT", "Gemini"]
@@ -29552,21 +29462,20 @@ paths:
       summary: Get Share of Voice
       operationId: getShareOfVoice
       description: >-
-        Returns time-bucketed share of voice rank and score per competitor for a given
-        date range.
+        Returns share of voice rank and score for each competitor, grouped by date, for a date range.
       tags:
         - AI Search
       parameters:
         - name: x-api-key
           in: header
           required: true
-          description: Partner-specific API key provided by Birdeye.
+          description: Your API key from Birdeye.
           schema:
             type: string
         - name: x-business-number
           in: header
           required: true
-          description: Your Birdeye business number. The gateway resolves this to an internal account ID.
+          description: Your Birdeye business number.
           schema:
             type: string
           example: "177337970010644"
@@ -29582,7 +29491,7 @@ paths:
               properties:
                 businessNumbers:
                   type: array
-                  description: List of business numbers to include in the report.
+                  description: Business numbers to get data for. Use this or brands, not both.
                   items:
                     type: integer
                     format: int64
@@ -29597,15 +29506,13 @@ paths:
                   example: "08/31/2026"
                 brands:
                   type: array
-                  description: >-
-                    Brand names to filter by. Cannot be used together with
-                    `businessNumbers`.
+                  description: Brand names to get data for. Use this or businessNumbers, not both.
                   items:
                     type: string
                   example: ["Acme Downtown", "Acme Uptown"]
                 aiSites:
                   type: array
-                  description: AI sites to filter by. Pass an empty array to include all sites.
+                  description: AI platforms to filter by. Pass an empty array to include all platforms.
                   items:
                     type: string
                   example: ["ChatGPT", "Gemini"]
@@ -30041,6 +29948,79 @@ paths:
         example: "[Required] User associated businessNumber"
         schema:
           type: string
+  "/v1/search-ai/public/brands-list":
+    get:
+      summary: Get Brands List
+      operationId: getBrandsList
+      description: >-
+        Returns the brand names set up for your account. Use these names in the brands field of other AI Search APIs.
+      tags:
+        - AI Search
+      parameters:
+        - name: x-api-key
+          in: header
+          required: true
+          description: Your API key from Birdeye.
+          schema:
+            type: string
+        - name: x-business-number
+          in: header
+          required: true
+          description: Your Birdeye business number.
+          schema:
+            type: string
+          example: "177337970010644"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brands:
+                    type: array
+                    description: List of all brand names configured for this account.
+                    items:
+                      type: string
+              example:
+                brands:
+                  - Acme Dental Downtown
+                  - Acme Dental Uptown
+                  - Acme Dental Westside
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: No business found for the given business number
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/1161Model'
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/89Model'
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
   "/v1/listing/searchAi/public/citations":
     post:
       responses:
