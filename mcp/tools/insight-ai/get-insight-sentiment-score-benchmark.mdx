@@ -1,0 +1,47 @@
+---
+title: "Get Insight Sentiment Score Benchmark"
+description: "Compare your sentiment score against the industry benchmark."
+---
+
+```
+get_insight_sentiment_score_benchmark
+```
+
+## Description
+
+Returns your business's sentiment score alongside the industry benchmark sentiment score for the same date range. Use this to answer "how does our sentiment compare to the industry?" questions.
+
+The response contains:
+- `actual.score` — business sentiment score
+- `actual.industryScore` — industry benchmark sentiment score
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+How does my sentiment score compare to the industry benchmark this year?
+```
+
+```
+What is my sentiment score benchmark for Q1 2026?
+```

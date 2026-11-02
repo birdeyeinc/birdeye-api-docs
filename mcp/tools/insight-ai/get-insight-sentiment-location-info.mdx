@@ -1,0 +1,55 @@
+---
+title: "Get Insight Sentiment Location Info"
+description: "Get location-wise sentiment scores and mention counts."
+---
+
+```
+get_insight_sentiment_location_info
+```
+
+## Description
+
+Returns sentiment scores and mention counts broken down by location. Use this to identify which locations have the best or worst sentiment.
+
+The response contains:
+- `totalCount` — total number of matching locations
+- `dataPoints` (array) — one entry per location, each with:
+  - `id` — location business number
+  - `name` — location name
+  - `score` — sentiment score
+  - `mentions` — number of mentions
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `sortBy` | string | `"name"` (default) or `"sentiment-score"` |
+| `sortOrder` | integer | `0` for ascending (default), `1` for descending |
+| `startIndex` | integer | Zero-based index of the first record to return (default `0`) |
+| `pageSize` | integer | Number of records to return, 1-100 (default `10`) |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+Which locations have the best sentiment score?
+```
+
+```
+Show me location-level sentiment scores for the Chicago location.
+```

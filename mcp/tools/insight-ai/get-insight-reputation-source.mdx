@@ -1,0 +1,55 @@
+---
+title: "Get Insight Reputation Source"
+description: "Get reputation scores broken down by review source."
+---
+
+```
+get_insight_reputation_source
+```
+
+## Description
+
+Returns reputation scores broken down by review source (e.g. Google, Facebook), with average ratings and review counts per source. Use this to identify which review platforms are driving or hurting your reputation.
+
+The response contains:
+- `totalCount` — total number of review sources returned
+- `dataPoints` (array) — one entry per review source, each with:
+  - `name` — review source name (e.g. `"Google"`)
+  - `score` — reputation score for the source
+  - `averageRating` — average star rating for the source
+  - `reviewCount` — number of reviews for the source
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `sortBy` | string | `"name"` (default) or `"reputation-score"` |
+| `sortOrder` | integer | `0` for ascending (default), `1` for descending |
+| `startIndex` | integer | Zero-based index of the first record to return (default `0`) |
+| `pageSize` | integer | Number of records to return, 1-100 (default `10`) |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+Which review source has the best reputation for me?
+```
+
+```
+Break down my reputation score by source.
+```
