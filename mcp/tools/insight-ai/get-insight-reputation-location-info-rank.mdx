@@ -1,0 +1,55 @@
+---
+title: "Get Insight Reputation Location Info Rank"
+description: "Get locations ranked by reputation score, highest or lowest first."
+---
+
+```
+get_insight_reputation_location_info_rank
+```
+
+## Description
+
+Returns locations ranked by reputation score — either the highest-scoring locations first or the lowest-scoring first — with average ratings and review counts. Use this to quickly surface top or bottom performers instead of scanning the full location list.
+
+The response contains:
+- `totalCount` — total number of matching locations
+- `dataPoints` (array) — one entry per location, each with:
+  - `id` — location business number
+  - `name` — location name
+  - `score` — reputation score
+  - `averageRating` — average star rating
+  - `reviewCount` — number of reviews
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `type` | string | `"top"` (default) returns the highest-scoring locations first; `"bottom"` returns the lowest-scoring first |
+| `startIndex` | integer | Zero-based index of the first record to return (default `0`) |
+| `pageSize` | integer | Number of records to return, 1-100 (default `10`) |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+Which locations have the worst reputation?
+```
+
+```
+Show me my top 5 locations by reputation score.
+```

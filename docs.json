@@ -231,7 +231,19 @@
                 "pages": [
                   "mcp/tools/insight-ai/overview",
                   "mcp/tools/insight-ai/get-insight-experience-score-benchmark",
-                  "mcp/tools/insight-ai/get-insight-experience-location-info"
+                  "mcp/tools/insight-ai/get-insight-experience-location-info",
+                  "mcp/tools/insight-ai/get-insight-experience-location-info-rank",
+                  "mcp/tools/insight-ai/get-insight-experience-over-time",
+                  "mcp/tools/insight-ai/get-insight-sentiment-score-benchmark",
+                  "mcp/tools/insight-ai/get-insight-sentiment-location-info",
+                  "mcp/tools/insight-ai/get-insight-sentiment-location-info-rank",
+                  "mcp/tools/insight-ai/get-insight-sentiment-over-time",
+                  "mcp/tools/insight-ai/get-insight-sentiment-category",
+                  "mcp/tools/insight-ai/get-insight-reputation-score-benchmark",
+                  "mcp/tools/insight-ai/get-insight-reputation-location-info",
+                  "mcp/tools/insight-ai/get-insight-reputation-location-info-rank",
+                  "mcp/tools/insight-ai/get-insight-reputation-over-time",
+                  "mcp/tools/insight-ai/get-insight-reputation-source"
                 ]
               }
             ]

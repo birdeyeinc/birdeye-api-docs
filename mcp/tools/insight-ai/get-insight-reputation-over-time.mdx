@@ -1,0 +1,51 @@
+---
+title: "Get Insight Reputation Over Time"
+description: "Get the reputation score trend over time, broken into intervals."
+---
+
+```
+get_insight_reputation_over_time
+```
+
+## Description
+
+Returns the reputation score trend over a date range, broken into intervals (day, week, month, quarter, or year). Use this to answer "how has our reputation trended?" questions.
+
+The response contains:
+- `groupByType` — the time interval used to group results (e.g. `"month"`)
+- `dataPoints` (array) — one entry per interval, each with:
+  - `startDate`, `endDate` — interval boundaries
+  - `label`, `shortLabel` — display labels for the interval (e.g. `"May 2026"` / `"May '26"`)
+  - `score` — reputation score for the interval
+
+<Warning>
+  `businessNumbers` is required for this tool. Call [`get_child_locations`](/mcp/tools/business/get-child-locations) first to get valid `businessNumber` values. If the user has not specified which locations to include, present the available locations and ask them to choose before calling this tool.
+</Warning>
+
+## Parameters
+
+### Required
+
+| Parameter | Type | Description |
+|---|---|---|
+| `startDate` | string (`MM/DD/YYYY`) | Start of the date range |
+| `endDate` | string (`MM/DD/YYYY`) | End of the date range |
+| `businessNumbers` | list[integer] | `businessNumber` values of the locations to include (max 100) — from [`get_child_locations`](/mcp/tools/business/get-child-locations) |
+
+### Optional
+
+| Parameter | Type | Description |
+|---|---|---|
+| `groupBy` | string | Time interval to group by — one of `"day"`, `"week"`, `"month"`, `"quarter"`, `"year"` |
+| `reviewSources` | list[string] | Filter by review sources (e.g. `["Google", "Facebook"]`) |
+| `ratings` | list[string] | Filter by rating values (e.g. `["1", "2", "3", "4", "5"]`) |
+
+## Example Usage
+
+```
+How has my reputation score trended month over month this year?
+```
+
+```
+Show my reputation score by quarter for the last year.
+```
