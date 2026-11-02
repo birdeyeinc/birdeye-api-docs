@@ -2,4 +2,21 @@
 title: "AI Search"
 ---
 
-AI Search provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
+Get your business's accuracy, sentiment, citations, ranking, and visibility across AI platforms.
+
+### Filter by brand or location
+
+Every AI Search API filters by brand or by location, not both
+
+- **Brand** (`brands`): Pass brand names to get data for each brand.
+- **Location** (`businessNumbers`): Pass business numbers to get data for specific locations.
+
+> **Important:** Send `brands` or `businessNumbers`, not both. A request with both returns an error.
+
+### Responses grouped by date
+
+APIs that return data over time, such as over time, competitor, and share of voice, group results by date. Each group covers a day, week, or month, based on the data collection schedule set for your account.
+
+### AI Platforms
+
+If you leave out {aiSites} or send it empty, the response covers every AI platform enabled for your account, such as ChatGPT, Gemini, Perplexity, and Grok. To narrow results, pass platform names.
