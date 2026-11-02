@@ -28560,7 +28560,7 @@ paths:
               productIds:
               - 68767cb39ebf51000815ab39
               - 68767cb39ebf51000815ab39
-  "/v1/search-ai/public/visibility/summary":
+  "/v1/search-ai/visibility/summary":
     post:
       summary: Get Visibility Summary
       operationId: getVisibilitySummary
@@ -28698,7 +28698,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/citations/summary":
+  "/v1/search-ai/citations/summary":
     post:
       summary: Get Citations Summary
       operationId: getCitationsShareSummary
@@ -28827,7 +28827,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/citations/overtime-summary":
+  "/v1/search-ai/citations/overtime-summary":
     post:
       summary: Get Citations Over Time Summary
       operationId: getCitationsShareSummaryGraph
@@ -28993,7 +28993,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/citations/competitor":
+  "/v1/search-ai/citations/competitor":
     post:
       summary: Get Citations vs. Competitors
       operationId: getCitationsCompetitor
@@ -29146,7 +29146,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/visibility/overtime-summary":
+  "/v1/search-ai/visibility/overtime-summary":
     post:
       summary: Get Visibility Over Time Summary
       operationId: getVisibilityCompareOnAiModels
@@ -29298,7 +29298,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/visibility/competitors":
+  "/v1/search-ai/visibility/competitors":
     post:
       summary: Get Visibility vs. Competitors
       operationId: getCompetitorVisibility
@@ -29441,7 +29441,7 @@ paths:
                   value:
                     code: 89
                     message: Rate limit exceeded
-  "/v1/search-ai/public/visibility/share-of-voice":
+  "/v1/search-ai/visibility/share-of-voice":
     post:
       summary: Get Share of Voice
       operationId: getShareOfVoice
