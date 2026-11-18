@@ -151,7 +151,10 @@
                   "mcp/tools/search-ai/get-search-ai-citations",
                   "mcp/tools/search-ai/get-search-ai-businesses",
                   "mcp/tools/search-ai/get-search-ai-accuracy-report",
-                  "mcp/tools/search-ai/get-search-ai-sentiment-report"
+                  "mcp/tools/search-ai/get-search-ai-sentiment-report",
+                  "mcp/tools/search-ai/get-search-ai-recommendations",
+                  "mcp/tools/search-ai/get-search-ai-recommendation-count",
+                  "mcp/tools/search-ai/get-search-ai-recommendation-summary"
                 ]
               },
               {

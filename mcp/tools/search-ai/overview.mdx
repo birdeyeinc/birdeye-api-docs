@@ -11,6 +11,7 @@ AI Search is Birdeye's capability to monitor how AI-powered search engines and c
 - Which businesses they surface in their answers
 - How accurately they report your business information (NAP accuracy)
 - How they characterize your business (SWOT/sentiment)
+- What to change to improve your visibility (recommendations)
 
 ## Tools in this category
 
@@ -33,6 +34,15 @@ AI Search is Birdeye's capability to monitor how AI-powered search engines and c
   <Card title="get_search_ai_sentiment_report" icon="brain" href="/mcp/tools/search-ai/get-search-ai-sentiment-report">
     SWOT analysis — Strengths, Weaknesses, Opportunities, and Threats as perceived by AI engines
   </Card>
+  <Card title="get_search_ai_recommendations" icon="lightbulb" href="/mcp/tools/search-ai/get-search-ai-recommendations">
+    Actionable recommendations to improve how AI engines see and cite your business
+  </Card>
+  <Card title="get_search_ai_recommendation_count" icon="hashtag" href="/mcp/tools/search-ai/get-search-ai-recommendation-count">
+    Number of recommendations pending, accepted, completed, and rejected
+  </Card>
+  <Card title="get_search_ai_recommendation_summary" icon="list-check" href="/mcp/tools/search-ai/get-search-ai-recommendation-summary">
+    Implementation steps, competitor gaps, and execution plan for a recommendation
+  </Card>
 </CardGroup>
 
 ## Supported AI Models
@@ -48,3 +58,4 @@ AI Search is Birdeye's capability to monitor how AI-powered search engines and c
 - Start with `get_search_ai_configuration` to understand which themes and prompts are being tracked.
 - Call `get_search_ai_available_runs` to find valid date ranges before querying reports.
 - Use `get_search_ai_accuracy_report` with specific `businessNumbers` (location IDs) for per-location NAP accuracy.
+- Call `get_search_ai_recommendations` and pass an item's `valueId` to `get_search_ai_recommendation_summary` for implementation steps.

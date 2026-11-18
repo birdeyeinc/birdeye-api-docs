@@ -1,0 +1,80 @@
+---
+title: "Get AI Search Recommendation Summary"
+description: "Get the full details of an AI Search recommendation — implementation steps, competitors, and execution plan."
+---
+
+```
+get_search_ai_recommendation_summary
+```
+
+## Description
+
+Returns the complete detail of a single AI Search recommendation: everything in the list item plus step-by-step implementation guidance, why it matters, competitor scores and gaps, competitor insights, and a phased execution plan.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `recommendationId` | string | Yes | — | Recommendation `valueId` from [`get_search_ai_recommendations`](/mcp/tools/search-ai/get-search-ai-recommendations) |
+| `status` | string | No | — | Recommendation's `recommendationStatus`: `"PENDING"`, `"ACCEPTED"`, `"COMPLETED"`, or `"REJECTED"` |
+| `theme` | string | No | — | Recommendation's `theme` |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+
+## Example Usage
+
+```
+How do I implement my top AI Search recommendation?
+```
+
+```
+Which competitors are beating me for the pet-friendly apartments recommendation?
+```
+
+## Example Response
+
+```json
+{
+  "value": "Enhance Acme Apartments' Content for Pet-Friendly Units with In-Unit Laundry",
+  "rankingImpact": "High",
+  "valueId": "123cc718-7615-48ea-88a7-88887d2b61a4",
+  "recommendationStatus": "PENDING",
+  "targetPages": ["https://acmeapts.com"],
+  "theme": "Apartments that allow pets and have a washer dryer",
+  "implementationSteps": [
+    "Improve the existing content at https://acmeapts.com to better cover 'Apartments that allow pets and have a washer dryer'.",
+    "Once changes are published, submit https://acmeapts.com for reindexing in Google Search Console."
+  ],
+  "whyItMatters": [
+    "Renters asking AI assistants for pet-friendly apartments with washer dryers are not seeing Acme Apartments."
+  ],
+  "competitors": [
+    {
+      "name": "Arbor Ridge",
+      "domain": "arborridgemd.com",
+      "website": "https://arborridgemd.com/amenities/",
+      "gap": "Ranked first for 'What apartments allow pets in {city},{zip}' queries."
+    }
+  ],
+  "competitorInsights": [
+    "Competitors maintain dedicated amenity-focused pages that AI assistants reference."
+  ],
+  "executionPlan": [
+    {
+      "phase": "FIX",
+      "title": "Fix",
+      "tasks": [
+        {
+          "step": "Improve the existing content at https://acmeapts.com to better cover 'Apartments that allow pets and have a washer dryer'.",
+          "workstream": "CONTENT",
+          "executionOrder": 0
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Notes
+
+- Call [`get_search_ai_recommendations`](/mcp/tools/search-ai/get-search-ai-recommendations) first and pass the item's `valueId`, `recommendationStatus`, and `theme`.
+- `executionPlan` groups `implementationSteps` into phases; follow tasks in `executionOrder`.
