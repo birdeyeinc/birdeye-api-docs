@@ -1,0 +1,82 @@
+---
+title: "Get AI Search Recommendations"
+description: "Get actionable recommendations to improve how AI engines (ChatGPT, Gemini, Perplexity) see and cite your business."
+---
+
+```
+get_search_ai_recommendations
+```
+
+## Description
+
+Returns a paginated list of AI Search recommendations — actions such as fixing listing data, improving page content, adding FAQs, or earning third-party mentions that make your locations more likely to appear in AI engine answers. Each recommendation includes its type, expected ranking impact, rationale, target pages, the theme it belongs to, and your score versus competitors for the targeted metric.
+
+## Parameters
+
+### Pagination & Sorting
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startIndex` | integer | No | `0` | Start index for pagination (0-based) |
+| `pageSize` | integer | No | `25` | Number of recommendations to return |
+| `sortBy` | string | No | `"impacted"` | Sort field |
+| `sortOrder` | integer | No | `1` | Sort order |
+
+### Filters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `recommendationStatus` | string | No | `"PENDING"` | `"PENDING"`, `"ACCEPTED"`, `"COMPLETED"`, or `"REJECTED"` |
+| `businessIds` | list[integer] | No | All | Location IDs (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) |
+| `recommendationTypes` | list[string] | No | All | e.g. `"Content"`, `"Listings"`, `"FAQ"`, `"Outreach"` |
+| `impacts` | list[string] | No | All | Ranking impact, e.g. `"High"`, `"Medium"`, `"Low"` |
+| `themes` | list[string] | No | All | AI Search theme names |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+
+## Example Usage
+
+```
+What AI Search recommendations do I have pending?
+```
+
+```
+Show me high impact Listings recommendations for my Seton Park location.
+```
+
+```
+Which recommendations were rejected for the Affordable apartments theme?
+```
+
+## Example Response
+
+```json
+{
+  "recommendations": [
+    {
+      "field": "Listings",
+      "value": "Update Phone Number on Forrent Listing",
+      "rationale": "Inconsistent phone number data across AI platforms can create confusion for potential customers.",
+      "rankingImpact": "High",
+      "rankingImpactDesc": "Gemini and Perplexity will return the correct phone number for Acme Apartments.",
+      "valueId": "40a4b60c-2b18-4d1b-aa74-30202a4458b7",
+      "recommendationStatus": "PENDING",
+      "updatedOn": "Nov 16, 2026",
+      "targetPages": ["https://www.forrent.com/md/baltimore/acme-apartments/27x4d7b"],
+      "metric": "Accuracy",
+      "businessScore": "60.0%",
+      "theme": "Business Information",
+      "locationName": "Acme Apartments",
+      "locationId": 1732608,
+      "recommendationType": "Listings",
+      "actionType": "FIX_PROPAGATION_SOURCE"
+    }
+  ],
+  "totalCount": 119
+}
+```
+
+## Notes
+
+- `totalCount` is the total number of matching recommendations — increase `startIndex` by `pageSize` to fetch the next page.
+- Pass a recommendation's `valueId`, `recommendationStatus`, and `theme` to [`get_search_ai_recommendation_summary`](/mcp/tools/search-ai/get-search-ai-recommendation-summary) for implementation steps and competitor details.
+- Use [`get_search_ai_recommendation_count`](/mcp/tools/search-ai/get-search-ai-recommendation-count) for status totals without fetching the list.

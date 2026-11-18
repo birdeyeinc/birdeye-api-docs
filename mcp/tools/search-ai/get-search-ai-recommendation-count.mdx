@@ -1,0 +1,43 @@
+---
+title: "Get AI Search Recommendation Count"
+description: "Get the number of AI Search recommendations in each status — pending, accepted, completed, and rejected."
+---
+
+```
+get_search_ai_recommendation_count
+```
+
+## Description
+
+Returns how many AI Search recommendations are pending, accepted, completed, and rejected. Supports the same location, type, impact, and theme filters as [`get_search_ai_recommendations`](/mcp/tools/search-ai/get-search-ai-recommendations).
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `businessIds` | list[integer] | No | All | Location IDs (from [`get_child_locations`](/mcp/tools/business/get-child-locations)) |
+| `recommendationTypes` | list[string] | No | All | e.g. `"Content"`, `"Listings"`, `"FAQ"`, `"Outreach"` |
+| `impacts` | list[string] | No | All | Ranking impact, e.g. `"High"`, `"Medium"`, `"Low"` |
+| `themes` | list[string] | No | All | AI Search theme names |
+| `viewReportType` | string | No | — | `"LOCATION_LEVEL"` or `"ACCOUNT_LEVEL"` |
+
+## Example Usage
+
+```
+How many AI Search recommendations are still pending?
+```
+
+```
+How many recommendations have I completed versus rejected?
+```
+
+## Example Response
+
+```json
+{
+  "pendingCount": 119,
+  "completedCount": 0,
+  "rejectedCount": 1,
+  "acceptedCount": 0
+}
+```
