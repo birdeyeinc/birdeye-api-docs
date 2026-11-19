@@ -12655,6 +12655,735 @@ paths:
               comparisonFilter:
                 startDate: 01/01/2025
                 endDate: 01/10/2025
+  "/v1/reports/qr/over-time":
+    post:
+      summary: QR Scan Count Over Time
+      operationId: getQrScanCountOverTime
+      description: >-
+        QR Scan Count Over Time API returns how many times the review QR codes of the business were scanned, as a time series for the selected period and locations.
+      tags:
+      - Report
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        description: Your API key from Birdeye.
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        required: true
+        description: Your Birdeye business number.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: false
+        description: Media type of the JSON request body.
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                  description: Start of the date range in MM/DD/YYYY format. Provide together with endDate.
+                  example: "10/21/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in MM/DD/YYYY format. Provide together with startDate.
+                  example: "11/19/2026"
+                days:
+                  type: integer
+                  description: Relative window ending today, used when startDate and endDate are not provided.
+                  example: 30
+                groupByType:
+                  type: string
+                  description: Bucket size of the time series - day, week, month or quarter. When omitted, the bucket size is chosen from the length of the range.
+                  example: day
+                businessNumbers:
+                  type: array
+                  description: Business numbers of the locations to scope the report to. When omitted, all locations accessible to the API key are included.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+            example:
+              startDate: "10/21/2026"
+              endDate: "11/19/2026"
+              groupByType: day
+              businessNumbers:
+              - 177337970010644
+              - 177337970029743
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: object
+                    properties:
+                      actual:
+                        type: object
+                        properties:
+                          scanCount:
+                            type: integer
+                            description: Total QR code scans in the selected period.
+                          clickCount:
+                            type: integer
+                            description: Total QR code link clicks in the selected period.
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        actual:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                              description: Display label of the time bucket.
+                            shortLabel:
+                              type: string
+                            startDate:
+                              type: string
+                              description: Start of the bucket in MM/DD/YYYY format.
+                            endDate:
+                              type: string
+                              description: End of the bucket in MM/DD/YYYY format.
+                            scanCount:
+                              type: integer
+                            clickCount:
+                              type: integer
+                  dateDiff:
+                    type: integer
+                    description: Number of days covered by the selected range.
+                  groupByType:
+                    type: string
+                    description: Bucket size used for dataPoints.
+              example:
+                summary:
+                  actual:
+                    clickCount: 0
+                    scanCount: 4
+                dataPoints:
+                - actual:
+                    label: Nov 5, 2026
+                    shortLabel: Nov 5 '26
+                    startDate: 11/05/2026
+                    endDate: 11/19/2026
+                    scanCount: 4
+                    clickCount: 0
+                dateDiff: 29
+                groupByType: day
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/reports/listing/completion-score/site":
+    post:
+      summary: Listing Profile Completeness By Site
+      operationId: getListingProfileCompletenessBySite
+      description: >-
+        Listing Profile Completeness By Site API returns how complete the business profile is on each listing site, along with the average across sites and the change versus the previous period. The comparison is always made against the previous period of equal length.
+      tags:
+      - Report
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        description: Your API key from Birdeye.
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        required: true
+        description: Your Birdeye business number.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: false
+        description: Media type of the JSON request body.
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                  description: Start of the date range in MM/DD/YYYY format. Provide together with endDate.
+                  example: "10/21/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in MM/DD/YYYY format. Provide together with startDate.
+                  example: "11/19/2026"
+                days:
+                  type: integer
+                  description: Relative window ending today, used when startDate and endDate are not provided.
+                  example: 30
+                groupByType:
+                  type: string
+                  description: Bucket size of the time series - day, week, month or quarter. When omitted, the bucket size is chosen from the length of the range.
+                  example: day
+                businessNumbers:
+                  type: array
+                  description: Business numbers of the locations to scope the report to. When omitted, all locations accessible to the API key are included.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+            example:
+              startDate: "10/21/2026"
+              endDate: "11/19/2026"
+              groupByType: day
+              businessNumbers:
+              - 177337970010644
+              - 177337970029743
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: object
+                  dataPoints:
+                    type: array
+                    description: The first entry is the average across all sites; each following entry is one listing site.
+                    items:
+                      type: object
+                      properties:
+                        actual:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                              description: Listing site name, or Average for the cross-site average.
+                            sourceId:
+                              type: integer
+                              description: Listing site source id. Not present on the Average entry.
+                            subDataPoints:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  label:
+                                    type: string
+                                    example: Profile completeness
+                                  value:
+                                    type: number
+                                    description: Profile completeness percentage.
+                                  growth:
+                                    type: number
+                                    description: Percentage change versus the previous period.
+                                  difference:
+                                    type: number
+                                    description: Point change versus the previous period.
+                  dateDiff:
+                    type: integer
+                    description: Number of days covered by the selected range.
+                  groupByType:
+                    type: string
+                    description: Bucket size used for the report.
+              example:
+                summary: {}
+                dataPoints:
+                - actual:
+                    label: Average
+                    localizedLabel: Average
+                    subDataPoints:
+                    - label: Profile completeness
+                      value: 47.0
+                      growth: -4.1
+                      difference: -2.0
+                - actual:
+                    label: Google
+                    sourceId: 1
+                    subDataPoints:
+                    - label: Profile completeness
+                      value: 45.0
+                      growth: -2.2
+                      difference: -1.0
+                - actual:
+                    label: Facebook
+                    sourceId: 3
+                    subDataPoints:
+                    - label: Profile completeness
+                      value: 47.0
+                      growth: -2.1
+                      difference: -1.0
+                dateDiff: 29
+                groupByType: day
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/reports/social/profile-performance/audience-growth":
+    post:
+      summary: Social Audience Growth
+      operationId: getSocialAudienceGrowth
+      description: >-
+        Social Audience Growth API returns how the follower base grew or shrank across the connected social channels, with the change versus the previous period. The comparison is always made against the previous period of equal length.
+      tags:
+      - Report
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        description: Your API key from Birdeye.
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        required: true
+        description: Your Birdeye business number.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: false
+        description: Media type of the JSON request body.
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                  description: Start of the date range in MM/DD/YYYY format. Provide together with endDate.
+                  example: "10/21/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in MM/DD/YYYY format. Provide together with startDate.
+                  example: "11/19/2026"
+                days:
+                  type: integer
+                  description: Relative window ending today, used when startDate and endDate are not provided.
+                  example: 30
+                groupByType:
+                  type: string
+                  description: Bucket size of the time series - day, week, month or quarter. When omitted, the bucket size is chosen from the length of the range.
+                  example: day
+                businessNumbers:
+                  type: array
+                  description: Business numbers of the locations to scope the report to. When omitted, all locations accessible to the API key are included.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+                socialChannels:
+                  type: array
+                  description: Social channels to include. When omitted, all four channels are included.
+                  items:
+                    type: string
+                    enum: [facebook, instagram, linkedin, tiktok]
+                  example: [facebook, instagram]
+            example:
+              startDate: "10/21/2026"
+              endDate: "11/19/2026"
+              groupByType: day
+              businessNumbers:
+              - 177337970010644
+              - 177337970029743
+              socialChannels:
+              - facebook
+              - instagram
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: object
+                    properties:
+                      actual:
+                        type: object
+                        properties:
+                          followerGain:
+                            type: integer
+                          followerLost:
+                            type: integer
+                          likeGain:
+                            type: integer
+                          likeLost:
+                            type: integer
+                          net:
+                            type: integer
+                            description: Net audience change in the selected period.
+                          totalAudience:
+                            type: integer
+                          totalAudienceGrowthPercent:
+                            type: number
+                          channelWiseData:
+                            type: object
+                            description: Per-channel followerLost, net, totalAudience and totalAudienceGrowthPercent, keyed by channel name.
+                            additionalProperties:
+                              type: object
+                      compare:
+                        type: object
+                        description: The same metrics for the previous period.
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        actual:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            shortLabel:
+                              type: string
+                            startDate:
+                              type: string
+                            endDate:
+                              type: string
+                            totalFollowers:
+                              type: integer
+                            totalLikes:
+                              type: integer
+                            total:
+                              type: integer
+                              description: Net audience change in the bucket.
+                            fbNetGrowth:
+                              type: integer
+                            igNetGrowth:
+                              type: integer
+                            lnNetGrowth:
+                              type: integer
+                            ttNetGrowth:
+                              type: integer
+                        compare:
+                          type: object
+                          description: The same fields for the matching bucket of the previous period.
+                  dateDiff:
+                    type: integer
+                  groupByType:
+                    type: string
+              example:
+                summary:
+                  actual:
+                    followerGain: 1
+                    followerLost: 0
+                    likeGain: 0
+                    likeLost: 0
+                    net: 1
+                    totalAudience: 20
+                    totalAudienceGrowthPercent: -4.8
+                    channelWiseData:
+                      facebook:
+                        followerLost: 0
+                        net: 1
+                        totalAudience: 6
+                        totalAudienceGrowthPercent: 20.0
+                      instagram:
+                        followerLost: 0
+                        net: 0
+                        totalAudience: 14
+                        totalAudienceGrowthPercent: -12.5
+                  compare:
+                    followerGain: 0
+                    followerLost: 0
+                    net: 0
+                    totalAudience: 21
+                dataPoints:
+                - actual:
+                    label: Nov 5, 2026
+                    shortLabel: Nov 5 '26
+                    startDate: 11/05/2026
+                    endDate: 11/05/2026
+                    totalFollowers: 6
+                    totalLikes: 0
+                    total: 1
+                    fbNetGrowth: 1
+                    igNetGrowth: 0
+                    lnNetGrowth: 0
+                    ttNetGrowth: 0
+                  compare:
+                    label: Oct 6, 2026
+                    shortLabel: Oct 6 '26
+                    startDate: 10/06/2026
+                    endDate: 10/06/2026
+                    totalFollowers: 5
+                    totalLikes: 0
+                    total: 0
+                    fbNetGrowth: 0
+                    igNetGrowth: 0
+                    lnNetGrowth: 0
+                    ttNetGrowth: 0
+                dateDiff: 29
+                groupByType: day
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
+  "/v1/reports/inbox/over-time/active-conversations":
+    post:
+      summary: Inbox Active Conversations Over Time
+      operationId: getInboxActiveConversationsOverTime
+      description: >-
+        Inbox Active Conversations Over Time API returns the number of active Inbox conversations in each period, across all messaging channels, for the selected period and locations.
+      tags:
+      - Report
+      parameters:
+      - name: x-api-key
+        in: header
+        required: true
+        description: Your API key from Birdeye.
+        schema:
+          type: string
+      - name: x-business-number
+        in: header
+        required: true
+        description: Your Birdeye business number.
+        schema:
+          type: string
+      - name: Content-Type
+        in: header
+        required: false
+        description: Media type of the JSON request body.
+        schema:
+          type: string
+          default: application/json
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                startDate:
+                  type: string
+                  description: Start of the date range in MM/DD/YYYY format. Provide together with endDate.
+                  example: "10/21/2026"
+                endDate:
+                  type: string
+                  description: End of the date range in MM/DD/YYYY format. Provide together with startDate.
+                  example: "11/19/2026"
+                days:
+                  type: integer
+                  description: Relative window ending today, used when startDate and endDate are not provided.
+                  example: 30
+                groupByType:
+                  type: string
+                  description: Bucket size of the time series - day, week, month or quarter. When omitted, the bucket size is chosen from the length of the range.
+                  example: day
+                businessNumbers:
+                  type: array
+                  description: Business numbers of the locations to scope the report to. When omitted, all locations accessible to the API key are included.
+                  items:
+                    type: integer
+                    format: int64
+                  example: [177337970010644, 177337970029743]
+            example:
+              startDate: "10/21/2026"
+              endDate: "11/19/2026"
+              groupByType: day
+              businessNumbers:
+              - 177337970010644
+              - 177337970029743
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  summary:
+                    type: object
+                    properties:
+                      actual:
+                        type: object
+                        properties:
+                          totalCount:
+                            type: integer
+                            description: Total active conversations in the selected period.
+                  dataPoints:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        actual:
+                          type: object
+                          properties:
+                            label:
+                              type: string
+                            shortLabel:
+                              type: string
+                            startDate:
+                              type: string
+                            endDate:
+                              type: string
+                            activeConversationCount:
+                              type: integer
+                  dateDiff:
+                    type: integer
+                  groupByType:
+                    type: string
+              example:
+                summary:
+                  actual:
+                    totalCount: 406
+                dataPoints:
+                - actual:
+                    label: Oct 21, 2026
+                    shortLabel: Oct 21 '26
+                    startDate: 10/21/2026
+                    endDate: 10/21/2026
+                    activeConversationCount: 16
+                - actual:
+                    label: Oct 22, 2026
+                    shortLabel: Oct 22 '26
+                    startDate: 10/22/2026
+                    endDate: 10/22/2026
+                    activeConversationCount: 16
+                groupByType: day
+                dateDiff: 29
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1167Model"
+              examples:
+                response:
+                  value:
+                    code: 1167
+                    message: API key is missing
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/1161Model"
+              examples:
+                response:
+                  value:
+                    code: 1161
+                    message: Invalid API key
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/89Model"
+              examples:
+                response:
+                  value:
+                    code: 89
+                    message: Rate limit exceeded
   "/v1/survey/{survey_id}":
     get:
       responses:
