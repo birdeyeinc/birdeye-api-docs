@@ -12696,9 +12696,6 @@ paths:
                 endDate:
                   type: string
                   description: End date in `MM/dd/YYYY` format.
-                days:
-                  type: number
-                  description: Use to get results for last some days.
                 businessNumbers:
                   type: array
                   description: Business Numbers under enterprise account.
@@ -12848,9 +12845,6 @@ paths:
                 endDate:
                   type: string
                   description: End date in `MM/dd/YYYY` format.
-                days:
-                  type: number
-                  description: Use to get results for last some days.
                 businessNumbers:
                   type: array
                   description: Business Numbers under enterprise account.
@@ -12898,12 +12892,6 @@ paths:
                                   value:
                                     type: number
                                     description: Profile completeness percentage.
-                                  growth:
-                                    type: number
-                                    description: Percentage change versus the previous period.
-                                  difference:
-                                    type: number
-                                    description: Point change versus the previous period.
                   dateDiff:
                     type: integer
                     description: Number of days covered by the selected range.
@@ -12919,24 +12907,18 @@ paths:
                     subDataPoints:
                     - label: Profile completeness
                       value: 47.0
-                      growth: -4.1
-                      difference: -2.0
                 - actual:
                     label: Google
                     sourceId: 1
                     subDataPoints:
                     - label: Profile completeness
                       value: 45.0
-                      growth: -2.2
-                      difference: -1.0
                 - actual:
                     label: Facebook
                     sourceId: 3
                     subDataPoints:
                     - label: Profile completeness
                       value: 47.0
-                      growth: -2.1
-                      difference: -1.0
                 dateDiff: 29
                 groupByType: day
         '400':
@@ -13013,9 +12995,6 @@ paths:
                 endDate:
                   type: string
                   description: End date in `MM/dd/YYYY` format.
-                days:
-                  type: number
-                  description: Use to get results for last some days.
                 businessNumbers:
                   type: array
                   description: Business Numbers under enterprise account.
@@ -13062,16 +13041,11 @@ paths:
                             description: Net audience change in the selected period.
                           totalAudience:
                             type: integer
-                          totalAudienceGrowthPercent:
-                            type: number
                           channelWiseData:
                             type: object
-                            description: Per-channel followerLost, net, totalAudience and totalAudienceGrowthPercent, keyed by channel name.
+                            description: Per-channel followerLost, net and totalAudience, keyed by channel name.
                             additionalProperties:
                               type: object
-                      compare:
-                        type: object
-                        description: The same metrics for the previous period.
                   dataPoints:
                     type: array
                     items:
@@ -13103,9 +13077,6 @@ paths:
                               type: integer
                             ttNetGrowth:
                               type: integer
-                        compare:
-                          type: object
-                          description: The same fields for the matching bucket of the previous period.
                   dateDiff:
                     type: integer
                   groupByType:
@@ -13119,23 +13090,15 @@ paths:
                     likeLost: 0
                     net: 1
                     totalAudience: 20
-                    totalAudienceGrowthPercent: -4.8
                     channelWiseData:
                       facebook:
                         followerLost: 0
                         net: 1
                         totalAudience: 6
-                        totalAudienceGrowthPercent: 20.0
                       instagram:
                         followerLost: 0
                         net: 0
                         totalAudience: 14
-                        totalAudienceGrowthPercent: -12.5
-                  compare:
-                    followerGain: 0
-                    followerLost: 0
-                    net: 0
-                    totalAudience: 21
                 dataPoints:
                 - actual:
                     label: Nov 5, 2026
@@ -13146,18 +13109,6 @@ paths:
                     totalLikes: 0
                     total: 1
                     fbNetGrowth: 1
-                    igNetGrowth: 0
-                    lnNetGrowth: 0
-                    ttNetGrowth: 0
-                  compare:
-                    label: Oct 6, 2026
-                    shortLabel: Oct 6 '26
-                    startDate: 10/06/2026
-                    endDate: 10/06/2026
-                    totalFollowers: 5
-                    totalLikes: 0
-                    total: 0
-                    fbNetGrowth: 0
                     igNetGrowth: 0
                     lnNetGrowth: 0
                     ttNetGrowth: 0
@@ -13237,9 +13188,6 @@ paths:
                 endDate:
                   type: string
                   description: End date in `MM/dd/YYYY` format.
-                days:
-                  type: number
-                  description: Use to get results for last some days.
                 businessNumbers:
                   type: array
                   description: Business Numbers under enterprise account.
