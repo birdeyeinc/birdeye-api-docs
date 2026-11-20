@@ -1,0 +1,65 @@
+---
+title: "Get Listing Profile Completeness By Site"
+description: "See how complete the business profile is on each listing site."
+---
+
+```
+get_listing_profile_completeness_by_site
+```
+
+## Description
+
+Returns the profile completeness percentage on each listing site (Google, Facebook, Apple, Bing, Yelp, and others), plus the average across sites, with the change versus the previous period. The comparison is always made against the previous period of equal length and cannot be customized.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | Last 30 days when no period is requested | Start date in `MM/DD/YYYY` format. Provide together with `endDate` |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format. Provide together with `startDate` |
+| `groupByType` | string | No | Chosen by the API from the range | Bucket size: `day`, `week`, `month`, or `quarter` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+Which listing site has the lowest profile completeness?
+```
+
+## Example Response
+
+```json
+{
+  "summary": {},
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Average",
+        "localizedLabel": "Average",
+        "subDataPoints": [
+          { "label": "Profile completeness", "value": 47.0, "growth": -4.1, "difference": -2.0 }
+        ]
+      }
+    },
+    {
+      "actual": {
+        "label": "Google",
+        "sourceId": 1,
+        "subDataPoints": [
+          { "label": "Profile completeness", "value": 45.0, "growth": -2.2, "difference": -1.0 }
+        ]
+      }
+    }
+  ],
+  "dateDiff": 29,
+  "groupByType": "day"
+}
+```
+
+## Response Fields
+
+The first `dataPoints` entry is the cross-site average; each following entry is one listing site with its `label` and `sourceId`. `subDataPoints` holds the profile completeness `value` (percentage), `growth` (percentage change), and `difference` (point change) versus the previous period.
+
+## Notes
+
+- Both `startDate` and `endDate` must be provided to use a custom range; otherwise the last 30 days are used.

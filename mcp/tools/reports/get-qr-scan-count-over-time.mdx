@@ -1,0 +1,59 @@
+---
+title: "Get QR Scan Count Over Time"
+description: "Track how many times review QR codes were scanned over time."
+---
+
+```
+get_qr_scan_count_over_time
+```
+
+## Description
+
+Returns the review QR code scan count as a time series for the selected period and locations. Use it to see whether QR scan activity is trending up or down and which days, weeks, or months had the most scans.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | Last 30 days when no period is requested | Start date in `MM/DD/YYYY` format. Provide together with `endDate` |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format. Provide together with `startDate` |
+| `groupByType` | string | No | Chosen by the API from the range | Bucket size: `day`, `week`, `month`, or `quarter` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+How many times were our review QR codes scanned in the last 30 days?
+```
+
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": { "scanCount": 4, "clickCount": 0 }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Nov 5, 2026",
+        "shortLabel": "Nov 5 '26",
+        "startDate": "11/05/2026",
+        "endDate": "11/19/2026",
+        "scanCount": 4,
+        "clickCount": 0
+      }
+    }
+  ],
+  "dateDiff": 29,
+  "groupByType": "day"
+}
+```
+
+## Response Fields
+
+`summary.actual` contains the `scanCount` and `clickCount` totals for the range. `dataPoints` provides the same fields for each time bucket. `dateDiff` is the number of days covered, and `groupByType` identifies the bucket size.
+
+## Notes
+
+- Both `startDate` and `endDate` must be provided to use a custom range; otherwise the last 30 days are used.
