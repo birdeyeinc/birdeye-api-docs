@@ -1,0 +1,58 @@
+---
+title: "Get Inbox Active Conversations Over Time"
+description: "Track the number of active Inbox conversations over time."
+---
+
+```
+get_inbox_active_conversations_over_time
+```
+
+## Description
+
+Returns the number of active Inbox conversations in each period, across all messaging channels, for the selected period and locations. Use it to see how busy the inbox is and whether conversation volume is trending up or down.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | Last 30 days when no period is requested | Start date in `MM/DD/YYYY` format. Provide together with `endDate` |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format. Provide together with `startDate` |
+| `groupByType` | string | No | Chosen by the API from the range | Bucket size: `day`, `week`, `month`, or `quarter` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+Show active inbox conversations by week this quarter
+```
+
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": { "totalCount": 406 }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Oct 21, 2026",
+        "shortLabel": "Oct 21 '26",
+        "startDate": "10/21/2026",
+        "endDate": "10/21/2026",
+        "activeConversationCount": 16
+      }
+    }
+  ],
+  "groupByType": "day",
+  "dateDiff": 29
+}
+```
+
+## Response Fields
+
+`summary.actual.totalCount` is the total number of active conversations for the range. `dataPoints` provides `activeConversationCount` for each time bucket. `dateDiff` is the number of days covered, and `groupByType` identifies the bucket size.
+
+## Notes
+
+- Both `startDate` and `endDate` must be provided to use a custom range; otherwise the last 30 days are used.

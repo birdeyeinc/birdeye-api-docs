@@ -65,7 +65,9 @@
                   "mcp/tools/reports/get-avg-response-time-over-time",
                   "mcp/tools/reports/get-avg-response-time-by-location",
                   "mcp/tools/reports/get-review-count-by-rating",
-                  "mcp/tools/reports/get-review-count-by-rating-by-employee"
+                  "mcp/tools/reports/get-review-count-by-rating-by-employee",
+                  "mcp/tools/reports/get-qr-scan-count-over-time",
+                  "mcp/tools/reports/get-inbox-active-conversations-over-time"
                 ]
               },
               {
@@ -129,6 +131,7 @@
                   "mcp/tools/listings/get-listing",
                   "mcp/tools/listings/get-listing-location-status-report",
                   "mcp/tools/listings/get-listing-insights",
+                  "mcp/tools/listings/get-listing-profile-completeness-by-site",
                   "mcp/tools/listings/get-listing-category-list",
                   "mcp/tools/listings/get-product-listing-list",
                   "mcp/tools/listings/fix-listing",
@@ -161,6 +164,7 @@
                 "pages": [
                   "mcp/tools/social/overview",
                   "mcp/tools/social/get-social-open-url-performance-report",
+                  "mcp/tools/social/get-social-audience-growth",
                   "mcp/tools/social/create-social-post",
                   "mcp/tools/social/get-social-post",
                   "mcp/tools/social/edit-published-social-post",
@@ -415,7 +419,11 @@
                   "api/report/review-response-rate-over-time",
                   "api/report/review-response-rate-by-location-overview",
                   "api/report/average-response-time-by-location",
-                  "api/report/average-response-time-over-time"
+                  "api/report/average-response-time-over-time",
+                  "api/report/qr-scan-count-over-time",
+                  "api/report/listing-profile-completeness-by-site",
+                  "api/report/social-audience-growth",
+                  "api/report/inbox-active-conversations-over-time"
                 ],
                 "icon": "chart-bar"
               },
