@@ -1,0 +1,83 @@
+---
+title: "Get Social Audience Growth"
+description: "Track follower growth across social channels with previous-period comparison."
+---
+
+```
+get_social_audience_growth
+```
+
+## Description
+
+Returns follower gains and losses, net audience growth, and total audience across the connected social channels, with the change versus the previous period. The comparison is always made against the previous period of equal length and cannot be customized.
+
+## Parameters
+
+| Parameter | Type | Required | Default | Description |
+|---|---|---|---|---|
+| `startDate` | string | No | Last 30 days when no period is requested | Start date in `MM/DD/YYYY` format. Provide together with `endDate` |
+| `endDate` | string | No | Today when no period is requested | End date in `MM/DD/YYYY` format. Provide together with `startDate` |
+| `groupByType` | string | No | Chosen by the API from the range | Bucket size: `day`, `week`, `month`, or `quarter` |
+| `socialChannels` | list[string] | No | All channels | Channels to include: `facebook`, `instagram`, `linkedin`, `tiktok` |
+| `businessNumbers` | list[integer] | No | All locations | Location IDs to include |
+
+## Example Usage
+
+```
+Which social channel is gaining the most followers?
+```
+
+## Example Response
+
+```json
+{
+  "summary": {
+    "actual": {
+      "followerGain": 1,
+      "followerLost": 0,
+      "net": 1,
+      "totalAudience": 20,
+      "totalAudienceGrowthPercent": -4.8,
+      "channelWiseData": {
+        "facebook": { "followerLost": 0, "net": 1, "totalAudience": 6, "totalAudienceGrowthPercent": 20.0 },
+        "instagram": { "followerLost": 0, "net": 0, "totalAudience": 14, "totalAudienceGrowthPercent": -12.5 }
+      }
+    },
+    "compare": { "followerGain": 0, "followerLost": 0, "net": 0, "totalAudience": 21 }
+  },
+  "dataPoints": [
+    {
+      "actual": {
+        "label": "Nov 5, 2026",
+        "shortLabel": "Nov 5 '26",
+        "startDate": "11/05/2026",
+        "endDate": "11/05/2026",
+        "totalFollowers": 6,
+        "total": 1,
+        "fbNetGrowth": 1,
+        "igNetGrowth": 0,
+        "lnNetGrowth": 0,
+        "ttNetGrowth": 0
+      },
+      "compare": {
+        "label": "Oct 6, 2026",
+        "shortLabel": "Oct 6 '26",
+        "startDate": "10/06/2026",
+        "endDate": "10/06/2026",
+        "totalFollowers": 5,
+        "total": 0
+      }
+    }
+  ],
+  "dateDiff": 29,
+  "groupByType": "day"
+}
+```
+
+## Response Fields
+
+`summary.actual` and `summary.compare` include follower and like gains and losses, `net`, `totalAudience`, and per-channel `channelWiseData`. `dataPoints` provides the same metrics for each time bucket, including per-channel net growth (`fbNetGrowth`, `igNetGrowth`, `lnNetGrowth`, `ttNetGrowth`).
+
+## Notes
+
+- Both `startDate` and `endDate` must be provided to use a custom range; otherwise the last 30 days are used.
